@@ -1,0 +1,62 @@
+\documentclass[11pt,a4paper,openany]{book}
+
+%\usepackage[german]{babel}	%in case you want to write a german thesis
+
+%settings for generation of titlepage, index and table of content
+\include{sections/Settings}
+
+%definitions for easier costumization
+\def \subtitle {Name of thesis}
+\def \year {2019/20}
+\def \authors { \parseauthor{Themengebiet 1}{Vor- und Nachname1}{Klasse}\\
+                \parseauthor{Themengebiet 2}{Vor- und Nachname2}{Klasse}}
+\def \supervisor {Betreuer}
+\def \declauthors{ Vor- und NACHNAME & Vor- und NACHNAME}	% for two authors
+% \def \declauthors{ Vor- und NACHNAME & Vor- und NACHNAME \\ Vor- und NACHNAME}	% for three authors
+
+\addbibresource{main.bib}
+
+\begin{document}
+	%include titlepage
+	\input{sections/titlepage}
+	
+	%include acknowledgements, abstract and documentation
+	
+	\pagestyle{plain}
+	
+	\frontmatter
+	
+	\pagenumbering{roman}
+	\input{sections/declarationof}
+	
+	\tableofcontents
+	
+	\input{sections/acknowledgement}
+	\input{sections/abstract}
+	
+	%include thesis
+	
+	\mainmatter
+	\pagenumbering{arabic}
+	
+	\input{sections/introduction}
+	\input{sections/study_of_literature}
+	\input{sections/methodology}
+	\input{sections/implementation}
+	\input{sections/experiment1}
+	\input{sections/lessons_learned}
+	\input{sections/experiment2}
+	\input{sections/conclusion}
+	
+	
+	% Index
+	\newpage
+	\chapter*{Index}
+	\printindex[name]
+	\printindex[title]
+	
+	\printbibliography
+	
+	\input{sections/messbox}
+
+\end{document}
