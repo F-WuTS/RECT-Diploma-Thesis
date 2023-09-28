@@ -9,8 +9,10 @@ Eine der am meisten in der Robotik verwendeten Software Suiten ist das sogenannt
 
 \vspace{10mm}
 
-One of the most used softwares in robotics is the Robot Operating System (ROS for short).
+One of the most used softwares in robotics is the Robot Operating System \footcite{ros-site} (ROS for short).
 It is a collection of tools and packages used for building high performance robotics applications and
 simplifies all communication to topics and messages, which can be recorded and replayed from ROS-Bag files.
 This allows for developers to focus on the problem at hand and not reinvent the wheel for communication.
-
+ROS also allows for simulation of various components of robots, which are most often called digital twins.
+One of the main downsides of ROS is the complexity it brings with it. This complexity also leads to performance
+being very limited on lower powered hardware, like for example the KIPR Wombat Controller \footcite{wombat-controller}.
