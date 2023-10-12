@@ -1,11 +1,23 @@
 \chapter{Kurzfassung}
 
+\textbf{Author: Sztavinovszki}
+
 \vspace{10mm}
 
-Eine der am meisten in der Robotik verwendeten Software Suiten ist das sogenannte Robot Operating System (kurz ROS).
+Eine der am meisten in der Robotik verwendeten Software Suiten ist das sogenannte Robot Operating System \footcite{ros-site} (kurz ROS).
+Es ist eine Sammlung von Werkzeugen und Packeten, die verwendet werden, um hoch performante Robotik Systeme zu entwickeln und es abstrahiert
+die Kommunikation zu Topics und Messages, die man in ROS-Bag Files aufzeichnen und abspielen kann. Das erlaubt es entwicklern sich auf die tatsächlichen Probleme der Entwicklung zu konzentrieren und sich nicht darum kümmern zu müssen Kommunikation neu zu implementieren.
+ROS erlaubt außerdem die simulation Zahlreicher Komponenten von Robotern, welche man meistens als Digitale Zwillinge bezeichnet.
+Einer der größten Nachteile, die ROS mit sich bringt ist die Komplexität und der Eigensinn, bei der Entwicklung. Diese Komplexität führt außerdem zu Performance einbußen, welche vor allem die Verwendbarkeit auf weniger Leistungsstarken Geräten, wie zum Beispiel dem KIPR Wombat Controller \footcite{wombat-controller}, welcher bei Schülern wegen seiner Kostengünstigkeit und Verwendbarkeit zum Einsatz kommt.
+
+\medskip
+
+Diese Arbeit wird erkunden, wie man eine Software ähnlich zu ROS implementiert. Es werden Probleme, wie zum Beispiel Inter Prozess Kommunikation \footcite{ipc-begriff}, Kommunikation durch Bluetooth Low Energy (BLE), TCP und UDP, und die Implementation von Kommunikations Libraries für verschiedene Programmiersprachen
 
 
 \chapter{Abstract}
+
+\textbf{Author: Sztavinovszki}
 
 \vspace{10mm}
 
@@ -14,8 +26,9 @@ It is a collection of tools and packages used for building high performance robo
 simplifies all communication to topics and messages, which can be recorded and replayed from ROS-Bag files.
 This allows for developers to focus on the problem at hand and not reinvent the wheel for communication.
 ROS also allows for simulation of various components of robots, which are most often called digital twins.
-One of the main downsides of ROS is the complexity it brings with it. This complexity also leads to performance
-being very limited on lower powered hardware, like for example the KIPR Wombat Controller \footcite{wombat-controller}.
+One of the main downsides of ROS is the complexity it brings with it and how opinionated it is. This complexity also leads to performance
+being very limited on lower powered hardware, like for example the KIPR Wombat Controller \footcite{wombat-controller},
+which is often used in student competitions, because of its ease of use and the low cost.
 
 \medskip
 
