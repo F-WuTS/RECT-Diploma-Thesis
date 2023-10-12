@@ -9,57 +9,57 @@
 \def \subtitle {Robot Extensible Communication Toolkit}
 \def \year {2023/24}
 \def \authors { \parseauthor{Projectmanagement. Rust TCP/UDP and BLE Interface}{Jeremy Sztavinovszki}{5CHIF}\\
-                \parseauthor{Rust gRPC Interface and interacting with in memory sqlite databases}{Christoph Fellner}{5BHIF} \\
-				\parseauthor{C++ gRPC interface and library for communication}{Maximilian Dragosits}{5CHIF} \\
-				\parseauthor{RECT Tool and Python gRPC interface and library for communication}{Timon Koch}{5CHIF} }
-\def \supervisor { Harald Haberstroh }
+	\parseauthor{Rust gRPC Interface and interacting with in memory sqlite databases}{Christoph Fellner}{5BHIF} \\
+	\parseauthor{C++ gRPC interface and library for communication}{Maximilian Dragosits}{5CHIF} \\
+	\parseauthor{RECT Tool and Python gRPC interface and library for communication}{Timon Koch}{5CHIF} }
+\def \supervisor { Harald R. Haberstroh }
 \def \declauthors{ 	Jeremy Sztavinovszki & Christoph Fellner \\
-					Timon Koch & Maximilian Dragosits}	
+	Timon Koch & Maximilian Dragosits}
 % \def \declauthors{ Vor- und NACHNAME & Vor- und NACHNAME \\ Vor- und NACHNAME}	% for three authors
 
 \addbibresource{main.bib}
 
 \begin{document}
-	%include titlepage
-	\input{sections/titlepage}
-	
-	%include acknowledgements, abstract and documentation
-	
-	\pagestyle{plain}
-	
-	\frontmatter
-	
-	\pagenumbering{roman}
-	\input{sections/declarationof}
-	
-	\tableofcontents
-	
-	\input{sections/acknowledgement}
-	\input{sections/abstract}
-	
-	%include thesis
-	
-	\mainmatter
-	\pagenumbering{arabic}
-	
-	\input{sections/introduction}
-	\input{sections/study_of_literature}
-	\input{sections/methodology}
-	\input{sections/implementation}
-	\input{sections/experiment1}
-	\input{sections/lessons_learned}
-	\input{sections/experiment2}
-	\input{sections/conclusion}
-	
-	
-	% Index
-	\newpage
-	\chapter*{Index}
-	\printindex[name]
-	\printindex[title]
-	
-	\printbibliography
-	
-	\input{sections/messbox}
+%include titlepage
+\input{sections/titlepage}
+
+%include acknowledgements, abstract and documentation
+
+\pagestyle{plain}
+
+\frontmatter
+
+\pagenumbering{roman}
+\input{sections/declarationof}
+
+\tableofcontents
+
+\input{sections/acknowledgement}
+\input{sections/abstract}
+
+%include thesis
+
+\mainmatter
+\pagenumbering{arabic}
+
+\input{sections/introduction}
+\input{sections/study_of_literature}
+\input{sections/methodology}
+\input{sections/implementation}
+\input{sections/experiment1}
+\input{sections/lessons_learned}
+\input{sections/experiment2}
+\input{sections/conclusion}
+
+
+% Index
+\newpage
+\chapter*{Index}
+\printindex[name]
+\printindex[title]
+
+\printbibliography
+
+\input{sections/messbox}
 
 \end{document}
