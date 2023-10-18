@@ -5,7 +5,6 @@
     "robo4you"
     "ros-site"
     "wombat-controller"
-    "ipc-begriff"
-    "Hope_Learning_TensorFlow"))
+    "ipc-begriff"))
  '(or :bibtex :latex))
 
