@@ -17,8 +17,7 @@
     "sections/conclusion"
     "sections/messbox"
     "book"
-    "bk11"
-    "titlesec")
+    "bk11")
    (LaTeX-add-bibliographies))
  :latex)
 
