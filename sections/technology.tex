@@ -57,4 +57,41 @@ test
 
 \section{Libraries}
 
+\subsection{Rusqlite}
+\textbf{Author: Christoph Fellner}
+
+Rusqlite is an ergonomic wrapper for using SQLite from Rust similar to rust-postgres. It provides an easy-to-use interface to work with SQLite databases. Using the functions provided by rusqlite you can perform all the common database operations, such as creating tables, inserting Data, querying data, and more simply within your code. 
+
+We choose this library for SQLite mainly because of three reasons:
+\begin{enumerate}
+    \item \textbf{Portability:} SQLite databases can be used across different platforms and operating systems. Given the fact that RECT operates on different small Controllers, portability is very important.
+    \item \textbf{Configuration:} There is no need for any complex setup or configuration when working with SQLite. We only need a few tables to work with, so having to configure a database on each controller wouldn't be worth the effort.
+    \item \textbf{Local:} SQLite doesn't need any separate server or installation. It contains all the features we need in a small an independent package.
+\end{enumerate}
+
+In our case we use rusqlite in order to save the config.json file, containing date for the available connections. Accessing the Data from the database is simply much quicker and saver than reading from the file when we need it. 
+
+\subsection{Serde}
+\textbf{Author: Christoph Fellner}
+
+Serde is a framework for rust, used for \textbf{ser}ializing and \textbf{de}serializing data structures efficiently and generically. You can find a detailed serde overview \href{https://serde.rs/}{here}.
+
+Serde provides functions to deserialize JSON-files in a simple and quick way, this allows us to use the data from the config.json file in our program with just a few lines of code.
+
+With serde we deserialize the data from the JSON-file into a self-made rust structure, which allows us to use the data properly.  
+
+\subsection{Tokio}
+\textbf{Author: Christoph Fellner}
+
+Tokio is asynchronous runtime for rust. In rust asynchronous code doesn't run on it's own in order to make it work the programmer has to use a runtime like Tokio. You can find more in depth descripton of Tokio \href{https://tokio.rs/tokio/tutorial}{here}. 
+
+We picked Tokio because it is the most widely used runtime for async rust code. There are also a lot of Tutorials for Tokio and it is fairly simple to use.
+
+Tokio as our asynchronous runtime allows us to execute multi-threaded async code safely.  
+
+\subsection{Tonic}
+\textbf{Author: Christoph Fellner}
+
+Tonic is a rust framework that implements gRPC.
+
 \filbreak
