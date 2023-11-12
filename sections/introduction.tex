@@ -116,12 +116,25 @@ provided by Kanban makes it easy for teams to experiment with how they do proces
 cycle-time \footcite{cycle-time-lead-time} for Continuous Improvement.  
 
 \subsubsection{Structure of RECT's Kanban Board}
+RECT's Kanban-Board is hosted on trello, because it offers easy setup and operation. The board consists of the following columsn:
+
+\begin{itemize}
+\item A "Backlog" column for tasks, that are to be done when there is capacity.
+\item A "Todo" column for tasks, that need to be done soon.
+\item A "Design" column for tasks, that need to have a specific design (e.g. the Architecture of a TCP-Service) and for thinking about tests, that need to be written.
+\item A "Doing" column for tasks, that are currently being worked on. This has a limit of 4 tasks, so each member can only work on one thing.
+\item A "Testing" column for task, that have been roughly implemented, but still need some changes to pass all tests.
+\item A "Code Review" column for tasks, that have been thoroughly tested and need to be reviewed by a member in order to be merged.
+\item A "Done" column foor tasks, that have been tested, reviewed and merged with the main branch.
+\end{itemize}
 
 \subsection{Meetings with the projects supervisor}
 There were weekly meetings that were held with the diploma theses' supervisor Harald Haberstroch on fridays, where the progress of the project and upcoming tasks were discussed.
+The members of the team could also request feedback on their work and get help, or advice for problems they may have been having.
 
 \subsection{Hours spent outside of school hours} 
-Apart from these weekly meetings the members of the team met regularily on wednesdays and thursdays after school to work on the project together and discuss problems, that came up between the weekly meetings.
+Apart from these weekly meetings the members of the team met regularily on wednesdays and thursdays after school to work on the project together and discuss problems, 
+that came up between the weekly meetings.
 
 \subsection{Version Control}
 Version control was done with the industry standard version control system git and the project was hosted on \href{https://gitlab.htlwrn.ac.at/Sztavinovszki.Jeremy/RECT}{the schools gitlab server}, 
