@@ -9,8 +9,8 @@
 In almost every robotics application nowadays you need some kind of communication. Wether it is a robot communicating
 its data to a home-base, or two robots sharing data with one another. Over the past years communication has drastically
 improved with new protocols and technology, such as Bluetooth Low energy. On the other hand there are still people, that
-don't use any of the communication technologies described before, because most of the established frameworks are seem to
-complex or have too many requirements regarding performance.
+don't use any of the communication technologies described before, because most of the established frameworks seem too
+complex or have too many requirements regarding performance. This 
 
 \section{Goal}
 \textbf{Author: Sztavinovszki}
@@ -25,20 +25,83 @@ the completeness of the received data RECT will not provide extra safeguards to 
 RECT should be able to provide a stable and fast connection at reasonable distances for the selected protocol (e.g. circa 30 meters of line-of-sight, for BLE).
 RECT should provide libraries for the languages Python and C++ that hide the complexity of communication and provide nice abstractions simplifying its use.
 For this to be made possible the following requirements have to be met:
-\begin{Things to be done}
+\begin{itemize}
 \item A Rust library for communicating via TCP, BLE and UDP has to be written.
 \item A Rust gRPC service using the communication library has to be implemented.
-\end{Things to be done}
+\end{itemize}
 
 \section{History}
 
 \section{Project Management}
 \textbf{Author: Sztavinovszki}
-For the management of RECT Kanban was chosen, because of its low overhead and flexibility. Trello was chosen as the platform on which to use Kanban on, because of its simple setup and excellent features.
 
-The project was hosted on \href{https://gitlab.htlwrn.ac.at/Sztavinovszki.Jeremy/RECT}{the schools gitlab server}, which also contained submodules hosted on \href{https://github.com/F-WuTS/}{F-WuTS} and on \href{https://github.com/if-loop69420}{Jeremy Sztavinovszki's personal github account}.
+\subsection{Kanban}
+In a project like RECT, that is relatively small, but still complex and needs the members to be able to work independently project management is of utmost importance. Today the most
+obvious choice for working on a group project is using SCRUM \cite{what-is-scrum}, because it allows complicated projects to be completed in a fashion, 
+that is able to adapt to new requirements by for example customers. One of the biggest downsides of SCRUM the members of the project saw was the high overhead of planning sprints. 
+For that reason Kanban was chosen for managing the tasks, that need to be done in order to finish the project. Kanban, coming from japanese and meaning signboard or billboard 
+\cite{what-is-kanban} is a form of project management, that chooses to use continuous flow of tasks instead of splitting them up into sprints, like SCRUM. 
+It also lacks distinct roles for team members, that would be defined in SCRUM (e.g. a SCRUM-Master), and uses cycle-time \cite{cycle-time-lead-time},
+instead of velocity as a metric for performance. 
+
+\subsubsection{Structure of a Kanban Board}
+A Kanban-Board is made up of several columns. The most common columns used are:
+\begin{itemize}
+\item Backlog
+\item Todo
+\item Doing
+\item Done
+\end{itemize}
+These columns contain anywhere from zero to infinite cards, while some have a limit imposed on how many cards are allowed in a column at a given point in time.
+
+\subsubsection{Life-Cycle of a card}
+At the beginning of a cards life-cycle the card is given a name and a description of a task. It is then put into the "Backlog" column, where it will stay until there are capacities
+to work on the given task. Once a developer starts working on a card it is put into the "Doing" column of the board, until the task has been completed. It is then either put into
+some kind of "Testing", or "Quality Control" column, or it goes straight into done. Reaching the "Done" column of a Kanban board also means the card has reached the end of its
+life-cycle.
+
+\subsubsection{History of Kanban}
+Kanban was developed by a japanese Engineer named Taiichi Ohno while working at Toyota Motor Corporation to improve the efficiency of manufacturing processes. Although it was originally
+designed to solve problems in manufacturing processes the principles of Kanban can also be applied to software development. These 4 principles are as follows:
+
+\subsubsubsection{Visualize Work}
+One of the most challenging tasks in project management is understanding the current progress and status of a project. To make this easier Kanban emplores a board and cards with tasks to
+visualize progress, bottlenecks and the status quo of a project.
+
+\subsubsubsection{Using a Pull Model}
+When working on a project stakeholders often tend to push more and more work onto the developers, which leads to stress and poor quality. To remedy this Kanban defines a certain level of
+quality, that needs to be met in order for a task to be considered done. Instead of pushing extra work onto developers the stakeholders simply add tasks to the backlog and let the 
+developers implement them as soon as they have the capacity to do so.
+
+\subsubsubsection{Enforce a limit on ongoing tasks}
+Often teams struggle with working on too many things at once. This leads to reduced performance and velocity, because the context of the different tasks is constantly switched. 
+The solution Kanban offers to this problem is imposing a limit on how many tasks can be in a column of the Kanban Board at once. 
+
+\subsubsubsection{Measuring CI}
+In order to achieve Continuous Improvement (CI) in a project teams need a way to measure the effectiveness of their workflows. The dynamic view of the states of work in a workflow, that is 
+provided by Kanban makes it easy for teams to experiment with how they do processes and see how they impact their productivity. Avid users of Kanban use measurements like lead-time 
+cycle-time \cite{cycle-time-lead-time} for Continuous Improvement.  
+
+\subsubsection{Structure of RECT's Kanban Board}
+
+\subsection{Meetings with the projects supervisor}
+There were weekly meetings that were held with the diploma theses' supervisor Harald Haberstroch on fridays, where the progress of the project and upcoming tasks were discussed.
+
+\subsection{Hours spent outside of school hours} 
+Apart from these weekly meetings the members of the team met regularily on wednesdays and thursdays after school to work on the project together and discuss problems, that came up between the weekly meetings.
+
+\subsection{Version Control}
+Version control was done with the industry standard version control system git and the project was hosted on \href{https://gitlab.htlwrn.ac.at/Sztavinovszki.Jeremy/RECT}{the schools gitlab server}, 
+which also contained submodules hosted on \href{https://github.com/F-WuTS/}{F-WuTS} and on \href{https://github.com/if-loop69420}{Jeremy Sztavinovszki's personal github account}.
 
 \section{Outline}
+\textbf{Author: Sztavinovszki}
+Beginning with with the Technology section the thesis describes the different libraries, languages and technologies used and explains why the respective technologies have been chosen for RECT.
+After the Technology section there's a dive into the implementation details and design rationale behind the materialization of the different practical parts of the project.
+The Implementation section will also include comparisons between the different ways of implementing certain components of RECT from a standpoint of readability and maintainability, but not of performance,
+which will be discussed in the Testing section of this thesis. As stated, the Testing section of the thesis will include comparisons in performance of different implementations,
+technologies and field tests of the technology resulting from RECT.
+
 %\section{Section}
 %More text. \lipsum[1] See Figure~\ref{pic:example}.
 

@@ -2,7 +2,7 @@
   description = "A flake to build the RECT-Diploma-Thesis";
 
   inputs = {
-    nixpkgs.url ="github:nixos/nixpkgs/nixos-unstable";
+    nixpkgs.url ="github:nixos/nixpkgs/nixos-23.05";
   };
 
   outputs = {self, nixpkgs}:
