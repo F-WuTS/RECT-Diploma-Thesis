@@ -13,7 +13,8 @@ It was designed and created by Danish computer scientist Bjarne Stroustrup with 
 Being based on C, and due to its highly sophisticated design C++ is being used in all kinds of places nowadays. From desktop applications, servers, video games and 
 even very performance critical use cases like digital equipment in space. The International Organization for Standardization (ISO) standardized this proagramming
 language in 1998 as SO/IEC 14882:1998. Due to its populatrity many libraries and frameworks for C++ have been made including Catch2\footcite{catch2_git} and 
-Doxygen\footcite{doxygen_main_site}.
+Doxygen\footcite{doxygen_main_site} both of which are being used in this project. We chose this coding language as one of the two frontend because of its speed and
+efficiency as well as the sheer number of external frameworks and libraries already created for it, which are essential in the development of the RECT library. 
 
 \section{Rust}
 \textbf{Author: Jeremy Sztavinovszki}
@@ -24,6 +25,20 @@ Right now there is now standardized async-runtime, so you normally use runtimes 
 
 \section{gRPC}
 \textbf{Author: Maximilian Dragosits}
+
+gRPC\footcite{grpc_main_site} is an open source framework, that facilitates Remote Procedure Calls (RPC) across a multitude of enviornments. It has a wide varity of use cases in terms of
+service to service connections and useage in the development of microservices and libraries. The framework is available in 11 different programming languages and 
+has a simple service definition and generation structure in order to streamline the process of integration. It also has pluggable authentication, load balancing, tracing
+and health checking in order to control service communication. gRPCs ability to connect a client to backend services is particularly importent for this project 
+and is therefore used to handle the communication from the individual Python and C++ frontends to the Rust backend and vice versa.
+
+\subsection{Protocol Buffers}
+
+Protocol Buffers are a platform neutral way to serialize structured data similiar to XML, JSON or YAML. These data constructs can easily be used by automatically
+generated source code in a multitude of different programming languages of the developers choosing. Including, but not limited to, Java, Kotlin, Python and various
+C-based languages. 
+
+%Explain how a .proto file is defined
 
 \section{Bluetooth Low Energy}
 \textbf{Author: Jeremy Sztavinovszki}
@@ -68,11 +83,65 @@ test
 
 \subsection{Catch2}
 \textbf{Author: Maximilian Dragosits}
-tbd
+
+Catch2\footcite{catch2_main_site} is a C++-based unit testing framework. It is design to be easily integrated into C++ code and match the overall look and feel
+of normal functions and booelean expressions. This framework also provides micro-benchmarking capabilities. It is a good fit for this project, because it serves
+to develope the C++ frontend with unit tests in mind and optimisations spurred on by benchmarks mesuring the speed and efficiency of the implemented methods.
+
+\subsubsection{Unit Tests}
+
+Unit Tests in Catch2 are defined very similarly as normal functions in C++. This example, pulled from the Github repositiory of Catch2, shows the simplicity of
+this framework and its integration into projects.
+
+\begin{verbatim}
+    #include <catch2/catch_test_macros.hpp>
+
+    #include <cstdint>
+    
+    uint32_t factorial( uint32_t number ) {
+        return number <= 1 ? number : factorial(number-1) * number;
+    }
+    
+    TEST_CASE( "Factorials are computed", "[factorial]" ) {
+        REQUIRE( factorial( 1) == 1 );
+        REQUIRE( factorial( 2) == 2 );
+        REQUIRE( factorial( 3) == 6 );
+        REQUIRE( factorial(10) == 3'628'800 );
+    }
+\end{verbatim}
+
+First the relevant Catch2 headers are included and then a function with a return value is defined. In this case it is the function factorial. 
+This function will be executed by Catch2 during the testing process. Then a test case is a macro defined as:
+
+\begin{verbatim}
+TEST_CASE(string testname, string tags) {...test...}
+\end{verbatim}
+
+The Argument \textit{testname} is a arbitrary name given to the unit test, which is then later during the running of the test printed alongside the results of the macro.
+Tags can be given to the test by inputting one or multiple tags into the \textit{tags} field and change the behavoir of the macro accordingly. In the case of the example above
+the only given tag is the name of the function to be tested. After this the \textit{TEST\_CASE} macro has a curly brackes-enclosed body in which the logic of the test can 
+be defined.
+This requieres the use of other specific macros included in the Catch2 framework. For example:
+
+\begin{verbatim}
+REQUIRE( function(value) == expexted_value );
+CHECK( function(value) == expexted_value );
+\end{verbatim}
+
+The two macros described above, REQUIRE and CHECK, operate in a similar way. They both execute the given \textit{function} with the provided \textit{value} or \textit{values}
+and then assert if the returned data matches the \textit{expected\_value}. If it does then it was successful and the rest of the \textit{TEST\_CASE} is executed. The difference 
+between REQUIRE and CHECK is however that if a REQUIRE macro fails it throws an execption and the unit test is stopped from executing the remainder of code inside it.
+
+\subsubsection{Micro-benchmarks}
+%Explain how to make a micro benchmark in Catch2
 
 \subsection{Doxygen}
 \textbf{Author: Maximilian Dragosits}
 tbd
+%Explain what Doxygen is
+
+\subsubsection{Documentation}
+%Explain how to document with Doxygen
 
 \subsection{Rusqlite}
 \textbf{Author: Christoph Fellner}
