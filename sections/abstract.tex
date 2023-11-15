@@ -23,6 +23,7 @@ Diese Arbeit wird erkunden, wie man eine Software ähnlich zu ROS implementiert.
 
 
 % Context or background information; general topic; specific topic.
+In robotics one of the most important topics over the last couple of years has been communication. Communication doesn't only concern a robot being remote controllable. Mimimi keine Ahnung. 
 
 % central questions or problem statement
 
@@ -36,17 +37,3 @@ Diese Arbeit wird erkunden, wie man eine Software ähnlich zu ROS implementiert.
 
 % significance or implications
 
-One of the most used softwares in robotics is the Robot Operating System \footcite{ros-site} (ROS for short).
-It is a collection of tools and packages used for building high performance robotics applications and
-simplifies all communication to topics and messages, which can be recorded and replayed from ROS-Bag files.
-This allows for developers to focus on the problem at hand and not reinvent the wheel for communication.
-ROS also allows for simulation of various components of robots, which are most often called digital twins.
-One of the main downsides of ROS is the complexity it brings with it and how opinionated it is. This complexity also leads to performance
-being very limited on lower powered hardware, like for example the KIPR Wombat Controller \footcite{wombat-controller},
-which is often used in student competitions, because of its ease of use and the low cost.
-
-\medskip
-
-This thesis will explore how to implement a similar software to ROS. It will tackle challenges such as, but not limited
-to Inter Process Communication \footcite{ipc-begriff}, communication through Bluetooth Low Energy, TCP and UDP, and
-implementation of communication libraries in different programming languages.

@@ -19,25 +19,36 @@ Right now there is now standardized async-runtime, so you normally use runtimes 
 \section{Bluetooth Low Energy}
 \textbf{Author: Jeremy Sztavinovszki}
 
-Bluetooth Low Energy (BLE) is a low powered, low cost, low bandwidth radio communication technology, that was originally developed at Nokia in a project named Wibree. It was later noticed by the Bluetooth Special interest group and became part of the Bluetooth 4.0 Core Specification. Nowadays it is often used in all things ranging from wireless headphones to IOT devices and has seen great adoption in many different areas. The BLE protocol Stack, like others (e.g. TCP/IP) is separated into different layers. The layers are split into 3 overarching layers. There is the Application, Host and Controller layers.
+Bluetooth Low Energy (BLE) is a low powered, low cost, low bandwidth radio communication technology, that was originally developed at Nokia in a project named Wibree. It was later noticed by the Bluetooth Special interest group and became part of the Bluetooth 4.0 Core Specification. Nowadays it is often used in all things ranging from wireless headphones to IOT devices and has seen great adoption in many different areas. The BLE protocol Stack, like others (e.g. TCP/IP) is separated into different layers. The layers are split into 3 overarching layers. which are the Application, Host and Controller layers.
 
 \subsection{Application-Layer}
-The Application-Layer is the highest layer in the stack and is responsible for containing logic, user interface and handling the data of the actual application using BLE.
+Much like the TCP/IP-Stack the BLE-Stack also comes with an Application-Layer. The Application-Layer is the highest layer in the stack and is responsible for containing logic, user interface and handling the data of the application using BLE. It often determines which usage model is used in the Host-Layers.
+It is the layer that bundles all of the functionality of BLE together and abstracts it in such a way, that it is useable for ordinary users.
 
 \subsection{Host-Layer}
-The Host-Layer itself splits off into several layers.
+The Host-Layer itself splits off into several layers. It is made up of all layers above the Host Side HCI, except the Application Layer, but not only that. It also contains profiles, which
+determine how the protocols in the host layer should work with oneanother depending on the usage model, that has been chosen by the Application.
 
 \subsubsection{Generic Access Profile GAP}
-GAP
+The Generic Access Profile, or GAP defines which role a BLE-Device has in communication. These roles determine how the device, as well as other devices act, when sending or receiving data.
+A BLE device can take on 4 distinct roles, which are as follows.
+
+\begin{itemize}
+\item{Broadcaster}
+\item{Observer}
+\item{Peripheral}
+\item{Central}
+\end{itemize}
+
 
 \subsubsection{Generic Attribute Profile GATT}
-test
+GATT
 
 \subsubsection{Logical Link Protocol and Adaptation Protocol L2CAP}
-test
+L2CAP
 
 \subsubsection{Attribute Protocol ATT}
-test
+ATT
 
 \subsubsection{Security Manager Protocol SMP}
 test
@@ -50,10 +61,15 @@ The controller is the layer works closely with the hardware. It contains the fol
 
 \subsubsection{Host Controller Interface (Controller side)}
 test
+
 \subsubsection{Link Layer LL}
-test
+Hidden behind the HCI is the Link Layer. It is usually implemented as a conglomeration of custom hardware, as well as software it is the only part
+of the protocol stack, that needs to have real-time capabilities, because it needs to work with the timing requirements defined by the specification.
+In order to avoid overloading the CPU running the software layers of the stack, the easily automated, or computationally expensive parts are implemented in circuitry.
+
+
 \subsubsection{Physical Layer PHY}
-test
+The physical layer is made up of the actual hardware, that is capable of modulating and demodulating the analog signals sent by radio and turning them into digital information. It uses the 2.4GHz ISM \footcite{ism} radio band, which it splits into 40 channels (37 for transmitting data and 3 for advertising connections and broadcasts) from 2.4GHz to 2.4835GHz. It uses FHSS to avoid radio interference, which is important, because classic bluetooth, as well as 2.4GHz use the same frequency band. The modulation rate chosen for BLE is 1.0Mbit/s, which means that is the physical throughput limit. However because of protocol overhead this physical throughput level is never reached.
 
 \section{Libraries}
 
@@ -61,7 +77,6 @@ test
 \textbf{Author: Christoph Fellner}
 
 Rusqlite is an ergonomic wrapper for using SQLite from Rust similar to rust-postgres. It provides an easy-to-use interface to work with SQLite databases. Using the functions provided by rusqlite you can perform all the common database operations, such as creating tables, inserting Data, querying data, and more simply within your code. 
-
 We choose this library for SQLite mainly because of three reasons:
 \begin{enumerate}
     \item \textbf{Portability:} SQLite databases can be used across different platforms and operating systems. Given the fact that RECT operates on different small Controllers, portability is very important.
