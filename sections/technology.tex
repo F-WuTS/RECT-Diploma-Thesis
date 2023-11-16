@@ -8,11 +8,11 @@
 \section{C++}
 \textbf{Author: Maximilian Dragosits}
 
-C++ is a high-level precompiled programming language with support for low level memory manegment, object oriented programming, generic and functional programming.
+C++ is a high-level precompiled programming language with support for low level memory management, object oriented programming, generic and functional programming.
 It was designed and created by Danish computer scientist Bjarne Stroustrup with efficiency, performance and flexibility as its core goals.\footcite{lecture_essence_cpp}
 Being based on C, and due to its highly sophisticated design C++ is being used in all kinds of places nowadays. From desktop applications, servers, video games and 
-even very performance critical use cases like digital equipment in space. The International Organization for Standardization (ISO) standardized this proagramming
-language in 1998 as SO/IEC 14882:1998. Due to its populatrity many libraries and frameworks for C++ have been made including Catch2\footcite{catch2_git} and 
+even very performance critical use cases like digital equipment in space. The International Organization for Standardization (ISO) standardized this programming
+language in 1998 as SO/IEC 14882:1998. Due to its popularity many libraries and frameworks for C++ have been made including Catch2\footcite{catch2_git} and 
 Doxygen\footcite{doxygen_main_site} both of which are being used in this project. We chose this coding language as one of the two frontend because of its speed and
 efficiency as well as the sheer number of external frameworks and libraries already created for it, which are essential in the development of the RECT library. 
 
@@ -26,15 +26,15 @@ Right now there is now standardized async-runtime, so you normally use runtimes 
 \section{gRPC}
 \textbf{Author: Maximilian Dragosits}
 
-gRPC\footcite{grpc_main_site} is an open source framework, that facilitates Remote Procedure Calls (RPC) across a multitude of enviornments. It has a wide varity of use cases in terms of
-service to service connections and useage in the development of microservices and libraries. The framework is available in 11 different programming languages and 
+gRPC\footcite{grpc_main_site} is an open source framework, that facilitates Remote Procedure Calls (RPC) across a multitude of environments. It has a wide variety of use cases in terms of
+service to service connections and usage in the development of microservices and libraries. The framework is available in 11 different programming languages and 
 has a simple service definition and generation structure in order to streamline the process of integration. It also has pluggable authentication, load balancing, tracing
-and health checking in order to control service communication. gRPCs ability to connect a client to backend services is particularly importent for this project 
+and health checking in order to control service communication. gRPCs ability to connect a client to backend services is particularly important for this project 
 and is therefore used to handle the communication from the individual Python and C++ frontends to the Rust backend and vice versa.
 
 \subsection{Protocol Buffers}
 
-Protocol Buffers are a platform neutral way to serialize structured data similiar to XML, JSON or YAML. These data constructs can easily be used by automatically
+Protocol Buffers are a platform neutral way to serialize structured data similar to XML, JSON or YAML. These data constructs can easily be used by automatically
 generated source code in a multitude of different programming languages of the developers choosing. Including, but not limited to, Java, Kotlin, Python and various
 C-based languages. An example of a Protocol Buffer file is this:
 
@@ -68,10 +68,42 @@ The first part of any .proto file is the definition of the protobuf language ver
 stored in when it is converted into a programming languages code is defined. In this case it will be \textit{msg}. After that you can import any other .proto file.
 Then it is possible to define any amount of the following types and many others not used by this project:
 \begin{enumerate}
-    \item \textbf{Message:} Defines a special data structure that houses multiple variables of potentialy different data types, which can then be used in other enums or services.
-    \item \textbf{Enum:} %Define Enum in protobuf
-    \item \textbf{Service:} %Define Service in protobuf
+    \item \textbf{message:} Defines a special data structure that houses multiple variables of potentialy different data types, which can then be used in other enums or services.
+    \item \textbf{enum:} %Define Enum in protobuf
+    \item \textbf{service:} %Define Service in protobuf
 \end{enumerate}
+
+\subsubsection{Protofile message definition}
+
+Message types in proto3 are relatively simple to define.
+
+\begin{verbatim}
+    message message_name {
+        field_type field_name = number;
+      }
+\end{verbatim}
+
+First the \textit{message} keyword is used to signify that the following is a declaration for a message type. Then a freely choose able \textit{message\_name} is 
+used as the name for the later resulting message structure. After that any number of fields can be defined within the curly brackets. The \textit{field\_type} can be
+one of multiple supported data types, which includes but is not limited to double, flout, integer, boolean, string as well as bytes. After defining an appropriate
+\textit{field\_name} this format requires the assignment of a number between 1 and 536,870,911 to each field in a message. This is required in order to identify
+the field after encoding.
+
+There are also three other modifiers, that can be applied to fields:
+
+\begin{enumerate}
+    \item \textbf{optional:} If a field with this modifier does not have its value explicitly set later it will instead return a default value. It also possible to check if this it has been set.
+    \item \textbf{repeated:} A field with this modifier can be repeated any number of times within the message and the order of the repetition will be saved.
+    \item \textbf{map:} A field with this modifier acts like a key/value pair with the definition syntax being like that of a C++ map.
+\end{enumerate}
+
+\subsubsection{Protofile enum definition}
+
+Enum Definition
+
+\subsubsection{Protofile service definition}
+
+Service Definition
 
 %Explain how a .proto file is defined
 
@@ -120,12 +152,12 @@ test
 \textbf{Author: Maximilian Dragosits}
 
 Catch2\footcite{catch2_main_site} is a C++-based unit testing framework. It is design to be easily integrated into C++ code and match the overall look and feel
-of normal functions and booelean expressions. This framework also provides micro-benchmarking capabilities. It is a good fit for this project, because it serves
-to develope the C++ frontend with unit tests in mind and optimisations spurred on by benchmarks mesuring the speed and efficiency of the implemented methods.
+of normal functions and boolean expressions. This framework also provides micro-benchmarking capabilities. It is a good fit for this project, because it serves
+to develop the C++ frontend with unit tests in mind and optimizations spurred on by benchmarks measuring the speed and efficiency of the implemented methods.
 
 \subsubsection{Unit Tests}
 
-Unit Tests in Catch2 are defined very similarly as normal functions in C++. This example, pulled from the Github repositiory of Catch2, shows the simplicity of
+Unit Tests in Catch2 are defined very similarly as normal functions in C++. This example, pulled from the Github repository of Catch2, shows the simplicity of
 this framework and its integration into projects.
 
 \begin{verbatim}
@@ -152,24 +184,24 @@ This function will be executed by Catch2 during the testing process. Then a test
 TEST_CASE(string testname, string tags) {...test...}
 \end{verbatim}
 
-The Argument \textit{testname} is a arbitrary name given to the unit test, which is then later during the running of the test printed alongside the results of the macro.
-Tags can be given to the test by inputting one or multiple tags into the \textit{tags} field and change the behavoir of the macro accordingly. In the case of the example above
-the only given tag is the name of the function to be tested. After this the \textit{TEST\_CASE} macro has a curly brackes-enclosed body in which the logic of the test can 
+The argument \textit{testname} is a arbitrary name given to the unit test, which is then later during the running of the test printed alongside the results of the macro.
+Tags can be given to the test by inputting one or multiple tags into the \textit{tags} field and change the behavior of the macro accordingly. In the case of the example above
+the only given tag is the name of the function to be tested. After this the \textit{TEST\_CASE} macro has a curly brackets-enclosed body in which the logic of the test can 
 be defined.
-This requieres the use of other specific macros included in the Catch2 framework. For example:
+This requires the use of other specific macros included in the Catch2 framework. For example:
 
 \begin{verbatim}
-REQUIRE( function(value) == expexted_value );
-CHECK( function(value) == expexted_value );
+REQUIRE( function(value) == expected_value );
+CHECK( function(value) == expected_value );
 \end{verbatim}
 
 The two macros described above, REQUIRE and CHECK, operate in a similar way. They both execute the given \textit{function} with the provided \textit{value} or \textit{values}
-and then assert if the returned data equals true or false according to the provieded boolean operator. If it does then it was successful and the rest of the \textit{TEST\_CASE} is executed. The difference 
-between REQUIRE and CHECK is however that if a REQUIRE macro fails it throws an execption and the unit test is stopped from executing the remainder of code inside it.
+and then assert if the returned data equals true or false according to the provided boolean operator. If it does then it was successful and the rest of the \textit{TEST\_CASE} is executed. The difference 
+between REQUIRE and CHECK is however that if a REQUIRE macro fails it throws an exception and the unit test is stopped from executing the remainder of code inside it.
 
 \subsubsection{Micro-benchmarks}
 %Explain how to make a micro benchmark in Catch2
-The benchmarking macros in Catch2 are defined similarly to how unit tests are. Benchmarking in itself is a useful practice, that provides a way to mesure the performance
+The benchmarking macros in Catch2 are defined similarly to how unit tests are. Benchmarking in itself is a useful practice, that provides a way to measure the performance
 and speed of a particular function.
 
 \begin{verbatim}
@@ -199,7 +231,7 @@ TEST_CASE("Benchmark Fibonacci", "[!benchmark]") {
 
 In the example above the unit test macros and benchmark macros from Catch2 are first included in order to be used later. The function to be benchmarked is then defined
 After that the TEST\_CASE macro is used combined with the [\!benchmark] tag in order to turn this unit test into a benchmark. In the actual body of the test the function
-is first tested wether or not it actually works as intended before any benchmarks are done. This is done with the REQUIRE macro, since it throws an execption if the 
+is first tested weather or not it actually works as intended before any benchmarks are done. This is done with the REQUIRE macro, since it throws an exception if the 
 assertion fails, preventing the rest of the benchmark from executing unnecessarily. If all the tests before the benchmarks pass then the actual BENCHMARK macros are
 executed.
 
@@ -213,7 +245,7 @@ As part of the BENCHMARK macro a arbitrary name is given to it, which is then la
 Then the actual logic of the benchmark is then defined within curly brackets giving a lot of freedom in how a certain benchmark is executed. Adding a return statement
 within the benchmark will ensure that the compiler doesn't mess with the test.
 
-After this is run a summary is automatically output within the commandline window. This includes multiple datapoints that pertain to the execution speed of the tested
+After this is run a summary is automatically output within the command line window. This includes multiple data points that pertain to the execution speed of the tested
 function:
 \begin{enumerate}
     \item \textbf{Samples:} The amount of times the code within the curly brackets of the BENCHMARK macro is repeated in order to build a dataset to calculate the mean execution time.
