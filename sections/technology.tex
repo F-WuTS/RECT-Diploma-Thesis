@@ -69,7 +69,7 @@ stored in when it is converted into a programming languages code is defined. In 
 Then it is possible to define any amount of the following types and many others not used by this project:
 \begin{enumerate}
     \item \textbf{message:} Defines a special data structure that houses multiple variables of potentialy different data types, which can then be used in other enums or services.
-    \item \textbf{enum:} %Define Enum in protobuf
+    \item \textbf{enum:} Defines an enum which acts like the equivalent type of structure in other programming languages. This can then be used in other parts of then .proto file.
     \item \textbf{service:} %Define Service in protobuf
 \end{enumerate}
 
@@ -97,9 +97,49 @@ There are also three other modifiers, that can be applied to fields:
     \item \textbf{map:} A field with this modifier acts like a key/value pair with the definition syntax being like that of a C++ map.
 \end{enumerate}
 
+Another way of defining fields, that can have a multitude or a currently unkown type, is to use either the \textit{any} or the \textit{oneof} types.
+The \textit{any} type is then later resolved by Protobufs internal reflection code.
+\textit{Oneof} is then automatically later defined as one of the given data types within curly brackets placed after the \textit{field\_name} is given.
+
 \subsubsection{Protofile enum definition}
 
-Enum Definition
+Enums are share a lot of the same traits as message types in terms of the defintion syntax.
+
+\begin{verbatim}
+    enum enum_name {
+        constant_value = number;
+    }
+\end{verbatim}
+
+Similarly to messages the enum is given an \textit{enum\_name} and then any number of \textit{constant\_value}s can be defined. All of these constants need an associated
+value in order to function properly and the first of those needs to have 0 as its number, so that the enum has a default value in cases like fields with the \textit{optional}
+modifier. 
+In order to bind multiple \textit{constant\_value}s to the same \textit{number} the \textit{allow\_alias} option must be set to true. This is done by inserting this line
+into the enum before any definition of \textit{constant\_value}s:
+
+\begin{verbatim}
+    option allow_alias = true;
+\end{verbatim}
+
+Once an enum is defined then it can be used in other parts of the Protocol Buffer, as seen in this example:
+
+\begin{verbatim}
+    enum Success {
+        Ok = 0;
+    }
+
+    enum SendError {
+        NoSuchConnection = 0;
+        SendFailed = 1;
+    }
+
+    message SendResponse {
+        oneof result {
+            Success s = 1;
+            SendError err = 2;
+        }
+    }
+\end{verbatim}
 
 \subsubsection{Protofile service definition}
 
