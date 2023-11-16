@@ -36,7 +36,42 @@ and is therefore used to handle the communication from the individual Python and
 
 Protocol Buffers are a platform neutral way to serialize structured data similiar to XML, JSON or YAML. These data constructs can easily be used by automatically
 generated source code in a multitude of different programming languages of the developers choosing. Including, but not limited to, Java, Kotlin, Python and various
-C-based languages. 
+C-based languages. An example of a Protocol Buffer file is this:
+
+\begin{verbatim}
+    syntax = "proto3";
+    package msg;
+    
+    
+    message From {
+      string conn_name = 1;
+      string topic = 2;
+    }
+    
+    
+    message To {
+      string conn_name = 1;
+      string topic = 2;
+    }
+    
+    
+    message Msg {
+      bytes data = 1;
+      oneof fromto {
+        From f = 2;
+        To t = 3;
+      }
+    }
+\end{verbatim}
+
+The first part of any .proto file is the definition of the protobuf language version. Either \textit{proto2} or \textit{proto3}. Next the package within this will be 
+stored in when it is converted into a programming languages code is defined. In this case it will be \textit{msg}. After that you can import any other .proto file.
+Then it is possible to define any amount of the following types and many others not used by this project:
+\begin{enumerate}
+    \item \textbf{Message:} Defines a special data structure that houses multiple variables of potentialy different data types, which can then be used in other enums or services.
+    \item \textbf{Enum:} %Define Enum in protobuf
+    \item \textbf{Service:} %Define Service in protobuf
+\end{enumerate}
 
 %Explain how a .proto file is defined
 
@@ -129,11 +164,64 @@ CHECK( function(value) == expexted_value );
 \end{verbatim}
 
 The two macros described above, REQUIRE and CHECK, operate in a similar way. They both execute the given \textit{function} with the provided \textit{value} or \textit{values}
-and then assert if the returned data matches the \textit{expected\_value}. If it does then it was successful and the rest of the \textit{TEST\_CASE} is executed. The difference 
+and then assert if the returned data equals true or false according to the provieded boolean operator. If it does then it was successful and the rest of the \textit{TEST\_CASE} is executed. The difference 
 between REQUIRE and CHECK is however that if a REQUIRE macro fails it throws an execption and the unit test is stopped from executing the remainder of code inside it.
 
 \subsubsection{Micro-benchmarks}
 %Explain how to make a micro benchmark in Catch2
+The benchmarking macros in Catch2 are defined similarly to how unit tests are. Benchmarking in itself is a useful practice, that provides a way to mesure the performance
+and speed of a particular function.
+
+\begin{verbatim}
+#include <catch2/catch_test_macros.hpp>
+#include <catch2/benchmark/catch_benchmark.hpp>
+
+#include <cstdint>
+
+uint64_t fibonacci(uint64_t number) {
+    return number < 2 ? number : fibonacci(number - 1) + fibonacci(number - 2);
+}
+
+TEST_CASE("Benchmark Fibonacci", "[!benchmark]") {
+    REQUIRE(fibonacci(5) == 5);
+
+    REQUIRE(fibonacci(20) == 6'765);
+    BENCHMARK("fibonacci 20") {
+        return fibonacci(20);
+    };
+
+    REQUIRE(fibonacci(25) == 75'025);
+    BENCHMARK("fibonacci 25") {
+        return fibonacci(25);
+    };
+}
+\end{verbatim}
+
+In the example above the unit test macros and benchmark macros from Catch2 are first included in order to be used later. The function to be benchmarked is then defined
+After that the TEST\_CASE macro is used combined with the [\!benchmark] tag in order to turn this unit test into a benchmark. In the actual body of the test the function
+is first tested wether or not it actually works as intended before any benchmarks are done. This is done with the REQUIRE macro, since it throws an execption if the 
+assertion fails, preventing the rest of the benchmark from executing unnecessarily. If all the tests before the benchmarks pass then the actual BENCHMARK macros are
+executed.
+
+\begin{verbatim}
+BENCHMARK(string name) {
+    ... benchmark ...
+};
+\end{verbatim}
+
+As part of the BENCHMARK macro a arbitrary name is given to it, which is then later during the output of the test used as a identifier for the specific benchmark.
+Then the actual logic of the benchmark is then defined within curly brackets giving a lot of freedom in how a certain benchmark is executed. Adding a return statement
+within the benchmark will ensure that the compiler doesn't mess with the test.
+
+After this is run a summary is automatically output within the commandline window. This includes multiple datapoints that pertain to the execution speed of the tested
+function:
+\begin{enumerate}
+    \item \textbf{Samples:} The amount of times the code within the curly brackets of the BENCHMARK macro is repeated in order to build a dataset to calculate the mean execution time.
+    \item \textbf{Iterations:} %Need to find out what this is
+    \item \textbf{Estimated run time:} The estimated amount of time the code within the benchmark will take to run. Mesured in milliseconds.
+    \item \textbf{Mean/low mean/high mean run time:} The mean time it will take for the code to run as well as the low mean and high mean for this in nanoseconds.
+    \item \textbf{Standard deviation:} The standard deviation from the mean time in nanoseconds,
+\end{enumerate}
 
 \subsection{Doxygen}
 \textbf{Author: Maximilian Dragosits}
