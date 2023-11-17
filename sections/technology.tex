@@ -32,7 +32,8 @@ has a simple service definition and generation structure in order to streamline 
 and health checking in order to control service communication. gRPCs ability to connect a client to backend services is particularly important for this project 
 and is therefore used to handle the communication from the individual Python and C++ frontends to the Rust backend and vice versa.
 
-\subsection{Protocol Buffers}
+\section{Protocol Buffers}
+\textbf{Author: Maximilian Dragosits}
 
 Protocol Buffers are a platform neutral way to serialize structured data similar to XML, JSON or YAML. These data constructs can easily be used by automatically
 generated source code in a multitude of different programming languages of the developers choosing. Including, but not limited to, Java, Kotlin, Python and various
@@ -70,10 +71,10 @@ Then it is possible to define any amount of the following types and many others 
 \begin{enumerate}
     \item \textbf{message:} Defines a special data structure that houses multiple variables of potentialy different data types, which can then be used in other enums or services.
     \item \textbf{enum:} Defines an enum which acts like the equivalent type of structure in other programming languages. This can then be used in other parts of then .proto file.
-    \item \textbf{service:} %Define Service in protobuf
+    \item \textbf{service:} Defines a Remot Procedure Call (RPC) system. The generated code for this will include service interfaces and stubs to be used by RPC frameworks.
 \end{enumerate}
 
-\subsubsection{Protofile message definition}
+\subsection{Protofile message definition}
 
 Message types in proto3 are relatively simple to define.
 
@@ -101,7 +102,7 @@ Another way of defining fields, that can have a multitude or a currently unkown 
 The \textit{any} type is then later resolved by Protobufs internal reflection code.
 \textit{Oneof} is then automatically later defined as one of the given data types within curly brackets placed after the \textit{field\_name} is given.
 
-\subsubsection{Protofile enum definition}
+\subsection{Protofile enum definition}
 
 Enums are share a lot of the same traits as message types in terms of the defintion syntax.
 
@@ -141,11 +142,29 @@ Once an enum is defined then it can be used in other parts of the Protocol Buffe
     }
 \end{verbatim}
 
-\subsubsection{Protofile service definition}
+\subsection{Protofile service definition}
 
-Service Definition
+Services allow the easy generation of service interfaces and stubs to then be used by RPC implementations.
 
-%Explain how a .proto file is defined
+\begin{verbatim}
+    service service_name{
+        rpc rpc_name(message_type) returns (message_type) {}
+        rpc rpc_name(message_type) returns (stream message_type) {}
+    }
+\end{verbatim}
+
+A service is defined with a \textit{service\_name} and after that any number of inidvidual methods. In order to define the methods first the keyword \textit{rpc} must be used.
+Then a name for the method is given through \textit{rpc\_name} and a parameter for the \textit{message\_type} that this method accepts. And then a \textit{message\_type}
+is defined as the return value of the RPC. A stream of a particluar \textit{message\_type} can be defined by putting the keyword \textit{stream} before the type.
+
+An example of this would be the SubListen service from this project:
+
+\begin{verbatim}
+    service SubListen{
+        rpc listen(ListenRequest) returns (ListenResult) {}
+        rpc subscribe(ListenRequest) returns (stream ListenResult) {}
+    }
+\end{verbatim}
 
 \section{Bluetooth Low Energy}
 \textbf{Author: Jeremy Sztavinovszki}
@@ -240,7 +259,6 @@ and then assert if the returned data equals true or false according to the provi
 between REQUIRE and CHECK is however that if a REQUIRE macro fails it throws an exception and the unit test is stopped from executing the remainder of code inside it.
 
 \subsubsection{Micro-benchmarks}
-%Explain how to make a micro benchmark in Catch2
 The benchmarking macros in Catch2 are defined similarly to how unit tests are. Benchmarking in itself is a useful practice, that provides a way to measure the performance
 and speed of a particular function.
 
