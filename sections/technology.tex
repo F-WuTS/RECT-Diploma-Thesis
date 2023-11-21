@@ -1,27 +1,3 @@
-\usepackage{listings}
-\usepackage{color}
-
-\definecolor{dkgreen}{rgb}{0,0.6,0}
-\definecolor{gray}{rgb}{0.5,0.5,0.5}
-\definecolor{mauve}{rgb}{0.58,0,0.82}
-
-\lstset{frame=tb,
-  language=Java,
-  aboveskip=3mm,
-  belowskip=3mm,
-  showstringspaces=false,
-  columns=flexible,
-  basicstyle={\small\ttfamily},
-  numbers=none,
-  numberstyle=\tiny\color{gray},
-  keywordstyle=\color{blue},
-  commentstyle=\color{dkgreen},
-  stringstyle=\color{mauve},
-  breaklines=true,
-  breakatwhitespace=true,
-  tabsize=3
-}
-
 \chapter{Technology}
 
 
@@ -100,7 +76,7 @@ The physical layer is made up of the actual hardware, that is capable of modulat
 \subsection{Rusqlite}
 \textbf{Author: Christoph Fellner}
 
-Rusqlite is an ergonomic library for using SQLite from Rust similar to rust-postgres. It provides an easy-to-use interface to work with SQLite databases. Using the functions provided by rusqlite you can perform all the common database operations, such as creating tables, inserting Data, querying data, and more simply within your code. 
+Rusqlite is a library for using SQLite from Rust code similar to rust-postgres. It provides an easy-to-use interface to work with SQLite databases. Using the functions provided by rusqlite you can perform all the common database operations, such as creating tables, inserting Data, querying data, and more simply within your code. 
 We choose this library for SQLite mainly because of three reasons:
 \begin{enumerate}
     \item \textbf{Portability:} SQLite databases can be used across different platforms and operating systems. Given the fact that RECT operates on different small Controllers, portability is very important.
@@ -128,24 +104,25 @@ We picked Tokio because it is the most widely used runtime for async rust code. 
 
 Tokio as our asynchronous runtime allows us to execute multi-threaded async code safely.  
 
-\begin{listing}[language = rust, caption = {Example of Tokio usage}]
-    #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
-    async fn client_test(){ 
-        let ser = test_server::run_server();
-        println!("Server started");
-        let cl = test_client::client_test();
-        println!("Client started");
+\begin{verbatim}
+#[tokio::test(flavor = "multi_thread", worker_threads = 2)]
+async fn client_test(){ 
+    let ser = test_server::run_server();
+    println!("Server started");
+    let cl = test_client::client_test();
+    println!("Client started");
 
-        tokio::select! {
-            biased; 
-            _ = ser => panic!("server returned first"),
-            _ = cl => (),}           
-    }
-\end{listing}
+    tokio::select! {
+        biased; 
+        _ = ser => panic!("server returned first"),
+        _ = cl => (),
+    }           
+}
+\end{verbatim}
 
 Using Tokio makes it possible to run multiple async functions at the same time. In the example above we start a server and a client and then wait for the first one to finish. This is done using the tokio::select! macro. The macro takes a list of futures and waits for the first one to finish. In our case we want to wait for the client to finish first, so we panic if the server finishes first. If the client finishes first we just return. Any occoring Errors are cathed and returned as Result.
 
-The two functions run_server and client_test are both async functions. The server function is a simple echo server, that waits for a message from the client and then sends it back. The client function sends a message containing an url and a vote to the server and then waits for the response. Server and Client are connected via a gRPC connection. 
+The two functions \verb+run_server+ and \verb+client_test+ are both async functions. The server function is a simple echo server, that waits for a message from the client and then sends it back. The client function sends a message containing an url and a vote to the server and then waits for the response. Server and Client are connected via a gRPC connection. 
 
 \subsection{Tokio-Rusqlite}
 \textbf{Author: Christoph Fellner}
@@ -161,29 +138,29 @@ With gRPC Protocol Buffers are used to descripe interfaces. Tonic allows us to s
 
 The example for Tokio above uses the Tonic library to convert the following Protocol Buffer into Rust code, in order to use it in the client and server functions as Service.
 
-\begin{listing}[language = rust, caption = {Example Protocol Buffer for Voting Service}]
-    syntax = "proto3";
-    package voting;
-    
-    service Voting {
-        rpc Vote (VotingRequest) returns (VotingResponse);
+\begin{verbatim}
+syntax = "proto3";
+package voting;
+        
+service Voting {
+    rpc Vote (VotingRequest) returns (VotingResponse);
+}
+        
+message VotingRequest {
+    string url = 1;
+        
+    enum Vote {
+        UP = 0;
+        DOWN = 1;
     }
-    
-    message VotingRequest {
-      string url = 1;
-    
-        enum Vote {
-            UP = 0;
-            DOWN = 1;
-        }
-        Vote vote = 2;    
-    }
-    
-    message VotingResponse {
-        string confirmation = 1;
-    }
-\end{listing}
+    Vote vote = 2;    
+}
+        
+message VotingResponse {
+    string confirmation = 1;
+}
+\end{verbatim}
 
-In order to translate the Protocol Buffer into Rust code we use the include_proto! function from the Tonic library. This function takes the path to the Protocol Buffer file and generates the Rust code for the Service.
+In order to translate the Protocol Buffer into Rust code we use the \verb+include_proto!+ function from the Tonic library. This function takes the path to the Protocol Buffer file and generates the Rust code for the Service.
 
 \filbreak

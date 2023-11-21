@@ -9,6 +9,33 @@
 
 \subsection{Documentation}
 
+\section{RECT Database}
+\textbf{Author: Christoph Fellner}
+
+\subsection{Why SQLite?}
+RECT uses a small SQLite database for its backend, but bevor we can talk about the database itself we have to answer the question why we use SQLite in the first place. There are a lot of different database systems out there, each with its own advantages and disadvantages. 
+In order to find the right database for our use case we have to look at the different options and compare them. Given the fact that RECT is made for small controllers, we have to look at databases that are small and easy to use. We also want to avoid any complex setup or configuration, so the database should be easy to use and configure. 
+These fators already limit our options, but there are still a lot of viable options left. In order to find the right database for our use case we have to look at the different options and compare them. 
+
+\subsubsection{SQLite}
+When looking for a memory efficiently database SQLite is one of the first options that comes to mind. SQLite is a small, fast, self-contained, high-reliability, full-featured, SQL database engine.
+SQLite is a small C library that can be used in any program. It is serverless, which means that it doesn't need a separate server process. 
+
+\subsubsection{Postgres}
+
+
+\subsubsection{MySQL}
+
+
+\subsubsection{Comparison}
+After we looked into the three possiblyties mentioned above we created an enviroment to benchmark the different databases.
+
+\subsection{Database Structure}
+
+
+\subsection{Database usage}
+
+
 \section{Rust Service}
 \subsection{Documentation}
 
