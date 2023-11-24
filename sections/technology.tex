@@ -435,7 +435,38 @@ Or:
 \end{quote}
 \vspace{\baselineskip}
 
-%Explain how to annotate with Doxygen
+In documentation outside of the source additional commands are required. At the start of the document file a special comment block needs to have the name of the
+file to be documented referenced by writing \verbatim{\<file-name>} or \verbatim{@<file-name>} in the first line of the block. After that any number of other 
+special comment blocks can be defined with the first line in each of them being used to reference the desired class, function, member, struct, etc. This is done by
+first using the equivalent structural commands and then inserting the definition statement of the chosen object. This can be seen in this example:\\
+
+\begin{verbatim}
+    /*! \fn int open(const char *pathname,int flags)
+        \brief Opens a file descriptor.
+ 
+        \param pathname The name of the descriptor.
+        \param flags Opening flags.
+    */
+\end{verbatim}
+
+In this case \textit{fn} is the structural command, which tells \textit{Doxygen} what type the object is.\\
+\vspace{\baselineskip}
+
+The other structural commands that can be seen in this example can be used in both documentation inside sources and outside sources. Using the \textit{brief} command 
+is used to give a short description to the object and \textit{param} in order to signify and describe the parameters of this function.\\
+
+\subsubsection{Doxygen Parsing}
+
+During the generation process the special comment blocks are parsed and converted by \textit{Doxygen} into the different output formats. The parser completes these
+processes and then the creation of documentation with Doxygen is complete:
+\begin{itemize}
+    \item[] Markdown writing gets replaced by HTML, structural commands or special commands.
+    \item[] Special commands are executed.
+    \item[] Blank lines are replaced by paragraph separators.
+    \item[] Links to other parts of the documentation are created according to the special comment blocks.
+    \item[] HTML parts within are converted to \LaTex commands for the \LaTex output.
+\end{itemize}
+
 
 \subsection{Rusqlite}
 \textbf{Author: Christoph Fellner}
