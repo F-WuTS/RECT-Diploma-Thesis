@@ -20,7 +20,7 @@ databases. We also want to avoid any complex setup or configuration, so the data
 are still a lot of viable options left. In order to find the right database for our use case we have to look at the different options and compare them. 
 
 \subsubsection{SQLite}
-When looking for a memory efficiently database SQLite is one of the first options that comes to mind. SQLite is a small and fast database, and also serverless, 
+When looking for a memory efficiently database SQLite\footcite{sqlite} is one of the first options that comes to mind. SQLite is a small and fast database, and also serverless, 
 which means that it doesn't need a separate server process to operate. 
 
 SQLite was originally made for the US Army in the year 2000 by D. Richard Hipp. Since then the database engine has become open-source. It is writen in the programming language
@@ -28,18 +28,27 @@ C, because of that it can be used on a lot of different platforms. Compatability
 in memory and accessed asynchronusly. 
 
 \subsubsection{PostgreSQL}
-Postgres is widely used as backend database for web applications and websites. 
+Postgres\footcite{postgres} is widely used as backend database for web applications and websites. It runs with a client/server architecture, which means that the database is 
+managed by a server process. Multiple clients can be handled by the server at the same time, even if they are concurrently accessing the same data. This feature allows us to 
+asynchronusly access the database from multiple threads.   
 
 PostgreSQL started as a project at Berkeley Computer Science Department, University of California in 1986. The project was originally called Postgres and was later renamed to
 PostgreSQL, but the name is still commonly shorted to Postgres. The project became open-source in 1996, when it was renamed and has been maintained by a group of volunteers 
-ever since. PostgreSQL runs on all major operating systems and has its own Rust library called rust-postgres. Postgres can be used asynchronusly in Rust with the tokio-postgres 
-library.  
+ever since. PostgreSQL runs on all major operating systems and has its own Rust library called rust-postgres. The tokio-postgres library improves the performance of
+asynchronusly using postgres via Rust even further.
 
 \subsubsection{MySQL}
+YouTube, Facebook and Twitter are just a few of the big names that use MySQL\footcite{mysql} as their backend database. MySQL is mainly used for storing Data from web services. 
+It runs with the same client/server architecture as PostgreSQL, which means there is one server process that manages the database and multiple clients that can access the data.  
 
+1994 Michael Widenius and David Axmark started the MySQL project. The project started as a fork of the mSQL database, but was later rewritten from scratch. Since 2010 MySQL is
+under development by Oracle. The project is still open-source, however Oracle offers a enterprise version of MySQL as well. Not happy with the development of MySQL the 
+original developers started a new project called MariaDB, it is a fork of MySQL and is fully compatible with it. 
+Of course, there is also a Rust library for MySQL called mysql with an extending library called \verb+mysql_async+. The second library is tokio based and allows asynchronus Client 
+access.
 
 \subsubsection{Comparison}
-After we looked into the three possiblyties mentioned above we created an enviroment to benchmark the different databases.
+After we looked into the three possiblyties mentioned above we created an enviroment to benchmark the different databases. // Work in progress
 
 \subsection{Database Structure}
 
