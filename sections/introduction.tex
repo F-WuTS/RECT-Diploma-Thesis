@@ -77,44 +77,6 @@ For that reason Kanban was chosen for managing the tasks, that need to be done i
 It also lacks distinct roles for team members, that would be defined in SCRUM (e.g. a SCRUM-Master), and uses cycle-time \footcite{cycle-time-lead-time},
 instead of velocity as a metric for performance. 
 
-\subsubsection{Structure of a Kanban Board}
-A Kanban-Board is made up of several columns. The most common columns used are:
-\begin{itemize}
-\item Backlog
-\item Todo
-\item Doing
-\item Done
-\end{itemize}
-These columns contain anywhere from zero to infinite cards, while some have a limit imposed on how many cards are allowed in a column at a given point in time.
-
-\subsubsection{Life-Cycle of a card}
-At the beginning of a cards life-cycle the card is given a name and a description of a task. It is then put into the "Backlog" column, where it will stay until there are capacities
-to work on the given task. Once a developer starts working on a card it is put into the "Doing" column of the board, until the task has been completed. It is then either put into
-some kind of "Testing", or "Quality Control" column, or it goes straight into done. Reaching the "Done" column of a Kanban board also means the card has reached the end of its
-life-cycle.
-
-\subsubsection{History of Kanban}
-Kanban was developed by a japanese Engineer named Taiichi Ohno while working at Toyota Motor Corporation to improve the efficiency of manufacturing processes. Although it was originally
-designed to solve problems in manufacturing processes the principles of Kanban can also be applied to software development. These 4 principles are as follows:
-
-\paragraph{Visualize Work}
-One of the most challenging tasks in project management is understanding the current progress and status of a project. To make this easier Kanban emplores a board and cards with tasks to
-visualize progress, bottlenecks and the status quo of a project.
-
-\paragraph{Using a Pull Model}
-When working on a project stakeholders often tend to push more and more work onto the developers, which leads to stress and poor quality. To remedy this Kanban defines a certain level of
-quality, that needs to be met in order for a task to be considered done. Instead of pushing extra work onto developers the stakeholders simply add tasks to the backlog and let the 
-developers implement them as soon as they have the capacity to do so.
-
-\paragraph{Enforce a limit on ongoing tasks}
-Often teams struggle with working on too many things at once. This leads to reduced performance and velocity, because the context of the different tasks is constantly switched. 
-The solution Kanban offers to this problem is imposing a limit on how many tasks can be in a column of the Kanban Board at once. 
-
-\paragraph{Measuring CI}
-In order to achieve Continuous Improvement (CI) in a project teams need a way to measure the effectiveness of their workflows. The dynamic view of the states of work in a workflow, that is 
-provided by Kanban makes it easy for teams to experiment with how they do processes and see how they impact their productivity. Avid users of Kanban use measurements like lead-time 
-cycle-time \footcite{cycle-time-lead-time} for Continuous Improvement.  
-
 \subsubsection{Structure of RECT's Kanban Board}
 RECT's Kanban-Board is hosted on trello, because it offers easy setup and operation. The board consists of the following columsn:
 
