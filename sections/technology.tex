@@ -336,14 +336,13 @@ Doxygen\footcite{doxygen_main_site} is a C++ framework, that automatically gener
 PHP, Java, Python, IDL and Fortan. The documentation, created directly from annotated source code, can either be viewed online from a HTML website or a Latex document
 offline. Doxygen can also make structure overviews from non-annotated sources and display graphs of entity relations. The overall structure of a Doxygen implementation
 can be seen from this image:\\
-\vspace{2mm}
-%\begin{figure}
-%	\centering
-%	\includegraphics{example.png} %SHOULD BE doxygenInfoflow.png but for some reason latex cannot find the image
-%	\caption{Doxygen structure diagramm form Doxygen documentation}
-%	\label{pic:doxygenInfoflow}
-%\end{figure}
-%Explain diagramm and figure out how to display it correctly
+
+\begin{figure}[h]
+	\centering
+	\includegraphics[width=\textwidth]{doxygenInfoflow.png} 
+	\caption{Doxygen Infoflow diagramm\footcite{doxygen_main_site}}
+	\label{pic:doxygenInfoflow}
+\end{figure}
 
 First a Doxygen config file, also called a \textit{Doxyfile} is generated in a project using the \textit{Doxywizard} and can be edited using this tool afterwards. 
 This file is later read and updated during the generation process from \textit{Doxygen}. The layout files and tag files are also generated and used by \textit{Doxygen}

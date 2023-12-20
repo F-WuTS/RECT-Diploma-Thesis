@@ -13,6 +13,16 @@
 \subsection{Documentation}
 
 \section{C++ Implementation}
+\textbf{Author: Maximilian Dragosits}
+The C++ Implementation is one of the two outward facing components of the RECT stack. Alongside the Python Implementation 
+it serves as a library in order for developers to be able to create robots, that are able to communicate with each other, much
+easier then before. This is accomplished by abstracting most of the complexities of gRPC behind the \textit{Rectcpp} class. 
+
+The class only needs to be initialized with IP-Addresses for the different services that it offers and be given the IP of 
+another of its kind and then it should be a simple act of using the predefined methods within the class in order to 
+effortlessly communicate with other robots or devices running this or the Python frontend implementation.
+
+\subsection{Rectcpp class}
 \subsection{Documentation}
 
 \section{Python Implementation}
