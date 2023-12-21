@@ -8,13 +8,18 @@
 \section{C++}
 \textbf{Author: Maximilian Dragosits}
 
-C++ is a high-level precompiled programming language with support for low level memory management, object oriented programming, generic and functional programming.
-It was designed and created by Danish computer scientist Bjarne Stroustrup with efficiency, performance and flexibility as its core goals.\footcite{lecture_essence_cpp}
-Being based on C, and due to its highly sophisticated design C++ is being used in all kinds of places nowadays. From desktop applications, servers, video games and 
-even very performance critical use cases like digital equipment in space. The International Organization for Standardization (ISO) standardized this programming
-language in 1998 as SO/IEC 14882:1998. Due to its popularity many libraries and frameworks for C++ have been made including Catch2\footcite{catch2_git} and 
-Doxygen\footcite{doxygen_main_site} both of which are being used in this project. We chose this coding language as one of the two frontend because of its speed and
-efficiency as well as the sheer number of external frameworks and libraries already created for it, which are essential in the development of the RECT library. 
+C++ is a precompiled programming language that combines low-level memory management with support for object-oriented, generic, and functional programming paradigms. 
+It was designed by Danish computer scientist Bjarne Stroustrup with a focus on efficiency, performance, and flexibility.\footcite{lecture_essence_cpp} C++ has 
+become widely used in various domains, including desktop applications, servers, video games, and digital equipment for space exploration.\\
+
+It was standardized by the International Organization for Standardization (ISO) in 1998 as ISO/IEC 14882:1998 and has since evolved into a powerful programming 
+language. The popularity of C++ has led to the creation of numerous libraries and frameworks, such as Catch2\footcite{catch2_git} and Doxygen\footcite{doxygen_main_site}. 
+These frameworks are essential to the project's development and functionality.\\
+
+C++ was chosen as one of the two frontend languages for this project due to its impressive speed and efficiency, as well as the vast ecosystem of external 
+frameworks and libraries already available. The resources are essential in developing the RECT library, improving the project's capabilities and accelerating 
+the development process. The decision to use C++ was a strategic choice, aligning with the language's strengths and the abundance of tools and resources it 
+offers to the development landscape.
 
 \section{Rust}
 \textbf{Author: Jeremy Sztavinovszki}
@@ -26,18 +31,36 @@ Right now there is now standardized async-runtime, so you normally use runtimes 
 \section{gRPC}
 \textbf{Author: Maximilian Dragosits}
 
-gRPC\footcite{grpc_main_site} is an open source framework, that facilitates Remote Procedure Calls (RPC) across a multitude of environments. It has a wide variety of use cases in terms of
-service to service connections and usage in the development of microservices and libraries. The framework is available in 11 different programming languages and 
-has a simple service definition and generation structure in order to streamline the process of integration. It also has pluggable authentication, load balancing, tracing
-and health checking in order to control service communication. gRPCs ability to connect a client to backend services is particularly important for this project 
-and is therefore used to handle the communication from the individual Python and C++ frontends to the Rust backend and vice versa.
+gRPC\footcite{grpc_main_site} is an open-source framework that facilitates Remote Procedure Calls (RPC) across diverse environments. It is versatile 
+and can be used in a broad spectrum of use cases, proving invaluable in establishing robust service-to-service connections. gRPC plays a pivotal role in the 
+development of microservices and libraries. This framework is available in 11 different programming languages and provides developers with a flexible 
+and accessible toolset for creating efficient and scalable communication channels.\\
+
+gRPC's efficiency is central to its straightforward service definition and generation structure, which streamlines the integration process. 
+This simplicity allows developers to focus on the core aspects of their projects, enhancing productivity and code maintainability. Furthermore, gRPC includes 
+pluggable features such as authentication, load balancing, tracing, and health checking. These features provide developers with fine-grained control over 
+service communication, ensuring robust and secure interactions within distributed systems.\\
+
+In the context of the current project, gRPC plays a pivotal role. Its capability to seamlessly connect clients to backend services is particularly crucial. 
+This feature enables efficient communication between Python and C++ frontends and the Rust backend, creating a cohesive and interoperable system. The project 
+uses gRPC to achieve high communication efficiency, allowing for seamless data exchange between components and improving the overall performance and reliability 
+of the system architecture.
 
 \section{Protocol Buffers}
 \textbf{Author: Maximilian Dragosits}
 
-Protocol Buffers are a platform neutral way to serialize structured data similar to XML, JSON or YAML. These data constructs can easily be used by automatically
-generated source code in a multitude of different programming languages of the developers choosing. Including, but not limited to, Java, Kotlin, Python and various
-C-based languages. An example of a Protocol Buffer file is this:
+Protocol Buffers offer a platform-neutral solution for serializing structured data, similar to formats such as XML, JSON, or YAML. They provide a versatile 
+solution that seamlessly interfaces with automatically generated source code across an array of programming languages, catering to developers' preferences. 
+Noteworthy among the supported languages are Java, Kotlin, Python, and various C-based languages, underscoring the broad applicability of Protocol Buffers 
+in diverse development ecosystems.\\
+
+Protocol Buffers enable developers to efficiently manage and exchange structured data across different platforms and systems. They provide a unified approach 
+to serialization, whether using the robustness of Java, the conciseness of Kotlin, the flexibility of Python, or the performance advantages of C-based languages. 
+This approach promotes interoperability, enabling developers to easily incorporate serialized data into their projects, thereby enhancing the efficiency and 
+maintainability of their codebases.\\
+
+An example of a Protocol Buffer file illustrates the elegance and conciseness inherent in this technology, demonstrating its role in facilitating efficient 
+data interchange.
 
 \begin{verbatim}
     syntax = "proto3";
@@ -65,7 +88,7 @@ C-based languages. An example of a Protocol Buffer file is this:
     }
 \end{verbatim}
 
-The first part of any .proto file is the definition of the protobuf language version. Either \textit{proto2} or \textit{proto3}. Next the package within this will be 
+As can be seen in this example the first part of any .proto file is the definition of the protobuf language version. Either \textit{proto2} or \textit{proto3}. Next the package within this will be 
 stored in when it is converted into a programming languages code is defined. In this case it will be \textit{msg}. After that you can import any other .proto file.
 Then it is possible to define any amount of the following types and many others not used by this project:
 \begin{enumerate}
@@ -226,9 +249,18 @@ The physical layer is made up of the actual hardware, that is capable of modulat
 \subsection{Catch2}
 \textbf{Author: Maximilian Dragosits}
 
-Catch2\footcite{catch2_main_site} is a C++-based unit testing framework. It is design to be easily integrated into C++ code and match the overall look and feel
-of normal functions and boolean expressions. This framework also provides micro-benchmarking capabilities. It is a good fit for this project, because it serves
-to develop the C++ frontend with unit tests in mind and optimizations spurred on by benchmarks measuring the speed and efficiency of the implemented methods.
+Catch2\footcite{catch2_git} is a unit testing framework specifically designed for C++. It seamlessly integrates with C++ code and offers a testing environment 
+that aligns closely with the overall structure of C++ code. Its ability to harmonize with the natural syntax of functions and boolean expressions is noteworthy. 
+Catch2 not only facilitates unit testing but also incorporates micro-benchmarking capabilities, enabling developers to analyze performance in detail.\\
+
+In the context of our project, Catch2 is an ideal choice for shaping the C++ frontend. Its integration into the development process ensures that unit tests 
+become an integral part of the codebase, fostering a culture of code reliability and maintainability. In addition, the integration of micro-benchmarking in Catch2 
+is consistent with our project's objectives, enabling thorough performance evaluations. This feature is essential in promoting optimizations, as benchmarks provide 
+valuable metrics for measuring the speed and efficiency of implemented methods.\\
+
+By using Catch2, our project benefits from a versatile testing framework that not only validates the functionality of the C++ frontend but also enables developers 
+to make informed decisions about enhancements and optimizations. Catch2's seamless integration and benchmarking capabilities make it a valuable asset in ensuring 
+the robustness, performance, and efficiency of the implemented methods within the project.
 
 \subsubsection{Unit Tests}
 
@@ -332,10 +364,18 @@ function:
 \subsection{Doxygen}
 \textbf{Author: Maximilian Dragosits}
 
-Doxygen\footcite{doxygen_main_site} is a C++ framework, that automatically generates documentation for C++ code. It does not only support C style languages but also 
-PHP, Java, Python, IDL and Fortan. The documentation, created directly from annotated source code, can either be viewed online from a HTML website or a Latex document
-offline. Doxygen can also make structure overviews from non-annotated sources and display graphs of entity relations. The overall structure of a Doxygen implementation
-can be seen from this image:\\
+Doxygen\footcite{doxygen_main_site} is a versatile C++ framework that automates the generation of documentation for C++ code. It can also be used for other programming languages such as 
+PHP, Java, Python, IDL, and Fortran. Doxygen extracts information directly from annotated source code, making the documentation process more efficient and 
+accessible for developers.\\
+
+Doxygen is notable for its flexibility in delivering documentation. The generated documentation can be accessed online through an HTML website or offline 
+through a LaTeX document, providing options tailored to developers' preferences. Additionally, Doxygen can derive structure overviews even from non-annotated 
+sources, facilitating a holistic understanding of the codebase. The project's architecture can be visualized more effectively by displaying entity relations 
+through insightful graphs.\\
+
+A quick overview of a Doxygen implementation shows a well-organized framework that streamlines the documentation process. This implementation improves code 
+comprehension and promotes a collaborative development environment by providing a centralized repository of project documentation. The image shows how Doxygen's 
+integration simplifies and enhances the documentation workflow, contributing to the clarity and accessibility of the project.\\
 
 \begin{figure}[h]
 	\centering
@@ -456,14 +496,15 @@ is used to give a short description to the object and \textit{param} in order to
 
 \subsubsection{Doxygen Parsing}
 
-During the generation process the special comment blocks are parsed and converted by \textit{Doxygen} into the different output formats. The parser completes these
-processes and then the creation of documentation with Doxygen is complete:
+During the documentation generation process, Doxygen parses special comment blocks and translates them into various output formats to create comprehensive 
+documentation. The parser performs several key processes, culminating in the creation of documentation with Doxygen.
+
 \begin{itemize}
-    \item[] Markdown writing gets replaced by HTML, structural commands or special commands.
-    \item[] Special commands are executed.
-    \item[] Blank lines are replaced by paragraph separators.
-    \item[] Links to other parts of the documentation are created according to the special comment blocks.
-    \item[] HTML parts within are converted to LaTex commands for the LaTex output.
+    \item[] One of these processes is the conversion of Markdown writing within comment blocks into HTML, ensuring compatibility with web-based documentation platforms. This conversion improves the presentation of textual content, making it more accessible and visually appealing.
+    \item[] Special commands embedded within the comment blocks are executed, allowing developers to include custom instructions or annotations. This feature empowers developers to tailor the documentation to specific project requirements, fostering flexibility and customization.
+    \item[] Blank lines are handled appropriately. Paragraph separators are strategically used instead of blank lines to enhance the readability and organization of the generated documentation. This helps developers to better understand the information presented.
+    \item[] Doxygen generates links to other sections of the documentation based on special comment blocks. The interlinking mechanism enables smooth navigation within the documentation, improving the user experience and promoting a cohesive understanding of the codebase.
+    \item[] In situations where the output format is LaTeX, Doxygen converts HTML elements within the comment blocks into LaTeX commands. This transition ensures consistency and compatibility when generating LaTeX documents. It allows developers to choose the format that best suits their documentation needs.
 \end{itemize}
 
 
