@@ -4,6 +4,39 @@
 
 %settings for generation of titlepage, index and table of content
 \include{sections/Settings}
+\usepackage{listings}
+
+\definecolor{lightgray}{rgb}{.9,.9,.9}
+
+\lstdefinelanguage{Nix}{
+	keywords={let,in},
+	keywordstyle=\color{yellow}\bfseries,
+	comment=[l]{\#},
+	morecomment=[s]{/*}{*/},
+	identifierstyle=\color{black},
+	sensitive=false,
+	commentstyle=\color{green}\ttfamily,
+	stringstyle=\color{red}\ttfamily,
+	morestring=[b]'',
+	morestring=[b]"
+}
+
+\lstset{
+   language=Nix,
+   backgroundcolor=\color{lightgray},
+   extendedchars=true,
+   basicstyle=\footnotesize\ttfamily,
+   showstringspaces=false,
+   showspaces=false,
+   numbers=left,
+   numberstyle=\footnotesize,
+   numbersep=9pt,
+   tabsize=2,
+   breaklines=true,
+   showtabs=false,
+   captionpos=b
+}
+
 
 %definitions for easier costumization
 \def \subtitle {Robot Extensible Communication Toolkit}
