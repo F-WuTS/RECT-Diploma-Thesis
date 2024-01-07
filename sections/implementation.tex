@@ -2,14 +2,35 @@
 
 \section{CommLib}
 \textbf{Author: Jeremy Sztavinovszki} 
-The Communication Library, or CommLib for short is the part of the RECT stack, that handles all of the communication between the bots over traditional protocols, like TCP, UDP and BLE.
+The Communication Library, or CommLib for short is the part of the RECT stack, that handles all of the communication between the hosts over traditional protocols, like TCP, UDP and BLE.
 This requires it to be especially performant. In order to avoid premature optimization however, the first part of this section on the implementation of the CommLib will only cover the first versions
 of the code written to get the Library to work. After the first implementation there will be benchmarks and some profiling, in order to get a grasp on which aspects of the library need to be
 optimized. The second section will then cover how these results were incorperated into designing a more polished version of the CommLib.
 
 \subsection{Setting up the Library} 
+The first steps of setting up the library are more or less the same as in any other rust project. First the project is initialized with \verb+cargo new --lib <rust-name>+. This creates a
+new folder with the name specified in \verb+<library-name>+ and generates some files like Cargo.toml and src/main.rs. After this step is done the needed libraries for RECT are added to the
+project through \verb+cargo add <dependency-name> -F <dependency-name>/<feature-name>+ these dependencies are the pulled and built by cargo (Rust's build tool) upon the initial build of the
+project. The first iteration of the project then had the following dependencies:
+
+\begin{itemize}
+	\item{tokio}
+	\item{bluer}
+	\item{anyhow}
+\end{itemize}
+
+All in all the commands used to generate the CommLib project and install all dependencies looked like this:
+\newline
+\begin{minipage}{\textwidth}
+	\begin{lstlisting}[language=bash, caption=Setup Commands for CommLib]
+		cargo new --lib comm_lib && cd comm_lib
+		cargo add tokio bluer anyhow -F tokio/full,bluer/full
+		cargo build
+	\end{lstlisting}
+\end{minipage}
 
 \subsection{First Implementation}
+
 
 \subsection{Profiling and Benchmarking}
 
@@ -24,6 +45,7 @@ optimized. The second section will then cover how these results were incorperate
 \subsection{Documentation}
 
 \section{Python Implementation}
+
 \subsection{Documentation}
 
 \section{Implementation Comparison}

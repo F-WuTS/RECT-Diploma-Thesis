@@ -1,29 +1,28 @@
-\documentclass[11pt,a4paper,openany]{book}
+\documentclass[11pt,a4paper,openany,dvipsnames]{book}
 
 % \usepackage[german]{babel}	%in case you want to write a german thesis
 
 %settings for generation of titlepage, index and table of content
 \include{sections/Settings}
-\usepackage{listings}
-
-\definecolor{lightgray}{rgb}{.9,.9,.9}
 
 \lstdefinelanguage{Nix}{
-	keywords={let,in},
-	keywordstyle=\color{yellow}\bfseries,
+	keywords={let,in,rec},
+	keywordstyle=\color{YellowOrange}\bfseries,
+	ndkeywords={inputs,outputs},
+	ndkeywordstyle=\color{Plum},
 	comment=[l]{\#},
 	morecomment=[s]{/*}{*/},
 	identifierstyle=\color{black},
 	sensitive=false,
-	commentstyle=\color{green}\ttfamily,
-	stringstyle=\color{red}\ttfamily,
+	commentstyle=\color{ForestGreen}\ttfamily,
+	stringstyle=\color{MidnightBlue}\ttfamily,
 	morestring=[b]'',
 	morestring=[b]"
 }
 
 \lstset{
    language=Nix,
-   backgroundcolor=\color{lightgray},
+   backgroundcolor=\color{white},
    extendedchars=true,
    basicstyle=\footnotesize\ttfamily,
    showstringspaces=false,

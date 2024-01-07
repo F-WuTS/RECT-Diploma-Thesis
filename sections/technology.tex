@@ -37,7 +37,7 @@ Taking an example for the syntax from the official nixos wiki site the language 
 
 % example here
 \begin{minipage}{\textwidth}
-\begin{lstlisting}[language=Nix]
+\begin{lstlisting}[language=Nix, caption={Simple Examples of the Nix Language}]
 #1
 let
     a = 1;
@@ -87,7 +87,7 @@ The specific example builds the latex files of which this thesis is comprised in
 \medskip
 
 \begin{minipage}{\textwidth}
-\begin{lstlisting}[language=Nix]
+\begin{lstlisting}[language=Nix, caption={The nix flake, that builds this diploma thesis}]
 {
   description = "A flake to build the RECT-Diploma-Thesis";
 
@@ -100,29 +100,34 @@ The specific example builds the latex files of which this thesis is comprised in
     system = "x86_64-linux";
     pkgs = nixpkgs.legacyPackages.${system};
   in {
-	pkgs.mkDerivation rec {
-		name = "RECT-Diploma-Thesis";
+		packages.${system}.default = pkgs.stdenv.mkDerivation rec {
+			name = "RECT-Diploma-Thesis";
 
-		src = ./.;
+			src = ./.;
 
-		buildInputs = [
-			texlive.combined.scheme-full
-		];
+			buildInputs = [
+				pkgs.texlive.combined.scheme-full
+			];
 
-		buildPhase = ''
-				latexmk -pdf main.tex
-		'';
+			buildPhase = ''
+					latexmk -pdf main.tex
+			'';
 
-		installPhase = '' 
-				mkdir -p $out/pdf
-				cp main.pdf $out/pdf
-		'';
-	};
+			installPhase = '' 
+					mkdir -p $out/pdf
+					cp main.pdf $out/pdf
+			'';
+		};
   };
 }
 \end{lstlisting}
 \end{minipage}
-%build system example package here.
+
+The code shown above is a nix flake. It defines the nixpkgs repository as an input and the result of the build process,
+that is taking place in the mkDerivation block as an output. mkDerivation is a function which takes a name, pname, version, src,
+buildInputs, buildPhase, installPhase, builder and shellHook as inputs and produces a package which is built in the standard environment (stdenv) \footcite{nixMkDerivation}.
+The built derivation (or output of this flake) is then asigned a hash and stored in the nix store on the machine that built it.
+An example of this would be the following path \newline\verb+/nix/store/dnx26izplgv46dwg548whh9kj5iz4vvx-RECT-Diploma-Thesis+. 
 
 \subsubsection{Nixpkgs}
 Of course the defined packages need to be stored somewhere. This is where the nixpkgs repository \footcite{nixpkgs_repo} on github comes in handy. It is a collection of over 80000 packages according to repology \footcite{repology_nixpkgs}.
