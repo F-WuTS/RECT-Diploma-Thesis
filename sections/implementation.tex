@@ -43,7 +43,7 @@ and has minimal overhead. In order to meet the above requirements, the following
 The first thing taken into consideration for designing a data and class structure that is able to be sent over all of the protocols is the MTU's of the different protocols. 
 For TCP and UDP the MTU, or maximum transmission unit, is defined by the Maximum Segment Size Option (MSS), which is technically limited to 65535 bytes (64KB), but as defined
 in RFC 2675 \footcite{rfc2675} an MSS value of 65535 is defined to be interpreted as infinity and to be determined by Path MTU Discovery \footcite{rfc9293}. For BLE the MTU is 
-defined by the L2CAP and can be anywhere between 23 and infinity. 
+defined by the L2CAP and can be anywhere from 23 and infinity, but the packet is fragmented and recombined by the L2CAP for transmission. % TODO find out why ble book cant be cited 
 
 
 % TODO Write about the connection manager and also program that stuff
