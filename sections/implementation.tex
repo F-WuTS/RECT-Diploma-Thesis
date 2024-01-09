@@ -30,7 +30,26 @@ All in all the commands used to generate the CommLib project and install all dep
 \end{minipage}
 
 \subsection{First Implementation}
+The first part of the implementation that was tackled was to create an abstraction layer over the existing protocols that RECT uses.
+in order to have a nice and clean interface to work with and to avoid having to implement each feature separately for the
+protocols. Of course, there was a bit of a problem with UDP because it is not meant to send structured data, so there is no feature parity between TCP and BLE.
+between TCP and BLE and UDP in this respect, and UDP is only used to send unstructured data streams. To encapsulate the structured and unstructured data sent over the
+and unstructured data sent over the common interface, there needs to be a way to convert the data, whether structured or not, into and from bytes in a way that is performant and has minimal overhead.
+and has minimal overhead. In order to meet the above requirements, the following structure has been implemented.
+ 
+\subsubsection{Messages and Packets}
+% TODO Write about the packets and messages and maybe do a nice graphic.
+% TODO find cite for TCP and UDP MTU 
+The first thing taken into consideration for designing a data and class structure that is able to be sent over all of the protocols is the MTU's of the different protocols. 
+For TCP and UDP the MTU, or maximum transmission unit, is defined by the Maximum Segment Size Option (MSS), which is technically limited to 65535 bytes (64KB), but as defined
+in RFC 2675 \footcite{rfc2675} an MSS value of 65535 is defined to be interpreted as infinity and to be determined by Path MTU Discovery \footcite{rfc9293}. For BLE the MTU is 
+defined by the L2CAP and can be anywhere between 23 and infinity. 
 
+
+% TODO Write about the connection manager and also program that stuff
+\subsubsection{The ConnectionManager}
+
+% TODO Pretend you didn't already make everything railway programming and it still crashes because of stupid things.
 
 \subsection{Profiling and Benchmarking}
 
