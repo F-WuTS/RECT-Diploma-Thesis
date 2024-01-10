@@ -14,6 +14,36 @@ Rust is a general purpose multi paradigm programming language used in many field
 Rust has a great ecosystem driven by the Rust Foundation and the Rust community. There are many tools, such as cargo, or rust-gdb, that provide great developer experience.
 Right now there is now standardized async-runtime, so you normally use runtimes like tokio, async-std, or smol for programming asynchronously.
 
+\subsection{Cargo}
+\textbf{Author: Christoph Fellner}
+
+Cargo\footcite{cargo} is a build system and package manager for Rust, providing developers with a robust toolset for managing Rust projects. A rust package consists of a
+\verb+Cargo.toml+ file, which contains metadata about the package, and a \verb+src+ folder, which contains the source code as rust-files (\verb+.rs+). It is an integral 
+part of the Rust ecosystem and plays a crucial role in managing dependencies, building projects, and facilitating a smooth development workflow.
+
+Here's an overview of Cargo's main functionalities:
+
+\begin{itemize}
+    \item 1. Dependency Management: Cargo manages project dependencies by automatically fetching and incorporating external libraries or crates. Developers specify 
+        dependencies in the Cargo.toml file, and Cargo ensures the correct versions are used.
+    \item 2. Project Structure: Cargo establishes conventions for organizing Rust projects, defining a standardized layout for directories and files. This consistency 
+        helps developers understand and contribute to projects more easily.
+    \item 3. Building and Compilation: Cargo handles the complexities of building and compiling Rust projects. Developers can use simple commands such as \verb+'cargo build'+ to 
+        compile the code and \verb+'cargo run'+ to execute the compiled binary.
+    \item 4. Testing: Cargo supports the integration of unit tests into Rust projects. Developers can use the \verb+'cargo test'+ command to run test suites, ensuring the 
+        reliability and correctness of their code.
+    \item 5. Documentation Generation: Cargo can generate documentation for Rust projects, making it easier for developers to create and maintain documentation for their 
+        code. The \verb+'cargo doc'+ command generates and hosts documentation, and it can be published on platforms like docs.rs.
+    \item 6. Project Initialization: Cargo provides a convenient way to initialize new Rust projects with the \verb+'cargo new'+ command. This command sets up a new project with 
+        the necessary directory structure and initial files.
+    \item 7. Publishing: Cargo facilitates the process of publishing Rust packages (crates) to the official package registry, crates.io. This makes it straightforward for 
+        developers to share their libraries and projects with the wider Rust community.
+\end{itemize}
+
+In essence, Cargo streamlines various aspects of Rust development, offering a standardized and efficient workflow for managing dependencies, building projects, testing 
+code, generating documentation, and publishing packages. Its integration with the Rust toolchain contributes to the language's reputation for being developer-friendly and 
+conducive to building robust and reliable systems.
+
 \section{gRPC}
 
 \section{Bluetooth Low Energy}
