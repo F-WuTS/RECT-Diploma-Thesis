@@ -11,5 +11,15 @@
     pkgs = nixpkgs.legacyPackages.${system};
   in {
     packages.${system}.default = pkgs.callPackage ./doc_build.nix { inherit pkgs system; };
+    devShells.${system}.default = pkgs.mkShell {
+      buildInputs = [
+        pkgs.texstudio
+        pkgs.texmaker
+      ];
+    
+      shellHook = '' 
+        echo "Hello"
+      '';
+    };
   };
 }
