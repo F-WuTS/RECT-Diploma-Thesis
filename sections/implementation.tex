@@ -74,9 +74,9 @@ thread-safe, as well as making sure, that it is initialized and freed, when ther
 Which leads to the above code, which has specifies, that the ConnectionManager is wrapped in the following types.
 
 \begin{itemize}
-	\item{Lazy. This type allows any object held by it to be initialized only once and only when it is first called upon}
-	\item{Arc. Arc stands for atomic reference counter and is a type of smart-pointer used in rust, when pointers need to be thread safe}
-	\item{Mutex. The mutex ensures, that only one process at a time can hold a reference to the held object in order to prevent issues such as race-conditions}
+	\item{Lazy. This type allows any object held by it to be initialized only once and only when it is first called upon \footcite{once_cell_lazy}}
+	\item{Arc. Arc stands for atomic reference counter and is a type of smart-pointer used in rust, when pointers need to be thread safe \footcite{rust_arc}}
+	\item{Mutex. The mutex ensures, that only one process at a time can hold a reference to the held object in order to prevent issues such as race-conditions \footcite{tokio_mutex}}
 \end{itemize}
 
 % TODO Pretend you didn't already make everything railway programming and it still crashes because of stupid things.

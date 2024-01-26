@@ -344,6 +344,10 @@ With this file stored as a backup a machine running NixOS could be up and runnin
 
 \section{Bluetooth Low Energy}
 \textbf{Author: Jeremy Sztavinovszki}
+Bluetooth Low Energy (BLE) is a Low-Cost, Low-Bandwidth, Low-Energy technology, that works by transmitting data over the air using a slice of the frequencies available in the Industrial, Scientific and Medical Band \footcite{ism}.
+It was introduced in the 4th version of the Bluetooth Version, after being developed by Nokia under the name Wibree and being adopted by the Bluetooth Special Interest Group (SIG). BLE at the time of its release made use of many
+innovative technologies, for example Frequency Hopping Spread Spectrum \footcite{fhss}, which is used to avoid collisions when sending data. A combination of being innovative and marketing lead to BLE seeing a great adoption rate
+after its initial release. Over the years Bluetooth Low Energy has seen many improvements, such as a Bluetooth Low Energy device being able to take on multiple roles simultaneously in the network.
 
 \subsection{BLE Layers}
 \subsubsection{Protocol vs. Profile}
@@ -387,10 +391,17 @@ The Attribute Protocol (ATT) and Generic Attribute Profile (GATT) play critical 
 The Security Manager (SM) operates within the BLE protocol stack and is responsible for establishing secure connections and managing security-related aspects between BLE devices. It manages processes such as pairing, encryption, and authentication to ensure the confidentiality and integrity of data transmitted over BLE connections. This is critical for safeguarding sensitive information.
 
 \subsubsection{General Access Profile}
-The Generic Access Profile (GAP) is a fundamental layer in Bluetooth Low Energy (BLE) that is responsible for device discovery, connection setup, and addressing within the network. It defines device roles such as Peripheral and Central, managing how devices interact. Peripherals broadcast their presence, allowing Centrals to discover and connect. GAP also handles device addressing, ensuring unique identification, and manages visibility, pairing, and power modes. GAP promotes interoperability between devices by standardizing essential functions. This ensures smooth communication across diverse BLE devices, regardless of their manufacturers or applications. The layer's importance lies in its ability to provide stability and reliability in BLE networks.
+The Generic Access Profile (GAP) is a fundamental layer in Bluetooth Low Energy (BLE) that is responsible for device discovery, connection setup, and addressing within the network. It defines device roles and manages how devices interact. GAP also handles device addressing, ensuring unique identification, and manages visibility, pairing, and power modes. GAP promotes interoperability between devices by standardizing essential functions. 
+This ensures smooth communication across diverse BLE devices, regardless of their manufacturers or applications. The layer's importance lies in its ability to provide stability and reliability in BLE networks. GAP defines the following roles for a device to take on: 
+\begin{itemize}
+    \item{Broadcaster. The Broadcaster role is especially useful for applications, that regularily transmit data. It uses Advertising Packets instead of Connection Packets to send data in order for any listening device to be able to read the data without having to establish a conneciton.}
+    \item{Observer. The Observer role is the counterpart to the Broadcaster. This role could be used for the base station of an alarm system, that receives broadcasts from sensors around the house for detecting intrusions.}
+    \item{Central. The Central role is used to establish connections with peripheral devices. It always initiates the connections and is in essence the role, that allows devices onto the network. This is usually a smartphone and could be used for establishing a connection to some speakers to play music.}
+    \item{Peripheral. The Peripheral role sends advertising packets in order for central devices to be able to find it and initiate connections.}
+\end{itemize}
 
 \subsection{Network Topologies}
-Using the above protocols and layers, there is a wide range of network topologies that designers can choose from, depending on their objectives.
+Using the profiles described above, there is a wide range of network topologies that developers can choose from, depending on their objectives.
 Some of the following topologies excel at saving power, while others are great for scalability and redundancy.
 
 \subsubsection{Star Topology}
