@@ -28,6 +28,36 @@ Rust is a general purpose multi paradigm programming language used in many field
 Rust has a great ecosystem driven by the Rust Foundation and the Rust community. There are many tools, such as cargo, or rust-gdb, that provide great developer experience.
 Right now there is now standardized async-runtime, so you normally use runtimes like tokio, async-std, or smol for programming asynchronously.
 
+\subsection{Cargo}
+\textbf{Author: Christoph Fellner}
+
+Cargo\footcite{cargo} is a build system and package manager for Rust, providing developers with a robust toolset for managing Rust projects. A rust package consists of a
+\verb+Cargo.toml+ file, which contains metadata about the package, and a \verb+src+ folder, which contains the source code as rust-files (\verb+.rs+). It is an integral 
+part of the Rust ecosystem and plays a crucial role in managing dependencies, building projects, and facilitating a smooth development workflow.
+
+Here's an overview of Cargo's main functionalities:
+
+\begin{itemize}
+    \item 1. Dependency Management: Cargo manages project dependencies by automatically fetching and incorporating external libraries or crates. Developers specify 
+        dependencies in the Cargo.toml file, and Cargo ensures the correct versions are used.
+    \item 2. Project Structure: Cargo establishes conventions for organizing Rust projects, defining a standardized layout for directories and files. This consistency 
+        helps developers understand and contribute to projects more easily.
+    \item 3. Building and Compilation: Cargo handles the complexities of building and compiling Rust projects. Developers can use simple commands such as \verb+'cargo build'+ to 
+        compile the code and \verb+'cargo run'+ to execute the compiled binary.
+    \item 4. Testing: Cargo supports the integration of unit tests into Rust projects. Developers can use the \verb+'cargo test'+ command to run test suites, ensuring the 
+        reliability and correctness of their code.
+    \item 5. Documentation Generation: Cargo can generate documentation for Rust projects, making it easier for developers to create and maintain documentation for their 
+        code. The \verb+'cargo doc'+ command generates and hosts documentation, and it can be published on platforms like \verb+docs.rs+.
+    \item 6. Project Initialization: Cargo provides a convenient way to initialize new Rust projects with the \verb+'cargo new'+ command. This command sets up a new project with 
+        the necessary directory structure and initial files.
+    \item 7. Publishing: Cargo facilitates the process of publishing Rust packages (crates) to the official package registry, crates.io. This makes it straightforward for 
+        developers to share their libraries and projects with the wider Rust community.
+\end{itemize}
+
+In essence, Cargo streamlines various aspects of Rust development, offering a standardized and efficient workflow for managing dependencies, building projects, testing 
+code, generating documentation, and publishing packages. Its integration with the Rust toolchain contributes to the language's reputation for being developer-friendly and 
+conducive to building robust and reliable systems.
+
 \section{gRPC}
 \textbf{Author: Maximilian Dragosits}
 
@@ -645,37 +675,197 @@ documentation. The parser performs several key processes, culminating in the cre
 \subsection{Rusqlite}
 \textbf{Author: Christoph Fellner}
 
-Rusqlite is an ergonomic wrapper for using SQLite from Rust similar to rust-postgres. It provides an easy-to-use interface to work with SQLite databases. Using the functions provided by rusqlite you can perform all the common database operations, such as creating tables, inserting Data, querying data, and more simply within your code.
-We choose this library for SQLite mainly because of three reasons:
+Rusqlite\footcite{rusqlite} emerges as a pivotal library, facilitating the seamless integration of SQLite capabilities into Rust code, akin to its analog, 
+rust-postgres. This library provides a sophisticated interface, streamlining the execution of diverse database operations within the Rust programming paradigm. 
+From the orchestration of table creation and data insertion to the intricacies of data querying, rusqlite empowers developers with a versatile toolset for 
+database manipulation directly within their Rust codebase.
+
+The decision to adopt rusqlite in our specific use case is underpinned by a meticulous consideration of three critical factors:
+
 \begin{enumerate}
-	\item \textbf{Portability:} SQLite databases can be used across different platforms and operating systems. Given the fact that RECT operates on different small Controllers, portability is very important.
-	\item \textbf{Configuration:} There is no need for any complex setup or configuration when working with SQLite. We only need a few tables to work with, so having to configure a database on each controller wouldn't be worth the effort.
-	\item \textbf{Local:} SQLite doesn't need any separate server or installation. It contains all the features we need in a small an independent package.
+    \item \textbf{Portability:} SQLite's commendable attribute of cross-platform compatibility across diverse operating systems assumes paramount importance in 
+    our context at RECT. Given the heterogeneous nature of small controllers operating within our system, the ability to seamlessly deploy SQLite databases 
+    across different platforms becomes imperative for maintaining operational uniformity and efficiency.
+    
+    \item \textbf{Configuration:} In stark contrast to database systems that necessitate intricate setup procedures, SQLite obviates the need for complex 
+    configurations. The simplicity inherent in working with SQLite aligns seamlessly with our operational requirements. The nominal requirement for a limited 
+    number of tables further amplifies the pragmatic appeal of SQLite. In contrast to configuring a database on each controller, the minimal setup overhead 
+    consolidates SQLite as the optimal choice for our streamlined operational demands.
+    
+    \item \textbf{Local:} SQLite distinguishes itself by eschewing the necessity for an external server or intricate installations. Its self-contained package 
+    encapsulates all requisite features within a local environment. This intrinsic localization resonates with the operational ethos at RECT, aligning with the 
+    need for an efficient and autonomous database solution without the encumbrance of external dependencies.
 \end{enumerate}
 
-In our case we use rusqlite in order to save the config.json file, containing date for the available connections. Accessing the Data from the database is simply much quicker and saver than reading from the file when we need it.
+In our specific instantiation, rusqlite is strategically employed for the persistent storage of the config.json file, a repository of vital data concerning 
+available connections. The judicious selection of rusqlite in this context is grounded in its inherent advantages. The utilization of rusqlite markedly enhances 
+the expediency and security of data access compared to traditional file-based retrieval mechanisms. This methodological choice contributes not only to the 
+enhanced performance of our system but also underscores the commitment to preserving the integrity and reliability of configuration data, pivotal to the seamless
+functionality of our application within the broader scientific and technological landscape.
 
 \subsection{Serde}
 \textbf{Author: Christoph Fellner}
 
-Serde is a framework for rust, used for \textbf{ser}ializing and \textbf{de}serializing data structures efficiently and generically. You can find a detailed serde overview \href{https://serde.rs/}{here}.
+Serde\footcite{serde} emerges as a pivotal tool in the Rust programming ecosystem, dedicated to the efficient and generic serialization and deserialization 
+(\textbf{ser}ialization/\textbf{de}serialization) of data structures. Offering a robust foundation for these operations, Serde plays a crucial role in optimizing
+the handling of data structures within the Rust programming paradigm. For a comprehensive overview of Serde, interested readers can refer to the detailed 
+documentation available at \href{https://serde.rs/}{https://serde.rs/}.\newline
 
-Serde provides functions to deserialize JSON-files in a simple and quick way, this allows us to use the data from the config.json file in our program with just a few lines of code.
+The salient features of Serde become particularly evident in its capability to facilitate the seamless deserialization of JSON files with efficiency and 
+simplicity. This functionality proves invaluable in our context, where the utilization of data from the config.json file is an integral part of our program. 
+Serde streamlines this process, enabling us to incorporate the data effortlessly into our program with just a few lines of code.\newline
 
-With serde we deserialize the data from the JSON-file into a self-made rust structure, which allows us to use the data properly.
+By leveraging Serde, we engage in a streamlined deserialization process wherein the data from the JSON file is efficiently transformed into a custom Rust 
+structure. This bespoke structure, tailored to our specific needs, enables us to harness the deserialized data seamlessly within our program. The utilization of
+Serde thus transcends mere deserialization, providing us with a powerful and adaptable mechanism to work with the data in a meaningful and efficient manner.\newline
+
+In essence, the incorporation of Serde into our workflow is not merely a technical choice but a strategic one, driven by the need for optimized data handling 
+and seamless integration of external data sources. Through Serde, our program gains a robust and flexible capability to decode JSON files, thereby enhancing the
+overall efficiency and maintainability of our Rust-based application.
 
 \subsection{Tokio}
 \textbf{Author: Christoph Fellner}
 
-Tokio is asynchronous runtime for rust. In rust asynchronous code doesn't run on it's own in order to make it work the programmer has to use a runtime like Tokio. You can find more in depth descripton of Tokio \href{https://tokio.rs/tokio/tutorial}{here}.
+Tokio\footcite{tokio} serves as a pivotal asynchronous runtime for Rust, addressing the intricacies of asynchronous code execution in the language. In Rust, 
+asynchronous code does not inherently execute independently; rather, it necessitates the use of a runtime like Tokio to effectively function. For an in-depth 
+exploration of Tokio and its capabilities, readers are encouraged to delve into the detailed tutorial available at 
+\href{https://tokio.rs/tokio/tutorial}{https://tokio.rs/tokio/tutorial}.\newline
 
-We picked Tokio because it is the most widely used runtime for async rust code. There are also a lot of Tutorials for Tokio and it is fairly simple to use.
+The selection of Tokio as our asynchronous runtime is underpinned by several compelling reasons. Chief among them is Tokio's status as the preeminent and widely
+adopted runtime for asynchronous Rust code. Its widespread usage within the Rust community attests to its robustness and reliability in facilitating asynchronous
+programming paradigms.\newline
 
-Tokio as our asynchronous runtime allows us to execute multi-threaded async code safely.
+Moreover, Tokio's popularity is bolstered by the abundance of tutorials and educational resources available, making it approachable for developers seeking to 
+harness the power of asynchronous programming in Rust. The simplicity and accessibility of Tokio's interface contribute to its widespread adoption, enabling 
+developers to swiftly grasp and implement asynchronous patterns in their codebase.\newline
+
+One of the key advantages of Tokio lies in its ability to execute multi-threaded asynchronous code safely. This capability is crucial in scenarios where 
+parallelism and concurrency are essential, such as in web servers or applications handling numerous concurrent tasks. Tokio's adept handling of multi-threaded 
+asynchronous code ensures the efficient execution of tasks without compromising safety or introducing race conditions.\newline
+
+
+In summary, our decision to embrace Tokio as the asynchronous runtime for our Rust project is grounded in its status as the leading runtime in the Rust 
+ecosystem, coupled with its user-friendly design and robust support for multi-threaded async code execution. This strategic choice positions us to harness the 
+full potential of asynchronous programming in Rust, ensuring the responsiveness and scalability of our application.
+
+\begin{verbatim}
+#[tokio::test(flavor = "multi_thread", worker_threads = 2)]
+async fn client_test(){ 
+    let ser = test_server::run_server();
+    println!("Server started");
+    let cl = test_client::client_test();
+    println!("Client started");
+
+    tokio::select! {
+        biased; 
+        _ = ser => panic!("server returned first"),
+        _ = cl => (),
+    }           
+}
+\end{verbatim}
+
+Using Tokio makes it possible to run multiple async functions at the same time. In the example above we start a server and a client and then wait for the first one to finish. 
+This is done using the tokio::select! macro. The macro takes a list of futures and waits for the first one to finish. In our case we want to wait for the client to finish 
+first, so we panic if the server finishes first. If the client finishes first we just return. Any occoring Errors are cathed and returned as Result.
+The two functions \verb+run_server+ and \verb+client_test+ are both async functions. The server function is a simple echo server, that waits for a message from the client and 
+then sends it back. The client function sends a message containing an url and a vote to the server and then waits for the response. Server and Client are connected via a gRPC 
+connection. 
+
+\subsection{Tokio Rusqlite}
+\textbf{Author: Christoph Fellner}
+
+Tokio Rusqlite\footcite{tokiolite} stands as an innovative library at the intersection of Tokio and Rusqlite, synergizing their functionalities to enable 
+asynchronous database interactions. This library represents a strategic amalgamation, providing developers with the capability to leverage Rusqlite seamlessly 
+within an asynchronous programming paradigm facilitated by Tokio.\newline
+
+The amalgamation of Tokio and Rusqlite in Tokio Rusqlite addresses the growing demand for asynchronous database operations in Rust. By integrating Tokio's 
+asynchronous runtime with Rusqlite's capabilities, this library empowers developers to perform database operations without blocking the execution of other tasks.
+This is particularly advantageous in scenarios where responsiveness and concurrency are paramount.\newline
+
+Key features of Tokio Rusqlite include the ability to execute Rusqlite operations asynchronously, allowing for non-blocking interactions with SQLite databases. 
+Asynchronous operations are vital in applications that require efficient handling of concurrent tasks, such as web servers, where multiple requests may be 
+processed simultaneously.\newline
+
+The seamless integration of Tokio Rusqlite into our development stack augments the versatility of Rusqlite by enabling asynchronous database operations. This is 
+especially valuable in scenarios where responsiveness and scalability are critical factors. Leveraging Tokio Rusqlite in our project equips us with a robust 
+solution for handling database interactions in an asynchronous manner, aligning with contemporary trends in Rust programming and distributed system 
+architectures.
 
 \subsection{Tonic}
 \textbf{Author: Christoph Fellner}
 
-Tonic is a rust framework that implements gRPC.
+Tonic\footcite{tonic}, a Rust library that embodies the principles of gRPC, distinguishes itself with a keen focus on high performance, interoperability, and 
+flexibility. Its seamless integration with the asynchronous paradigm, particularly its compatibility with Tokio, positions Tonic as a versatile tool for 
+developing efficient and responsive distributed systems.\newline
+
+The synergy between Tonic and Tokio is a noteworthy feature, as Tonic is crafted to align seamlessly with Tokio's asynchronous model. This compatibility not 
+only enhances the performance of asynchronous Rust code but also simplifies the integration of Tonic into existing Tokio-based projects. Leveraging async/await 
+functionality, Tonic facilitates a synchronous coding style in an asynchronous environment, making it a natural fit for projects utilizing Tokio.\newline
+
+A distinctive aspect of Tonic lies in its support for gRPC, a high-performance remote procedure call (RPC) framework. Tonic employs Protocol Buffers to describe 
+interfaces, providing a language-agnostic and efficient means of defining the structure of data. This approach not only enhances interoperability but also 
+allows for the generation of necessary Rust code based on the defined Protocol Buffers, automating a significant portion of the development process.\newline
+
+The utilization of Tonic in our project streamlines the definition of interfaces by leveraging Protocol Buffers. This enables us to articulate our interface 
+specifications in a clear and concise manner, and Tonic then takes care of the Rust code generation, reducing manual effort and potential errors.\newline
+
+In essence, Tonic serves as a powerful tool in our technology stack, providing a performant and flexible implementation of gRPC for Rust. Its compatibility with 
+Tokio, support for async/await, and seamless integration with Protocol Buffers contribute to the development of robust and efficient distributed systems. By 
+choosing Tonic, we aim to leverage its capabilities to enhance the performance, interoperability, and maintainability of our Rust-based projects.\newline
+
+The example for Tokio above uses the Tonic library to convert the following Protocol-Buffer-file into Rust code, in order to use it in the client and server 
+functions as Service.
+
+\begin{verbatim}
+syntax = "proto3";
+package voting;
+        
+service Voting {
+    rpc Vote (VotingRequest) returns (VotingResponse);
+}
+        
+message VotingRequest {
+    string url = 1;
+        
+    enum Vote {
+        UP = 0;
+        DOWN = 1;
+    }
+    Vote vote = 2;    
+}
+        
+message VotingResponse {
+    string confirmation = 1;
+}
+\end{verbatim}
+
+In order to translate the Protocol Buffer into Rust code we use the \verb+include_proto!+ function from the Tonic library. This function takes the path to the 
+Protocol-Buffer-file and generates the Rust code for the Service.
+
+\subsection{Docker}
+\textbf{Author: Christoph Fellner}
+
+Docker\footcite{docker} serves as an indispensable tool in modern software development, offering a containerization solution that facilitates the efficient 
+execution of diverse applications within isolated environments known as containers. These containers, encapsulating applications and their dependencies, operate 
+independently, enabling the concurrent execution of multiple containers on a single host system. The versatility of Docker extends from lightweight services 
+like echo servers to complex web applications, making it a versatile choice for a spectrum of development and deployment scenarios.\newline
+
+One of Docker's compelling use cases is the encapsulation of databases within containers. This capability enables the creation of portable and reproducible 
+database environments, fostering ease of testing, development, and even benchmarking. In our specific use case, Docker proved instrumental in benchmarking 
+different databases, allowing us to evaluate and identify the most suitable database for our application's requirements.\newline
+
+Docker's open-source nature and compatibility across major operating systems contribute to its widespread adoption. Its availability on diverse platforms 
+empowers developers to create consistent environments, irrespective of the underlying infrastructure. This feature is particularly advantageous in scenarios 
+where multiple applications need to coexist on the same machine, as Docker mitigates compatibility concerns and ensures the isolation of applications from the 
+local infrastructure.\newline
+
+The ability to isolate applications from the host system's infrastructure is a key feature of Docker. This isolation not only enhances compatibility but also 
+simplifies the deployment process. Developers can confidently run multiple applications on a single machine without the fear of conflicts or compatibility 
+issues, streamlining the development and testing phases.\newline
+
+In summary, Docker's role in our project extends beyond conventional application development and deployment; it serves as a pivotal tool for benchmarking 
+databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in our quest to 
+identify the optimal database solution for our specific use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
+a cornerstone technology in contemporary software development and deployment practices.
 
 \filbreak
