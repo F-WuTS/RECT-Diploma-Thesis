@@ -79,6 +79,15 @@ Which leads to the above code, which has specifies, that the ConnectionManager i
 	\item Mutex. The mutex ensures, that only one process at a time can hold a reference to the held object in order to prevent issues such as race-conditions \footcite{tokio-mutex}
 \end{itemize}
 
+Any application using the CommLib needs to interact with this object in order to be able to use the communication methods provided by the library. But what functionality does the ConnectionManager provide?
+
+\begin{itemize}
+	\item Setting a connection to a database, which is used to read the connections configured by the clients.
+	\item Receiving streams, requests and responses through any of the configured connections.
+	\item Sending streams, requests and responses through any of the configured connections.
+	\item Initiating an update of the connections, which checks changes in the configuration found in the database and the connections, that are currently active in the ConnectionManager.
+\end{itemize}
+
 % TODO Pretend you didn't already make everything railway programming and it still crashes because of stupid things.
 
 \subsection{Profiling and Benchmarking}
