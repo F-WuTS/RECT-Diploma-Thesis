@@ -14,16 +14,16 @@ project through \verb+cargo add <dependency-name> -F <dependency-name>/<feature-
 project. The first iteration of the project then had the following dependencies:
 
 \begin{itemize}
-	\item{tokio}
-	\item{bluer}
-	\item{anyhow}
+	\item tokio
+	\item bluer
+	\item anyhow
 \end{itemize}
 
 All in all the commands used to generate the CommLib project and install all dependencies looked like this:
 \newline
 \begin{minipage}{\textwidth}
 	\begin{lstlisting}[language=bash, caption=Setup Commands for CommLib]
-		cargo new --lib comm_lib && cd comm_lib
+		cargo new --lib CommLib && cd CommLib
 		cargo add tokio bluer anyhow -F tokio/full,bluer/full
 		cargo build
 	\end{lstlisting}
@@ -55,14 +55,14 @@ The identification mechanism used in the above case of sending data to a single 
 The only adaptation required for the requesting and responding application to be able to send and receive broadcasts is to create a proxy object on the receiving side that acts as a single 
 receiver to receive the data for multiple connections and then forward that data to all subscribing processes.  
 
-The last use case covered by comm\_ lib is the sending of a continuous stream of data. An example of this would be a sensor continuously sending data. To avoid the overhead of sending values over
-protocols used in comm\_ lib, it was decided to require a separate interface, e.g. a socket, that is used only for streaming the described data. This means that when the receiving side
+The last use case covered by CommLib is the sending of a continuous stream of data. An example of this would be a sensor continuously sending data. To avoid the overhead of sending values over
+protocols used in CommLib, it was decided to require a separate interface, e.g. a socket, that is used only for streaming the described data. This means that when the receiving side
 is establishing a connection, it only needs to look at the identifier, e.g. the IP address, of the connected peer to decide which process to pass the data to, instead of reading a connection 
 name from the packet sent, minimising the size of the packets that need to be sent. 
 
 % TODO Write about the connection manager and also program that stuff
 \subsubsection{The ConnectionManager}
-The most important component in the whole comm\_ lib is the ConnectionManager. It is a singleton object, which as the name would suggest manages all of the needed and used connections that are
+The most important component in the whole CommLib is the ConnectionManager. It is a singleton object, which as the name would suggest manages all of the needed and used connections that are
 requested by the client programs. Because the ConnectionManager is a singleton and because it must be able to handle being in concurrent execution environments the Rust borrow-checker has very
 special requirements for how it is accessed. To meet these requirements the static variable holding the ConnectionManager singleton has needs to be wrapped in several objects to ensure it is
 thread-safe, as well as making sure, that it is initialized and freed, when there are no references left to its smart-pointer. 
@@ -74,9 +74,9 @@ thread-safe, as well as making sure, that it is initialized and freed, when ther
 Which leads to the above code, which has specifies, that the ConnectionManager is wrapped in the following types.
 
 \begin{itemize}
-	\item{Lazy. This type allows any object held by it to be initialized only once and only when it is first called upon \footcite{once-cell-lazy}}
-	\item{Arc. Arc stands for atomic reference counter and is a type of smart-pointer used in rust, when pointers need to be thread safe \footcite{rust-arc}}
-	\item{Mutex. The mutex ensures, that only one process at a time can hold a reference to the held object in order to prevent issues such as race-conditions \footcite{tokio-mutex}}
+	\item Lazy. This type allows any object held by it to be initialized only once and only when it is first called upon \footcite{once-cell-lazy}
+	\item Arc. Arc stands for atomic reference counter and is a type of smart-pointer used in rust, when pointers need to be thread safe \footcite{rust-arc}
+	\item Mutex. The mutex ensures, that only one process at a time can hold a reference to the held object in order to prevent issues such as race-conditions \footcite{tokio-mutex}
 \end{itemize}
 
 % TODO Pretend you didn't already make everything railway programming and it still crashes because of stupid things.
