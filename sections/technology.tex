@@ -2,8 +2,15 @@
 
 
 \section{Wombat}
+The KIPR Wombat is the Controller currently used in the Botball competition. It consists of a raspberry pi 3b, a display and a casing, designed to include all necessery elements needed for the competition, such as ports for the various sensors, motors and servos allowed to be used and a cutout for the battery needed to power the used parts. Through the use of a raspberry pi 3b it is capable of wireless LAN and Bluetooth Low Energy. The Wombat uses the KISS (KIPR Instructional Software System) Web IDE developed by the KISS Institute for Practical Robotics. The current version supports ANSI C and can be used with a web browser and WiFi on any operating system.
 
 \section{Python}
+Python is a powerful high-level, general purpose, object-oriented progrmming language with a design philosophy that emphasizes the readability of the written code through the use of significant indentation. 
+It was created by Dutch programmer Guido van Rossum as a successor to ABC and was first released in 1991 with the capability of exepction handling. 
+Features such as list comprehensions, reference counting, Unicode support and cycle-detecting garbage collections were introduced with Python 2.0 on 16 October 2000. After this release Python became a community-driven, open source project.
+Due to a lack of backward compability, the switch from 2.7 to the 3.0 update, released in 2008, caused a big controversy. Folowing this most programs written in 2.7 had to be rewritten to support 3.0 update. 
+Python has gained enormous popularity since the first release in the early 1990s and is used in a wide range of applications, ranging from web development to machine learning. 
+The most important feature of the programming language Python is its support for mulitple programming paradigms, including object-oriented, imperative and functional programming. It was designed to be highly extensible via modules, rather than building all of itfunctionality into its core.
 
 \section{C++}
 \textbf{Author: Maximilian Dragosits}
@@ -419,6 +426,17 @@ The cluster tree topology forms a hierarchical structure that organises devices 
 \subsubsection{Hybrid Architectures}
 BLE applications often use hybrid architectures that combine multiple topologies to meet different needs. For example, a smart building might use a mesh network for inter-floor sensor communication, a star network for room-level control (with each room having a central controller), and a hub-and-spoke network for centralised management and integration of various systems within the building.
 
+\section{WiFi}
+\textbf{Author: Timon Koch}
+
+\subsection{History}
+
+\subsection{Usage}
+
+\subsection{Function}
+
+\subsection{Advancements}
+
 \section{Libraries}
 
 \subsection{Catch2}
@@ -682,6 +700,21 @@ documentation. The parser performs several key processes, culminating in the cre
     \item[] In situations where the output format is LaTeX, Doxygen converts HTML elements within the comment blocks into LaTeX commands. This transition ensures consistency and compatibility when generating LaTeX documents. It allows developers to choose the format that best suits their documentation needs.
 \end{itemize}
 
+\subsection{Pytest}
+\textbf{Author: Timon Koch}
+Pytest is a testing framework for the Python programming language. It enables the creation of both simple unit tests and complex functional tests. Key features include test discovery, parameterized testing, and plugin support, making it a popular choice among Python developers. 
+ 
+\subsubsection{Test Discovery}
+The framework has the capability to automatically discover and execute test cases through a process known as 'test discovery'. By default, files that begin with 'test_' or end with '_test' are recognized as test files, although it is possible to explicitly mention other filenames. It is necessary for test method names to begin with 'test', as Test functions are identified by their names.
+It is possible to either execute a specific test by indicating the corresponding identifier or execute all tests simultaneously. In the latter case, pytest will automatically detect and execute all files and functions that contain tests.  
+By utilizing Pytest's plugin system, it becomes feasible to personalize and explore tests using supplementary mechanisms. The plugins available provide integration with diverse test frameworks, enabling the exclusion of particular tests or designating them for customized behaviors.
+
+\subsubsection{Fixtures}
+Fixtures are a useful feature that can help modularise and share setup code across multiple tests, resulting in improved code by increasing readability, maintainability and reusability.
+They are defined as functions identified by the '@pytest.fixture' decorator. Different scopes may be specified to determine how long the fixture should last.
+
+\subsubsection{Unit Tests}
+Pytest provides compatibility with the 'unittest' testing framework. It is possible to discover and run both Pytest-style test functions and unittest test cases in the same project. This can facilitate a seamless transition between the two frameworks while leveraging the additional features provided by Pytest.
 
 \subsection{Rusqlite}
 \textbf{Author: Christoph Fellner}
