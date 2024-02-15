@@ -224,10 +224,70 @@ database and then ran a benchmark test on each of them. The benchmark test was a
 purposefully simple, because we won't be using the database for complex queries. More about the benchmark tests can be found \href{tests.tex}{here}.
 
 \subsection{Database Structure}
+% TODO: ERD einfügen
+The RECT database is structured according to the widely adopted star model, providing a robust framework for efficiently managing connection data. Comprising four distinct 
+tables, namely connections, client, method, and address, this database architecture ensures comprehensive organization and accessibility of critical information.\newline
 
+The connections table serves as a central hub, linking to the other three tables through their respective IDs and storing unique identifiers for each connection. 
+Meanwhile, the client table houses data pertaining to the clients associated with specific connections, facilitating targeted access to connection information. In the 
+method table, precisely three objects—BLE (Bluetooth Low Energy), TCP (Transmission Control Protocol), and UDP (User Datagram Protocol)—are stored, representing the 
+available connection types within the RECT ecosystem. Additionally, the address table stores essential network information, including IP addresses and ports, with the 
+provision for a null port value in instances where the connection method is BLE.\newline
+
+By adopting this schema, the RECT database optimizes accessibility to connection data for clients by establishing seamless linkages between tables. Leveraging the Rusqlite
+library, the backend components can efficiently query and retrieve pertinent information, enabling effective communication over the designated connections. Moreover, this 
+database structure facilitates the extraction of various insights and metrics, empowering users to select and analyze data such as:
+
+\begin{itemize}
+  \item[] How many BLE, TCP or UDP connections are available?
+  \item[] All connections of a specific client.
+  \item[] All clients that have a specific connection.
+  \item[] All connections that are available.
+  \item[] How many connections are available in total?
+  \item[] Are there more connections to the same client?
+\end{itemize}
 
 \subsection{Database usage}
 
+The RECT Database serves as a pivotal resource accessible not only to the Rust Interface but also to the entirety of the backend infrastructure within the RECT stack. 
+Acting as the backbone for data management, the Rust Interface undertakes the essential task of configuring the database, a process that includes the insertion of data 
+sourced from the JSON file into its tables. This data encompasses a comprehensive inventory of available connections tailored specifically for the local RECT Client system.
+Each connection within this dataset is meticulously characterized by a unique identifier, a designated communication method (be it BLE, TCP, or UDP), and a corresponding 
+address composed of an IP address and port number.\newline
+
+Upon completing the database setup and population with pertinent connection data, the backend components of the RECT stack rely on this repository to establish and manage 
+communication channels. However, before the backend can effectively harness the capabilities of the database, the Rust Interface must first initialize the database setup 
+and meticulously inject the JSON-derived information. Following this preparatory phase, the Interface seamlessly facilitates backend access to the database via the CommLib,
+thereby ensuring a streamlined pathway for communication. Subsequently, armed with access to this centralized database, the backend components adeptly navigate and utilize
+the provided connections to facilitate efficient communication processes tailored to the demands of the RECT ecosystem.
+
+\section{Rust Interface}
+\textbf{Author: Christoph Fellner}
+One of the main sections of the RECT project is the Rust Interface. The Rust Interface is the part of the RECT stack that is responsible for the communication between 
+the different parts of the stack. That means that the Rust Interface is responsible for the communication between the CommLib and the RECT Database. The RECT Database is 
+part of the Rust Interface, it stores Data about all available RECT connections. The Rust Interface also communicates with the Python Service and the C++ Service. So 
+basically the Rust Interface it responsible for the communication between the frontend and the backend of the RECT stack.\newline
+
+In order to achieve this functionality the first step was to create a Rust module for gRPC communication. The gRPC communication is done with the help of the tonic library.
+The tonic library is a gRPC library for Rust, which is based on the tokio library. The tokio library is a runtime for writing reliable asynchronous applications with Rust.
+The gRPC module is responsible for the communication between the Rust Interface and the Python Service and the C++ Service. The gRPC module is also responsible for the 
+communication between the Rust Interface and the CommLib.\newline 
+
+The second step was to create a module for the RECT Database. The RECT Database is a in-memory SQLite database. The module uses the rusqlite library with the addition of
+the tokio-rusqlite library. The tokio-rusqlite library is a asynchronous version of the rusqlite library. The Rust Interface implements the RECT Database, creates the 
+necessary tables and provides the necessary functions to communicate with the database. The module is also responsible for the inserts of the available connections from a
+JSON file into the database. The JSON file is created by the frontend and contains all available connections for the RECT stack.\newline
+
+For the second step to work the Rust Interface also needs to be able to read the JSON file. The JSON file is read by another module of the Rust Interface. The module uses
+the serde library to read the JSON file. The serde library is a framework for serializing and deserializing Rust data structures efficiently and generically. The module 
+defines suitable structures for the data strored in the JSON file and then reads the file and stores the data in the defined structures. The database module then takes
+this data and stores it in the RECT database.\newline
+
+With these modules completed the Rust Interface is able to communicate with the CommLib, the Python Service and the C++ Service. In conclusion, the Rust Interface plays a 
+crucial role within the RECT project, facilitating communication between various components of the stack. Through the implementation of modules for gRPC communication and 
+the RECT Database, the Rust Interface ensures seamless interaction between the frontend and backend elements. Leveraging libraries such as tonic, tokio, rusqlite, and 
+serde, the interface achieves reliable and efficient communication, handling tasks such as database management and data serialization effectively. Overall, the Rust 
+Interface serves as a vital bridge, enabling smooth operation and integration within the RECT stack.
 
 \section{Rust Service}
 \subsection{Documentation}
