@@ -72,6 +72,7 @@ thread-safe, as well as making sure, that it is initialized and freed, when ther
 	    Lazy::new(|| Arc::new(Mutex::new(ConnectionManager::new())));
 \end{lstlisting}
 Which leads to the above code, which has specifies, that the ConnectionManager is wrapped in the following types.
+%TODO: Write about the rectcpp class
 
 \begin{itemize}
 	\item Lazy. This type allows any object held by it to be initialized only once and only when it is first called upon \footcite{once-cell-lazy}
@@ -236,14 +237,155 @@ purposefully simple, because we won't be using the database for complex queries.
 \textbf{Author: Maximilian Dragosits}
 The C++ Implementation is one of the two outward facing components of the RECT stack. Alongside the Python Implementation 
 it serves as a library in order for developers to be able to create robots, that are able to communicate with each other, much
-easier then before. This is accomplished by abstracting most of the complexities of gRPC behind the \textit{Rectcpp} class. 
+easier then before. This is accomplished by abstracting most of the complexities of gRPC behind the \textit{Rectcpp} class. \\
 
 The class only needs to be initialized with IP-Addresses for the different services that it offers and be given the IP of 
 another of its kind and then it should be a simple act of using the predefined methods within the class in order to 
 effortlessly communicate with other robots or devices running this or the Python frontend implementation.
 
 \subsection{Rectcpp class}
+%TODO: Write about the rectcpp class
+The \textit{Rectcpp} class is the foundation of the C++ implementation, providing users with intuitive functions to control a diverse range of RECT services. 
+These functions simplify the management of multiple gRPC services by condensing them into straightforward calls. For example, the listen method streamlines 
+this process. With only one line of code, users can engage in listening activities while the underlying complexities are abstracted away. This encapsulation 
+not only improves usability but also promotes efficient and robust utilization of RECT's capabilities, enabling developers to focus on their core objectives 
+without being burdened by implementation details.
+
+\begin{lstlisting}[language=c++]
+  int Rectcpp::listen(std::string connectionName, std::string topic, std::string& returning);
+\end{lstlisting}
+
+The function requires users to provide the name of the connection to be monitored and specify the topic to which the incoming message must adhere. By supplying 
+these parameters to the \textit{listen} function, users establish the criteria for message reception and filtration. When a message that meets the specified conditions 
+arrives at the designated connection and aligns with the prescribed topic, it is retrieved. The function extracts the contents of the received message and 
+returns them to the user as a string. This approach ensures a seamless and structured message handling process, allowing users to manage communication flows 
+efficiently within the RECT framework.\\
+
+There are two importent facets of this class aside from the simplified interaction with gRPC services. The hosting of its own services and the management of
+connections to other services.
+
+\subsubsection{Construction}
+When invoking the constructor of the \textit{Rectcpp} class, users must provide the IP addresses and port numbers for the three distinct servers designated to launch the 
+three different services. This crucial initialization step requires the network parameters to be provided in string format. The three services that are integral 
+to this project are:  
+
+\begin{itemize}
+  \item{Config Service:} The Service used to send and recieve config data between two systems.
+  \item{Listen Service:} The Service used to listen an subscribe to certain topics and then inform the listening clients when a message arrives.
+  \item{Send Service:} The Service used to send messages with topics to other systems.
+\end{itemize}
+
+During the construction phase, instantiation of the services occurs, followed promptly by the commencement of a dedicated server for each. This initialization 
+process is facilitated seamlessly through the utilization of the Serverbuilder module from the gRPC libraries, which streamlines the setup and configuration of 
+servers. However, despite the robust capabilities of Serverbuilder, challenges arose during the development of this library, primarily stemming from the absence 
+of comprehensive documentation regarding the precise methodology for integrating the instantiated classes with the Serverbuilder module. This ambiguity led to 
+several stumbling blocks and intricacies encountered along the path of library development.
+
+\subsubsection{Connections}
+Connections within this class are managed using a C++ map structure, which allows for the binding of client instances to servers hosting the three services, 
+all under user-assigned names.  This approach significantly simplifies the usability of the class, replacing the need for cumbersome IP addresses and port 
+numbers with easily discernible and memorable names. \\
+
+The creation of connections is achieved through two distinct pathways: the general-purpose \textit{createConnection} function and its more specialized counterparts. 
+The \textit{createConnection} function instantiates connections for all three services at once. In contrast, the more specific functions cater to individual service 
+connections, depending on their designated name. For example, the \textit{createListenConnection} method requires only the name of the connection and the corresponding 
+IP address. This establishes a connection solely with the Listen Service hosted at the provided address. This granular approach streamlines the process of 
+establishing connections and enhances the modularity and flexibility of the Rectcpp class. Users can tailor their interactions with specific services according 
+to their requirements.
+
+\subsection{Definition of CMake file}
+%TODO: Write about the cmake file and the grpc service definition inside the cmake file
+In order to compile and generate the gRPC services within this library CMake was used. The CMakeLists file of this project contains the standard CMake commands 
+in order to make it into a C++ libary. Along side this are the lines responsible for ProtoBuf to generate the base classes for the implementation of gRPC. \\
+%Maybe split this into two subsubsection: 1. general CMake for the library and 2. protobuf generation
+First the proto files that will be turned into these base classes are registered using these lines: 
+\begin{lstlisting}
+  file(GLOB RectVOneConf "${CMAKE_CURRENT_SOURCE_DIR}/proto/conf.proto")
+  file(GLOB RectVOneListen "${CMAKE_CURRENT_SOURCE_DIR}/proto/listen.proto")
+  file(GLOB RectVOneSend "${CMAKE_CURRENT_SOURCE_DIR}/proto/send.proto")
+  file(GLOB RectVOneMessage "${CMAKE_CURRENT_SOURCE_DIR}/proto/message.proto")
+  set(PROTO_CONF_FILES ${RectVOneConf})
+  set(PROTO_LISTEN_FILES ${RectVOneListen})
+  set(PROTO_SEND_FILES ${RectVOneSend})
+  set(PROTO_MESSAGE_FILES ${RectVOneMessage})
+\end{lstlisting}
+The first three lines are for the files pertaining to the services and the last one is for the message type used by them in order to communicate. They are registered
+using the \textit{file} command with the \textit{GLOB} keyword under a chosen name in order to refer back to them later in the CMake file. \\
+
+After this each of the services is assigned a library using the \textit{add\_library} command and then the required dependencies for them to function are included using
+\textit{target\_link\_libraries}. These are in this case \textit{libprotobuf}, \textit{grpc} and \textit{grpc++}.\\
+
+Finally the \textit{protobuf\_generate} command is used to signify to ProtoBuf to generate the base classes when the project is built using CMake. 
+\begin{lstlisting}
+  protobuf_generate(TARGET rect-conf-service LANGUAGE cpp)
+
+  protobuf_generate(
+      TARGET
+        rect-conf-service
+      LANGUAGE
+        grpc 
+      GENERATE_EXTENSIONS
+        .grpc.pb.h
+        .grpc.pb.cc
+      PLUGIN 
+        "protoc-gen-grpc=${grpc_cpp_plugin_location}"
+  )
+\end{lstlisting}
+In this example the \textit{protobuf\_generate} is used twice. The first one sets the target files to be used during generation and the programming language 
+for the classes to be created in. The second instance of the command informs it what type of service and the appropriate extensions for the generated files. 
+The location of the gRPC generation plugin is also given.\\
+
+This is then repeated for all of the services, that will be created. This is done in order to make it easier to implement gRPC within this library. 
+The implementation of the classes generated by ProtoBuf is then accomplished by the manual creation of a class that extends the previously automatically 
+created service class. This involves coding the functions that were originally defined within the proto files and then made into functions within the service classes.
+
+\subsection{gRPC Serverbuilder}
+%TODO: Write about the problem with the server builder
+During the development of the \textit{Rectcpp} class, a critical issue surfaced with the Serverbuilder provided by the gRPC library. The problem stemmed from the method of 
+passing the instance of the service to the builder, resulting in a compilation failure within the library. To ensure the smooth operation and continuous running of 
+the servers, start functions were meticulously crafted for each of the three services. These functions employed threads containing lambda functions, responsible for 
+initiating the servers and awaiting input from remote procedure calls. \\
+
+Initially, all service classes were designated as private members of the main class and instantiated during its construction. Subsequently, these instances were 
+passed to the functions responsible for spawning the server threads. However, the Serverbuilder employed in these functions could not accommodate this method of 
+passing service objects.\\
+
+The obscure and extensive error messages compounded the troubleshooting process, prolonging the resolution period. Consequently, numerous approaches were explored 
+to access the pre-initialized objects within the start function, and notably within the lambda function executing the server thread. Techniques ranged from passing 
+objects by reference to accessing class members from the function and copying them into new instances before passing them to the lambda functions. Regrettably, none 
+of these strategies proved effective in resolving the issue. \\
+
+After considerable effort and frustration, a breakthrough occurred when a simplified version of the \textit{Rectcpp} class was reconstructed. The pivotal realization was that 
+constructing the service classes outside the lambda function was counterproductive. Instead, the solution lay in providing all necessary data for their initialization 
+within the start functions, allowing them to be instantiated during the thread runtime. This adjustment finally circumvented the perplexing obstacle, enabling the 
+seamless integration and functioning of the servers.\\
+
+\subsection{gRPC CreateChannel}
+%TODO: Write about the problem with CreateChannel
+The other major issue that presented itself during development beside the problem with the Serverbuilder mentioned in the previous section is the throwing of a 
+memory missmanegment error during runtime whenever the \textit{CreateChannel} function from the gRPC library is called within the functions responsible for 
+connecting a client to a server. \\
+
+The specific line of code, that results in this error looks like this:
+\begin{lstlisting}[language=c++]
+  auto channel = CreateChannel(confAddress, InsecureChannelCredentials());
+\end{lstlisting}
+As can be seen a gRPC channel is returned by the function with a connection to the specified address. Here the IP-Address and Protnumber of the server to connect to
+is contained within the variable \textit{confAddress} in the form of a string. The other argument signifies how the channel is to behave during use. \\
+
+The problem is that during the execution and use of the library a memory error called \textit{std::bad\_alloc} is invoked and the process is terminated. Because of 
+the ambiguity of the error message the process of locating the source of the issue took a long time. After many failed attempts of resolving this issue it still
+persists within the most recent version of the \textit{Rectcpp} library.\\
+
+Unfortunatly a solution to this problem has proved to not be possible within the timeframe of the project. This has lead to the \textit{Rectcpp} class being 
+largly not functional and not being able to connect to other instances of itself or instances of the Python library.
+
 \subsection{Documentation}
+%TODO: Write about the documentation
+Alongside the \textit{Rectcpp} library documentation has also been made for the functions of the library in order to make working with this tool easier in the future.
+This documentation was created with the help of \textit{Doxygen} and is accessible by looking wihtin the \textit{documentation} folder wihtin the project and opening
+the \textit{Index.html} file in a browser. 
+
 
 \section{Python Implementation}
 
