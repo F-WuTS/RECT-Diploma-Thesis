@@ -1,39 +1,38 @@
-\chapter{Kurzfassung}
+\chapter{Kurzfassung $\leftarrow$ Jeremy Sztavinovszki}
+\textbf{Author: Sztavinovszki}
 
+\vspace{10mm}
+Diese Arbeit beschreibt, wie ein Kommunikationsprotokoll und Bibliotheken für Robotik 
+implementiert werden können. Sie untersucht verschiedene Implementierungsmöglichkeiten 
+und versucht, mögliche Schwierigkeiten und anwendbare Optimierungen herauszufinden, um
+eine Methode für die Kommunikation in der Robotik bereitzustellen. Es gibt bereits mehrere 
+Kommunikationsprotokolle und Bibliotheken für die Robotik, jedoch sind sie entweder auf eine
+bestimmte Sprache spezialisiert oder weisen einen Overhead auf, der ihre Verwendung 
+auf Plattformen mit geringer Rechenleistung erschwert. Diese Arbeit beschreibt die Entwicklung
+eines erweiterbaren Kommunikationsprotokolls sowie die Implementierung von Bibliotheken dafür
+in verschiedenen gängigen Sprachen. Sie beschreibt zunächst den Planungsprozess und 
+präsentiert dann die allgemeine und Netzwerkarchitektur sowie Tests und Benchmarking für
+die Leistung und Ressourcennutzung der verschiedenen Teile der entwickelten Kommunikationsmethode.
+Die Arbeit stellt ein vielseitiges und effizientes Kommunikationsprotokoll für die Robotik vor,
+das bestehende Einschränkungen adressiert und zu Fortschritten in diesem Bereich beiträgt.
+
+
+\chapter{Abstract $\leftarrow$ Jeremy Sztavinovszki}
 \textbf{Author: Sztavinovszki}
 
 \vspace{10mm}
 
-Eine der am meisten in der Robotik verwendeten Software Suiten ist das sogenannte Robot Operating System \footcite{ros-site} (kurz ROS).
-Es ist eine Sammlung von Werkzeugen und Packeten, die verwendet werden, um hoch performante Robotik Systeme zu entwickeln und es abstrahiert
-die Kommunikation zu Topics und Messages, die man in ROS-Bag Files aufzeichnen und abspielen kann. Das erlaubt es entwicklern sich auf die tatsächlichen Probleme der Entwicklung zu konzentrieren und sich nicht darum kümmern zu müssen Kommunikation neu zu implementieren.
-ROS erlaubt außerdem die simulation Zahlreicher Komponenten von Robotern, welche man meistens als Digitale Zwillinge bezeichnet.
-Einer der größten Nachteile, die ROS mit sich bringt ist die Komplexität und der Eigensinn, bei der Entwicklung. Diese Komplexität führt außerdem zu Performance einbußen, welche vor allem die Verwendbarkeit auf weniger Leistungsstarken Geräten, wie zum Beispiel dem KIPR Wombat Controller \footcite{wombat-controller}, welcher bei Schülern wegen seiner Kostengünstigkeit und Verwendbarkeit zum Einsatz kommt.
+This thesis describes how to implement a communication protocol and libraries for robotics. 
+It explores the different possibilities for implementation and seeks to find out possible 
+difficulties and applicable  optimizations in order to provide a method for communication 
+for robotics. There are already  quite a few communication protocols and libraries for 
+robotics available, however they are either specialized to a certain language, or have a 
+overhead, that makes them difficult to use on low power platforms. This thesis describes
+the development of an extensible communication protocol as well as implementing libraries 
+for it in different popular languages. It first describes the planning process and then
+goes on to showcase the general and network architecture, as well as testing and benchmarking 
+the performance and resource-use for the different parts of the developed communication
+method. This thesis presents a versatile and efficient communication protocol for robotics,
+addressing existing limitations and contributing to field advancements.
 
-\medskip
-
-Diese Arbeit wird erkunden, wie man eine Software ähnlich zu ROS implementiert. Es werden Probleme, wie zum Beispiel Inter Prozess Kommunikation \footcite{ipc-begriff}, Kommunikation durch Bluetooth Low Energy (BLE), TCP und UDP, und die Implementation von Kommunikations Libraries für verschiedene Programmiersprachen
-
-
-\chapter{Abstract}
-
-\textbf{Author: Sztavinovszki}
-
-\vspace{10mm}
-
-
-% Context or background information; general topic; specific topic.
-In robotics one of the most important topics over the last couple of years has been communication. Communication doesn't only concern a robot being remote controllable. Mimimi keine Ahnung. 
-
-% central questions or problem statement
-
-% what's already known, what previous research has shown
-
-% main reasons, rationale, goal for research
-
-% research and or analytical methods
-
-% main findings, results or arguments
-
-% significance or implications
 
