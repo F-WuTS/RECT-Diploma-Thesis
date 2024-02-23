@@ -15,6 +15,7 @@
       buildInputs = [
         pkgs.texstudio
         pkgs.texmaker
+        pkgs.texlive.combined.scheme-full
       ];
     
       shellHook = '' 
