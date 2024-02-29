@@ -11,6 +11,9 @@
 	\label{fig:rect-architecture}
 \end{figure}
 
+The general Architecture of RECT looks like \ref{fig:rect-architecture}. This is a high level overview of the RECT stack.
+In the following sections we will go into more detail about the different parts of the stack and how they were implemented.
+
 \begin{figure}
 	\centering
 
@@ -21,7 +24,9 @@
 
 \end{figure}
 
-The general Architecture of RECT looks like \ref{fig:rect-architecture}
+\ref{fig:rect-dataflow} shows how data is sent through the different protocols in RECT.
+In this diagram the CommLib takes the part of sending and receiving the data which is to be transmitted to listeners on fixed ports
+on other hosts.
 
 \section{CommLib}
 \textbf{Author: Jeremy Sztavinovszki} 
@@ -47,78 +52,60 @@ All in all the commands used to generate the CommLib project and install all dep
 \begin{minipage}{\textwidth}
 	\begin{lstlisting}[language=bash, caption=Setup Commands for CommLib]
 		cargo new --lib CommLib && cd CommLib
-		cargo add tokio bluer anyhow -F tokio/full,bluer/full
+		cargo add tokio bluer anyhow enum_dispatch -F tokio/full,bluer/full
 		cargo build
 	\end{lstlisting}
 \end{minipage}
 
-\subsection{First Implementation}
-The first part of the implementation that was tackled was to create an abstraction layer over the existing protocols that RECT uses.
-in order to have a nice and clean interface to work with and to avoid having to implement each feature separately for the
-protocols. Of course, there was a bit of a problem with UDP because it is not meant to send structured data, so there is no feature parity between TCP and BLE.
-between TCP and BLE and UDP in this respect, and UDP is only used to send unstructured data streams. To encapsulate the structured and unstructured data sent over the
-and unstructured data sent over the common interface, there needs to be a way to convert the data, whether structured or not, into and from bytes in a way that is performant and has minimal overhead.
-and has minimal overhead. In order to meet the above requirements, the following structure has been implemented.
- 
-\subsubsection{Messages and Packets}
-% TODO Write about the packets and messages and maybe do a nice graphic.
-% TODO find cite for TCP and UDP MTU 
-The first thing taken into consideration for designing a data and class structure that is able to be sent over all of the protocols is the MTU's of the different protocols. 
-For TCP and UDP the MTU, or maximum transmission unit, is defined by the Maximum Segment Size Option (MSS), which is technically limited to 65535 bytes (64KB), but as defined
-in RFC 2675 \footcite{rfc2675} an MSS value of 65535 is defined to be interpreted as infinity and to be determined by Path MTU Discovery \footcite{rfc9293}. For BLE the MTU is 
-defined by the L2CAP and can be anywhere from 23 to 65535, but the packet is fragmented and recombined by the L2CAP for transmission, which practically makes it infinite. % TODO find out why ble book cant be cited 
-
-Another requirement for the interface was to be able to encapsulate the mechanism of sending a request to a peer and receiving a response. 
-To do this, a pair of messages was implemented. This pair of messages, aptly named Request and Response, contains the data needed to make this work. This means 
-that the request contains information about what topic to call on the remote machine, the data needed to fulfil that call, and an identification of the calling process, 
-while the response contains the returned data and the ID of the client to which it should be returned. This identification is used to avoid confusion as to which process the data should be returned to, 
-for example, when multiple processes are requesting data from the same remote service.
-
-The identification mechanism used in the above case of sending data to a single recipient can also be adapted to send messages to multiple recipients.
-The only adaptation required for the requesting and responding application to be able to send and receive broadcasts is to create a proxy object on the receiving side that acts as a single 
-receiver to receive the data for multiple connections and then forward that data to all subscribing processes.  
-
-The last use case covered by CommLib is the sending of a continuous stream of data. An example of this would be a sensor continuously sending data. To avoid the overhead of sending values over
-protocols used in CommLib, it was decided to require a separate interface, e.g. a socket, that is used only for streaming the described data. This means that when the receiving side
-is establishing a connection, it only needs to look at the identifier, e.g. the IP address, of the connected peer to decide which process to pass the data to, instead of reading a connection 
-name from the packet sent, minimising the size of the packets that need to be sent. 
-
-% TODO Write about the connection manager and also program that stuff
-\subsubsection{The ConnectionManager}
-The most important component in the whole CommLib is the ConnectionManager. It is a singleton object, which as the name would suggest manages all of the needed and used connections that are
-requested by the client programs. Because the ConnectionManager is a singleton and because it must be able to handle being in concurrent execution environments the Rust borrow-checker has very
-special requirements for how it is accessed. To meet these requirements the static variable holding the ConnectionManager singleton has needs to be wrapped in several objects to ensure it is
-thread-safe, as well as making sure, that it is initialized and freed, when there are no references left to its smart-pointer. 
-
-\begin{lstlisting}[language=Rust]
-	pub static CONNECTION_MANAGER: Lazy<Arc<Mutex<ConnectionManager>>> =
-	    Lazy::new(|| Arc::new(Mutex::new(ConnectionManager::new())));
-\end{lstlisting}
-Which leads to the above code, which has specifies, that the ConnectionManager is wrapped in the following types.
-%TODO: Write about the rectcpp class
-
-\begin{itemize}
-	\item Lazy. This type allows any object held by it to be initialized only once and only when it is first called upon \footcite{once-cell-lazy}
-	\item Arc. Arc stands for atomic reference counter and is a type of smart-pointer used in rust, when pointers need to be thread safe \footcite{rust-arc}
-	\item Mutex. The mutex ensures, that only one process at a time can hold a reference to the held object in order to prevent issues such as race-conditions \footcite{tokio-mutex}
-\end{itemize}
-
-Any application using the CommLib needs to interact with this object in order to be able to use the communication methods provided by the library. But what functionality does the ConnectionManager provide?
+Any application using the CommLib needs to interact with this object in order to be able to use the communication methods provided by the library. 
+To achieve this the CommLib provides the following functionality:
 
 \begin{itemize}
 	\item Setting a connection to a database, which is used to read the connections configured by the clients.
-	\item Receiving streams, requests and responses through any of the configured connections.
-	\item Sending streams, requests and responses through any of the configured connections.
+	\item Receiving simple messages, streams, requests and responses through any of the configured connections.
+	\item Sending simple messages, streams, requests and responses through any of the configured connections.
 	\item Initiating an update of the connections, which checks changes in the configuration found in the database and the connections, that are currently active in the ConnectionManager.
 \end{itemize}
 
-% TODO Pretend you didn't already make everything railway programming and it still crashes because of stupid things.
+In the following sections the implementation of these functionalities will be covered in more detail.
+
+\subsection{Datatypes for Handling Communication}
+% enum_dispatch beschreiben
+% verschiedene Typen beschreiben
+
+\subsection{Logic for Handling Communication}
+% wie werden die verschiedenen Typen verwendet um die Kommunikation zu handlen
+% welche software Komponenten gibt es um diese Datentypen zu verwenden 
 
 \subsection{Profiling and Benchmarking}
 
-\subsection{Polishing}
-
 \subsection{Documentation}
+In order to provide an easy understanding of the CommLib and its functionalities, a documentation was created.
+Documentation in Rust works by using comments in the code, which are then parsed by the \verb+cargo doc+ command. 
+This command generates a folder called \verb+target/doc+ in the project, which contains the documentation in HTML format.
+Comments which go into the documentation are written in a specific way.
+The following is an example of this: 
+
+\begin{minipage}{\textwidth}
+  \begin{lstlisting}[language=Rust, caption=Example of a Documentation Comment]
+    //! This is a module/crate-level documentation comment.
+
+    /// This function does something
+    /// # Arguments
+    /// * `x` - The first parameter
+    /// * `y` - The second parameter
+    /// # Returns
+    /// The sum of `x` and `y`
+    fn add(x: i32, y: i32) -> i32 {
+      x + y
+    }
+  \end{lstlisting}
+\end{minipage}
+
+As shown in the example, there are crate-, or module-level and general documentation comments. 
+The crate-level comments are used to describe a whole crate, or module and provide an overview of the functionality of the crate or module.
+The general comments are used to describe functions, structs, enums, traits, etc. and provide 
+an explanation of the functionality of the specific item. The documentation for the CommLib can be found in % keine ahnung. appendix a
 
 \section{RECT Database}
 \textbf{Author: Christoph Fellner}
