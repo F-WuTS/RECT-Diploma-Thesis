@@ -1,6 +1,7 @@
 \chapter{Implementation}
 
 \section{General Architecture}
+\addtocontents{toc}{\textit{Jeremy Sztavinovszki}\par}
 \textbf{Author: Jeremy Sztavinovszki}
 \begin{figure}
 	\centering
@@ -29,6 +30,7 @@ In this diagram the CommLib takes the part of sending and receiving the data whi
 on other hosts.
 
 \section{CommLib}
+\addtocontents{toc}{\textit{Jeremy Sztavinovszki}\par}
 \textbf{Author: Jeremy Sztavinovszki} 
 The Communication Library, or CommLib for short is the part of the RECT stack, that handles all of the communication between the hosts over traditional protocols, like TCP, UDP and BLE.
 This requires it to be especially performant. In order to avoid premature optimization however, the first part of this section on the implementation of the CommLib will only cover the first versions
@@ -72,6 +74,7 @@ In the following sections the implementation of these functionalities will be co
 \subsection{Datatypes for Handling Communication}
 % enum_dispatch beschreiben
 % verschiedene Typen beschreiben
+
 
 \subsection{Logic for Handling Communication}
 % wie werden die verschiedenen Typen verwendet um die Kommunikation zu handlen
