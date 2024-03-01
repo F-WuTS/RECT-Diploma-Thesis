@@ -2,6 +2,7 @@
 
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{General Architecture}
+\addtocontents{toc}{\textit{Jeremy Sztavinovszki}\par}
 \textbf{Author: Jeremy Sztavinovszki}
 \begin{figure}
 	\centering
@@ -31,6 +32,7 @@ on other hosts.
 
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{CommLib}
+\addtocontents{toc}{\textit{Jeremy Sztavinovszki}\par}
 \textbf{Author: Jeremy Sztavinovszki} 
 The Communication Library, or CommLib for short is the part of the RECT stack, that handles all of the communication between the hosts over traditional protocols, like TCP, UDP and BLE.
 This requires it to be especially performant. In order to avoid premature optimization however, the first part of this section on the implementation of the CommLib will only cover the first versions
@@ -135,6 +137,7 @@ process. The topic is used to identify the response on the receiving end.
 \subsubsection{Response acknowledgement}
 The response acknowledgement is used to acknowledge the receipt of a response. It is the exact same as the request acknowledgement, except for the 
 name, which is changed in order to differentiate between the two.
+
 
 \subsection{Logic for Handling Communication}
 % wie werden die verschiedenen Typen verwendet um die Kommunikation zu handlen
