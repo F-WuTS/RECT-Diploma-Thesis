@@ -74,6 +74,67 @@ In the following sections the implementation of these functionalities will be co
 \subsection{Datatypes for Handling Communication}
 % enum_dispatch beschreiben
 % verschiedene Typen beschreiben
+In order to have a simple and easy to use interface for the CommLib, the library uses a set of different 
+types to handle the different kinds of event, which can occur during communication. These types are
+as follows:
+
+\begin{itemize}
+  \item SimpleMessage
+  \item SimpleMessage acknowledgement
+  \item Stream subscribe
+  \item Stream unsubscribe
+  \item Stream data
+  \item Request
+  \item Request acknowledgement
+  \item Response
+  \item Response acknowledgement
+\end{itemize}
+
+These types are implemented as structs in the CommLib which are part of an enum called Message. This enum uses the enum\_dispatch library
+in order to be able to run a set of functions defined in a trait on each of the different structs. Each of the scructs embodies a different
+use which will be explained in the following sections.
+
+\subsubsection{SimpleMessage}
+The simple message contains a message\_id, which is a 64 bit unsigned integer, a message, which is a vector, or array of bytes,
+and a topic which is a String. This message is used to send a message which does not require a response. 
+The message\_id is used to identify the message for acknowledgement and to ensure that there are different acknowledgement hashes
+for two messages which contain the same data. The topic is used to identify the message on the receiving end.
+
+\subsubsection{SimpleMessage acknowledgement}
+The simple message acknowledgement is used to acknowledge the receipt of a simple message. It contains an acknowledgement hash, which is computed
+from the message\_id and the data of the message. This hash is then used to verify, that the message was received and insure, that the data in the
+message is correct.
+
+\subsubsection{Stream subscribe}
+The stream subscribe message is quite minimalistic, only containing a topic, which is a String. This message is used to subscribe to a topic
+on the receiving end. Upon receiving this message the recipient will include the sender in the list of subscribers for a given topic. 
+
+\subsubsection{Stream unsubscribe}
+Stream unsubscribe is similar to stream subscribe, but is used to unsubscribe from a topic. So insead of adding the sender to the list of subscribers
+the recipient will remove the sender from the list of subscribers for a given topic.
+
+\subsubsection{Stream data}
+The stream data message is used to send data to a subscriber. This message contains a topic, as well as a message, which is a vector of bytes.
+
+\subsubsection{Request}
+The request message is used to send a request to a recipient. It contains a request\_id, which is a 64 bit unsigned integer, a topic, and data, 
+which is a vector of bytes. The request\_id is used to identify the request for acknowledgement and to ensure that there are different acknowledgements 
+for two requests which contain the same data for the same topic. The topic is used to identify the request on the receiving end and relay it
+to the correct recipient process.
+
+\subsubsection{Request acknowledgement}
+Similar to the simple message acknowledgement, the request acknowledgement is used to acknowledge the receipt of a request. It contains an acknowledgement
+hash, which is computed from the request\_id, topic and the data of the request. This hash is then used to verify, that the request was received and insure, 
+that the data in the request is correct. 
+
+\subsubsection{Response}
+The response message is used to send a response to a request. It contains a response\_id, which is a 64 bit unsigned integer, a topic, and data,
+which is a vector of bytes. The response\_id is used to identify the response for acknowledgment and to relay the response to the correct requesting
+process. The topic is used to identify the response on the receiving end.
+
+\subsubsection{Response acknowledgement}
+The response acknowledgement is used to acknowledge the receipt of a response. It is the exact same as the request acknowledgement, except for the 
+name, which is changed in order to differentiate between the two.
 
 \subsection{Logic for Handling Communication}
 % wie werden die verschiedenen Typen verwendet um die Kommunikation zu handlen
