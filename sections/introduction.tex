@@ -17,19 +17,19 @@
 
 In almost every robotics application nowadays you need some kind of communication. Wether it is a robot communicating
 its data to a home-base, or two robots sharing data with one another. Over the past years communication has drastically
-improved with new protocols and technology, such as Bluetooth Low energy. On the other hand there are still people, that
+improved with new protocols and technology, such as Bluetooth Low Energy(BLE) \footcite{bluetooth-low-energy}. On the other hand there are still people, that
 don't use any of the communication technologies described before, because most of the established frameworks seem too
-complex or have too many requirements regarding performance. This 
+complex or have too many requirements regarding performance. 
 
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{Goal}
 \textbf{Author: Jeremy Sztavinovszki}
 
-This diploma thesis will take explore how to write a real-time communication framework using new technologies, such as BLE with TCP
-and UDP.
+This diploma thesis will take explore how to write a communication framework using new technologies, such as BLE with the Transmission Control Protocol(TCP) \footcite{rfc9293}
+and the User Datagram Protocol (UDP)\footcite{rfc768}.
 
-At the end of the project the framework should be useable for sending data between two KIPR Wombat-Controllers. It should be capable
-to send well structured data, e.g. a JSON-file, as well as streaming data, e.g. a series of pictures, between the robots. All sent data should have the
+At the end of the project the framework should be useable for sending data between two KIPR Wombat-Controllers \footcite{wombat-controller}. It should be capable
+to send well structured data, e.g. a JSON\footcite{json}-file, as well as streaming data, e.g. a series of pictures, between the robots. All sent data should have the
 option to be compressed with different compression formats ranging from lossless to lossy formats. When using protocols, that don't make guarantees about
 the completeness of the received data RECT will not provide extra safeguards to make sure all sent data is also received.
 RECT should be able to provide a stable and fast connection at reasonable distances for the selected protocol (e.g. circa 30 meters of line-of-sight, for BLE).
@@ -122,38 +122,5 @@ which also contained submodules hosted on \href{https://github.com/F-WuTS/}{F-Wu
 \textbf{Author: Jeremy Sztavinovszki}
 Beginning with with the Technology section the thesis describes the different libraries, languages and technologies used and explains why the respective technologies have been chosen for RECT.
 
-\section{Section}
-%More text. \lipsum[1] See Figure~\ref{pic:example}.
-
-%\begin{figure}[h]
-%	\centering
-%	\includegraphics[width=2.5in]{img/example.png}
-%	\caption{Picture description.}
-%	\label{pic:example}
-%\end{figure}
-
-%\subsection{Subsection}
-%\lipsum[1]
-
-%\subsection{Subsection}
-%\lipsum[1] See Table~\ref{tab:example}.
-
-%\begin{center}
-%	\begin{tabular}{| l | l | l |}
-%		\hline
-%		\bfseries Header 1 & \bfseries Header 2 & \bfseries Header 2 \\
-%		\hline
-%		Text & text & text \\
-%		\hline
-%		Text & text & text  \\
-%		\hline
-%		Text & text & text  \\
-%		\hline
-%	\end{tabular}
-%	\label{tab:example}
-%\end{center}
-
-%\lipsum[1] Some references can be found at \footcite{robo4you} or at \footcite{Hope_Learning_TensorFlow}.
-%
 
 \filbreak

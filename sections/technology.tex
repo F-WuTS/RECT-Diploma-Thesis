@@ -375,10 +375,11 @@ The BLE specification has two important concepts, which it has clearly separated
 the basic parts upon which the BLE stack builds and can be thought of the horizontal layers of the stack. Profile refers to vertical slices of the stack, that are used for specific use-cases when developing with BLE. Examples of a profile are.
 
 \begin{itemize}
-	\item The Glucose profile, which is used to securely transmit measurement data from e.g. insulin pumps.
-	\item The Find Me profile, which allows devices to find one another
+	\item The Glucose Profile\footcite{glucose-profile}, which is used to securely transmit measurement data from e.g. insulin pumps. 
+	\item The Find Me Profile\footcite{find-me-profile}, which allows devices to find one another
 \end{itemize}
 
+% Cite for specific page of book where the layer/profile/protocol is defined
 These use specific parts of the BLE protocol to achieve a specific task.
 
 \subsubsection{Physical Layer PHY}
@@ -517,7 +518,8 @@ the robustness, performance, and efficiency of the implemented methods within th
 Unit Tests in Catch2 are defined very similarly as normal functions in C++. This example, pulled from the Github repository of Catch2, shows the simplicity of
 this framework and its integration into projects.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=C++]
     #include <catch2/catch_test_macros.hpp>
 
     #include <cstdint>
@@ -532,14 +534,17 @@ this framework and its integration into projects.
         REQUIRE( factorial( 3) == 6 );
         REQUIRE( factorial(10) == 3'628'800 );
     }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 First the relevant Catch2 headers are included and then a function with a return value is defined. In this case it is the function factorial. 
 This function will be executed by Catch2 during the testing process. Then a test case is a macro defined as:
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=C++]
 TEST_CASE(string testname, string tags) {...test...}
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 The argument \textit{testname} is a arbitrary name given to the unit test, which is then later during the running of the test printed alongside the results of the macro.
 Tags can be given to the test by inputting one or multiple tags into the \textit{tags} field and change the behavior of the macro accordingly. In the case of the example above
@@ -547,10 +552,13 @@ the only given tag is the name of the function to be tested. After this the \tex
 be defined.\\
 This requires the use of other specific macros included in the Catch2 framework. For example:
 
-\begin{verbatim}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=C++]
 REQUIRE( function(value) == expected_value );
 CHECK( function(value) == expected_value );
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 The two macros described above, REQUIRE and CHECK, operate in a similar way. They both execute the given \textit{function} with the provided \textit{value} or \textit{values}
 and then assert if the returned data equals true or false according to the provided boolean operator. If it does then it was successful and the rest of the \textit{TEST\_CASE} is executed. The difference 
@@ -560,7 +568,8 @@ between REQUIRE and CHECK is however that if a REQUIRE macro fails it throws an 
 The benchmarking macros in Catch2 are defined similarly to how unit tests are. Benchmarking in itself is a useful practice, that provides a way to measure the performance
 and speed of a particular function.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=C++]
 #include <catch2/catch_test_macros.hpp>
 #include <catch2/benchmark/catch_benchmark.hpp>
 
@@ -583,7 +592,8 @@ TEST_CASE("Benchmark Fibonacci", "[!benchmark]") {
         return fibonacci(25);
     };
 }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 In the example above the unit test macros and benchmark macros from Catch2 are first included in order to be used later. The function to be benchmarked is then defined
 After that the TEST\_CASE macro is used combined with the [\!benchmark] tag in order to turn this unit test into a benchmark. In the actual body of the test the function
@@ -591,11 +601,13 @@ is first tested weather or not it actually works as intended before any benchmar
 assertion fails, preventing the rest of the benchmark from executing unnecessarily. If all the tests before the benchmarks pass then the actual BENCHMARK macros are
 executed.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=C++]
 BENCHMARK(string name) {
     ... benchmark ...
 };
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 As part of the BENCHMARK macro a arbitrary name is given to it, which is then later during the output of the test used as a identifier for the specific benchmark.
 Then the actual logic of the benchmark is then defined within curly brackets giving a lot of freedom in how a certain benchmark is executed. Adding a return statement
@@ -648,18 +660,18 @@ Finally \textit{Doxygen} uses all this to generate documentation in the specifie
 \subsubsection{Doxygen Configuration}
 The first step in creating documentation with Doxygen is a configuration file. This can be automatically generated by the \textit{Doxywizard} with this command:
 
-\begin{verbatim}
+\begin{lstlisting}[language=bash]
     doxygen -g <config-file>
-\end{verbatim}
+\end{lstlisting}
 
 In this example \textit{<config-file>} is a stand-in for the name of the generated configuration file. There are many tags within this config file that change how 
 the end result will look and what sources should be used or ignored. For example the INPUT tag specifies the location that \textit{Doxygen} will search for code and
 EXCLUDE forbids it to use files contained within the given directories. After editing the file using a text editor or Doxywizard this command can be used to generate 
 the documentation.
 
-\begin{verbatim}
+\begin{lstlisting}[language=bash]
     doxygen <config-file>
-\end{verbatim}
+\end{lstlisting}
 
 Doxygen normally requires the source code to be annotated in order to generate documentation, but a rough version can be made by setting the tag EXTRACT\_ALL to YES.
 This will extract even the non-annotated classes and functions from the source code.
