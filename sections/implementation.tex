@@ -322,9 +322,12 @@ this process. With only one line of code, users can engage in listening activiti
 not only improves usability but also promotes efficient and robust utilization of RECT's capabilities, enabling developers to focus on their core objectives 
 without being burdened by implementation details.
 
+
+\begin{minipage}{\textwidth}
 \begin{lstlisting}[language=c++]
   int Rectcpp::listen(std::string connectionName, std::string topic, std::string& returning);
 \end{lstlisting}
+\end{minipage}
 
 The function requires users to provide the name of the connection to be monitored and specify the topic to which the incoming message must adhere. By supplying 
 these parameters to the \textit{listen} function, users establish the criteria for message reception and filtration. When a message that meets the specified conditions 
@@ -370,6 +373,8 @@ In order to compile and generate the gRPC services within this library CMake was
 in order to make it into a C++ libary. Along side this are the lines responsible for ProtoBuf to generate the base classes for the implementation of gRPC. \\
 %Maybe split this into two subsubsection: 1. general CMake for the library and 2. protobuf generation
 First the proto files that will be turned into these base classes are registered using these lines: 
+
+\begin{minipage}{\textwidth}
 \begin{lstlisting}
   file(GLOB RectVOneConf "${CMAKE_CURRENT_SOURCE_DIR}/proto/conf.proto")
   file(GLOB RectVOneListen "${CMAKE_CURRENT_SOURCE_DIR}/proto/listen.proto")
@@ -380,6 +385,7 @@ First the proto files that will be turned into these base classes are registered
   set(PROTO_SEND_FILES ${RectVOneSend})
   set(PROTO_MESSAGE_FILES ${RectVOneMessage})
 \end{lstlisting}
+\end{minipage}
 The first three lines are for the files pertaining to the services and the last one is for the message type used by them in order to communicate. They are registered
 using the \textit{file} command with the \textit{GLOB} keyword under a chosen name in order to refer back to them later in the CMake file. \\
 
@@ -387,6 +393,8 @@ After this each of the services is assigned a library using the \textit{add\_lib
 \textit{target\_link\_libraries}. These are in this case \textit{libprotobuf}, \textit{grpc} and \textit{grpc++}.\\
 
 Finally the \textit{protobuf\_generate} command is used to signify to ProtoBuf to generate the base classes when the project is built using CMake. 
+
+\begin{minipage}{\textwidth}
 \begin{lstlisting}
   protobuf_generate(TARGET rect-conf-service LANGUAGE cpp)
 
@@ -402,6 +410,7 @@ Finally the \textit{protobuf\_generate} command is used to signify to ProtoBuf t
         "protoc-gen-grpc=${grpc_cpp_plugin_location}"
   )
 \end{lstlisting}
+\end{minipage}
 In this example the \textit{protobuf\_generate} is used twice. The first one sets the target files to be used during generation and the programming language 
 for the classes to be created in. The second instance of the command informs it what type of service and the appropriate extensions for the generated files. 
 The location of the gRPC generation plugin is also given.\\
