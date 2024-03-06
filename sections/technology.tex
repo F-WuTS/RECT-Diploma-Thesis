@@ -107,7 +107,8 @@ maintainability of their codebases.\\
 An example of a Protocol Buffer file illustrates the elegance and conciseness inherent in this technology, demonstrating its role in facilitating efficient 
 data interchange.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=ProtoBuf]
     syntax = "proto3";
     package msg;
     
@@ -131,7 +132,8 @@ data interchange.
         To t = 3;
       }
     }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 As can be seen in this example the first part of any .proto file is the definition of the protobuf language version. Either \textit{proto2} or \textit{proto3}. Next the package within this will be 
 stored in when it is converted into a programming languages code is defined. In this case it will be \textit{msg}. After that you can import any other .proto file.
@@ -146,11 +148,13 @@ Then it is possible to define any amount of the following types and many others 
 
 Message types in proto3 are relatively simple to define.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=ProtoBuf]
     message message_name {
         field_type field_name = number;
       }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 First the \textit{message} keyword is used to signify that the following is a declaration for a message type. Then a freely choose able \textit{message\_name} is 
 used as the name for the later resulting message structure. After that any number of fields can be defined within the curly brackets. The \textit{field\_type} can be
@@ -174,11 +178,13 @@ The \textit{any} type is then later resolved by Protobufs internal reflection co
 
 Enums are share a lot of the same traits as message types in terms of the defintion syntax.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=ProtoBuf]
     enum enum_name {
         constant_value = number;
     }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 Similarly to messages the enum is given an \textit{enum\_name} and then any number of \textit{constant\_value}s can be defined. All of these constants need an associated
 value in order to function properly and the first of those needs to have 0 as its number, so that the enum has a default value in cases like fields with the \textit{optional}
@@ -186,13 +192,16 @@ modifier.
 In order to bind multiple \textit{constant\_value}s to the same \textit{number} the \textit{allow\_alias} option must be set to true. This is done by inserting this line
 into the enum before any definition of \textit{constant\_value}s:
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=ProtoBuf]
     option allow_alias = true;
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 Once an enum is defined then it can be used in other parts of the Protocol Buffer, as seen in this example:
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=ProtoBuf]
     enum Success {
         Ok = 0;
     }
@@ -208,18 +217,21 @@ Once an enum is defined then it can be used in other parts of the Protocol Buffe
             SendError err = 2;
         }
     }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 \subsection{Protofile service definition}
 
 Services allow the easy generation of service interfaces and stubs to then be used by RPC implementations.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=ProtoBuf]
     service service_name{
         rpc rpc_name(message_type) returns (message_type) {}
         rpc rpc_name(message_type) returns (stream message_type) {}
     }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 A service is defined with a \textit{service\_name} and after that any number of inidvidual methods. In order to define the methods first the keyword \textit{rpc} must be used.
 Then a name for the method is given through \textit{rpc\_name} and a parameter for the \textit{message\_type} that this method accepts. And then a \textit{message\_type}
@@ -227,12 +239,14 @@ is defined as the return value of the RPC. A stream of a particluar \textit{mess
 
 An example of this would be the SubListen service from this project:
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=ProtoBuf]
     service SubListen{
         rpc listen(ListenRequest) returns (ListenResult) {}
         rpc subscribe(ListenRequest) returns (stream ListenResult) {}
     }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{Nix}
@@ -533,6 +547,8 @@ this framework and its integration into projects.
     }
 \end{lstlisting}
 \end{minipage}
+\end{lstlisting}
+\end{minipage}
 
 First the relevant Catch2 headers are included and then a function with a return value is defined. In this case it is the function factorial. 
 This function will be executed by Catch2 during the testing process. Then a test case is a macro defined as:
@@ -658,7 +674,9 @@ Finally \textit{Doxygen} uses all this to generate documentation in the specifie
 The first step in creating documentation with Doxygen is a configuration file. This can be automatically generated by the \textit{Doxywizard} with this command:
 
 \begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash]
     doxygen -g <config-file>
+\end{lstlisting}
 \end{lstlisting}
 
 In this example \textit{<config-file>} is a stand-in for the name of the generated configuration file. There are many tags within this config file that change how 
@@ -667,7 +685,9 @@ EXCLUDE forbids it to use files contained within the given directories. After ed
 the documentation.
 
 \begin{lstlisting}[language=bash]
+\begin{lstlisting}[language=bash]
     doxygen <config-file>
+\end{lstlisting}
 \end{lstlisting}
 
 Doxygen normally requires the source code to be annotated in order to generate documentation, but a rough version can be made by setting the tag EXTRACT\_ALL to YES.
@@ -689,49 +709,55 @@ In \textit{Doxygen} special comment blocks are similar to C++ comments, but with
 ways to define special comment blocks:\\
 \vspace{\baselineskip}
 \textbf{Javadoc and Qt style:} This way a special block can be definied just like a multi line comment in C++ with a special character after the first *.
-\begin{quote}
-\begin{verbatim}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=Doxygen]
     /**
      *   ... text ...
      */
-\end{verbatim}
+\end{lstlisting}
 Or:
-\begin{verbatim}
+\begin{lstlisting}[language=Doxygen]
     /*!
      *   ... text ...
      */
-\end{verbatim}
-\end{quote}      
+\end{lstlisting}
+\end{minipage}
+   
 \vspace{\baselineskip}
 \textbf{C++ comment style:} This style is similar to a C++ single line comment with an added / or ! at the begining.
-\begin{quote}
-\begin{verbatim}  
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=Doxygen]
     ///
     ///  ... text ...
     ///
-\end{verbatim}
+\end{lstlisting}
 Or:
-\begin{verbatim}
+\begin{lstlisting}[language=Doxygen]
     //!
     //!  ... text ...
     //!
-\end{verbatim}
-\end{quote}
+\end{lstlisting}
+\end{minipage}
+
 \vspace{\baselineskip}
 \textbf{Visible style:} This is a more clearly visible version of the previous two styles.
-\begin{quote}
-\begin{verbatim}
+
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=Doxygen]
     /************************************
      *   ... text ...
     ************************************/
-\end{verbatim}
+\end{lstlisting}
 Or:
-\begin{verbatim}
+\begin{lstlisting}[language=Doxygen]
     //////////////////////////////////////
     ///  ... text ...
     //////////////////////////////////////
-\end{verbatim}
-\end{quote}
+\end{lstlisting}
+\end{minipage}
+
 \vspace{\baselineskip}
 
 In documentation outside of the source additional commands are required. At the start of the document file a special comment block needs to have the name of the
@@ -739,14 +765,16 @@ file to be documented referenced by putting a backslash or an @ symbol before th
 special comment blocks can be defined with the first line in each of them being used to reference the desired class, function, member, struct, etc. This is done by
 first using the equivalent structural commands and then inserting the definition statement of the chosen object. This can be seen in this example:\\
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=Doxygen]
     /*! \fn int open(const char *pathname,int flags)
         \brief Opens a file descriptor.
 
         \param pathname The name of the descriptor.
         \param flags Opening flags.
     */
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 In this case \textit{fn} is the structural command, which tells \textit{Doxygen} what type the object is.\\
 \vspace{\baselineskip}
@@ -933,7 +961,8 @@ choosing Tonic, we aim to leverage its capabilities to enhance the performance, 
 The example for Tokio above uses the Tonic library to convert the following Protocol-Buffer-file into Rust code, in order to use it in the client and server 
 functions as Service.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=ProtoBuf]
 syntax = "proto3";
 package voting;
         
@@ -954,7 +983,8 @@ message VotingRequest {
 message VotingResponse {
     string confirmation = 1;
 }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 In order to translate the Protocol Buffer into Rust code we use the \verb+include_proto!+ function from the Tonic library. This function takes the path to the 
 Protocol-Buffer-file and generates the Rust code for the Service.

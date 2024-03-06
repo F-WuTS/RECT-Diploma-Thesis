@@ -120,6 +120,41 @@ url=true]{biblatex}
 , rulecolor=\color[gray]{0.90}%
 }
 
+\lstdefinelanguage{ProtoBuf}{
+	morestring=[b]{"},
+	morekeywords=[1]{package, syntax, message, enum, oneof, option, service, returns},
+	morekeywords=[2]{string, rpc, field\_type, bytes},
+	stringstyle=\color[rgb]{0, 0, 0.5},
+	keywordstyle=[1]\color[rgb]{0.0, 0.5, 1.0}, %Azure
+	keywordstyle=[2]\color[rgb]{0.0, 0.6, 0.0}, %Dark green
+	columns=spaceflexible
+}
+
+%\lstdefinelanguage{CMake}{
+%	morecomment=[l]{#},
+%	morestring=[b]{"},
+%	morekeywords=[1]{cmake\_minimum\_required, project, set, file, find\_package, add\_library, target\_link\_libraries, target\_include\_directories, get\_target\_property, target\_compile\_definitions},
+%	morekeywords=[2]{CMAKE\_CURRENT\_BINARY\_DIR},
+%	commentstyle=\color[gray]{0.4},
+%	stringstyle=\color[rgb]{0, 0, 0.5},
+%	keywordstyle=[1]\color[rgb]{0.0, 0.5, 1.0}, %Azure
+%	keywordstyle=[2]\color[rgb]{0.0, 0.5, 1.0} %Azure
+%}
+
+
+
+\lstdefinelanguage{Doxygen}{
+	morecomment=[l]{//},
+	morecomment=[l]{///},
+	morecomment=[l]{//!},
+	morecomment=[s]{/**}{*/},
+	morecomment=[s]{/*!}{*/},
+	morekeywords=[1]{fn, param, brief},
+	commentstyle=\color[rgb]{0.0, 0.6, 0.0},
+	keywordstyle=[1]\color[rgb]{0.0, 0.5, 1.0}, %Azure
+	columns=spaceflexible
+}
+
 \pagestyle{fancy}
 \fancyhf{}
 \setlength{\headheight}{45pt}
