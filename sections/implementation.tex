@@ -552,7 +552,7 @@ memory missmanegment error during runtime whenever the \textit{CreateChannel} fu
 connecting a client to a server. \\
 
 The specific line of code, that results in this error looks like this:
-\begin{lstlisting}[language=c++]
+\begin{lstlisting}[language=C++]
   auto channel = CreateChannel(confAddress, InsecureChannelCredentials());
 \end{lstlisting}
 As can be seen a gRPC channel is returned by the function with a connection to the specified address. Here the IP-Address and Protnumber of the server to connect to
