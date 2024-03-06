@@ -230,7 +230,21 @@ database and then ran a benchmark test on each of them. The benchmark test was a
 purposefully simple, because we won't be using the database for complex queries. More about the benchmark tests can be found \href{tests.tex}{here}.
 
 \subsection{Database Structure}
-% TODO: ERD einfügen
+
+The RECT Database is designed like \ref{fig:db-architecture}. This is a Entity Relationship Diagram (ERD) that shows the structure of the database. The database implements a
+classic star schema, with the connections table as the center of the star. The connections table is linked to the client, method and address tables.
+
+\begin{figure}
+	\centering
+
+	\includegraphics[width=\textwidth]{img/RECT-erd}
+
+	\caption{Database Architecture of RECT.}
+	\label{fig:db-architecture}
+\end{figure}
+
+
+
 The RECT database is structured according to the widely adopted star model, providing a robust framework for efficiently managing connection data. Comprising four distinct 
 tables, namely connections, client, method, and address, this database architecture ensures comprehensive organization and accessibility of critical information.\newline
 
