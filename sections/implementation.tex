@@ -159,7 +159,7 @@ The compoments are:
 The following sections will cover the implementation of these components in more detail.
 
 \subsubsection{The Listeners}
-The listeners are a fairly simple component. They are passed a Notify\footcite{rust-notify} to receive the notification when to stop and a sender for an unbounded channel, 
+The listeners are a fairly simple component. They are passed a Notify\footcite{rust-notify} to receive the notification when to stop and a sender for an unbounded channel\footcite{rust-unbounded-channel}, 
 which is used to send the data received on the interface with the corresponding address the data was received from. 
 The listener can then be started in a new tokio task and will run asynchronously until it receives the notification to stop.
 Normally there are three listeners running at the same time, one for each of the protocols TCP, UDP and L2CAP.
@@ -182,33 +182,6 @@ calling the correct functions in the LogicHandler.
 
 
 
-\subsection{Documentation}
-In order to provide an easy understanding of the CommLib and its functionalities, a documentation was created.
-Documentation in Rust works by using comments in the code, which are then parsed by the \verb+cargo doc+ command. 
-This command generates a folder called \verb+target/doc+ in the project, which contains the documentation in HTML format.
-Comments which go into the documentation are written in a specific way.
-The following is an example of this: 
-
-\begin{minipage}{\textwidth}
-  \begin{lstlisting}[language=Rust, caption=Example of a Documentation Comment]
-    //! This is a module/crate-level documentation comment.
-
-    /// This function does something
-    /// # Arguments
-    /// * `x` - The first parameter
-    /// * `y` - The second parameter
-    /// # Returns
-    /// The sum of `x` and `y`
-    fn add(x: i32, y: i32) -> i32 {
-      x + y
-    }
-  \end{lstlisting}
-\end{minipage}
-
-As shown in the example, there are crate-, or module-level and general documentation comments. 
-The crate-level comments are used to describe a whole crate, or module and provide an overview of the functionality of the crate or module.
-The general comments are used to describe functions, structs, enums, traits, etc. and provide 
-an explanation of the functionality of the specific item. The documentation for the CommLib can be found in % keine ahnung. appendix a
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
 \section{RECT Database}

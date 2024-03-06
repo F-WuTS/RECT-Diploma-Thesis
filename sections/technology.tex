@@ -1,4 +1,4 @@
-\chapter{Technology}
+\chapter{Methodology}
 
 \tocdata{toc}{$\rightarrow$\textit{Timon Koch}}
 \section{Wombat}
@@ -39,6 +39,34 @@ offers to the development landscape.
 Rust is a general purpose multi paradigm programming language used in many fields ranging from embedded programming to web development. Although it is a relatively young language, having released its version 1.0 on May 15th 2015, it has seen great adoption from developers and has a big community. The language tries to be as fast as possibly, while still remaining memory-safe, which it achieves using its borrow checker. Even though it is possible to write unsafe code in Rust, that is not checked by the borrow checker, it is custom to keep the unsafe parts as small as possible.
 Rust has a great ecosystem driven by the Rust Foundation and the Rust community. There are many tools, such as cargo, or rust-gdb, that provide great developer experience.
 Right now there is now standardized async-runtime, so you normally use runtimes like tokio, async-std, or smol for programming asynchronously.
+
+\subsection{Documentation}
+In order to provide an easy understanding of a Rust crate and its functionalities, a documentation is needed.
+Documentation in Rust works by using comments in the code, which are then parsed by the \verb+cargo doc+ command. 
+This command generates a folder called \verb+target/doc+ in the project, which contains the documentation in HTML format.
+Comments which go into the documentation are written in a specific way.
+The following is an example of this: 
+
+\begin{minipage}{\textwidth}
+  \begin{lstlisting}[language=Rust, caption=Example of a Documentation Comment]
+    //! This is a module/crate-level documentation comment.
+
+    /// This function does something
+    /// # Arguments
+    /// * `x` - The first parameter
+    /// * `y` - The second parameter
+    /// # Returns
+    /// The sum of `x` and `y`
+    fn add(x: i32, y: i32) -> i32 {
+      x + y
+    }
+  \end{lstlisting}
+\end{minipage}
+
+As shown in the example, there are crate-, or module-level and general documentation comments. 
+The crate-level comments are used to describe a whole crate, or module and provide an overview of the functionality of the crate or module.
+The general comments are used to describe functions, structs, enums, traits, etc. and provide 
+an explanation of the functionality of the specific item. The documentation for the CommLib can be found in % keine ahnung. appendix a
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
 \subsection{Cargo}
