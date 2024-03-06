@@ -13,7 +13,7 @@
 \end{figure}
 
 The general Architecture of RECT looks like \ref{fig:rect-architecture}. This is a high level overview of the RECT stack.
-In the following sections we will go into more detail about the different parts of the stack and how they were implemented.
+The following sections will go into more detail about the different parts of the stack and how they were implemented.
 
 \begin{figure}
 	\centering
@@ -140,8 +140,47 @@ name, which is changed in order to differentiate between the two.
 \subsection{Logic for Handling Communication}
 % wie werden die verschiedenen Typen verwendet um die Kommunikation zu handlen
 % welche software Komponenten gibt es um diese Datentypen zu verwenden 
+Datatypes alone however are not enough to implement the handling of the communication.
+The logic needed to handle the communication is implemented in a couple of different software components on the CommLib.
+These components are highly concurrent and use many of the features of the tokio library in order to allow the parallel handling of many different tasks.
+The compoments are:
 
-\subsection{Profiling and Benchmarking}
+\begin{itemize}
+  \item ConnectionManager. This is the component handling the database and relaying the commands received over gRPC to the other components of the CommLib.
+  \item LogicHandler. This is the component handling the logic for the different types of messages. It is responsible for keeping track of subscribers to streams
+  and for packing the messages into the correct format for binary serialization and sending them over the corresponding protocol. It receives all messages received on
+  any of the available interfaces (TCP, UDP, L2CAP) through the ListenManager. It also handles the logic for 
+  acknowledgements and any future optimizations concerning communication.
+  \item ListenManager. This is the central component for receiving data over the different protocols. It is responsible for setting up listeneres on all interfaces and
+  for relaying any data received to the LogicHandler in the form of Message structs.
+  \item The Listeners. These are the components responsible for listening on their respective interfaces and sending the data to the ListenManager. 
+\end{itemize}
+
+The following sections will cover the implementation of these components in more detail.
+
+\subsubsection{The Listeners}
+The listeners are a fairly simple component. They are passed a Notify\footcite{rust-notify} to receive the notification when to stop and a sender for an unbounded channel, 
+which is used to send the data received on the interface with the corresponding address the data was received from. 
+The listener can then be started in a new tokio task and will run asynchronously until it receives the notification to stop.
+Normally there are three listeners running at the same time, one for each of the protocols TCP, UDP and L2CAP.
+
+\subsubsection{The ListenManager}
+The ListenManager is a bit more complex than the listeners. It is a singleton and is responsible for setting up the listeners on the correct ports and with the correct addresses
+(and service uuids in the case of L2CAP). It is also responsible for converting the received data from the listeners from binary into the corresponding Message structs and adding
+information on what interface the data was received from. This is then sent to the LogicHandler through an unbounded channel.
+
+\subsubsection{The LogicHandler}
+The LogicHandler is yet another singleton. It contains a bit more data and logic than the before mentioned components, because of its central role in the CommLib.
+It holds and populates a hashmap of published topics and subscribers to said topics, which are stored in a Vector of address strings and types of the interfaces the
+subscribers are connected to. It provides a few public Senders and Receivers in order to be let other components interact with it. There are a few wrapper functions
+for these Senders and Receivers, which are used in order to reduce the complexity of interaction with the LogicHandler and reduce duplicate code.
+
+\subsubsection{The ConnectionManager}
+The ConnectionManager is the last of the singleton components in the CommLib. It is responsible for interacting with the RECT database and for resolving the topics, or connection
+names received through gRPC to the corresponding addresses and interfaces. It also relays data received through interfaces back to gRPC, as well as
+calling the correct functions in the LogicHandler.
+
+
 
 \subsection{Documentation}
 In order to provide an easy understanding of the CommLib and its functionalities, a documentation was created.
