@@ -124,30 +124,10 @@ In conclusion, the selection of SQLite for RECT's backend database is a result o
 specific needs of small controllers. The prioritization of memory efficiency, self-containment, and ease of use collectively affirm SQLite as the ideal database 
 solution, ensuring optimal performance and simplicity in the context of RECT's development environment.
 
-\subsubsection{SQLite}
-SQLite\footcite{sqlite} stands out prominently as a frontrunner when it comes to selecting a memory-efficient database, and for good reasons. As a small, fast, 
-and serverless database engine, SQLite aligns perfectly with the requirements of applications like RECT, particularly those designed for small controllers.\newline
-
-The serverless nature of SQLite is a noteworthy feature. Unlike some database systems that necessitate a separate server process for operation, SQLite operates 
-in a self-contained manner. This characteristic not only simplifies deployment and configuration but also contributes to its efficiency and suitability for 
-resource-constrained environments.\newline
-
-\paragraph{History}
+\paragraph{History of SQLite}
 Originally developed in the year 2000 by D. Richard Hipp for the US Army, SQLite has evolved into an open-source database engine. Its implementation in the C 
 programming language renders it highly portable, allowing it to run seamlessly on a myriad of platforms. This broad compatibility makes SQLite an excellent 
 choice for applications that need to be deployed across diverse environments.\newline
-
-\paragraph{Compatibility with Rust}
-The compatibility between SQLite and Rust is facilitated through the rusqlite library, providing a native and ergonomic interface for Rust developers to 
-interact with SQLite databases. This seamless integration ensures that the benefits of SQLite, such as its speed and efficiency, can be harnessed effortlessly 
-within Rust projects.\newline
-
-Moreover, SQLite offers the flexibility to store the database in memory, enabling rapid access and retrieval of data. The asynchronous access to SQLite 
-databases further enhances its versatility, allowing applications like RECT to efficiently manage and interact with data in an asynchronous programming paradigm.\newline
-
-In essence, SQLite's combination of speed, efficiency, serverless operation, and broad platform compatibility positions it as an ideal choice for applications 
-that prioritize memory efficiency. For RECT, SQLite, with its inherent qualities and compatibility with Rust through rusqlite, emerges as a robust and fitting 
-solution for the backend database, contributing to the overall efficiency and performance of the application.
 
 \subsubsection{PostgreSQL}
 Postgres\footcite{postgres}, also known as PostgreSQL, stands as a widely adopted backend database for web applications and websites. Renowned for its robust 
@@ -227,7 +207,7 @@ requirements and scale of the intended use.\newline
 
 After we looked into the three possiblyties mentioned above we created an enviroment to benchmark the different databases. We used docker to create a container for each 
 database and then ran a benchmark test on each of them. The benchmark test was a simple test that inserted 1000 rows into a table and then read them again. The benchmark is
-purposefully simple, because we won't be using the database for complex queries. More about the benchmark tests can be found \href{tests.tex}{here}.
+purposefully simple, because we won't be using the database for complex queries. More about the benchmark tests can be found in the \href{tests.tex}{test section}.
 
 \subsection{Database Structure}
 
@@ -283,6 +263,16 @@ the provided connections to facilitate efficient communication processes tailore
 
 \section{Rust Interface}
 \textbf{Author: Christoph Fellner}
+
+\begin{figure}
+	\centering
+
+	\includegraphics[width=\textwidth]{img/}
+
+	\caption{Structure of the Rust Interface.}
+	\label{fig:rust-interface-architecture}
+\end{figure}
+
 One of the main sections of the RECT project is the Rust Interface. The Rust Interface is the part of the RECT stack that is responsible for the communication between 
 the different parts of the stack. That means that the Rust Interface is responsible for the communication between the CommLib and the RECT Database. The RECT Database is 
 part of the Rust Interface, it stores Data about all available RECT connections. The Rust Interface also communicates with the Python Service and the C++ Service. So 
@@ -298,7 +288,7 @@ the tokio-rusqlite library. The tokio-rusqlite library is a asynchronous version
 necessary tables and provides the necessary functions to communicate with the database. The module is also responsible for the inserts of the available connections from a
 JSON file into the database. The JSON file is created by the frontend and contains all available connections for the RECT stack.\newline
 
-For the second step to work the Rust Interface also needs to be able to read the JSON file. The JSON file is read by another module of the Rust Interface. The module uses
+For the second step to work the Rust Interface also needs to be able to read the JSON file in which the data for the connections is specified which in turn is stored in the rect database. The JSON file is read by another module of the Rust Interface. The module uses
 the serde library to read the JSON file. The serde library is a framework for serializing and deserializing Rust data structures efficiently and generically. The module 
 defines suitable structures for the data strored in the JSON file and then reads the file and stores the data in the defined structures. The database module then takes
 this data and stores it in the RECT database.\newline
