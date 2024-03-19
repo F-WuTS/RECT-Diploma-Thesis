@@ -29,8 +29,7 @@ This diploma thesis will take explore how to write a communication framework usi
 and the User Datagram Protocol (UDP)\footcite{rfc768}.
 
 At the end of the project the framework should be useable for sending data between two KIPR Wombat-Controllers \footcite{wombat-controller}. It should be capable
-to send well structured data, e.g. a JSON\footcite{json}-file, as well as streaming data, e.g. a series of pictures, between the robots. All sent data should have the
-option to be compressed with different compression formats ranging from lossless to lossy formats. When using protocols, that don't make guarantees about
+to send well structured data, e.g. a JSON\footcite{json}-file, as well as streaming data, e.g. a series of pictures, between the robots. When using protocols, that don't make guarantees about
 the completeness of the received data RECT will not provide extra safeguards to make sure all sent data is also received.
 RECT should be able to provide a stable and fast connection at reasonable distances for the selected protocol (e.g. circa 30 meters of line-of-sight, for BLE).
 RECT should provide libraries for the languages Python and C++ that hide the complexity of communication and provide nice abstractions simplifying its use.
@@ -38,6 +37,7 @@ For this to be made possible the following requirements have to be met:
 \begin{itemize}
 \item A Rust library for communicating via TCP, BLE and UDP has to be written.
 \item A Rust gRPC service using the communication library has to be implemented.
+\item A Python and a C++ gRPC client and wrapper library have to be implemented.
 \end{itemize}
 
 \tocdata{toc}{$\rightarrow$\textit{Maximilian Dragosits}}
