@@ -793,17 +793,15 @@ Tokio Rusqlite\footcite{tokiolite} stands as an innovative library at the inters
 asynchronous database interactions. This library represents a strategic amalgamation, providing developers with the capability to leverage Rusqlite seamlessly 
 within an asynchronous programming paradigm facilitated by Tokio.\newline
 
-The amalgamation of Tokio and Rusqlite in Tokio Rusqlite addresses the growing demand for asynchronous database operations in Rust. By integrating Tokio's 
-asynchronous runtime with Rusqlite's capabilities, this library empowers developers to perform database operations without blocking the execution of other tasks.
-This is particularly advantageous in scenarios where responsiveness and concurrency are paramount.\newline
-
 Key features of Tokio Rusqlite include the ability to execute Rusqlite operations asynchronously, allowing for non-blocking interactions with SQLite databases. 
 Asynchronous operations are vital in applications that require efficient handling of concurrent tasks, such as web servers, where multiple requests may be 
 processed simultaneously.\newline
 
 The seamless integration of Tokio Rusqlite into our development stack augments the versatility of Rusqlite by enabling asynchronous database operations. This is 
-especially valuable in scenarios where responsiveness and scalability are critical factors. Leveraging Tokio Rusqlite in our project equips us with a robust 
-solution for handling database interactions in an asynchronous manner, aligning with contemporary trends in Rust programming and distributed system 
+especially valuable in scenarios where responsiveness and scalability are critical factors. One of these scenarios is when the RECT Backend interacts with the RECT Database 
+asynchronously, this scenario is especially important when the backend is handling multiple requests at the same time. Another scenario is when the RECT Database gets updated
+while the backend is running. In this case the backend can continue to run without having to wait for the database to finish updating. Leveraging Tokio Rusqlite in our project 
+equips us with a robust solution for handling database interactions in an asynchronous manner, aligning with contemporary trends in Rust programming and distributed system 
 architectures.
 
 \subsection{Tonic}

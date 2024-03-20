@@ -267,7 +267,7 @@ the provided connections to facilitate efficient communication processes tailore
 \begin{figure}
 	\centering
 
-	\includegraphics[width=\textwidth]{img/}
+	\includegraphics[width=\textwidth]{img/RustInterface}
 
 	\caption{Structure of the Rust Interface.}
 	\label{fig:rust-interface-architecture}
@@ -288,10 +288,10 @@ the tokio-rusqlite library. The tokio-rusqlite library is a asynchronous version
 necessary tables and provides the necessary functions to communicate with the database. The module is also responsible for the inserts of the available connections from a
 JSON file into the database. The JSON file is created by the frontend and contains all available connections for the RECT stack.\newline
 
-For the second step to work the Rust Interface also needs to be able to read the JSON file in which the data for the connections is specified which in turn is stored in the rect database. The JSON file is read by another module of the Rust Interface. The module uses
-the serde library to read the JSON file. The serde library is a framework for serializing and deserializing Rust data structures efficiently and generically. The module 
-defines suitable structures for the data strored in the JSON file and then reads the file and stores the data in the defined structures. The database module then takes
-this data and stores it in the RECT database.\newline
+For the second step to work the Rust Interface also needs to be able to read the Config.JSON file in which the data for the connections is specified which in turn is stored 
+in the rect database. The Config.JSON file is read by another module of the Rust Interface. The module uses the serde library to read JSON files. The serde library is a 
+framework for serializing and deserializing Rust data structures efficiently and generically. The module defines suitable structures for the data strored in the JSON file 
+and then reads the file and stores the data in the defined structures. The database module then takes this data and stores it in the RECT database.\newline
 
 With these modules completed the Rust Interface is able to communicate with the CommLib, the Python Service and the C++ Service. In conclusion, the Rust Interface plays a 
 crucial role within the RECT project, facilitating communication between various components of the stack. Through the implementation of modules for gRPC communication and 
