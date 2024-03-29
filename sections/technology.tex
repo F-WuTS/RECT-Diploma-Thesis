@@ -1,4 +1,6 @@
 \chapter{Methods}
+The "Methods" chapter, as described in the "Outline" section of the "Introduction" chapter contains sections pretaining to the technologies and languages 
+used in RECT, as well as the reasoning for their use. These sections also aim to provide a basic understanding of the technologies and languages they describe.
 
 \tocdata{toc}{$\rightarrow$\textit{Timon Koch}}
 \section{Wombat}
@@ -66,7 +68,7 @@ The following is an example of this:
 As shown in the example, there are crate-, or module-level and general documentation comments. 
 The crate-level comments are used to describe a whole crate, or module and provide an overview of the functionality of the crate or module.
 The general comments are used to describe functions, structs, enums, traits, etc. and provide 
-an explanation of the functionality of the specific item. The documentation for the CommLib can be found in % keine ahnung. appendix a
+an explanation of the functionality of the specific item. The documentation for the CommLib can be found in the appendix.
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
 \subsection{Cargo}
@@ -303,30 +305,24 @@ Taking an example for the syntax from the official nixos wiki site the language 
 let
     a = 1;
     b = 2;
-in a+b
-# result 3
+in a+b # => 3
 
 #2
 let
     square = x: x*x;
     a = 12;
-in square a
-#result 144
+in square a # => 144
 
 #3
 let 
     add = x: y: x+y;
-in add 1 2
-
-#result 3
+in add 1 2 # => 3
 
 #4
 let
     square = {x ? 2}: x*x;
     a = 12;
-in square{x=square {};}
-
-#result 16
+in square{x=square {};} # => 16
 \end{lstlisting}
 \end{minipage}
 
@@ -388,10 +384,13 @@ The code shown above is a nix flake. It defines the nixpkgs repository as an inp
 that is taking place in the mkDerivation block as an output. mkDerivation is a function which takes a name, pname, version, src,
 buildInputs, buildPhase, installPhase, builder and shellHook as inputs and produces a package which is built in the standard environment (stdenv) \footcite{nixMkDerivation}.
 The built derivation (or output of this flake) is then asigned a hash and stored in the nix store on the machine that built it.
-An example of this would be the following path \newline\verb+/nix/store/dnx26izplgv46dwg548whh9kj5iz4vvx-RECT-Diploma-Thesis+. 
+An example of this would be the following path \newline\verb+/nix/store/dnx26izplgv46dwg548whh9kj5iz4vvx-RECT-Diploma-Thesis+.
+This hash can be used to check if there were changes in the source files and dependencies used to build a package and allows
+having multiple versions installed on a system. 
 
 \subsubsection{Nixpkgs}
-Of course the defined packages need to be stored somewhere. This is where the nixpkgs repository \footcite{nixpkgs_repo} on github comes in handy. It is a collection of over 80000 packages according to repology \footcite{repology_nixpkgs}.
+Of course the defined packages need to be stored somewhere. This is where the nixpkgs repository \footcite{nixpkgs-repo} on github comes in handy. It is a collection of over 80000 packages according to repology \footcite{repology_nixpkgs}, 
+which means Nixpkgs is the largest package repository for linux. This is good, because it means it provides a wide variety of packages, but also tedious, because finding a package is quite a task requiring a search engine like search.nixos.org \footcite{search-nixos-org}, 
 The community can contribute their own definitions, or updates to the repository if they found something to be out of date, or missing. Of course when installing a package it is not built from scratch every time, like on source based distros.
 Instead nixpkgs caches builds of the most popular packages, which then just have to be downloaded onto the users machines.
 
@@ -399,6 +398,8 @@ Instead nixpkgs caches builds of the most popular packages, which then just have
 NixOS is built upon the Nix package manager. It is an independent Linux distribution, which means it is not based on any other Linux distribution like for example Debian, or Arch Linux.
 What is really special about NixOS is, that the whole operating system with services, programs and all of the needed configurations can be built from one central file, which is written in the Nix Programming Language.
 With this file stored as a backup a machine running NixOS could be up and running again in no time after a failure and through the usage of Nix Flakes it is possible to reinstall the system exactly the way it was before.
+There are however utilities like nix shells, which creates a shell environment with the packages the user wants to try, or the nix-env command to install a package, to make changes to the running system without altering the configuration.
+The Nix Operating System is very useful for RECT, because it allows the developer to create a disk image for e.g. a raspberry pi, which already has all dependencies and tools installed in order to debug and test various programs.
 
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{Bluetooth Low Energy}
