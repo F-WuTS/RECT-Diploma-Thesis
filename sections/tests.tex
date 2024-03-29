@@ -17,11 +17,33 @@
 \textbf{Author: Christoph Fellner}
 
 RECT uses a register to store data about available connections and useable ports of other controllers. This register is stored in a in-memory database. In order to find the 
-best database solution for our use case, we compare SQLite, PostgreSQL and MySQL. Using docker as testing environment we can easily compare the different databases.
+best database solution for our use case, we compare SQLite, PostgreSQL and MySQL. Using docker as testing environment we can easily compare the different databases.\newline
 
 In order to test the databases without any influences from outside, we used docker container for each database and their corresponding client program. The client program
 is written in rust and uses the corresponding rust librarys for the individual databases. However since SQLite is a file based database, we just used a volume to store the
 database file, together with the rust program in one container. The rust program connects to the database and executes the queries. The program measures the time it 
-takes to execute the query and prints it to the console. Because we are using docker, we can easily track the resource usage of the database container during the query. 
+takes to execute the query and prints it to the console. Because we are using docker, we can easily track the resource usage of the database container during the query.\newline
+
+The test setup is as follows: We use four tables with 100 rows and 5 columns. The columns are of type integer and string and the rows are filled with random data. We then 
+execute a simple select query with join statements to get all the data from the table. We measure the time it takes to execute the query and the resource usage of the database 
+container. We repeat this process 50 times and calculate the average time it takes to execute the query.\newline
+
+The results are as follows:
+\begin{center}
+    \begin{tabular}{ | m{3cm} | m{4cm}| m{4cm} | m{4cm} | } 
+      \hline
+      Database & avg time to execute & avg CPU usage & avg Memory usage \\ 
+      \hline
+      SQLite & 95,86ms & 15,67\% & 54,97MB \\ 
+      \hline
+      PostgreSQL & 105,52ms & 17,32\% & 58,86MB \\ 
+      \hline
+      MySQL & 109,63ms & 18,51\% & 59,12MB \\
+      \hline
+    \end{tabular}
+\end{center}
+
+The results show that SQLite is the fastest database, and also uses the least amount of resources. Additionally, SQLite was the easiest to set up and use. So we decided to use
+SQLite as the database for the register in RECT.
 
 \filbreak
