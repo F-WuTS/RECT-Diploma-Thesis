@@ -128,8 +128,7 @@ Noteworthy among the supported languages are Java, Kotlin, Python, and various C
 in diverse development ecosystems.\\
 
 Protocol Buffers enable developers to efficiently manage and exchange structured data across different platforms and systems. They provide a unified approach 
-to serialization, whether using the robustness of Java, the conciseness of Kotlin, the flexibility of Python, or the performance advantages of C-based languages. 
-This approach promotes interoperability, enabling developers to easily incorporate serialized data into their projects, thereby enhancing the efficiency and 
+to serialization. This approach promotes interoperability, enabling developers to easily incorporate serialized data into their projects, thereby enhancing the efficiency and 
 maintainability of their codebases.\\
 
 An example of a Protocol Buffer file illustrates the elegance and conciseness inherent in this technology, demonstrating its role in facilitating efficient 
@@ -163,13 +162,13 @@ data interchange.
 \end{lstlisting}
 \end{minipage}
 
-As can be seen in this example the first part of any .proto file is the definition of the protobuf language version. Either \textit{proto2} or \textit{proto3}. Next the package within this will be 
-stored in when it is converted into a programming languages code is defined. In this case it will be \textit{msg}. After that you can import any other .proto file.
+As can be seen in this example the first part of any .proto file is the definition of the protobuf language version. Either \textit{proto2} or \textit{proto3}. Next the package, 
+which sets the namespace for the later generated code. In this case it will be \textit{msg}. After that any other .proto file can be imported, so that it can be used for the definition of types within the file.
 Then it is possible to define any amount of the following types and many others not used by this project:
 \begin{enumerate}
     \item \textbf{message:} Defines a special data structure that houses multiple variables of potentialy different data types, which can then be used in other enums or services.
-    \item \textbf{enum:} Defines an enum which acts like the equivalent type of structure in other programming languages. This can then be used in other parts of then .proto file.
-    \item \textbf{service:} Defines a Remot Procedure Call (RPC) system. The generated code for this will include service interfaces and stubs to be used by RPC frameworks.
+    \item \textbf{enum:} Defines an enum which acts like the equivalent type of structure in other programming languages. This can then be used in other parts of the .proto file.
+    \item \textbf{service:} Defines a Remote Procedure Call (RPC) system. The generated code for this will include service interfaces and stubs to be implemented and used for RPCs.
 \end{enumerate}
 
 \subsection{Protofile message definition}
@@ -184,7 +183,7 @@ Message types in proto3 are relatively simple to define.
 \end{lstlisting}
 \end{minipage}
 
-First the \textit{message} keyword is used to signify that the following is a declaration for a message type. Then a freely choose able \textit{message\_name} is 
+First the \textit{message} keyword is used to signify that the following is a declaration for a message type. Then a freely chooseable \textit{message\_name} is 
 used as the name for the later resulting message structure. After that any number of fields can be defined within the curly brackets. The \textit{field\_type} can be
 one of multiple supported data types, which includes but is not limited to double, flout, integer, boolean, string as well as bytes. After defining an appropriate
 \textit{field\_name} this format requires the assignment of a number between 1 and 536,870,911 to each field in a message. This is required in order to identify
@@ -199,12 +198,12 @@ There are also three other modifiers, that can be applied to fields:
 \end{enumerate}
 
 Another way of defining fields, that can have a multitude or a currently unkown type, is to use either the \textit{any} or the \textit{oneof} types.
-The \textit{any} type is then later resolved by Protobufs internal reflection code.
+The \textit{any} type is then later resolved by Protocol Buffers internal reflection code.
 \textit{Oneof} is then automatically later defined as one of the given data types within curly brackets placed after the \textit{field\_name} is given.
 
 \subsection{Protofile enum definition}
 
-Enums are share a lot of the same traits as message types in terms of the defintion syntax.
+Enums share a lot of the same traits as message types in terms of the defintion syntax.
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[language=ProtoBuf, caption=Enum definition syntax in Protofiles]
@@ -215,7 +214,7 @@ Enums are share a lot of the same traits as message types in terms of the defint
 \end{minipage}
 
 Similarly to messages the enum is given an \textit{enum\_name} and then any number of \textit{constant\_value}s can be defined. All of these constants need an associated
-value in order to function properly and the first of those needs to have 0 as its number, so that the enum has a default value in cases like fields with the \textit{optional}
+value in order to function properly and the first of those needs to have 0 as its number, so that the enum has a default value in case fields have the \textit{optional}
 modifier. 
 In order to bind multiple \textit{constant\_value}s to the same \textit{number} the \textit{allow\_alias} option must be set to true. This is done by inserting this line
 into the enum before any definition of \textit{constant\_value}s:
@@ -226,7 +225,7 @@ into the enum before any definition of \textit{constant\_value}s:
 \end{lstlisting}
 \end{minipage}
 
-Once an enum is defined then it can be used in other parts of the Protocol Buffer, as seen in this example:
+Once an enum is defined then it can be used in other parts of the Protofile, as seen in this example:
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[language=ProtoBuf, caption=Excerpt taken from the ProtoBuf files of this project]
@@ -705,9 +704,9 @@ BENCHMARK(string name) {
 \end{lstlisting}
 \end{minipage}
 
-As part of the BENCHMARK macro a arbitrary name is given to it, which is then later during the output of the test used as a identifier for the specific benchmark.
-Then the actual logic of the benchmark is then defined within curly brackets giving a lot of freedom in how a certain benchmark is executed. Adding a return statement
-within the benchmark will ensure that the compiler doesn't mess with the test.\\
+As part of the BENCHMARK macro a arbitrary name is given to it, which is then later used as a identifier for the specific benchmark during the execution of the test .
+Then the actual logic of the benchmark is defined within the curly brackets giving a lot of freedom in how a certain benchmark is executed. Adding a return statement
+within the benchmark will ensure that the compiler perserves the original order of the statements within the benchmark.\\
 
 After this is run a summary is automatically output within the command line window. This includes multiple data points that pertain to the execution speed of the tested
 function:
