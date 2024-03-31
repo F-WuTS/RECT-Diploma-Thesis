@@ -413,13 +413,11 @@ another of its kind and then it should be a simple act of using the predefined m
 effortlessly communicate with other robots or devices running this or the Python frontend implementation.
 
 \subsection{Rectcpp class}
-%TODO: Write about the rectcpp class
 The \textit{Rectcpp} class is the foundation of the C++ implementation, providing users with intuitive functions to control a diverse range of RECT services. 
 These functions simplify the management of multiple gRPC services by condensing them into straightforward calls. For example, the listen method streamlines 
 this process. With only one line of code, users can engage in listening activities while the underlying complexities are abstracted away. This encapsulation 
 not only improves usability but also promotes efficient and robust utilization of RECT's capabilities, enabling developers to focus on their core objectives 
-without being burdened by implementation details.
-
+without being burdened by implementation details. An Example of this is the \textit{listen} function.
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[language=c++]
@@ -451,11 +449,11 @@ During the construction phase, instantiation of the services occurs, followed pr
 process is facilitated seamlessly through the utilization of the Serverbuilder module from the gRPC libraries, which streamlines the setup and configuration of 
 servers. However, despite the robust capabilities of the gRPC Serverbuilder, challenges arose during the development of this library, primarily stemming from the absence 
 of comprehensive documentation regarding the precise methodology for integrating the instantiated classes with the Serverbuilder module. This ambiguity led to 
-several stumbling blocks and intricacies encountered along the path of library development.
+several stumbling blocks and intricacies encountered along the path of development.
 
 \subsubsection{Connections}
 Connections within this class are managed using a C++ map structure, which allows for the binding of client instances to servers hosting the three services, 
-all under user-assigned names.  This approach significantly simplifies the usability of the class, replacing the need for cumbersome IP addresses and port 
+all under user-assigned names. This approach significantly simplifies the usability of the class, replacing the need for cumbersome IP addresses and port 
 numbers with easily discernible and memorable names. \\
 
 The creation of connections is achieved through two distinct pathways: the general-purpose \textit{createConnection} function and its more specialized counterparts. 
@@ -466,10 +464,8 @@ establishing connections and enhances the modularity and flexibility of the Rect
 to their requirements.
 
 \subsection{Definition of CMake file}
-%TODO: Write about the cmake file and the grpc service definition inside the cmake file
 In order to compile and generate the gRPC services within this library CMake was used. The CMakeLists file of this project contains the standard CMake commands 
 in order to make it into a C++ libary. Along side this are the lines responsible for ProtoBuf to generate the base classes for the implementation of gRPC. \\
-%Maybe split this into two subsubsection: 1. general CMake for the library and 2. protobuf generation
 First the proto files that will be turned into these base classes are registered using these lines: 
 
 \begin{minipage}{\textwidth}
@@ -532,10 +528,10 @@ to access the pre-initialized objects within the start function, and notably wit
 objects by reference to accessing class members from the function and copying them into new instances before passing them to the lambda functions. Regrettably, none 
 of these strategies proved effective in resolving the issue. \\
 
-After considerable effort and frustration, a breakthrough occurred when a simplified version of the \textit{Rectcpp} class was reconstructed. The pivotal realization was that 
+After considerable effort, a breakthrough occurred when a simplified version of the \textit{Rectcpp} class was reconstructed. The pivotal realization was that 
 constructing the service classes outside the lambda function was counterproductive. Instead, the solution lay in providing all necessary data for their initialization 
 within the start functions, allowing them to be instantiated during the thread runtime. This adjustment finally circumvented the perplexing obstacle, enabling the 
-seamless integration and functioning of the servers.\\
+starting of the servers.\\
 
 \subsection{gRPC CreateChannel}
 The other major issue that presented itself during development beside the problem with the Serverbuilder mentioned in the previous section is the throwing of a 
@@ -546,7 +542,7 @@ The specific line of code, that results in this error looks like this:
 \begin{lstlisting}[language=C++]
   auto channel = CreateChannel(confAddress, InsecureChannelCredentials());
 \end{lstlisting}
-As can be seen a gRPC channel is returned by the function with a connection to the specified address. Here the IP-Address and Protnumber of the server to connect to
+As can be seen a gRPC channel is returned by the function with a connection to the specified address. Here the IP-Address and Portnumber of the server to connect to
 is contained within the variable \textit{confAddress} in the form of a string. The other argument signifies how the channel is to behave during use. During the execution
 of the Rectcpp library one of two error messages appear in the console before the program shuts down. \\
 
@@ -582,6 +578,8 @@ largly not functional and not being able to connect to other instances of itself
 
 \subsection{Documentation}
 Alongside the \textit{Rectcpp} library documentation has also been made for the functions of the library in order to make working with this tool easier in the future.
+Unfortunatly the majority of this documentation in its current form will be useless due to the issues with the \textit{Rectcpp} class outlined in the previous paragraphs.
+However it is still available in case someone in the future would like to continue developing this project.\\
 This documentation was created with the help of \textit{Doxygen} and is accessible by looking wihtin the \textit{documentation} folder wihtin the project and opening
 the \textit{Index.html} file in a browser. 
 

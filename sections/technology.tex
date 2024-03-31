@@ -28,9 +28,9 @@ language. The popularity of C++ has led to the creation of numerous libraries an
 These frameworks are essential to the project's development and functionality.\\
 
 C++ was chosen as one of the two frontend languages for this project due to its impressive speed and efficiency, as well as the vast ecosystem of external 
-frameworks and libraries already available. The resources are essential in developing the RECT library, improving the project's capabilities and accelerating 
+frameworks and libraries already available. These resources are essential in developing the RECT library, improving the project's capabilities and accelerating 
 the development process. The decision to use C++ was a strategic choice, aligning with the language's strengths and the abundance of tools and resources it 
-offers to the development landscape.
+offers.
 
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{Rust}
@@ -611,7 +611,7 @@ the robustness, performance, and efficiency of the implemented methods within th
 \subsubsection{Unit Tests}
 
 Unit Tests in Catch2 are defined very similarly as normal functions in C++. This example, pulled from the Github repository of Catch2\footcite{catch2_git}, shows the simplicity of
-this framework and its integration into projects.
+this framework and its integration into codebases.
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[language=C++, caption=Example of Catch2 test definition]
@@ -641,12 +641,10 @@ TEST_CASE(string testname, string tags) {...test...}
 \end{lstlisting}
 \end{minipage}
 
-The argument \textit{testname} is a arbitrary name given to the unit test, which is then later during the running of the test printed alongside the results of the macro.
-Tags can be given to the test by inputting one or multiple tags into the \textit{tags} field and change the behavior of the macro accordingly. In the case of the example above
-the only given tag is the name of the function to be tested. After this the \textit{TEST\_CASE} macro has a curly brackets-enclosed body in which the logic of the test can 
-be defined.\\
+The argument \textit{testname} is a arbitrary name given to the unit test. The behavior of the macro can be modified by inputting values into 
+the \textit{tags} field. In the case of the example above the only given tag is the name of the function to be tested. After this the \textit{TEST\_CASE} 
+macro has a curly brackets-enclosed body in which the logic of the test can be defined.\\
 This requires the use of other specific macros included in the Catch2 framework. For example:
-
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[language=C++]
@@ -726,7 +724,7 @@ Doxygen\footcite{doxygen_main_site} is a versatile C++ framework that automates 
 PHP, Java, Python, IDL, and Fortran. Doxygen extracts information directly from annotated source code, making the documentation process more efficient and 
 accessible for developers.\\
 
-Doxygen is notable for its flexibility in delivering documentation. The generated documentation can be accessed online through an HTML website or offline 
+Doxygen is notable for its flexibility in delivering documentation. The generated documentation can be accessed through a browser in the form of an HTML document or  
 through a LaTeX document, providing options tailored to developers' preferences. Additionally, Doxygen can derive structure overviews even from non-annotated 
 sources, facilitating a holistic understanding of the codebase. The project's architecture can be visualized more effectively by displaying entity relations 
 through insightful graphs.\\
@@ -747,8 +745,7 @@ This file is later read and updated during the generation process from \textit{D
 to facilitate the creation of the documentation.\\
 
 \textit{Sources} are the files with the actual source code, that will be part of the documentation, in them. These files are read alongside any other additional \textit{Custom}
-files. For example the headers for source code, footers for the following document or images to be used in it. There are of course many other files that can be included
-in order to refine the result further.\\
+files. For example the headers for source code files. There are of course many other files that can be included in order to refine the result further.\\
 
 Finally \textit{Doxygen} uses all this to generate documentation in the specified formats: XML, LaTex, Man, refman or HTML. \\
 
