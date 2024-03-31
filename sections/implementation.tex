@@ -429,19 +429,17 @@ The function requires users to provide the name of the connection to be monitore
 these parameters to the \textit{listen} function, users establish the criteria for message reception and filtration. When a message that meets the specified conditions 
 arrives at the designated connection and aligns with the prescribed topic, it is retrieved. The function extracts the contents of the received message and 
 returns them to the user as a string. This approach ensures a seamless and structured message handling process, allowing users to manage communication flows 
-efficiently within the RECT framework.\\
+efficiently within the RECT framework.
 
 There are two importent facets of this class aside from the simplified interaction with gRPC services. The hosting of its own services and the management of
-connections to other services. The structure of \textit{Rectcpp} can be seen in this UML-Diagram:
+connections to other services. The structure of \textit{Rectcpp} can be seen in this UML-Diagram:\\
 
-\begin{minipage}{\textwidth}
-\begin{figure}[h]
+\begin{figure}[H]
   \centering
 	\includegraphics[width=\textwidth]{rectcpp_class_uml.png} 
 	\caption{UML-Diagram of the \textit{Rectcpp} class}
 	\label{fig:rectcppClassUML}
 \end{figure}
-\end{minipage}
 
 While the users of the library will only directly interact with the methods of the main class, the various additional classes used in order to facilitate the
 use of remote procedure calls are also displayed in the diagram. All the classes with the \textit{Impl} ending are the implementations of the interfaces automatically
