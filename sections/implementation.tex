@@ -180,8 +180,10 @@ The ConnectionManager is the last of the singleton components in the CommLib. It
 names received through gRPC to the corresponding addresses and interfaces. It also relays data received through interfaces back to gRPC, as well as
 calling the correct functions in the LogicHandler.
 
-
-
+\subsection{Facing Problems with Concurrency}
+Although the comm_lib's structure is designed to be highly concurrent, there are problems in the implementation, which couldn't be resolved in time for the comm_lib to be finished.
+The main problem is concurrently handling the sending and receiving of messages, while also having to wait for the acknowledgements for previous messages. So although the basics of
+sending and receiving messages through WiFi and BLE works the rest of the functionality the comm_lib is supposed to cover is sadly unfinished.
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
 \section{RECT Database}
