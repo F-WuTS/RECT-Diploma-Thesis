@@ -686,6 +686,115 @@ documentation. The parser performs several key processes, culminating in the cre
     \item[] In situations where the output format is LaTeX, Doxygen converts HTML elements within the comment blocks into LaTeX commands. This transition ensures consistency and compatibility when generating LaTeX documents. It allows developers to choose the format that best suits their documentation needs.
 \end{itemize}
 
+\subsection{Why SQLite?}
+The choice of a database system is a critical decision in the development of any application, and for RECT, the decision to use SQLite as the backend database 
+is grounded in a thoughtful consideration of specific requirements tailored to the nature of small controllers.\newline
+
+Given the diverse landscape of database systems, each with its unique set of advantages and drawbacks, a comprehensive evaluation of options is imperative. 
+RECT's emphasis on catering to small controllers immediately guides the criteria for selecting a suitable database. Two key considerations emerge prominently: 
+memory efficiency and self-containment.\newline
+
+Small controllers typically operate within constrained resources, making memory efficiency a paramount concern. SQLite, renowned for its lightweight nature and 
+minimal memory footprint, aligns seamlessly with this requirement. Its design prioritizes efficiency, ensuring optimal performance even in resource-limited 
+environments.\newline
+
+The self-contained nature of SQLite further contributes to its suitability for RECT's use case. Unlike some database systems that necessitate complex setup 
+procedures and external dependencies, SQLite operates as a standalone, serverless database engine. This simplicity not only facilitates ease of use but also 
+aligns with the desire to avoid intricate configurations. RECT benefits from a database solution that is straightforward to use and configure, enabling a 
+seamless integration into the development workflow.\newline
+
+While the focus on memory efficiency and self-containment narrows down the pool of potential databases, SQLite emerges as an optimal choice that strikes a 
+balance between these requirements. The careful consideration of these factors positions SQLite as a reliable and pragmatic choice for RECT, providing the 
+necessary functionality without introducing unnecessary complexity.\newline
+
+In conclusion, the selection of SQLite for RECT's backend database is a result of a meticulous comparison of different options, with a keen focus on the 
+specific needs of small controllers. The prioritization of memory efficiency, self-containment, and ease of use collectively affirm SQLite as the ideal database 
+solution, ensuring optimal performance and simplicity in the context of RECT's development environment.
+
+\paragraph{History of SQLite}
+Originally developed in the year 2000 by D. Richard Hipp for the US Army, SQLite has evolved into an open-source database engine. Its implementation in the C 
+programming language renders it highly portable, allowing it to run seamlessly on a myriad of platforms. This broad compatibility makes SQLite an excellent 
+choice for applications that need to be deployed across diverse environments.\newline
+
+\subsubsection{PostgreSQL}
+Postgres\footcite{postgres}, also known as PostgreSQL, stands as a widely adopted backend database for web applications and websites. Renowned for its robust 
+features and scalability, PostgreSQL operates on a client/server architecture, where the database is managed by a dedicated server process. This architecture 
+allows multiple clients to interact with the database concurrently, even when accessing the same data simultaneously. The inherent support for handling multiple 
+clients makes PostgreSQL particularly well-suited for scenarios where asynchronous access to the database from multiple threads is crucial.\newline
+
+\paragraph{History}
+The origins of PostgreSQL trace back to the Berkeley Computer Science Department at the University of California in 1986. Initially named Postgres, the project 
+evolved over time and eventually became known as PostgreSQL, although the colloquial shortening to Postgres is still common. In 1996, the project transitioned 
+to an open-source model, relying on the contributions of a dedicated group of volunteers for maintenance and improvement. Operating seamlessly on major 
+operating systems, PostgreSQL has garnered a reputation for its reliability and adherence to standards.\newline
+
+\paragraph{Compatibility with Rust}
+In the realm of Rust, PostgreSQL finds compatibility through the rust-postgres library, which provides a native interface for Rust developers to interact with 
+PostgreSQL databases. The integration of Rust and PostgreSQL is further optimized for asynchronous programming through the tokio-postgres library. This library, 
+built on top of Tokio, enhances the performance of asynchronous interactions with PostgreSQL databases via Rust, making it well-suited for modern, concurrent 
+application scenarios.\newline
+
+The client/server architecture of PostgreSQL, coupled with its robust Rust libraries, positions it as a formidable choice for applications that require a 
+backend database with support for concurrent access and asynchronous operations. While it may have started as a project nearly four decades ago, PostgreSQL 
+continues to evolve and thrive, maintaining its relevance in the dynamic landscape of web development and database management.
+
+\subsubsection{MySQL}
+MySQL\footcite{mysql} has established itself as a heavyweight in the realm of backend databases, with giants like YouTube, Facebook, and Twitter relying on its 
+robust capabilities. Widely utilized for storing data from web services, MySQL operates on a client/server architecture similar to PostgreSQL, featuring a 
+singular server process managing the database and facilitating access for multiple clients.\newline
+
+\paragraph{History}
+The MySQL project traces its roots back to 1994 when Michael Widenius and David Axmark initiated its development. Initially conceived as a fork of the mSQL 
+database, MySQL underwent a significant transformation and was eventually rewritten from scratch. Since 2010, MySQL has been under the development umbrella of 
+Oracle. While the project remains open-source, Oracle also offers an enterprise version of MySQL with additional features and support.\newline
+
+In response to concerns about the direction of MySQL's development under Oracle, the original developers embarked on a new venture called MariaDB. This project 
+represents a fork of MySQL and maintains full compatibility with its predecessor. The availability of MariaDB provides users with an alternative that adheres 
+to the principles of open-source development.\newline
+
+\paragraph{Compatibility with Rust}
+For Rust developers seeking to interface with MySQL, the mysql library, complemented by an extension called \verb+mysql_async+, offers a convenient and native 
+Rust interface. The \verb+mysql_async+ library, built on the Tokio framework, specifically caters to asynchronous client access, aligning with modern 
+programming paradigms that emphasize concurrent and non-blocking operations.\newline
+
+In summary, MySQL's widespread adoption by major players in the tech industry underscores its reliability and scalability as a backend database. The project's 
+history, marked by its evolution under different entities, has given rise to alternative options such as MariaDB. The existence of Rust libraries like mysql 
+and \verb+mysql_async+ further enhances MySQL's accessibility and usability within the Rust programming ecosystem, enabling developers to seamlessly integrate 
+MySQL into their applications.
+
+\subsubsection{Comparison}
+The table provides a concise comparison of key features among SQLite, PostgreSQL, and MySQL, shedding light on their architectural, compliance, support, and 
+use-case distinctions:
+
+\begin{center}
+    \begin{tabular}{ | m{3cm} | m{4cm}| m{4cm} | m{4cm} | } 
+      \hline
+      Features & SQLite & PostgreSQL & MySQL \\ 
+      \hline
+      Architecture & File Based (Self-contained) & Client/Server & Client/Server \\ 
+      \hline
+      ACID Compliance & Always & Always & Only with InnoDB and NDB Cluster storage engines \\ 
+      \hline
+      In-memory Support & Yes & No & Yes \\
+      \hline
+      Editions & Community (Free) with option of pro support & Community with option of commercial support & Community, Standard, and Enterprise \\
+      \hline
+      Popular Use-cases & Low-Medium Traffic Websites, IoT and Embedded Devices, Testing and Development & Analytics, Data Mining, Data Warehousing, Business Intelligence, Hadoop & Web Sites, Web Applications, LAMP stack, OLTP-based applications \\
+      \hline
+      Key Customers & Adobe, Facebook, and Apple & Cloudera, Instagram, and ViaSat & GitHub, Facebook, and YouTube \\
+      \hline
+    \end{tabular}
+\end{center}
+
+This comparison underscores the diverse strengths and use cases of each database system. SQLite's file-based, self-contained architecture makes it suitable for 
+low to medium traffic websites, embedded devices, and development environments. PostgreSQL, with its client/server architecture and robust feature set, caters 
+to analytics, data mining, warehousing, and business intelligence needs. MySQL, available in various editions, is widely employed in web applications, LAMP 
+stack environments, and OLTP-based applications. Each database system has its own unique advantages, making the selection contingent on the specific 
+requirements and scale of the intended use.\newline
+
+After we looked into the three possiblyties mentioned above we created an enviroment to benchmark the different databases. We used docker to create a container for each 
+database and then ran a benchmark test on each of them. The benchmark test was a simple test that inserted 1000 rows into a table and then read them again. The benchmark is
+purposefully simple, because we won't be using the database for complex queries. More about the benchmark tests can be found in the \href{tests.tex}{test section}.
 
 \subsection{Rusqlite}
 \textbf{Author: Christoph Fellner}
@@ -702,14 +811,13 @@ The decision to adopt rusqlite in our specific use case is underpinned by a meti
     our context at RECT. Given the heterogeneous nature of small controllers operating within our system, the ability to seamlessly deploy SQLite databases 
     across different platforms becomes imperative for maintaining operational uniformity and efficiency.
     
-    \item \textbf{Configuration:} In stark contrast to database systems that necessitate intricate setup procedures, SQLite obviates the need for complex 
-    configurations. The simplicity inherent in working with SQLite aligns seamlessly with our operational requirements. The nominal requirement for a limited 
-    number of tables further amplifies the pragmatic appeal of SQLite. In contrast to configuring a database on each controller, the minimal setup overhead 
-    consolidates SQLite as the optimal choice for our streamlined operational demands.
+    \item \textbf{Configuration:} In stark contrast to other database systems SQLite does not require complex configurations. 
+    The simplicity inherent in working with SQLite fits perfectly with our operational requirements. Since we need to configure a database on each controller, 
+    SQLite is the optimal choice for our lean operating requirements due to its low setup effort.
     
-    \item \textbf{Local:} SQLite distinguishes itself by eschewing the necessity for an external server or intricate installations. Its self-contained package 
-    encapsulates all requisite features within a local environment. This intrinsic localization resonates with the operational ethos at RECT, aligning with the 
-    need for an efficient and autonomous database solution without the encumbrance of external dependencies.
+    \item \textbf{Local:} SQLite is characterized by the fact that it requires neither an external server nor complicated installations. The self-contained package 
+    has all the necessary functions in a local environment. This inherent localization is in line with RECT's structural approach and the need for an efficient and 
+    autonomous database solution without the burden of external dependencies.
 \end{enumerate}
 
 In our specific instantiation, rusqlite is strategically employed for the persistent storage of the config.json file, a repository of vital data concerning 
