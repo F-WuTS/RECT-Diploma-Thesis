@@ -1,11 +1,53 @@
 \chapter{Conclusion}
 
-\textbf{Author: } 
+\textbf{Author: Jeremy Sztavinovszki} 
+The previous sections of the thesis went over the goals, plans for using technologies and plans for combining the parts implemented in the thesis.
+This section will go over the results of the thesis, revisit the goals and plans and give an outlook on what could be done in the future.
 
 \section{Recap}
+When starting the thesis, the goal was to create a system for robot communication that is extensible to any language and resource efficient. The system was based on gRPC for the communication between programs
+and used Rust to communicate with peers over Bluetooth and WiFi. The plan was to implement two libraries in popular programming languages, one in Python and one in C++, that would implement a simple abstraction,
+which allows for easy communication with the Rust service running in the background. Through these libraries the user would be able to send messages to other peers and receive responses, as well as sending streams to multiple
+other peers. The Rust service would handle the communication with the peers and the user would not have to worry about the underlying communication protocol. The gRPC interface for the Rust service would keep a record of
+the named connections, which users defined, in an in-memory database, which the underlying protocol would use to find the correct connection to send messages to.
 
-\section{Conclusion}
+\section{Results}
+\subsection{The Python Library}
+The Python library was implemented as planned and tested with a mock implementation of the Rust service. The library provides an easy to use interface for the user to send messages and streams to other peers and receive messages and streams back.
+All functionality required for the library to work as discussed in the previous sections was realized.
+
+\subsubsection{Memory and CPU Usage when Idle}
+The Python library uses <insert amount>MB RAM and <insert amount>\% CPU when idle. Idle in this case means instantiating the libraries main class and not sending any messages.
+
+\subsubsection{Memory and CPU Usage when Sending Messages}
+The Python library uses <insert amount>MB RAM and <insert amount>\% CPU when sending roughly 100 messages per second. This was tested by sending one message every 10ms for 10 seconds.
+
+\subsection{The C++ Library}
+Sadly due to hardship encountered with the gRPC++ library, which is described in the previous sections, the C++ library did not get implemented fully. Everything except communicating over gRPC was designed and implemented.
+This also means that the Rust service was not tested with the C++ library and no results regarding memory and CPU usage can be given at this point.
+
+\subsection{The Rust Interface}
+The Rust Interface, which handles the gRPC communication with other processes and manages the connections in the in-memory database, was implemented as planned. The interface was tested through tokio tests and mock clients and worked as expected.
+
+\subsubsection{Memory and CPU Usage when Idle}
+The Rust service uses <insert amount>MB RAM and <insert amount>\% CPU when idle. Idle in this case means running the service without any clients connected.
+
+\subsubsection{Memory and CPU Usage when Handling Messages}
+The Rust service uses <insert amount>MB RAM and <insert amount>\% CPU when handling roughly 100 messages per second. This was tested by handling the requests from the Python library, which sent one message every 10ms for 10 seconds.
+
+\subsection{The Rust Communication Library}
+The Rust communication library, which handles the communication over Bluetooth and WiFi, was also implemented as planned. It is able to handle multiple connections with peers at once and manages the sending and receiving of various messages.
+It utilizes the connections defined in the in-memory database to match peers to their respective names for sending and receiving messages. The communication library was tested using tokio tests and worked as intended. It also uses the 
+insights gained by the tests to optimize the communication with peers through compression and choosing the suitable serialization format.
+
+\subsubsection{Throughput and extra latency compared to using TCP, UDP or Bluetooth directly}
 
 \section{Outlook}
+% Get C++ library running
+% Implement more optimizations
+% Implement more programming language interfaces
+% Implement abstractions for more communication protocols
+% Implement a dds similar to ROS DDS'
+% Try the system in real competitions
 
 \filbreak
