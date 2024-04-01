@@ -22,7 +22,7 @@ The KIPR Wombat \footcite{wombat-controller} \ref{fig:wombat} is the Controller 
 
 Python is a powerful high-level, general purpose, object-oriented progrmming language with a design philosophy that emphasizes the readability of the written code through the use of significant indentation. \footcite{python_main_site} 
 
-It was created by Dutch programmer Guido van Rossum as a successor to ABC and was first released in 1991 with the capability of exepction handling. 
+It was created by Dutch programmer Guido van Rossum as a successor to ABC and was first released in 1991 with the capability of exception handling. 
 Features such as list comprehensions, reference counting, Unicode support and cycle-detecting garbage collections were introduced with Python 2.0 on 16 October 2000. After this release Python became a community-driven, open source project.
 
 Python has gained significant popularity since its initial release in the early 1990s. It is widely used in various applications, including web development, machine learning, artificial intelligence, data analysis, automation, and scientific computing. 
@@ -299,21 +299,21 @@ An example of this would be the SubListen service from this project:
 \section{Nix}
 \textbf{Author: Jeremy Sztavinovszki}
 
-Nix is one of a couple of things depending on the context. It is either a configuration language, a package manager, an operating system, or a build system.
-That may seem a bit confusing, but the next section will cover each of these contexts for the sake of clearing up some of the confusion, that may arise from this statement.
+Nix can take the form of a couple of things depending on the context. It can either be a configuration language, a package manager, an operating system, or a build system.
+That may cause confusion, but the next section will cover each of these contexts for the sake of clearing up some of the confusion, that may arise from this statement.
 
 \subsection{History}
-Nix was first conceived and made a reality in 2003 as a research project by Eelco Dolstra. At first it was just a package manager, that could be run on any distro, but in 2007 it became its
-own full blown Linux distribution with many other additions to the Nix eco system, such as Hydra \footcite{hydra}, a continuous intergration tool, and nixops,
-a deployment tool for nixos deploying NixOS in a network/cloud \footcite{NixOps}. At the time of writing Nix has gotten another big addition in the form of flakes.
-Flakes are a way of declaratively building anything ranging from Nix packages, over development environments, to system configurations. When a flake is build for the first time it
+Nix was first released in 2003 as a research project by Eelco Dolstra. At first it was just a package manager, that could be run on any linux distribution, but in 2007 it became its
+own full blown Linux distribution with many other additions to the Nix eco system, such as Hydra \footcite{hydra}, a continuous integration tool, and NixOps,
+a deployment tool for NixOS deploying NixOS in a network/cloud \footcite{NixOps}. At the time of writing Nix has gotten another big addition in the form of flakes.
+Flakes are a way of declaratively building anything ranging from Nix packages, over development environments, to system configurations. When a flake is built for the first time it
 pulls in all of its inputs and writes their commit hashes to a flake.lock file. Through this mechanism of noting the exact commit each input of a flake it is possible to use nix flakes for
-reproducible builds.
+reproducible builds\footcite{reproducible-builds}.
 
 \subsection{The Language}
 The language was the first part of Nix, that was implemented and it is arguably the most important part of Nix. Nix is a declarative functional programming language,
 that is used for defining packages, build processes and configurations for a host of things ranging from reproducible development environments to IT-Infrastructure.
-Taking an example for the syntax from the official nixos wiki site the language looks something like this:
+Taking an example for the syntax from the official NixOS wiki site the language looks something like this:
 
 % example here
 \begin{minipage}{\textwidth}
@@ -366,7 +366,7 @@ The specific example builds the latex files of which this thesis is comprised in
   description = "A flake to build the RECT-Diploma-Thesis";
 
   inputs = {
-    nixpkgs.url ="github:nixos/nixpkgs/nixos-23.05";
+    nixpkgs.url ="github:NixOS/nixpkgs/nixos-23.05";
   };
 
   outputs = {self, nixpkgs}:
@@ -407,7 +407,7 @@ having multiple versions installed on a system.
 
 \subsubsection{Nixpkgs}
 Of course the defined packages need to be stored somewhere. This is where the nixpkgs repository \footcite{nixpkgs-repo} on github comes in handy. It is a collection of over 80000 packages according to repology \footcite{repology_nixpkgs}, 
-which means Nixpkgs is the largest package repository for linux. This is good, because it means it provides a wide variety of packages, but also tedious, because finding a package is quite a task requiring a search engine like search.nixos.org \footcite{search-nixos-org}, 
+which means Nixpkgs is the largest package repository for linux. This is good, because it means it provides a wide variety of packages, but also tedious, because finding a package is quite a task requiring a search engine like search.NixOS.org \footcite{search-nixos-org}, 
 The community can contribute their own definitions, or updates to the repository if they found something to be out of date, or missing. Of course when installing a package it is not built from scratch every time, like on source based distros.
 Instead nixpkgs caches builds of the most popular packages, which then just have to be downloaded onto the users machines.
 
@@ -418,13 +418,44 @@ With this file stored as a backup a machine running NixOS could be up and runnin
 There are however utilities like nix shells, which creates a shell environment with the packages the user wants to try, or the nix-env command to install a package, to make changes to the running system without altering the configuration.
 The Nix Operating System is very useful for RECT, because it allows the developer to create a disk image for e.g. a raspberry pi, which already has all dependencies and tools installed in order to debug and test various programs.
 
+
+\tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
+\section{Docker}
+\textbf{Author: Christoph Fellner}
+
+Docker\footcite{docker} serves as an indispensable tool in modern software development, offering a containerization solution that facilitates the efficient 
+execution of diverse applications within isolated environments known as containers. These containers, encapsulating applications and their dependencies, operate 
+independently, enabling the concurrent execution of multiple containers on a single host system. The versatility of Docker extends from lightweight services 
+like echo servers to complex web applications, making it a versatile choice for a spectrum of development and deployment scenarios.\newline
+
+One of Docker's compelling use cases is the encapsulation of databases within containers. This capability enables the creation of portable and reproducible 
+database environments, fostering ease of testing, development, and even benchmarking. In our specific use case, Docker proved instrumental in benchmarking 
+different databases, allowing us to evaluate and identify the most suitable database for our application's requirements.\newline
+
+Docker's open-source nature and compatibility across major operating systems contribute to its widespread adoption. Its availability on diverse platforms 
+empowers developers to create consistent environments, irrespective of the underlying infrastructure. This feature is particularly advantageous in scenarios 
+where multiple applications need to coexist on the same machine, as Docker mitigates compatibility concerns and ensures the isolation of applications from the 
+local infrastructure.\newline
+
+The ability to isolate applications from the host system's infrastructure is a key feature of Docker. This isolation not only enhances compatibility but also 
+simplifies the deployment process. Developers can confidently run multiple applications on a single machine without the fear of conflicts or compatibility 
+issues, streamlining the development and testing phases.\newline
+
+In summary, Docker's role in our project extends beyond conventional application development and deployment. It serves as a significant tool for benchmarking 
+databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in our quest to 
+identify the optimal database solution for our specific use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
+a cornerstone technology in contemporary software development and deployment practices.
+
+
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{Bluetooth Low Energy}
 \textbf{Author: Jeremy Sztavinovszki}
+\newline
 Bluetooth Low Energy (BLE) is a Low-Cost, Low-Bandwidth, Low-Energy technology, that works by transmitting data over the air using a slice of the frequencies available in the Industrial, Scientific and Medical Band \footcite{ism}.
 It was introduced in the 4th version of the Bluetooth Version, after being developed by Nokia under the name Wibree and being adopted by the Bluetooth Special Interest Group (SIG). BLE at the time of its release made use of many
 innovative technologies, for example Frequency Hopping Spread Spectrum \footcite{fhss}, which is used to avoid collisions when sending data. A combination of being innovative and marketing lead to BLE seeing a great adoption rate
-after its initial release. Over the years Bluetooth Low Energy has seen many improvements, such as a Bluetooth Low Energy device being able to take on multiple roles simultaneously in the network.
+after its initial release. Over the years Bluetooth Low Energy has seen many improvements, such as a Bluetooth Low Energy device being able to take on multiple roles simultaneously in the network. These improvements over Bluetooth Classic
+combined with the lower power use makes BLE a great choice for RECT.
 
 \subsection{BLE Layers}
 \subsubsection{Protocol vs. Profile}
@@ -456,10 +487,10 @@ The HCI on the host side enables communication between the HCI driver and the ap
 The Controller Side should also be considered.
 
 \paragraph{Controller Side}
-The HCI on the controller side translates commands from the host into hardware-specific operations for the Bluetooth controller. It facilitates communication between the host and the Bluetooth hardware, ensuring accurate execution of the required actions. This layer is responsible for managing data transfer between the host and controller, optimizing the transmission process
+The HCI on the controller side translates commands from the host into hardware-specific operations for the Bluetooth controller. It facilitates communication between the host and the Bluetooth hardware, ensuring accurate execution of the required actions. This layer is responsible for managing data transfer between the host and controller, optimizing the transmission process.
 
 
-\subsubsection{Logical Link Controll and Adaptation Protocol (L2CAP)}
+\subsubsection{Logical Link Control and Adaptation Protocol (L2CAP)}
 The Logical Link Control and Adaptation Protocol (L2CAP) efficiently multiplexes higher-layer protocols over BLE connections. It segments and reassembles data packets, optimizing data transmission efficiency while accommodating diverse application requirements. The role of protocol multiplexing and fragmentation is to ensure efficient data exchange while maintaining BLE's low-energy characteristics.
 
 \subsubsection{Attribute Protocol and Generic Attribute Profile}
@@ -517,23 +548,8 @@ In recent years, there have been remarkable advancements in WiFi technology driv
 
 Looking to the future, it is worth noting that the development of WiFi technology is ongoing. New advancements, such as WiFi 6E, are set to utilize the previously unused 6 gigahertz (GHz) spectrum, which will provide increased bandwidth and reduced interference. Furthermore, it is believed that advancements in mesh networking structures, network optimization driven by artificial intelligence, and secure wireless protocols may enhance the capabilities and resilience of WiFi networks. This could potentially usher in an era of ubiquitous, ultra-fast connectivity that caters to the diverse needs of modern society.
 
-\subsubsection{Extended Coverage and Range}
-Advances in WiFi have addressed coverage and range limitations, enabling wireless networks to reach further and cover larger areas. Technologies such as Long Range (WiFi 802.11ah), which operates at sub-1 GHz frequencies, and mesh networking solutions extend WiFi coverage to outdoor environments, rural areas and challenging indoor spaces. WiFi range extenders, repeaters and mesh systems extend coverage by creating a network of interconnected access points that relay signals, ensuring consistent connectivity throughout homes, offices and public places.
 
-\subsubsection{Increased Spectrum Efficiency}
-WiFi advancements have focused on improving spectrum efficiency to accommodate the growing number of connected devices and reduce interference in crowded wireless environments. WiFi 6 (802.11ax) introduced Orthogonal Frequency Division Multiple Access (OFDMA) and Basic Service Set (BSS) colouring techniques that enable more efficient spectrum utilisation and better co-existence with neighbouring networks. Dynamic Frequency Selection (DFS) and Transmit Power Control (TPC) mechanisms help WiFi devices operate in non-overlapping channels and dynamically adjust transmit power levels to minimise interference and maximise network performance.
-
-\subsubsection{Enhanced Security Features}
-Security has been a major focus of Wi-Fi advancements, with new standards and protocols introducing robust encryption methods and authentication mechanisms to protect against evolving cyber threats. WPA3 (Wi-Fi Protected Access 3) introduced stronger encryption algorithms and enhanced security protocols to mitigate vulnerabilities exploited in previous standards.  WiFi enhancements also include features such as Protected Management Frames (PMF), Opportunistic Wireless Encryption (OWE) and Simultaneous Authentication of Equals (SAE), which strengthen security by preventing eavesdropping, man-in-the-middle attacks and unauthorised access to WiFi networks.
-
-\subsubsection{Improved Power Efficiency}
-Advances in WiFi have led to improvements in power efficiency, enabling longer battery life for WiFi-enabled devices such as smartphones, tablets and IoT sensors. WiFi standards such as 802.11ah (HaLow) optimise power consumption for low-power devices operating in battery-constrained environments. WiFi advancements also include mechanisms such as Target Wake Time (TWT) and Wi-Fi Aware (formerly Neighbour Awareness Networking, NAN), which allow devices to enter sleep modes and conserve power when not actively transmitting or receiving data, extending battery life.
-
-\subsubsection{Integration with Emerging Technologies}
-WiFi advancements have facilitated integration with emerging technologies such as the Internet of Things (IoT), 5G cellular networks, artificial intelligence (AI), and augmented reality (AR)/virtual reality (VR). WiFi 6 and WiFi 6E (6 GHz band) support higher densities of IoT devices, ultra-low latency applications and seamless roaming between WiFi and 5G networks. WiFi technology is also evolving to support new use cases and applications, including smart homes, smart cities, connected vehicles, industrial automation, telemedicine and immersive multimedia experiences.
-\subsection{Why SQLite?}
-
-\subsection{SQLite}
+\section{Why SQLite?}
 The choice of a database system is a critical decision in the development of any application, and for RECT, the decision to use SQLite as the backend database 
 is grounded in a thoughtful consideration of specific requirements tailored to the nature of small controllers.\newline
 
@@ -951,11 +967,13 @@ They are defined as functions identified by the '@pytest.fixture' decorator. Dif
 \subsubsection{Unit Tests}
 Pytest provides compatibility with the 'unittest' testing framework. It is possible to discover and run both Pytest-style test functions and unittest test cases in the same project. This can facilitate a seamless transition between the two frameworks while leveraging the additional features provided by Pytest. This example showcases the simplicity of this testing framework by using a basic addition function:
 
-\begin{verbatim} 
+\begin{minipage}
+\begin{lstlisting}[language=Python] 
 	def add(x, y):
     	return x + y
-\end{verbatim}
+\end{lstlisting}
 
+\begin{lstlisting}[language=Python]
 \begin{verbatim} 
 	import pytest
 
@@ -971,7 +989,8 @@ Pytest provides compatibility with the 'unittest' testing framework. It is possi
 
     	# Test case 4
     	assert add(-5, -7) == -12
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 First the necessary classes are imported and then a function with the relevant test cases is written. Test cases are definded using the keyword 'assert' followed by the function to be tested  and the expected result. 
 
@@ -987,7 +1006,8 @@ Pydoc is a Python library and command-line tool that generates documentation fro
 \subsubsection{Generating Documentation}
 When generating documentation using Pydoc, it is important to begin by setting docstrings. These are triple-quoted strings that should be placed immediately after the definition of a module, class, function, or method, as they are considered to be documentation.
 
-\begin{verbatim} 
+\begin{minipage}
+\begin{lstlisting} 
 	# greeting.py
 	 
 	def greet(name):
@@ -1001,13 +1021,14 @@ When generating documentation using Pydoc, it is important to begin by setting d
         	str: A greeting message.
     	"""
     	return f"Hello, {name}!"
-\end{verbatim}
+\end{lstlisting}
 
 After highlighting the pertinent sections of the code, the documentation for 'greeting.py' can be generated by executing the following command 
 
-\begin{verbatim}  
+\begin{lstlisting}[language=bash]  
 	pydoc greeting
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 The documentation file will be generated in the same directory as 'greeting.py'.
 
@@ -1188,31 +1209,5 @@ message VotingResponse {
 In order to translate the Protocol Buffer into Rust code we use the \verb+include_proto!+ function from the Tonic library. This function takes the path to the 
 Protocol-Buffer-file and generates the Rust code for the Service.
 
-\tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
-\subsection{Docker}
-\textbf{Author: Christoph Fellner}
-
-Docker\footcite{docker} serves as an indispensable tool in modern software development, offering a containerization solution that facilitates the efficient 
-execution of diverse applications within isolated environments known as containers. These containers, encapsulating applications and their dependencies, operate 
-independently, enabling the concurrent execution of multiple containers on a single host system. The versatility of Docker extends from lightweight services 
-like echo servers to complex web applications, making it a versatile choice for a spectrum of development and deployment scenarios.\newline
-
-One of Docker's compelling use cases is the encapsulation of databases within containers. This capability enables the creation of portable and reproducible 
-database environments, fostering ease of testing, development, and even benchmarking. In our specific use case, Docker proved instrumental in benchmarking 
-different databases, allowing us to evaluate and identify the most suitable database for our application's requirements.\newline
-
-Docker's open-source nature and compatibility across major operating systems contribute to its widespread adoption. Its availability on diverse platforms 
-empowers developers to create consistent environments, irrespective of the underlying infrastructure. This feature is particularly advantageous in scenarios 
-where multiple applications need to coexist on the same machine, as Docker mitigates compatibility concerns and ensures the isolation of applications from the 
-local infrastructure.\newline
-
-The ability to isolate applications from the host system's infrastructure is a key feature of Docker. This isolation not only enhances compatibility but also 
-simplifies the deployment process. Developers can confidently run multiple applications on a single machine without the fear of conflicts or compatibility 
-issues, streamlining the development and testing phases.\newline
-
-In summary, Docker's role in our project extends beyond conventional application development and deployment. It serves as a significant tool for benchmarking 
-databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in our quest to 
-identify the optimal database solution for our specific use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
-a cornerstone technology in contemporary software development and deployment practices.
 
 \filbreak
