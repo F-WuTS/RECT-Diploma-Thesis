@@ -871,7 +871,8 @@ In summary, our decision to embrace Tokio as the asynchronous runtime for our Ru
 ecosystem, coupled with its user-friendly design and robust support for multi-threaded async code execution. This strategic choice positions us to harness the 
 full potential of asynchronous programming in Rust, ensuring the responsiveness and scalability of our application.
 
-\begin{verbatim}
+\begin{minipage}{\textwidth}
+\begin{lstlisting}[language=Rust]
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
 async fn client_test(){ 
     let ser = test_server::run_server();
@@ -885,7 +886,8 @@ async fn client_test(){
         _ = cl => (),
     }           
 }
-\end{verbatim}
+\end{lstlisting}
+\end{minipage}
 
 Using Tokio makes it possible to run multiple async functions at the same time. In the example above we start a server and a client and then wait for the first one to finish. 
 This is done using the tokio::select! macro. The macro takes a list of futures and waits for the first one to finish. In our case we want to wait for the client to finish 
@@ -937,28 +939,30 @@ choosing Tonic, we aim to leverage its capabilities to enhance the performance, 
 The example for Tokio above uses the Tonic library to convert the following Protocol-Buffer-file into Rust code, in order to use it in the client and server 
 functions as Service.
 
-\begin{verbatim}
-syntax = "proto3";
-package voting;
-        
-service Voting {
-    rpc Vote (VotingRequest) returns (VotingResponse);
-}
-        
-message VotingRequest {
-    string url = 1;
-        
-    enum Vote {
-        UP = 0;
-        DOWN = 1;
+\begin{minipage}{\textwidth}
+    \begin{lstlisting}[language=ProtoBuf]
+    syntax = "proto3";
+    package voting;
+            
+    service Voting {
+        rpc Vote (VotingRequest) returns (VotingResponse);
     }
-    Vote vote = 2;    
-}
-        
-message VotingResponse {
-    string confirmation = 1;
-}
-\end{verbatim}
+            
+    message VotingRequest {
+        string url = 1;
+            
+        enum Vote {
+            UP = 0;
+            DOWN = 1;
+        }
+        Vote vote = 2;    
+    }
+            
+    message VotingResponse {
+        string confirmation = 1;
+    }
+    \end{lstlisting}
+    \end{minipage}
 
 In order to translate the Protocol Buffer into Rust code we use the \verb+include_proto!+ function from the Tonic library. This function takes the path to the 
 Protocol-Buffer-file and generates the Rust code for the Service.
