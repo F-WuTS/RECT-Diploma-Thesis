@@ -12,47 +12,45 @@
 By reducing the size of data, compression saves storage space, speeds up data transmission over networks and minimises bandwidth requirements, resulting in cost savings and improved operational efficiency. In addition, compressed data is easier to manage, share and access across platforms and devices. 
 
 \subsubsection{Deflate}
-The Deflate algorithm is a widely used method of lossless data compression. It achieves compression by eliminating redundancy in the input data through a combination of LZ77 and Huffman coding techniques, making it an efficient and versatile compression method used in various applications.
+The Deflate algorithm\footcite{deflate} is a widely used method of lossless data compression. It achieves compression by eliminating redundancy in the input data through a combination of LZ77\footcite{lz77} and Huffman coding\footcite{huffman_coding} techniques, making it an efficient and versatile compression method used in various applications.
 
 In the first step, LZ77 identifies repeated substrings in the data and replaces them with references to previous occurrences, thereby reducing redundancy. This is followed by Huffman coding, which assigns shorter codes to more frequent symbols and longer codes to less frequent symbols, further compressing the data
 
 \subsubsection{ZSTD}
-ZSTD, short for Zstandard, is a high performance data compression algorithm developed by Facebook. It is designed to provide both fast compression and decompression speeds while achieving excellent compression ratios, making it suitable for a wide range of applications.
+ZSTD, short for Zstandard\footcite{zstd}, is a high performance data compression algorithm developed by Facebook. It is designed to provide both fast compression and decompression speeds while achieving excellent compression ratios, making it suitable for a wide range of applications.
 
 ZSTD uses a combination of advanced compression techniques, including a dictionary-based approach, context modelling and entropy coding. It dynamically builds and updates dictionaries during compression to improve compression efficiency by identifying and exploiting patterns in the data.
 
 \subsubsection{GZIP}
-GZIP, short for GNU Zip, is based on the Deflate algorithm. While it's optimised for speed, GZIP also provides reasonably good compression ratios, making it a popular choice for applications where both speed and compression efficiency are important.
+GZIP\footcite{gzip}, short for GNU Zip, is based on the Deflate algorithm. While it's optimised for speed, GZIP also provides reasonably good compression ratios, making it a popular choice for applications where both speed and compression efficiency are important.
 
 GZIP typically offers several levels of compression, allowing users to trade off compression ratio and speed according to their needs. Lower compression levels prioritise faster processing times, while higher levels prioritise better compression ratios at the expense of speed.
-
-\subsection{Buffering}
 
 \subsection{Serialization Formats}
 \textbf{Author: Timon Koch}
 
 \subsubsection{JSON}
-JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. It is based on a subset of the JavaScript programming language.
+JSON\footcite{json} (JavaScript Object Notation) is a lightweight data-interchange format that is easy to read and write and easy for machines to parse and generate. It is based on a subset of the JavaScript\footcite{javascript} programming language.
 
 JSON consists of key-value pairs, where keys are strings and values can be strings, numbers, arrays, objects, booleans, or null. It is highly versatile and widely supported across various programming languages and platforms.
 
 \subsubsection{YAML}
-YAML (YAML Ain't Markup Language) is a data serialisation format commonly used for configuration files, data exchange, and specifying data structures in a clear, concise, and readable manner. It uses indentation and whitespace to represent data hierarchies, making it visually intuitive and easy to understand.
+YAML\footcite{yaml} (YAML Ain't Markup Language) is a data serialisation format commonly used for configuration files, data exchange, and specifying data structures in a clear, concise, and readable manner. It uses indentation and whitespace to represent data hierarchies, making it visually intuitive and easy to understand.
 
 YAML supports multiple data types, including scalars (strings, numbers, booleans), sequences (arrays or lists), and mappings (key-value pairs). It also allows for comments, making it useful for annotating configurations and documentation.
 
 \subsubsection{Protobuf}
-Protocol Buffers (protobuf) is a method of serialising structured data developed by Google. Designed to be efficient, portable and easy to use, it provides a platform-neutral way to encode data for communication between systems or for persistent storage.
+Protocol Buffers\footcite{protobuf} (protobuf) is a method of serialising structured data developed by Google. Designed to be efficient, portable and easy to use, it provides a platform-neutral way to encode data for communication between systems or for persistent storage.
 
-Protobuf defines a schema for data structures using a language-agnostic interface description language (IDL). This schema describes the structure of the data in a concise and platform-independent manner. From this schema, Protobuf compilers generate code in various programming languages, allowing developers to easily work with the defined data structures.
+Protobuf defines a schema for data structures using a language-agnostic interface description language\footcite{idl} (IDL). This schema describes the structure of the data in a concise and platform-independent manner. From this schema, Protobuf compilers generate code in various programming languages, allowing developers to easily work with the defined data structures.
 
 \subsubsection{Bincode}
-Bincode is a binary serialisation format designed for use with the Rust programming language. It allows the serialisation of Rust data structures into a compact binary representation that can be efficiently stored or transmitted. Bincode is designed to be fast and efficient, making it suitable for scenarios where performance is critical, such as networking, file I/O or inter-process communication.
+Bincode\footcite{bincode} is a binary serialisation format designed for use with the Rust programming language. It allows the serialisation of Rust data structures into a compact binary representation that can be efficiently stored or transmitted. Bincode is designed to be fast and efficient, making it suitable for scenarios where performance is critical, such as networking, file I/O or inter-process communication.
 
 \subsubsection{Rust UTF-8}
-Rust UTF-8 is a variable-width encoding that can represent any Unicode code point using one to four bytes.
+Rust UTF-8\footcite{rust_utf8} is a variable-width encoding that can represent any Unicode code point using one to four bytes.
 
-In Rust, strings are encoded as UTF-8 by default. This means that Rust provides native support for manipulating, validating, and converting UTF-8 encoded strings efficiently and securely. Rust's type system ensures that operations on strings are performed in a way that preserves the integrity of the UTF-8 encoding, preventing common problems such as invalid byte sequences or buffer overflows.
+In Rust, strings are encoded as UTF-8\footcite{utf8} by default. This means that Rust provides native support for manipulating, validating, and converting UTF-8 encoded strings efficiently and securely. Rust's type system ensures that operations on strings are performed in a way that preserves the integrity of the UTF-8 encoding, preventing common problems such as invalid byte sequences or buffer overflows.
 
 
 \subsection{Database Benchmarks}
