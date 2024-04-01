@@ -423,9 +423,9 @@ The cluster tree topology forms a hierarchical structure that organises devices 
 \subsubsection{Hybrid Architectures}
 BLE applications often use hybrid architectures that combine multiple topologies to meet different needs. For example, a smart building might use a mesh network for inter-floor sensor communication, a star network for room-level control (with each room having a central controller), and a hub-and-spoke network for centralised management and integration of various systems within the building.
 
-\subsection{Why SQLite?}
+\section{Why SQLite?}
+\textbf{Author: Christoph Fellner}
 
-\subsection{SQLite}
 The choice of a database system is a critical decision in the development of any application, and for RECT, the decision to use SQLite as the backend database 
 is grounded in a thoughtful consideration of specific requirements tailored to the nature of small controllers.\newline
 
@@ -455,7 +455,7 @@ Originally developed in the year 2000 by D. Richard Hipp for the US Army, SQLite
 programming language renders it highly portable, allowing it to run seamlessly on a myriad of platforms. This broad compatibility makes SQLite an excellent 
 choice for applications that need to be deployed across diverse environments.\newline
 
-\subsubsection{PostgreSQL}
+\subsection{PostgreSQL}
 Postgres\footcite{postgres}, also known as PostgreSQL, stands as a widely adopted backend database for web applications and websites. Renowned for its robust 
 features and scalability, PostgreSQL operates on a client/server architecture, where the database is managed by a dedicated server process. This architecture 
 allows multiple clients to interact with the database concurrently, even when accessing the same data simultaneously. The inherent support for handling multiple 
@@ -477,7 +477,7 @@ The client/server architecture of PostgreSQL, coupled with its robust Rust libra
 backend database with support for concurrent access and asynchronous operations. While it may have started as a project nearly four decades ago, PostgreSQL 
 continues to evolve and thrive, maintaining its relevance in the dynamic landscape of web development and database management.
 
-\subsubsection{MySQL}
+\subsection{MySQL}
 MySQL\footcite{mysql} has established itself as a heavyweight in the realm of backend databases, with giants like YouTube, Facebook, and Twitter relying on its 
 robust capabilities. Widely utilized for storing data from web services, MySQL operates on a client/server architecture similar to PostgreSQL, featuring a 
 singular server process managing the database and facilitating access for multiple clients.\newline
@@ -501,7 +501,7 @@ history, marked by its evolution under different entities, has given rise to alt
 and \verb+mysql_async+ further enhances MySQL's accessibility and usability within the Rust programming ecosystem, enabling developers to seamlessly integrate 
 MySQL into their applications.
 
-\subsubsection{Comparison}
+\subsection{Comparison}
 The table provides a concise comparison of key features among SQLite, PostgreSQL, and MySQL, shedding light on their architectural, compliance, support, and 
 use-case distinctions:
 
@@ -534,6 +534,32 @@ requirements and scale of the intended use.\newline
 After we looked into the three possiblyties mentioned above we created an enviroment to benchmark the different databases. We used docker to create a container for each 
 database and then ran a benchmark test on each of them. The benchmark test was a simple test that inserted 1000 rows into a table and then read them again. The benchmark is
 purposefully simple, because we won't be using the database for complex queries. More about the benchmark tests can be found in the \href{tests.tex}{test section}.
+
+\section{Docker}
+\textbf{Author: Christoph Fellner}
+
+Docker\footcite{docker} serves as an indispensable tool in modern software development, offering a containerization solution that facilitates the efficient 
+execution of diverse applications within isolated environments known as containers. These containers, encapsulating applications and their dependencies, operate 
+independently, enabling the concurrent execution of multiple containers on a single host system. The versatility of Docker extends from lightweight services 
+like echo servers to complex web applications, making it a versatile choice for a spectrum of development and deployment scenarios.\newline
+
+One of Docker's compelling use cases is the encapsulation of databases within containers. This capability enables the creation of portable and reproducible 
+database environments, fostering ease of testing, development, and even benchmarking. In the specific use case of RECT, Docker proved instrumental in benchmarking 
+different databases, allowing us to evaluate and identify the most suitable database for the application's requirements.\newline
+
+Docker's open-source nature and compatibility across major operating systems contribute to its widespread adoption. Its availability on diverse platforms 
+empowers developers to create consistent environments, irrespective of the underlying infrastructure. This feature is particularly advantageous in scenarios 
+where multiple applications need to coexist on the same machine, as Docker mitigates compatibility concerns and ensures the isolation of applications from the 
+local infrastructure.\newline
+
+The ability to isolate applications from the host system's infrastructure is a key feature of Docker. This isolation not only enhances compatibility but also 
+simplifies the deployment process. Developers can confidently run multiple applications on a single machine without the fear of conflicts or compatibility 
+issues, streamlining the development and testing phases.\newline
+
+In summary, Docker's role in the project extends beyond conventional application development and deployment. It serves as a significant tool for benchmarking 
+databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in order to 
+identify the optimal database solution for the RECT use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
+a cornerstone technology in contemporary software development and deployment practices.
 
 \section{Libraries}
 
@@ -968,31 +994,5 @@ functions as Service.
 
 In order to translate the Protocol Buffer into Rust code we use the \verb+include_proto!+ function from the Tonic library. This function takes the path to the 
 Protocol-Buffer-file and generates the Rust code for the Service.
-
-\subsection{Docker}
-\textbf{Author: Christoph Fellner}
-
-Docker\footcite{docker} serves as an indispensable tool in modern software development, offering a containerization solution that facilitates the efficient 
-execution of diverse applications within isolated environments known as containers. These containers, encapsulating applications and their dependencies, operate 
-independently, enabling the concurrent execution of multiple containers on a single host system. The versatility of Docker extends from lightweight services 
-like echo servers to complex web applications, making it a versatile choice for a spectrum of development and deployment scenarios.\newline
-
-One of Docker's compelling use cases is the encapsulation of databases within containers. This capability enables the creation of portable and reproducible 
-database environments, fostering ease of testing, development, and even benchmarking. In the specific use case of RECT, Docker proved instrumental in benchmarking 
-different databases, allowing us to evaluate and identify the most suitable database for the application's requirements.\newline
-
-Docker's open-source nature and compatibility across major operating systems contribute to its widespread adoption. Its availability on diverse platforms 
-empowers developers to create consistent environments, irrespective of the underlying infrastructure. This feature is particularly advantageous in scenarios 
-where multiple applications need to coexist on the same machine, as Docker mitigates compatibility concerns and ensures the isolation of applications from the 
-local infrastructure.\newline
-
-The ability to isolate applications from the host system's infrastructure is a key feature of Docker. This isolation not only enhances compatibility but also 
-simplifies the deployment process. Developers can confidently run multiple applications on a single machine without the fear of conflicts or compatibility 
-issues, streamlining the development and testing phases.\newline
-
-In summary, Docker's role in the project extends beyond conventional application development and deployment. It serves as a significant tool for benchmarking 
-databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in order to 
-identify the optimal database solution for the RECT use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
-a cornerstone technology in contemporary software development and deployment practices.
 
 \filbreak
