@@ -1,5 +1,48 @@
 \chapter{Experiment 1}
+\textbf{Author: Timon Koch} 
 
-\textbf{Author: } 
+In an ideal world, a communication method should provide a reliable and efficient means of transmitting data.
+In reality, either reliability or throughput has to be prioritized.
+To determine the best method of communication for a specific need and identify an all-rounder, two tests will be conducted.
+Performance and reliability are determined by testing under optimal and more realistic conditions.
+Both tests use an echo server that sends back any data sent to it.
+As many packets as possible are exchanged for 60 seconds.
+The packets contain a 64-bit sequence number in the first 8 bytes and are then filled with random data until the package reaches the size of the maximum transmission unit.
+During this process, the time at which the packet is sent and received is recorded.
+If the packet fails to return, it is considered lost.
+Additionally, packets that become corrupted during transit and do not contain a valid sequence number also contribute to packet loss.
 
+\subsection{Benchmarking Throughput and Reliability in an Optimal Environment}
+To ensure optimal test conditions, two Wombats are placed about 240~centimeters apart from each other.
+The experiment is conducted in a room with thick concrete walls and no other devices to prevent interference and ensure accurate results.
+The Wombat's Wi-Fi module operates on the 2.4~GHz frequency band and uses a channel width of 20~MHz. One Wombat acts as a Wi-Fi access point, and after the other Wombat connects to it, both the TCP and UDP benchmarks are run.
+Then, the Wi-Fi interface on both Wombats is turned off and the BLE tests are run using L2CAP.
+
+\subsection{Testing the Effects of Interference on Throughput and Reliability}
+Botball events often have many participants, which lead to interference when multiple devices broadcast using a shared medium.
+Interference occurs when signals collide, corrupting the data sent.
+While Wi-Fi and BLE have methods to counteract these errors, they come at a cost.
+To measure the effects of interference on Wi-Fi and BLE, we simulate it.
+This requires either many clients or a large antenna to saturate the entire signal spectrum.
+Due to the availability of Wi-Fi and BLE-enabled devices, such as the Wombat, the former method is more practical and cost-effective.
+Each device records sent and received data over time, providing insight into transfer rates and packet loss experienced by the devices.
+
+\subsection{Results}
+In ideal circumstances, Wi-Fi shows to have superior throughput and lower latency compared to BLE, making it the preferred choice for tasks that require high data rates or time-sensitive operations.
+Both the TCP protocol and the BLE protocol exhibits negligible packet loss, highlighting their reliability for transmitting critical information despite BLE's lower data transmission capabilities.
+
+Under conditions with realistic interference levels, TCP demonstrates resilience by maintaining packet integrity.
+In environments where interference is prevalent, TCP over Wi-Fi is a reliable method of communication.
+While BLE has limited throughput, it maintains reliability, making it useful in scenarios where energy efficiency and minimal data transmission are important.
+In Botball, where the amount of energy used for Wi-Fi can be neglected, it is recommended to not use BLE to transmit data.
+Since BLE uses the same 2.4~GHz bands as Wi-Fi it is also affected by interference.
+Because of the high amount of interference at tournaments, it is critical for teams to create backup plans for when data cannot be transmitted successfully.
+
+For participants in the ECER, the findings encourage teams to carefully weigh the benefits and drawbacks of implementing bot-to-bot communication in their competitive designs.
+Specifically, teams can discern the optimal protocols to employ based on the specific requirements of their Botball strategies and the likely environmental conditions during the conference.
+This anticipation for interference is vital for enhancing the reliability and effectiveness of their robots in the dynamic environment of robotics competitions.
+
+This study underlines the significance of considering environmental factors such as interference when designing and testing robot communication systems.
+As Botball teams strive for precision and efficiency in their robotic endeavors, the insights derived from this research offer a pathway to more effective and reliable robot-to-robot communication, ultimately enhancing the overall performance in competitions.
+While this study delineates the comparative efficacy of Wi-Fi and BLE in Botball, future research should explore the integration of adaptive protocols that could dynamically switch between these methods based on environmental conditions.
 \filbreak
