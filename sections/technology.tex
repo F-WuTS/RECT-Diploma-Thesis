@@ -806,27 +806,27 @@ rust-postgres. This library provides a sophisticated interface, streamlining the
 From the orchestration of table creation and data insertion to the intricacies of data querying, rusqlite empowers developers with a versatile toolset for 
 database manipulation directly within their Rust codebase.
 
-The decision to adopt rusqlite in our specific use case is underpinned by a meticulous consideration of three critical factors:
+The decision to adopt rusqlite for the use case is underpinned by a meticulous consideration of three critical factors:
 
 \begin{enumerate}
     \item \textbf{Portability:} SQLite's commendable attribute of cross-platform compatibility across diverse operating systems assumes paramount importance in 
-    our context at RECT. Given the heterogeneous nature of small controllers operating within our system, the ability to seamlessly deploy SQLite databases 
+    the context of RECT. Given the heterogeneous nature of small controllers operating within the RECT system, the ability to seamlessly deploy SQLite databases 
     across different platforms becomes imperative for maintaining operational uniformity and efficiency.
     
     \item \textbf{Configuration:} In stark contrast to other database systems SQLite does not require complex configurations. 
-    The simplicity inherent in working with SQLite fits perfectly with our operational requirements. Since we need to configure a database on each controller, 
-    SQLite is the optimal choice for our lean operating requirements due to its low setup effort.
+    The simplicity inherent in working with SQLite fits perfectly with the operational requirements. Since we need to configure a database on each controller, 
+    SQLite is the optimal choice for the lean operating requirements of RECT due to its low setup effort.
     
     \item \textbf{Local:} SQLite is characterized by the fact that it requires neither an external server nor complicated installations. The self-contained package 
     has all the necessary functions in a local environment. This inherent localization is in line with RECT's structural approach and the need for an efficient and 
     autonomous database solution without the burden of external dependencies.
 \end{enumerate}
 
-In our specific instantiation, rusqlite is strategically employed for the persistent storage of the config.json file, a repository of vital data concerning 
+In the instantiation of RECT, rusqlite is strategically employed for the persistent storage of the config.json file, a repository of vital data concerning 
 available connections. The judicious selection of rusqlite in this context is grounded in its inherent advantages. The utilization of rusqlite markedly enhances 
 the expediency and security of data access compared to traditional file-based retrieval mechanisms. This methodological choice contributes not only to the 
-enhanced performance of our system but also underscores the commitment to preserving the integrity and reliability of configuration data, critical to the seamless
-functionality of our application within the broader scientific and technological landscape.
+enhanced performance of the system but also underscores the commitment to preserving the integrity and reliability of configuration data, critical to the seamless
+functionality of the application within the broader scientific and technological landscape.
 
 \subsection{Serde}
 \textbf{Author: Christoph Fellner}
@@ -837,16 +837,16 @@ the handling of data structures within the Rust programming paradigm. For a comp
 documentation available at \href{https://serde.rs/}{https://serde.rs/}.\newline
 
 The salient features of Serde become particularly evident in its capability to facilitate the seamless deserialization of JSON files with efficiency and 
-simplicity. This functionality proves invaluable in our context, where the utilization of data from the config.json file is an integral part of our program. 
-Serde streamlines this process, enabling us to incorporate the data effortlessly into our program with just a few lines of code.\newline
+simplicity. This functionality proves invaluable in the context of RECT, where the utilization of data from the config.json file is an integral part of the program. 
+Serde streamlines this process, enabling us to incorporate the data effortlessly into the program with just a few lines of code.\newline
 
 By leveraging Serde, we engage in a streamlined deserialization process wherein the data from the JSON file is efficiently transformed into a custom Rust 
-structure. This bespoke structure, tailored to our specific needs, enables us to harness the deserialized data seamlessly within our program. The utilization of
+structure. This bespoke structure, tailored to the specific needs of the project, enables us to harness the deserialized data seamlessly within the program. The utilization of
 Serde thus transcends mere deserialization, providing us with a powerful and adaptable mechanism to work with the data in a meaningful and efficient manner.\newline
 
-In essence, the incorporation of Serde into our workflow is not merely a technical choice but a strategic one, driven by the need for optimized data handling 
-and seamless integration of external data sources. Through Serde, our program gains a robust and flexible capability to decode JSON files, thereby enhancing the
-overall efficiency and maintainability of our Rust-based application.
+In essence, the incorporation of Serde into the workflow of the RECT is not merely a technical choice but a strategic one, driven by the need for optimized data handling 
+and seamless integration of external data sources. Through Serde, the program gains a robust and flexible capability to decode JSON files, thereby enhancing the
+overall efficiency and maintainability of the Rust-based application.
 
 \subsection{Tokio}
 \textbf{Author: Christoph Fellner}
@@ -856,7 +856,7 @@ asynchronous code does not inherently execute independently; rather, it necessit
 exploration of Tokio and its capabilities, readers are encouraged to delve into the detailed tutorial available at 
 \href{https://tokio.rs/tokio/tutorial}{https://tokio.rs/tokio/tutorial}.\newline
 
-The selection of Tokio as our asynchronous runtime is underpinned by several compelling reasons. Chief among them is Tokio's status as the preeminent and widely
+The selection of Tokio as asynchronous runtime is underpinned by several compelling reasons. Chief among them is Tokio's status as the preeminent and widely
 adopted runtime for asynchronous Rust code. Its widespread usage within the Rust community attests to its robustness and reliability in facilitating asynchronous
 programming paradigms.\newline
 
@@ -869,9 +869,9 @@ parallelism and concurrency are essential, such as in web servers or application
 asynchronous code ensures the efficient execution of tasks without compromising safety or introducing race conditions.\newline
 
 
-In summary, our decision to embrace Tokio as the asynchronous runtime for our Rust project is grounded in its status as the leading runtime in the Rust 
+In summary, the decision to embrace Tokio as the asynchronous runtime for the Rust project is grounded in its status as the leading runtime in the Rust 
 ecosystem, coupled with its user-friendly design and robust support for multi-threaded async code execution. This strategic choice positions us to harness the 
-full potential of asynchronous programming in Rust, ensuring the responsiveness and scalability of our application.
+full potential of asynchronous programming in Rust, ensuring the responsiveness and scalability of the application.
 
 \begin{minipage}{\textwidth}
 \begin{lstlisting}[language=Rust]
@@ -892,7 +892,7 @@ async fn client_test(){
 \end{minipage}
 
 Using Tokio makes it possible to run multiple async functions at the same time. In the example above we start a server and a client and then wait for the first one to finish. 
-This is done using the tokio::select! macro. The macro takes a list of futures and waits for the first one to finish. In our case we want to wait for the client to finish 
+This is done using the tokio::select! macro. The macro takes a list of futures and waits for the first one to finish. In the case of RECT we want to wait for the client to finish 
 first, so we panic if the server finishes first. If the client finishes first we just return. Any occoring Errors are cathed and returned as Result.
 The two functions \verb+run_server+ and \verb+client_test+ are both async functions. The server function is a simple echo server, that waits for a message from the client and 
 then sends it back. The client function sends a message containing an url and a vote to the server and then waits for the response. Server and Client are connected via a gRPC 
@@ -909,10 +909,10 @@ Key features of Tokio Rusqlite include the ability to execute Rusqlite operation
 Asynchronous operations are vital in applications that require efficient handling of concurrent tasks, such as web servers, where multiple requests may be 
 processed simultaneously.\newline
 
-The seamless integration of Tokio Rusqlite into our development stack augments the versatility of Rusqlite by enabling asynchronous database operations. This is 
+The seamless integration of Tokio Rusqlite into the development stack of RECT augments the versatility of Rusqlite by enabling asynchronous database operations. This is 
 especially valuable in scenarios where responsiveness and scalability are critical factors. One of these scenarios is when the RECT Backend interacts with the RECT Database 
 asynchronously, this scenario is especially important when the backend is handling multiple requests at the same time. Another scenario is when the RECT Database gets updated
-while the backend is running. In this case the backend can continue to run without having to wait for the database to finish updating. Leveraging Tokio Rusqlite in our project 
+while the backend is running. In this case the backend can continue to run without having to wait for the database to finish updating. Leveraging Tokio Rusqlite in the project 
 equips us with a robust solution for handling database interactions in an asynchronous manner, aligning with contemporary trends in Rust programming and distributed system 
 architectures.
 
@@ -931,12 +931,12 @@ A distinctive aspect of Tonic lies in its support for gRPC, a high-performance r
 interfaces, providing a language-agnostic and efficient means of defining the structure of data. This approach not only enhances interoperability but also 
 allows for the generation of necessary Rust code based on the defined Protocol Buffers, automating a significant portion of the development process.\newline
 
-The utilization of Tonic in our project streamlines the definition of interfaces by leveraging Protocol Buffers. This enables us to articulate our interface 
+The utilization of Tonic in the project streamlines the definition of interfaces by leveraging Protocol Buffers. This enables us to articulate the interface 
 specifications in a clear and concise manner, and Tonic then takes care of the Rust code generation, reducing manual effort and potential errors.\newline
 
-In essence, Tonic serves as a powerful tool in our technology stack, providing a performant and flexible implementation of gRPC for Rust. Its compatibility with 
+In essence, Tonic serves as a powerful tool in the technology stack, providing a performant and flexible implementation of gRPC for Rust. Its compatibility with 
 Tokio, support for async/await, and seamless integration with Protocol Buffers contribute to the development of robust and efficient distributed systems. By 
-choosing Tonic, we aim to leverage its capabilities to enhance the performance, interoperability, and maintainability of our Rust-based projects.\newline
+choosing Tonic, we aim to leverage its capabilities to enhance the performance, interoperability, and maintainability of the Rust-based projects.\newline
 
 The example for Tokio above uses the Tonic library to convert the following Protocol-Buffer-file into Rust code, in order to use it in the client and server 
 functions as Service.
@@ -978,8 +978,8 @@ independently, enabling the concurrent execution of multiple containers on a sin
 like echo servers to complex web applications, making it a versatile choice for a spectrum of development and deployment scenarios.\newline
 
 One of Docker's compelling use cases is the encapsulation of databases within containers. This capability enables the creation of portable and reproducible 
-database environments, fostering ease of testing, development, and even benchmarking. In our specific use case, Docker proved instrumental in benchmarking 
-different databases, allowing us to evaluate and identify the most suitable database for our application's requirements.\newline
+database environments, fostering ease of testing, development, and even benchmarking. In the specific use case of RECT, Docker proved instrumental in benchmarking 
+different databases, allowing us to evaluate and identify the most suitable database for the application's requirements.\newline
 
 Docker's open-source nature and compatibility across major operating systems contribute to its widespread adoption. Its availability on diverse platforms 
 empowers developers to create consistent environments, irrespective of the underlying infrastructure. This feature is particularly advantageous in scenarios 
@@ -990,9 +990,9 @@ The ability to isolate applications from the host system's infrastructure is a k
 simplifies the deployment process. Developers can confidently run multiple applications on a single machine without the fear of conflicts or compatibility 
 issues, streamlining the development and testing phases.\newline
 
-In summary, Docker's role in our project extends beyond conventional application development and deployment. It serves as a significant tool for benchmarking 
-databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in our quest to 
-identify the optimal database solution for our specific use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
+In summary, Docker's role in the project extends beyond conventional application development and deployment. It serves as a significant tool for benchmarking 
+databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in order to 
+identify the optimal database solution for the RECT use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
 a cornerstone technology in contemporary software development and deployment practices.
 
 \filbreak
