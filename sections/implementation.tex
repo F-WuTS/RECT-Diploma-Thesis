@@ -246,9 +246,39 @@ effortlessly communicate with other robots or devices running this or the Python
 \subsection{Documentation}
 
 \section{Python Implementation}
+\textbf{Author: Timon Koch}
+
+The Python Implementation and the C++ Implementation are the two primary components in the RECT stack that face outward. They serve as libraries that allow developers to create robots that can communicate seamlessly. The Rectpy class simplifies the usage of gRPC.
+
+Initializing the class is as simple as providing IP addresses for its various services and specifying the IP of another instance. After initialization, developers can confidently use the pre-defined methods within the class to communicate seamlessly with other robots or devices running either this C++ implementation or the Python frontend.
+
+\section{Rectpy class}
+The Rectpy class forms the foundation of the Python implementation, providing users with powerful functions to efficiently control various RECT services. These functions streamline the management of multiple gRPC services by reducing them to simple calls. The send method requires only one line of code for users to send a message, abstracting away underlying complexities. This encapsulation improves usability and enables efficient and robust utilization of RECT's capabilities. Developers can focus on their core objectives without being burdened by implementation intricacies.
+
+\begin{verbatim}
+	def send(self, connectionName, msg, recipient, topic):
+\end{verbatim}
+
+The function requires users to specify the connection to be monitored, the message itself, the recipient and the subject of the outgoing messages. By providing these parameters to the send function, users define the criteria for sending a message. This methodology ensures a seamless and structured message sending process, enabling efficient management of communication flows within the RECT framework.
+
+Two essential aspects of this class, besides the simplified interaction with gRPC services, are the hosting of own services and the management of connections to other services.
+
+\subsection{Construction}
+When initialising the Rectpy class constructor, users are required to provide the IP addresses and port numbers for the three different servers responsible for launching the three different services. This critical initialisation step requires the provision of network parameters in string format. The three services involved in this project are
+
+\begin{itemize}
+  \item{Config Service:} Facilitates the exchange of configuration data between two systems.
+  \item{Listen Service:} Allows subscriptions to specific topics and notifies listening clients when messages arrive.
+  \item{Send Service:} Allows messages with specified topics to be sent to other systems.
+\end{itemize}
+
+During the build phase, the services are instantiated, followed immediately by the launch of a dedicated server for each service. This initialisation process is seamlessly facilitated by the use of the Serverbuilder module from the gRPC libraries, which streamlines the setup and configuration of servers.
+
+\subsection{Connection}
+
+Connection creation is achieved in two different ways: the general purpose createConnection function and its more specialised counterparts. The createConnection function instantiates connections for all three services at once. The more specific functions, on the other hand, instantiate connections for individual services depending on the name given to them. For example, the createSendConnection method will only connect to the Send service hosted at the specified address. This granular approach streamlines the connection establishment process and increases the modularity and flexibility of the Rectpy class. Users can tailor their interactions with specific services according to their needs.
 
 \subsection{Documentation}
-
-\section{Implementation Comparison}
+In addition to the Rectpy library, extensive documentation has been created using Pydoc for its functions to facilitate future use of this tool. This documentation can be accessed by navigating to the documentation folder within the project directory and opening the associated file. 
 
 \filbreak
