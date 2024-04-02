@@ -1,6 +1,4 @@
-\chapter{Methods}
-The "Methods" chapter, as described in the "Outline" section of the "Introduction" chapter contains sections pretaining to the technologies and languages 
-used in RECT, as well as the reasoning for their use. These sections also aim to provide a basic understanding of the technologies and languages they describe.
+\chapter{Methodology}
 
 \tocdata{toc}{$\rightarrow$\textit{Timon Koch}}
 \section{Wombat}
@@ -24,12 +22,9 @@ Python is a powerful high-level, general purpose, object-oriented progrmming lan
 
 It was created by Dutch programmer Guido van Rossum as a successor to ABC\footcite{abc_programming_language} and was first released in 1991 with the capability of exception handling. 
 Features such as list comprehensions, reference counting, Unicode support and cycle-detecting garbage collections were introduced with Python 2.0 on 16 October 2000. After this release Python became a community-driven, open source project.
-
-Python has gained significant popularity since its initial release in the early 1990s. It is widely used in various applications, including web development, machine learning, artificial intelligence, data analysis, automation, and scientific computing. 
-
-The most important feature of the programming language Python is its support for mulitple programming paradigms, including object-oriented, imperative and functional programming. It was designed to be highly extensible via modules, rather than building all of it functionality into its core.
-
-Python was selected for this project due to its simple syntax and versatility. It is widely used in many fields, and has a comprehensive system of external frameworks and libraries already available. Furthermore, it places emphasis on code readability, making it an ideal choice for those new to the field of programming.
+Due to a lack of backward compability, the switch from 2.7 to the 3.0 update, released in 2008, caused a big controversy. Folowing this most programs written in 2.7 had to be rewritten to support 3.0 update. 
+Python has gained enormous popularity since the first release in the early 1990s and is used in a wide range of applications, ranging from web development to machine learning. 
+The most important feature of the programming language Python is its support for mulitple programming paradigms, including object-oriented, imperative and functional programming. It was designed to be highly extensible via modules, rather than building all of itfunctionality into its core.
 
 \tocdata{toc}{$\rightarrow$\textit{Maximilian Dragosits}}
 \section{C++}
@@ -82,7 +77,7 @@ The following is an example of this:
 As shown in the example, there are crate-, or module-level and general documentation comments. 
 The crate-level comments are used to describe a whole crate, or module and provide an overview of the functionality of the crate or module.
 The general comments are used to describe functions, structs, enums, traits, etc. and provide 
-an explanation of the functionality of the specific item. The documentation for the CommLib can be found in the appendix.
+an explanation of the functionality of the specific item. The documentation for the CommLib can be found in % keine ahnung. appendix a
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
 \subsection{Cargo}
@@ -116,10 +111,6 @@ code, generating documentation, and publishing packages. Its integration with th
 conducive to building robust and reliable systems.
 
 \tocdata{toc}{$\rightarrow$\textit{Maximilian Dragosits}}
-Cargo for Rust is basically the equivalent of npm for JavaScript, or pip for Python. But unlike npm, or pip, Cargo is also a test and benchmark runner. In addition there is 
-a number of other features, that Cargo provides, dependency overrides, or workspaces for example. Rust uses the Cargo.toml file to define and manage projects, similar to the 
-package.json file in JavaScript. Other than that Cargo is also used to support tasks like building and running code.
-
 \section{gRPC}
 \textbf{Author: Maximilian Dragosits}
 
@@ -299,21 +290,21 @@ An example of this would be the SubListen service from this project:
 \section{Nix}
 \textbf{Author: Jeremy Sztavinovszki}
 
-Nix can take the form of a couple of things depending on the context. It can either be a configuration language, a package manager, an operating system, or a build system.
-That may cause confusion, but the next section will cover each of these contexts for the sake of clearing up some of the confusion, that may arise from this statement.
+Nix is one of a couple of things depending on the context. It is either a configuration language, a package manager, an operating system, or a build system.
+That may seem a bit confusing, but the next section will cover each of these contexts for the sake of clearing up some of the confusion, that may arise from this statement.
 
 \subsection{History}
-Nix was first released in 2003 as a research project by Eelco Dolstra. At first it was just a package manager, that could be run on any linux distribution, but in 2007 it became its
-own full blown Linux distribution with many other additions to the Nix eco system, such as Hydra \footcite{hydra}, a continuous integration tool, and NixOps,
-a deployment tool for NixOS deploying NixOS in a network/cloud \footcite{NixOps}. At the time of writing Nix has gotten another big addition in the form of flakes.
-Flakes are a way of declaratively building anything ranging from Nix packages, over development environments, to system configurations. When a flake is built for the first time it
+Nix was first conceived and made a reality in 2003 as a research project by Eelco Dolstra. At first it was just a package manager, that could be run on any distro, but in 2007 it became its
+own full blown Linux distribution with many other additions to the Nix eco system, such as Hydra \footcite{hydra}, a continuous intergration tool, and nixops,
+a deployment tool for nixos deploying NixOS in a network/cloud \footcite{NixOps}. At the time of writing Nix has gotten another big addition in the form of flakes.
+Flakes are a way of declaratively building anything ranging from Nix packages, over development environments, to system configurations. When a flake is build for the first time it
 pulls in all of its inputs and writes their commit hashes to a flake.lock file. Through this mechanism of noting the exact commit each input of a flake it is possible to use nix flakes for
-reproducible builds\footcite{reproducible-builds}.
+reproducible builds.
 
 \subsection{The Language}
 The language was the first part of Nix, that was implemented and it is arguably the most important part of Nix. Nix is a declarative functional programming language,
 that is used for defining packages, build processes and configurations for a host of things ranging from reproducible development environments to IT-Infrastructure.
-Taking an example for the syntax from the official NixOS wiki site the language looks something like this:
+Taking an example for the syntax from the official nixos wiki site the language looks something like this:
 
 % example here
 \begin{minipage}{\textwidth}
@@ -322,24 +313,30 @@ Taking an example for the syntax from the official NixOS wiki site the language 
 let
     a = 1;
     b = 2;
-in a+b # => 3
+in a+b
+# result 3
 
 #2
 let
     square = x: x*x;
     a = 12;
-in square a # => 144
+in square a
+#result 144
 
 #3
 let 
     add = x: y: x+y;
-in add 1 2 # => 3
+in add 1 2
+
+#result 3
 
 #4
 let
     square = {x ? 2}: x*x;
     a = 12;
-in square{x=square {};} # => 16
+in square{x=square {};}
+
+#result 16
 \end{lstlisting}
 \end{minipage}
 
@@ -366,7 +363,7 @@ The specific example builds the latex files of which this thesis is comprised in
   description = "A flake to build the RECT-Diploma-Thesis";
 
   inputs = {
-    nixpkgs.url ="github:NixOS/nixpkgs/nixos-23.05";
+    nixpkgs.url ="github:nixos/nixpkgs/nixos-23.05";
   };
 
   outputs = {self, nixpkgs}:
@@ -401,13 +398,10 @@ The code shown above is a nix flake. It defines the nixpkgs repository as an inp
 that is taking place in the mkDerivation block as an output. mkDerivation is a function which takes a name, pname, version, src,
 buildInputs, buildPhase, installPhase, builder and shellHook as inputs and produces a package which is built in the standard environment (stdenv) \footcite{nixMkDerivation}.
 The built derivation (or output of this flake) is then asigned a hash and stored in the nix store on the machine that built it.
-An example of this would be the following path \newline\verb+/nix/store/dnx26izplgv46dwg548whh9kj5iz4vvx-RECT-Diploma-Thesis+.
-This hash can be used to check if there were changes in the source files and dependencies used to build a package and allows
-having multiple versions installed on a system. 
+An example of this would be the following path \newline\verb+/nix/store/dnx26izplgv46dwg548whh9kj5iz4vvx-RECT-Diploma-Thesis+. 
 
 \subsubsection{Nixpkgs}
-Of course the defined packages need to be stored somewhere. This is where the nixpkgs repository \footcite{nixpkgs-repo} on github comes in handy. It is a collection of over 80000 packages according to repology \footcite{repology_nixpkgs}, 
-which means Nixpkgs is the largest package repository for linux. This is good, because it means it provides a wide variety of packages, but also tedious, because finding a package is quite a task requiring a search engine like search.NixOS.org \footcite{search-nixos-org}, 
+Of course the defined packages need to be stored somewhere. This is where the nixpkgs repository \footcite{nixpkgs_repo} on github comes in handy. It is a collection of over 80000 packages according to repology \footcite{repology_nixpkgs}.
 The community can contribute their own definitions, or updates to the repository if they found something to be out of date, or missing. Of course when installing a package it is not built from scratch every time, like on source based distros.
 Instead nixpkgs caches builds of the most popular packages, which then just have to be downloaded onto the users machines.
 
@@ -415,47 +409,15 @@ Instead nixpkgs caches builds of the most popular packages, which then just have
 NixOS is built upon the Nix package manager. It is an independent Linux distribution, which means it is not based on any other Linux distribution like for example Debian, or Arch Linux.
 What is really special about NixOS is, that the whole operating system with services, programs and all of the needed configurations can be built from one central file, which is written in the Nix Programming Language.
 With this file stored as a backup a machine running NixOS could be up and running again in no time after a failure and through the usage of Nix Flakes it is possible to reinstall the system exactly the way it was before.
-There are however utilities like nix shells, which creates a shell environment with the packages the user wants to try, or the nix-env command to install a package, to make changes to the running system without altering the configuration.
-The Nix Operating System is very useful for RECT, because it allows the developer to create a disk image for e.g. a raspberry pi, which already has all dependencies and tools installed in order to debug and test various programs.
-
-
-\tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
-\section{Docker}
-\textbf{Author: Christoph Fellner}
-
-Docker\footcite{docker} serves as an indispensable tool in modern software development, offering a containerization solution that facilitates the efficient 
-execution of diverse applications within isolated environments known as containers. These containers, encapsulating applications and their dependencies, operate 
-independently, enabling the concurrent execution of multiple containers on a single host system. The versatility of Docker extends from lightweight services 
-like echo servers to complex web applications, making it a versatile choice for a spectrum of development and deployment scenarios.\newline
-
-One of Docker's compelling use cases is the encapsulation of databases within containers. This capability enables the creation of portable and reproducible 
-database environments, fostering ease of testing, development, and even benchmarking. In our specific use case, Docker proved instrumental in benchmarking 
-different databases, allowing us to evaluate and identify the most suitable database for our application's requirements.\newline
-
-Docker's open-source nature and compatibility across major operating systems contribute to its widespread adoption. Its availability on diverse platforms 
-empowers developers to create consistent environments, irrespective of the underlying infrastructure. This feature is particularly advantageous in scenarios 
-where multiple applications need to coexist on the same machine, as Docker mitigates compatibility concerns and ensures the isolation of applications from the 
-local infrastructure.\newline
-
-The ability to isolate applications from the host system's infrastructure is a key feature of Docker. This isolation not only enhances compatibility but also 
-simplifies the deployment process. Developers can confidently run multiple applications on a single machine without the fear of conflicts or compatibility 
-issues, streamlining the development and testing phases.\newline
-
-In summary, Docker's role in our project extends beyond conventional application development and deployment. It serves as a significant tool for benchmarking 
-databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in our quest to 
-identify the optimal database solution for our specific use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
-a cornerstone technology in contemporary software development and deployment practices.
-
 
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{Bluetooth Low Energy}
 \textbf{Author: Jeremy Sztavinovszki}
-\newline
+
 Bluetooth Low Energy (BLE) is a Low-Cost, Low-Bandwidth, Low-Energy technology, that works by transmitting data over the air using a slice of the frequencies available in the Industrial, Scientific and Medical Band \footcite{ism}.
 It was introduced in the 4th version of the Bluetooth Version, after being developed by Nokia under the name Wibree and being adopted by the Bluetooth Special Interest Group (SIG). BLE at the time of its release made use of many
 innovative technologies, for example Frequency Hopping Spread Spectrum \footcite{fhss}, which is used to avoid collisions when sending data. A combination of being innovative and marketing lead to BLE seeing a great adoption rate
-after its initial release. Over the years Bluetooth Low Energy has seen many improvements, such as a Bluetooth Low Energy device being able to take on multiple roles simultaneously in the network. These improvements over Bluetooth Classic
-combined with the lower power use makes BLE a great choice for RECT.
+after its initial release. Over the years Bluetooth Low Energy has seen many improvements, such as a Bluetooth Low Energy device being able to take on multiple roles simultaneously in the network.
 
 \subsection{BLE Layers}
 \subsubsection{Protocol vs. Profile}
@@ -487,10 +449,10 @@ The HCI on the host side enables communication between the HCI driver and the ap
 The Controller Side should also be considered.
 
 \paragraph{Controller Side}
-The HCI on the controller side translates commands from the host into hardware-specific operations for the Bluetooth controller. It facilitates communication between the host and the Bluetooth hardware, ensuring accurate execution of the required actions. This layer is responsible for managing data transfer between the host and controller, optimizing the transmission process.
+The HCI on the controller side translates commands from the host into hardware-specific operations for the Bluetooth controller. It facilitates communication between the host and the Bluetooth hardware, ensuring accurate execution of the required actions. This layer is responsible for managing data transfer between the host and controller, optimizing the transmission process
 
 
-\subsubsection{Logical Link Control and Adaptation Protocol (L2CAP)}
+\subsubsection{Logical Link Controll and Adaptation Protocol (L2CAP)}
 The Logical Link Control and Adaptation Protocol (L2CAP) efficiently multiplexes higher-layer protocols over BLE connections. It segments and reassembles data packets, optimizing data transmission efficiency while accommodating diverse application requirements. The role of protocol multiplexing and fragmentation is to ensure efficient data exchange while maintaining BLE's low-energy characteristics.
 
 \subsubsection{Attribute Protocol and Generic Attribute Profile}
@@ -532,132 +494,17 @@ BLE applications often use hybrid architectures that combine multiple topologies
 \section{WiFi}
 \textbf{Author: Timon Koch}
 
-WiFi, which stands for Wireless Fidelity, is a technological advancement that has significantly transformed how people and businesses access the internet and communicate wirelessly within a specific range. Wireless networking technology has had a significant impact on connectivity, providing users with greater flexibility and convenience when accessing information, conducting business, and engaging in communication activities. WiFi has become an integral part of modern society, permeating various aspects of daily life, from homes and workplaces to public spaces and transportation systems.
-
 \subsection{History}
 The development of WiFi can be traced back to the 1990s when the Institute of Electrical and Electronics Engineers (IEEE)\footcite{ieee} established the 802.11\footcite{ieee_802_11} committee to create standards for wireless local area networking (WLAN). In 1997, the initial version of the 802.11 standard was introduced, which provided data transmission speeds of up to 2 megabits per second (Mbps). Over the years, WiFi standards have evolved, including 802.11a, 802.11b, 802.11g, and 802.11n, bringing significant enhancements in speed, range, and reliability. By the early 2000s, WiFi had become widely adopted in both residential and commercial environments, catalysing the wireless revolution and reshaping the landscape of connectivity.
 
 \subsection{Usage}
-WiFi technology is widely used in various settings, such as homes, offices, educational institutions, hospitality establishments, and transportation hubs. It allows users to connect multiple devices, including smartphones, tablets, laptops, desktop computers, smart TVs, gaming consoles, and IoT devices, to the internet without the need for physical connections. Wireless networks are commonly established using routers or access points, which serve as intermediaries that facilitate communication between connected devices and the internet. This extensive connectivity enables individuals to work remotely, collaborate effectively, access digital content, stream multimedia, and stay connected while on the go, thereby enhancing both personal and professional endeavors.
+The use of WiFi has become widely adopted in modern society, transforming the way people connect to the internet, communicate, and interact with technology. WiFi provides wireless connectivity, allowing users to access the internet and network resources without the limitations of physical cables. Its usage spans various sectors and applications, greatly impacting daily life, business operations, and technological advancements.
 
 \subsection{Function}
 WiFi operates by transmitting data over radio frequencies within designated bands, primarily the 2.4 GHz and 5 GHz spectrums. Devices with WiFi capabilities use modulation techniques to encode data into radio signals, which are then transmitted and received by nearby routers or access points. The communication process typically employs protocols, such as CSMA/CA (Carrier Sense Multiple Access with Collision Avoidance)\footcite{csma_ca} , to manage data transmissions and prevent potential signal interference or collisions. WiFi routers are an important tool for managing the flow of data between connected devices and the internet. They utilize advanced technologies such as beamforming and multiple-input multiple-output (MIMO)\footcite{mimo}  to optimize signal propagation, coverage, and bandwidth utilization.
 
 \subsection{Advancements}
 In recent years, there have been remarkable advancements in WiFi technology driven by the increasing demand for enhanced performance, reliability, and scalability. The introduction of the 802.11ac standard, also known as WiFi 5\footcite{wifi5}, has ushered in a new era of gigabit-speed wireless connectivity, providing improved throughput and spectral efficiency. Subsequent iterations, such as the 802.11ax standard (also known as WiFi 6)\footcite{wifi6}, have introduced innovative features like orthogonal frequency-division multiple access (OFDMA)\footcite{ofdma} and multi-user multiple input multiple output (MU-MIMO)\footcite{mu_mimo}. These features enable more efficient spectrum utilization and accommodate an ever-expanding array of connected devices. These advancements have enabled WiFi to become a part of ultra-high-speed networking, making it possible to seamlessly stream, play games with low latency, experience immersive virtual reality, and deploy robust IoT solutions.
-
-Looking to the future, it is worth noting that the development of WiFi technology is ongoing. New advancements, such as WiFi 6E, are set to utilize the previously unused 6 gigahertz (GHz) spectrum, which will provide increased bandwidth and reduced interference. Furthermore, it is believed that advancements in mesh networking structures, network optimization driven by artificial intelligence, and secure wireless protocols may enhance the capabilities and resilience of WiFi networks. This could potentially usher in an era of ubiquitous, ultra-fast connectivity that caters to the diverse needs of modern society.
-
-
-\section{Why SQLite?}
-The choice of a database system is a critical decision in the development of any application, and for RECT, the decision to use SQLite as the backend database 
-is grounded in a thoughtful consideration of specific requirements tailored to the nature of small controllers.\newline
-
-Given the diverse landscape of database systems, each with its unique set of advantages and drawbacks, a comprehensive evaluation of options is imperative. 
-RECT's emphasis on catering to small controllers immediately guides the criteria for selecting a suitable database. Two key considerations emerge prominently: 
-memory efficiency and self-containment.\newline
-
-Small controllers typically operate within constrained resources, making memory efficiency a paramount concern. SQLite, renowned for its lightweight nature and 
-minimal memory footprint, aligns seamlessly with this requirement. Its design prioritizes efficiency, ensuring optimal performance even in resource-limited 
-environments.\newline
-
-The self-contained nature of SQLite further contributes to its suitability for RECT's use case. Unlike some database systems that necessitate complex setup 
-procedures and external dependencies, SQLite operates as a standalone, serverless database engine. This simplicity not only facilitates ease of use but also 
-aligns with the desire to avoid intricate configurations. RECT benefits from a database solution that is straightforward to use and configure, enabling a 
-seamless integration into the development workflow.\newline
-
-While the focus on memory efficiency and self-containment narrows down the pool of potential databases, SQLite emerges as an optimal choice that strikes a 
-balance between these requirements. The careful consideration of these factors positions SQLite as a reliable and pragmatic choice for RECT, providing the 
-necessary functionality without introducing unnecessary complexity.\newline
-
-In conclusion, the selection of SQLite for RECT's backend database is a result of a meticulous comparison of different options, with a keen focus on the 
-specific needs of small controllers. The prioritization of memory efficiency, self-containment, and ease of use collectively affirm SQLite as the ideal database 
-solution, ensuring optimal performance and simplicity in the context of RECT's development environment.
-
-\paragraph{History of SQLite}
-Originally developed in the year 2000 by D. Richard Hipp for the US Army, SQLite has evolved into an open-source database engine. Its implementation in the C 
-programming language renders it highly portable, allowing it to run seamlessly on a myriad of platforms. This broad compatibility makes SQLite an excellent 
-choice for applications that need to be deployed across diverse environments.\newline
-
-\subsubsection{PostgreSQL}
-Postgres\footcite{postgres}, also known as PostgreSQL, stands as a widely adopted backend database for web applications and websites. Renowned for its robust 
-features and scalability, PostgreSQL operates on a client/server architecture, where the database is managed by a dedicated server process. This architecture 
-allows multiple clients to interact with the database concurrently, even when accessing the same data simultaneously. The inherent support for handling multiple 
-clients makes PostgreSQL particularly well-suited for scenarios where asynchronous access to the database from multiple threads is crucial.\newline
-
-\paragraph{History}
-The origins of PostgreSQL trace back to the Berkeley Computer Science Department at the University of California in 1986. Initially named Postgres, the project 
-evolved over time and eventually became known as PostgreSQL, although the colloquial shortening to Postgres is still common. In 1996, the project transitioned 
-to an open-source model, relying on the contributions of a dedicated group of volunteers for maintenance and improvement. Operating seamlessly on major 
-operating systems, PostgreSQL has garnered a reputation for its reliability and adherence to standards.\newline
-
-\paragraph{Compatibility with Rust}
-In the realm of Rust, PostgreSQL finds compatibility through the rust-postgres library, which provides a native interface for Rust developers to interact with 
-PostgreSQL databases. The integration of Rust and PostgreSQL is further optimized for asynchronous programming through the tokio-postgres library. This library, 
-built on top of Tokio, enhances the performance of asynchronous interactions with PostgreSQL databases via Rust, making it well-suited for modern, concurrent 
-application scenarios.\newline
-
-The client/server architecture of PostgreSQL, coupled with its robust Rust libraries, positions it as a formidable choice for applications that require a 
-backend database with support for concurrent access and asynchronous operations. While it may have started as a project nearly four decades ago, PostgreSQL 
-continues to evolve and thrive, maintaining its relevance in the dynamic landscape of web development and database management.
-
-\subsubsection{MySQL}
-MySQL\footcite{mysql} has established itself as a heavyweight in the realm of backend databases, with giants like YouTube, Facebook, and Twitter relying on its 
-robust capabilities. Widely utilized for storing data from web services, MySQL operates on a client/server architecture similar to PostgreSQL, featuring a 
-singular server process managing the database and facilitating access for multiple clients.\newline
-
-\paragraph{History}
-The MySQL project traces its roots back to 1994 when Michael Widenius and David Axmark initiated its development. Initially conceived as a fork of the mSQL 
-database, MySQL underwent a significant transformation and was eventually rewritten from scratch. Since 2010, MySQL has been under the development umbrella of 
-Oracle. While the project remains open-source, Oracle also offers an enterprise version of MySQL with additional features and support.\newline
-
-In response to concerns about the direction of MySQL's development under Oracle, the original developers embarked on a new venture called MariaDB. This project 
-represents a fork of MySQL and maintains full compatibility with its predecessor. The availability of MariaDB provides users with an alternative that adheres 
-to the principles of open-source development.\newline
-
-\paragraph{Compatibility with Rust}
-For Rust developers seeking to interface with MySQL, the mysql library, complemented by an extension called \verb+mysql_async+, offers a convenient and native 
-Rust interface. The \verb+mysql_async+ library, built on the Tokio framework, specifically caters to asynchronous client access, aligning with modern 
-programming paradigms that emphasize concurrent and non-blocking operations.\newline
-
-In summary, MySQL's widespread adoption by major players in the tech industry underscores its reliability and scalability as a backend database. The project's 
-history, marked by its evolution under different entities, has given rise to alternative options such as MariaDB. The existence of Rust libraries like mysql 
-and \verb+mysql_async+ further enhances MySQL's accessibility and usability within the Rust programming ecosystem, enabling developers to seamlessly integrate 
-MySQL into their applications.
-
-\subsubsection{Comparison}
-The table provides a concise comparison of key features among SQLite, PostgreSQL, and MySQL, shedding light on their architectural, compliance, support, and 
-use-case distinctions:
-
-\begin{center}
-    \begin{tabular}{ | m{3cm} | m{4cm}| m{4cm} | m{4cm} | } 
-      \hline
-      Features & SQLite & PostgreSQL & MySQL \\ 
-      \hline
-      Architecture & File Based (Self-contained) & Client/Server & Client/Server \\ 
-      \hline
-      ACID Compliance & Always & Always & Only with InnoDB and NDB Cluster storage engines \\ 
-      \hline
-      In-memory Support & Yes & No & Yes \\
-      \hline
-      Editions & Community (Free) with option of pro support & Community with option of commercial support & Community, Standard, and Enterprise \\
-      \hline
-      Popular Use-cases & Low-Medium Traffic Websites, IoT and Embedded Devices, Testing and Development & Analytics, Data Mining, Data Warehousing, Business Intelligence, Hadoop & Web Sites, Web Applications, LAMP stack, OLTP-based applications \\
-      \hline
-      Key Customers & Adobe, Facebook, and Apple & Cloudera, Instagram, and ViaSat & GitHub, Facebook, and YouTube \\
-      \hline
-    \end{tabular}
-\end{center}
-
-This comparison underscores the diverse strengths and use cases of each database system. SQLite's file-based, self-contained architecture makes it suitable for 
-low to medium traffic websites, embedded devices, and development environments. PostgreSQL, with its client/server architecture and robust feature set, caters 
-to analytics, data mining, warehousing, and business intelligence needs. MySQL, available in various editions, is widely employed in web applications, LAMP 
-stack environments, and OLTP-based applications. Each database system has its own unique advantages, making the selection contingent on the specific 
-requirements and scale of the intended use.\newline
-
-After we looked into the three possiblyties mentioned above we created an enviroment to benchmark the different databases. We used docker to create a container for each 
-database and then ran a benchmark test on each of them. The benchmark test was a simple test that inserted 1000 rows into a table and then read them again. The benchmark is
-purposefully simple, because we won't be using the database for complex queries. More about the benchmark tests can be found in the \href{tests.tex}{test section}.
 
 \section{Libraries}
 
@@ -676,7 +523,7 @@ valuable metrics for measuring the speed and efficiency of implemented methods.\
 
 By using Catch2, our project benefits from a versatile testing framework that not only validates the functionality of the C++ frontend but also enables developers 
 to make informed decisions about enhancements and optimizations. Catch2's seamless integration and benchmarking capabilities make it a valuable asset in ensuring 
-the robustness, performance, and efficiency of the implemented methods within the project.
+the robustness, performance, and efficiency of the implemented methods within the project.\\
 
 \subsubsection{Unit Tests}
 
@@ -800,7 +647,7 @@ sources, facilitating a holistic understanding of the codebase. The project's ar
 through insightful graphs.\\
 
 A quick overview of a Doxygen implementation shows a well-organized framework that streamlines the documentation process. This implementation improves code 
-comprehension and promotes a collaborative development environment by providing a centralized repository of project documentation. The figure shows how Doxygen's 
+comprehension and promotes a collaborative development environment by providing a centralized repository of project documentation. The \ref{fig:doxygenInfoflow} shows how Doxygen's 
 integration simplifies and enhances the documentation workflow, contributing to the clarity and accessibility of the project.\\
 
 \begin{figure}[H]
@@ -951,7 +798,7 @@ documentation. The parser performs several key processes, culminating in the cre
 \subsection{Pytest}
 \textbf{Author: Timon Koch}
 
-Pytest is a testing framework for the Python programming language. It enables the creation of both simple unit tests and complex functional tests. Key features include test discovery, parameterized testing, and plugin support, making it a popular choice among Python developers. \footcite{pytest_documentation}
+Pytest is a testing framework for the Python programming language. It enables the creation of both simple unit tests and complex functional tests. Key features include test discovery, parameterized testing, and plugin support, making it a popular choice among Python developers. 
  
 \subsubsection{Test Discovery}
 The framework has the capability to automatically discover and execute test cases through a process known as 'test discovery'. By default, files that begin with 'test\_ ' or end with '\_test' are recognized as test files, although it is possible to explicitly mention other filenames. It is necessary for test method names to begin with 'test', as Test functions are identified by their names.
@@ -965,78 +812,18 @@ Fixtures are a useful feature that can help modularise and share setup code acro
 They are defined as functions identified by the '@pytest.fixture' decorator. Different scopes may be specified to determine how long the fixture should last.
 
 \subsubsection{Unit Tests}
-Pytest provides compatibility with the 'unittest' testing framework. It is possible to discover and run both Pytest-style test functions and unittest test cases in the same project. This can facilitate a seamless transition between the two frameworks while leveraging the additional features provided by Pytest. This example showcases the simplicity of this testing framework by using a basic addition function:
-
-\begin{minipage}{\textwidth}
-\begin{lstlisting}[language=Python] 
-	def add(x, y):
-    	return x + y
-\end{lstlisting}
-
-\begin{lstlisting}[language=Python]
-\begin{verbatim} 
-	import pytest
-
-	def test_add():
-    	# Test case 1
-    	assert add(1, 2) == 3
-
-    	# Test case 2
-    	assert add(-1, 1) == 0
-
-    	# Test case 3
-    	assert add(0, 0) == 0
-
-    	# Test case 4
-    	assert add(-5, -7) == -12
-\end{lstlisting}
-\end{minipage}
-
-First the necessary classes are imported and then a function with the relevant test cases is written. Test cases are definded using the keyword 'assert' followed by the function to be tested  and the expected result. 
-
-Once the tests have been executed, Pytest will present the outcomes. In case any of the assertions have not met the expected outcome, details regarding the test that did not pass and the reason for the failure will be provided.
-
+Pytest provides compatibility with the 'unittest' testing framework. It is possible to discover and run both Pytest-style test functions and unittest test cases in the same project. This can facilitate a seamless transition between the two frameworks while leveraging the additional features provided by Pytest.
 
 \subsection{Pydoc}
 \textbf{Author: Timon Koch}
 
-Pydoc is a Python library and command-line tool that generates documentation from Python modules.\footcite{pydoc_git} It extracts docstrings from modules, functions, classes, and methods, and presents them in various formats, including plain text, HTML, and man pages.  Pydoc facilitates access to Python code documentation, which can aid in understanding the usage of modules, functions, and classes within a codebase. It is particularly useful for exploring Python library and module documentation without having to leave the command line or an IDE. Additionally, Pydoc can be extended and customized to support additional documentation formats or features, which can be beneficial for developers seeking to optimize their workflow. 
-
-\subsubsection{Generating Documentation}
-When generating documentation using Pydoc, it is important to begin by setting docstrings. These are triple-quoted strings that should be placed immediately after the definition of a module, class, function, or method, as they are considered to be documentation.
-
-\begin{minipage}{\textwidth}
-\begin{lstlisting} 
-	# greeting.py
-	 
-	def greet(name):
-    	"""
-    	This function greets the user.
-    
-    	Args:
-        	name (str): The name of the user.
-        
-    	Returns:
-        	str: A greeting message.
-    	"""
-    	return f"Hello, {name}!"
-\end{lstlisting}
-
-After highlighting the pertinent sections of the code, the documentation for 'greeting.py' can be generated by executing the following command 
-
-\begin{lstlisting}[language=bash]  
-	pydoc greeting
-\end{lstlisting}
-\end{minipage}
-
-The documentation file will be generated in the same directory as 'greeting.py'.
-
+Pydoc is a Python library and command-line tool that generates documentation from Python modules. It extracts docstrings from modules, functions, classes, and methods, and presents them in various formats, including plain text, HTML, and man pages.  Pydoc facilitates access to Python code documentation, which can aid in understanding the usage of modules, functions, and classes within a codebase. It is particularly useful for exploring Python library and module documentation without having to leave the command line or an IDE. Additionally, Pydoc can be extended and customized to support additional documentation formats or features, which can be beneficial for developers seeking to optimize their workflow. 
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
 \subsection{Rusqlite}
 \textbf{Author: Christoph Fellner}
 
-Rusqlite\footcite{rusqlite} emerges as a key library, facilitating the seamless integration of SQLite capabilities into Rust code, akin to its analog, 
+Rusqlite\footcite{rusqlite} emerges as a pivotal library, facilitating the seamless integration of SQLite capabilities into Rust code, akin to its analog, 
 rust-postgres. This library provides a sophisticated interface, streamlining the execution of diverse database operations within the Rust programming paradigm. 
 From the orchestration of table creation and data insertion to the intricacies of data querying, rusqlite empowers developers with a versatile toolset for 
 database manipulation directly within their Rust codebase.
@@ -1048,26 +835,27 @@ The decision to adopt rusqlite in our specific use case is underpinned by a meti
     our context at RECT. Given the heterogeneous nature of small controllers operating within our system, the ability to seamlessly deploy SQLite databases 
     across different platforms becomes imperative for maintaining operational uniformity and efficiency.
     
-    \item \textbf{Configuration:} In stark contrast to other database systems SQLite does not require complex configurations. 
-    The simplicity inherent in working with SQLite fits perfectly with our operational requirements. Since we need to configure a database on each controller, 
-    SQLite is the optimal choice for our lean operating requirements due to its low setup effort.
+    \item \textbf{Configuration:} In stark contrast to database systems that necessitate intricate setup procedures, SQLite obviates the need for complex 
+    configurations. The simplicity inherent in working with SQLite aligns seamlessly with our operational requirements. The nominal requirement for a limited 
+    number of tables further amplifies the pragmatic appeal of SQLite. In contrast to configuring a database on each controller, the minimal setup overhead 
+    consolidates SQLite as the optimal choice for our streamlined operational demands.
     
-    \item \textbf{Local:} SQLite is characterized by the fact that it requires neither an external server nor complicated installations. The self-contained package 
-    has all the necessary functions in a local environment. This inherent localization is in line with RECT's structural approach and the need for an efficient and 
-    autonomous database solution without the burden of external dependencies.
+    \item \textbf{Local:} SQLite distinguishes itself by eschewing the necessity for an external server or intricate installations. Its self-contained package 
+    encapsulates all requisite features within a local environment. This intrinsic localization resonates with the operational ethos at RECT, aligning with the 
+    need for an efficient and autonomous database solution without the encumbrance of external dependencies.
 \end{enumerate}
 
 In our specific instantiation, rusqlite is strategically employed for the persistent storage of the config.json file, a repository of vital data concerning 
 available connections. The judicious selection of rusqlite in this context is grounded in its inherent advantages. The utilization of rusqlite markedly enhances 
 the expediency and security of data access compared to traditional file-based retrieval mechanisms. This methodological choice contributes not only to the 
-enhanced performance of our system but also underscores the commitment to preserving the integrity and reliability of configuration data, critical to the seamless
+enhanced performance of our system but also underscores the commitment to preserving the integrity and reliability of configuration data, pivotal to the seamless
 functionality of our application within the broader scientific and technological landscape.
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
 \subsection{Serde}
 \textbf{Author: Christoph Fellner}
 
-Serde\footcite{serde} emerges as an important tool in the Rust programming ecosystem, dedicated to the efficient and generic serialization and deserialization 
+Serde\footcite{serde} emerges as a pivotal tool in the Rust programming ecosystem, dedicated to the efficient and generic serialization and deserialization 
 (\textbf{ser}ialization/\textbf{de}serialization) of data structures. Offering a robust foundation for these operations, Serde plays a crucial role in optimizing
 the handling of data structures within the Rust programming paradigm. For a comprehensive overview of Serde, interested readers can refer to the detailed 
 documentation available at \href{https://serde.rs/}{https://serde.rs/}.\newline
@@ -1088,7 +876,7 @@ overall efficiency and maintainability of our Rust-based application.
 \subsection{Tokio}
 \textbf{Author: Christoph Fellner}
 
-Tokio\footcite{tokio} serves as an asynchronous runtime for Rust, addressing the intricacies of asynchronous code execution in the language. In Rust, 
+Tokio\footcite{tokio} serves as a pivotal asynchronous runtime for Rust, addressing the intricacies of asynchronous code execution in the language. In Rust, 
 asynchronous code does not inherently execute independently; rather, it necessitates the use of a runtime like Tokio to effectively function. For an in-depth 
 exploration of Tokio and its capabilities, readers are encouraged to delve into the detailed tutorial available at 
 \href{https://tokio.rs/tokio/tutorial}{https://tokio.rs/tokio/tutorial}.\newline
@@ -1110,8 +898,7 @@ In summary, our decision to embrace Tokio as the asynchronous runtime for our Ru
 ecosystem, coupled with its user-friendly design and robust support for multi-threaded async code execution. This strategic choice positions us to harness the 
 full potential of asynchronous programming in Rust, ensuring the responsiveness and scalability of our application.
 
-\begin{minipage}{\textwidth}
-\begin{lstlisting}[language=Rust]
+\begin{verbatim}
 #[tokio::test(flavor = "multi_thread", worker_threads = 2)]
 async fn client_test(){ 
     let ser = test_server::run_server();
@@ -1125,8 +912,7 @@ async fn client_test(){
         _ = cl => (),
     }           
 }
-\end{lstlisting}
-\end{minipage}
+\end{verbatim}
 
 Using Tokio makes it possible to run multiple async functions at the same time. In the example above we start a server and a client and then wait for the first one to finish. 
 This is done using the tokio::select! macro. The macro takes a list of futures and waits for the first one to finish. In our case we want to wait for the client to finish 
@@ -1143,15 +929,17 @@ Tokio Rusqlite\footcite{tokiolite} stands as an innovative library at the inters
 asynchronous database interactions. This library represents a strategic amalgamation, providing developers with the capability to leverage Rusqlite seamlessly 
 within an asynchronous programming paradigm facilitated by Tokio.\newline
 
+The amalgamation of Tokio and Rusqlite in Tokio Rusqlite addresses the growing demand for asynchronous database operations in Rust. By integrating Tokio's 
+asynchronous runtime with Rusqlite's capabilities, this library empowers developers to perform database operations without blocking the execution of other tasks.
+This is particularly advantageous in scenarios where responsiveness and concurrency are paramount.\newline
+
 Key features of Tokio Rusqlite include the ability to execute Rusqlite operations asynchronously, allowing for non-blocking interactions with SQLite databases. 
 Asynchronous operations are vital in applications that require efficient handling of concurrent tasks, such as web servers, where multiple requests may be 
 processed simultaneously.\newline
 
 The seamless integration of Tokio Rusqlite into our development stack augments the versatility of Rusqlite by enabling asynchronous database operations. This is 
-especially valuable in scenarios where responsiveness and scalability are critical factors. One of these scenarios is when the RECT Backend interacts with the RECT Database 
-asynchronously, this scenario is especially important when the backend is handling multiple requests at the same time. Another scenario is when the RECT Database gets updated
-while the backend is running. In this case the backend can continue to run without having to wait for the database to finish updating. Leveraging Tokio Rusqlite in our project 
-equips us with a robust solution for handling database interactions in an asynchronous manner, aligning with contemporary trends in Rust programming and distributed system 
+especially valuable in scenarios where responsiveness and scalability are critical factors. Leveraging Tokio Rusqlite in our project equips us with a robust 
+solution for handling database interactions in an asynchronous manner, aligning with contemporary trends in Rust programming and distributed system 
 architectures.
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
@@ -1208,5 +996,31 @@ message VotingResponse {
 In order to translate the Protocol Buffer into Rust code we use the \verb+include_proto!+ function from the Tonic library. This function takes the path to the 
 Protocol-Buffer-file and generates the Rust code for the Service.
 
+\tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
+\section{Docker}
+\textbf{Author: Christoph Fellner}
+
+Docker\footcite{docker} serves as an indispensable tool in modern software development, offering a containerization solution that facilitates the efficient 
+execution of diverse applications within isolated environments known as containers. These containers, encapsulating applications and their dependencies, operate 
+independently, enabling the concurrent execution of multiple containers on a single host system. The versatility of Docker extends from lightweight services 
+like echo servers to complex web applications, making it a versatile choice for a spectrum of development and deployment scenarios.\newline
+
+One of Docker's compelling use cases is the encapsulation of databases within containers. This capability enables the creation of portable and reproducible 
+database environments, fostering ease of testing, development, and even benchmarking. In our specific use case, Docker proved instrumental in benchmarking 
+different databases, allowing us to evaluate and identify the most suitable database for our application's requirements.\newline
+
+Docker's open-source nature and compatibility across major operating systems contribute to its widespread adoption. Its availability on diverse platforms 
+empowers developers to create consistent environments, irrespective of the underlying infrastructure. This feature is particularly advantageous in scenarios 
+where multiple applications need to coexist on the same machine, as Docker mitigates compatibility concerns and ensures the isolation of applications from the 
+local infrastructure.\newline
+
+The ability to isolate applications from the host system's infrastructure is a key feature of Docker. This isolation not only enhances compatibility but also 
+simplifies the deployment process. Developers can confidently run multiple applications on a single machine without the fear of conflicts or compatibility 
+issues, streamlining the development and testing phases.\newline
+
+In summary, Docker's role in our project extends beyond conventional application development and deployment; it serves as a pivotal tool for benchmarking 
+databases. Its containerization approach, coupled with the ability to create reproducible environments, positions Docker as a valuable asset in our quest to 
+identify the optimal database solution for our specific use case. The open-source nature and cross-platform compatibility further solidify Docker's standing as 
+a cornerstone technology in contemporary software development and deployment practices.
 
 \filbreak
