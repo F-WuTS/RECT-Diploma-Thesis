@@ -1,0 +1,19 @@
+[0] Config.pm:307> INFO - This is Biber 2.19
+[0] Config.pm:310> INFO - Logfile is 'main.blg'
+[108] biber:340> INFO - === Di Apr  2, 2024, 13:27:44
+[133] Biber.pm:419> INFO - Reading 'main.bcf'
+[227] Biber.pm:979> INFO - Found 65 citekeys in bib section 0
+[253] Biber.pm:4419> INFO - Processing section 0
+[268] Biber.pm:4610> INFO - Looking for bibtex file 'main.bib' for section 0
+[271] bibtex.pm:1713> INFO - LaTeX decoding ...
+[316] bibtex.pm:1519> INFO - Found BibTeX data source 'main.bib'
+[493] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'variable = shifted' with 'variable = non-ignorable'
+[493] UCollate.pm:68> INFO - Overriding locale 'en-US' defaults 'normalization = NFD' with 'normalization = prenormalized'
+[493] Biber.pm:4239> INFO - Sorting list 'nyt/global//global/global' of type 'entry' with template 'nyt' and locale 'en-US'
+[493] Biber.pm:4245> INFO - No sort tailoring available for locale 'en-US'
+[547] bbl.pm:660> INFO - Writing 'main.bbl' with encoding 'UTF-8'
+[561] bbl.pm:763> INFO - Output to main.bbl
+[561] Biber.pm:131> WARN - ISBN '978-0192862073' in entry 'How_the_web_was_born' is invalid - run biber with '--validate_datamodel' for details.
+[561] Biber.pm:131> WARN - BibTeX subsystem: /tmp/biber_tmp_mKtV/3b92c3a43883b50258e417775889aed6_194507.utf8, line 3, warning: 16 characters of junk seen at toplevel
+[561] Biber.pm:131> WARN - I didn't find a database entry for 'nixpkgs_repo' (section 0)
+[561] Biber.pm:133> INFO - WARNINGS: 3

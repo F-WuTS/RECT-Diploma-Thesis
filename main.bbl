@@ -1,0 +1,920 @@
+% $ biblatex auxiliary file $
+% $ biblatex bbl format version 3.2 $
+% Do not modify the above lines!
+%
+% This is an auxiliary file used by the 'biblatex' package.
+% This file may safely be deleted. It will be recreated by
+% biber as required.
+%
+\begingroup
+\makeatletter
+\@ifundefined{ver@biblatex.sty}
+  {\@latex@error
+     {Missing 'biblatex' package}
+     {The bibliography requires the 'biblatex' package.}
+      \aftergroup\endinput}
+  {}
+\endgroup
+
+
+\refsection{0}
+  \datalist[entry]{nyt/global//global/global}
+    \entry{abc_programming_language}{online}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeltitlesource}{title}
+      \field{title}{ABC Programming Language}
+      \verb{urlraw}
+      \verb https://homepages.cwi.nl/~steven/abc/
+      \endverb
+      \verb{url}
+      \verb https://homepages.cwi.nl/~steven/abc/
+      \endverb
+    \endentry
+    \entry{ansi_c_standard}{online}{}
+      \field{sortinit}{A}
+      \field{sortinithash}{2f401846e2029bad6b3ecc16d50031e2}
+      \field{labeltitlesource}{title}
+      \field{title}{ANSI C Standard}
+      \verb{urlraw}
+      \verb https://web.archive.org/web/20161223125339/http://flash-gordon.me.uk/ansi.c.txt
+      \endverb
+      \verb{url}
+      \verb https://web.archive.org/web/20161223125339/http://flash-gordon.me.uk/ansi.c.txt
+      \endverb
+    \endentry
+    \entry{bincode}{online}{}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labeltitlesource}{title}
+      \field{title}{Bincode}
+      \verb{urlraw}
+      \verb https://docs.rs/bincode/latest/bincode/
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/bincode/latest/bincode/
+      \endverb
+    \endentry
+    \entry{bluetooth-low-energy}{online}{}
+      \field{sortinit}{B}
+      \field{sortinithash}{d7095fff47cda75ca2589920aae98399}
+      \field{labeltitlesource}{title}
+      \field{title}{Bluetooth Low Energy Primer}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.bluetooth.com/blog/introducing-the-bluetooth-low-energy-primer
+      \endverb
+      \verb{url}
+      \verb https://www.bluetooth.com/blog/introducing-the-bluetooth-low-energy-primer
+      \endverb
+    \endentry
+    \entry{catch2_git}{online}{}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labeltitlesource}{title}
+      \field{title}{Catch2 framework Github}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://github.com/catchorg/Catch2
+      \endverb
+      \verb{url}
+      \verb https://github.com/catchorg/Catch2
+      \endverb
+    \endentry
+    \entry{tokiolite}{online}{}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labeltitlesource}{title}
+      \field{title}{Crate tokio rusqlite}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://docs.rs/tokio-rusqlite/latest/tokio_rusqlite/
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/tokio-rusqlite/latest/tokio_rusqlite/
+      \endverb
+    \endentry
+    \entry{tonic}{online}{}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labeltitlesource}{title}
+      \field{title}{Crate tonic}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://docs.rs/tonic/latest/tonic/
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/tonic/latest/tonic/
+      \endverb
+    \endentry
+    \entry{csma_ca}{online}{}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labeltitlesource}{title}
+      \field{title}{CSMA/CA}
+      \verb{urlraw}
+      \verb https://ieeexplore.ieee.org/document/4067995
+      \endverb
+      \verb{url}
+      \verb https://ieeexplore.ieee.org/document/4067995
+      \endverb
+    \endentry
+    \entry{cycle-time-lead-time}{online}{}
+      \field{sortinit}{C}
+      \field{sortinithash}{4d103a86280481745c9c897c925753c0}
+      \field{labeltitlesource}{title}
+      \field{title}{Cycle time and Lead time}
+      \field{year}{2021}
+      \verb{urlraw}
+      \verb https://community.atlassian.com/t5/Agile-articles/Lead-time-and-Cycle-Time-and-the-importance-of-Flow-in-Kanban/ba-p/1886848
+      \endverb
+      \verb{url}
+      \verb https://community.atlassian.com/t5/Agile-articles/Lead-time-and-Cycle-Time-and-the-importance-of-Flow-in-Kanban/ba-p/1886848
+      \endverb
+    \endentry
+    \entry{deflate}{online}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{title}{Deflate Algorithm}
+      \verb{urlraw}
+      \verb https://www.w3.org/Graphics/PNG/RFC-1951
+      \endverb
+      \verb{url}
+      \verb https://www.w3.org/Graphics/PNG/RFC-1951
+      \endverb
+    \endentry
+    \entry{dependency_hell}{online}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{title}{Dependency Hell Techopedia}
+      \field{year}{2019}
+      \verb{urlraw}
+      \verb https://www.techopedia.com/definition/27701/dependency-hell
+      \endverb
+      \verb{url}
+      \verb https://www.techopedia.com/definition/27701/dependency-hell
+      \endverb
+    \endentry
+    \entry{docker}{online}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{title}{Docker Overview}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://docs.docker.com/get-started/overview/
+      \endverb
+      \verb{url}
+      \verb https://docs.docker.com/get-started/overview/
+      \endverb
+    \endentry
+    \entry{doxygen_main_site}{online}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{title}{Doxygen Homepage}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.doxygen.nl
+      \endverb
+      \verb{url}
+      \verb https://www.doxygen.nl
+      \endverb
+    \endentry
+    \entry{doxygen_manual_comment_blocks}{online}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{title}{Doxygen Manual section on comment blocks}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.doxygen.nl/manual/docblocks.html#specialblock
+      \endverb
+      \verb{url}
+      \verb https://www.doxygen.nl/manual/docblocks.html#specialblock
+      \endverb
+    \endentry
+    \entry{doxygen_manual}{online}{}
+      \field{sortinit}{D}
+      \field{sortinithash}{6f385f66841fb5e82009dc833c761848}
+      \field{labeltitlesource}{title}
+      \field{title}{Doxygen Usage Manual}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.doxygen.nl/manual/index.html
+      \endverb
+      \verb{url}
+      \verb https://www.doxygen.nl/manual/index.html
+      \endverb
+    \endentry
+    \entry{rfc9293}{misc}{}
+      \name{author}{1}{}{%
+        {{hash=eff1d6e4dc522328e3ceeed671666aad}{%
+           family={Eddy},
+           familyi={E\bibinitperiod},
+           given={Wesley},
+           giveni={W\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {RFC Editor}%
+      }
+      \strng{namehash}{eff1d6e4dc522328e3ceeed671666aad}
+      \strng{fullhash}{eff1d6e4dc522328e3ceeed671666aad}
+      \strng{bibnamehash}{eff1d6e4dc522328e3ceeed671666aad}
+      \strng{authorbibnamehash}{eff1d6e4dc522328e3ceeed671666aad}
+      \strng{authornamehash}{eff1d6e4dc522328e3ceeed671666aad}
+      \strng{authorfullhash}{eff1d6e4dc522328e3ceeed671666aad}
+      \field{sortinit}{E}
+      \field{sortinithash}{8da8a182d344d5b9047633dfc0cc9131}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{abstract}{This document specifies the Transmission Control Protocol (TCP). TCP is an important transport-layer protocol in the Internet protocol stack, and it has continuously evolved over decades of use and growth of the Internet. Over this time, a number of changes have been made to TCP as it was specified in RFC 793, though these have only been documented in a piecemeal fashion. This document collects and brings those changes together with the protocol specification from RFC 793. This document obsoletes RFC 793, as well as RFCs 879, 2873, 6093, 6429, 6528, and 6691 that updated parts of RFC 793. It updates RFCs 1011 and 1122, and it should be considered as a replacement for the portions of those documents dealing with TCP requirements. It also updates RFC 5961 by adding a small clarification in reset handling while in the SYN-RECEIVED state. The TCP header control bits from RFC 793 have also been updated based on RFC 3168.}
+      \field{howpublished}{RFC 9293}
+      \field{month}{8}
+      \field{number}{9293}
+      \field{pagetotal}{98}
+      \field{series}{Request for Comments}
+      \field{title}{{Transmission Control Protocol (TCP)}}
+      \field{year}{2022}
+      \verb{doi}
+      \verb 10.17487/RFC9293
+      \endverb
+      \verb{urlraw}
+      \verb https://www.rfc-editor.org/info/rfc9293
+      \endverb
+      \verb{url}
+      \verb https://www.rfc-editor.org/info/rfc9293
+      \endverb
+    \endentry
+    \entry{find-me-profile}{online}{}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labeltitlesource}{title}
+      \field{title}{Find Me Profile}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.bluetooth.com/specifications/specs/find-me-profile-1-0/
+      \endverb
+      \verb{url}
+      \verb https://www.bluetooth.com/specifications/specs/find-me-profile-1-0/
+      \endverb
+    \endentry
+    \entry{fhss}{online}{}
+      \field{sortinit}{F}
+      \field{sortinithash}{2638baaa20439f1b5a8f80c6c08a13b4}
+      \field{labeltitlesource}{title}
+      \field{title}{Frequency Hopping Spread Spectrum}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.analog.com/en/design-center/glossary/fhss.html
+      \endverb
+      \verb{url}
+      \verb https://www.analog.com/en/design-center/glossary/fhss.html
+      \endverb
+    \endentry
+    \entry{How_the_web_was_born}{book}{}
+      \name{author}{1}{}{%
+        {{hash=31803103b1c724d11d50614d25a82465}{%
+           family={Gillies},
+           familyi={G\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod},
+           suffix={James;\bibnamedelima Cailliau},
+           suffixi={J\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {Oxford University Press}%
+      }
+      \strng{namehash}{31803103b1c724d11d50614d25a82465}
+      \strng{fullhash}{31803103b1c724d11d50614d25a82465}
+      \strng{bibnamehash}{31803103b1c724d11d50614d25a82465}
+      \strng{authorbibnamehash}{31803103b1c724d11d50614d25a82465}
+      \strng{authornamehash}{31803103b1c724d11d50614d25a82465}
+      \strng{authorfullhash}{31803103b1c724d11d50614d25a82465}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0192862073}
+      \field{title}{How the Web was Born: The Story of the World Wide Web}
+      \field{year}{2000}
+    \endentry
+    \entry{glucose-profile}{online}{}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labeltitlesource}{title}
+      \field{title}{Glucose Profile}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.bluetooth.com/specifications/specs/glucose-profile-1-0-1/
+      \endverb
+      \verb{url}
+      \verb https://www.bluetooth.com/specifications/specs/glucose-profile-1-0-1/
+      \endverb
+    \endentry
+    \entry{gzip}{online}{}
+      \field{sortinit}{G}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labeltitlesource}{title}
+      \field{title}{GNU Zip}
+      \verb{urlraw}
+      \verb https://www.gzip.org
+      \endverb
+      \verb{url}
+      \verb https://www.gzip.org
+      \endverb
+    \endentry
+    \entry{grpc_git_documentation}{online}{}
+      \field{sortinit}{g}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labeltitlesource}{title}
+      \field{title}{gRPC Documentation on Github}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://grpc.github.io/grpc/cpp/index.html
+      \endverb
+      \verb{url}
+      \verb https://grpc.github.io/grpc/cpp/index.html
+      \endverb
+    \endentry
+    \entry{grpc_git_createchannel}{online}{}
+      \field{sortinit}{g}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labeltitlesource}{title}
+      \field{title}{gRPC Documentation on the CreateChannel function}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://grpc.github.io/grpc/cpp/namespacegrpc.html#ad62b23e19fdcd13898119cd94818616d
+      \endverb
+      \verb{url}
+      \verb https://grpc.github.io/grpc/cpp/namespacegrpc.html#ad62b23e19fdcd13898119cd94818616d
+      \endverb
+    \endentry
+    \entry{grpc_git_serverbuilder}{online}{}
+      \field{sortinit}{g}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labeltitlesource}{title}
+      \field{title}{gRPC Documentation on the Serverbuilder class}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://grpc.github.io/grpc/cpp/classgrpc_1_1_server_builder.html
+      \endverb
+      \verb{url}
+      \verb https://grpc.github.io/grpc/cpp/classgrpc_1_1_server_builder.html
+      \endverb
+    \endentry
+    \entry{grpc_main_site}{online}{}
+      \field{sortinit}{g}
+      \field{sortinithash}{32d67eca0634bf53703493fb1090a2e8}
+      \field{labeltitlesource}{title}
+      \field{title}{gRPC Homepage}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.grpc.io
+      \endverb
+      \verb{url}
+      \verb https://www.grpc.io
+      \endverb
+    \endentry
+    \entry{A_New_History_of_Modern_Computing}{book}{}
+      \name{author}{1}{}{%
+        {{hash=71ec5c5b1b62e9a79eb965e950205994}{%
+           family={Haigh},
+           familyi={H\bibinitperiod},
+           given={Paul\bibnamedelima E},
+           giveni={P\bibinitperiod\bibinitdelim E\bibinitperiod},
+           suffix={Thomas;\bibnamedelima Ceruzzi},
+           suffixi={T\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {MIT Press}%
+      }
+      \strng{namehash}{71ec5c5b1b62e9a79eb965e950205994}
+      \strng{fullhash}{71ec5c5b1b62e9a79eb965e950205994}
+      \strng{bibnamehash}{71ec5c5b1b62e9a79eb965e950205994}
+      \strng{authorbibnamehash}{71ec5c5b1b62e9a79eb965e950205994}
+      \strng{authornamehash}{71ec5c5b1b62e9a79eb965e950205994}
+      \strng{authorfullhash}{71ec5c5b1b62e9a79eb965e950205994}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{978-0262542906}
+      \field{title}{A New History of Modern Computing}
+      \field{year}{2021}
+    \endentry
+    \entry{huffman_coding}{online}{}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labeltitlesource}{title}
+      \field{title}{Huffman Coding}
+      \verb{urlraw}
+      \verb https://www.geeksforgeeks.org/huffman-coding-greedy-algo-3
+      \endverb
+      \verb{url}
+      \verb https://www.geeksforgeeks.org/huffman-coding-greedy-algo-3
+      \endverb
+    \endentry
+    \entry{hydra}{online}{}
+      \field{sortinit}{H}
+      \field{sortinithash}{23a3aa7c24e56cfa16945d55545109b5}
+      \field{labeltitlesource}{title}
+      \field{title}{Hydra Nixos Wiki Page}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://nixos.wiki/wiki/Hydra
+      \endverb
+      \verb{url}
+      \verb https://nixos.wiki/wiki/Hydra
+      \endverb
+    \endentry
+    \entry{ieee}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IEEE}
+      \verb{urlraw}
+      \verb https://www.ieee.org/
+      \endverb
+      \verb{url}
+      \verb https://www.ieee.org/
+      \endverb
+    \endentry
+    \entry{ieee_802_11}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{IEEE 802.11}
+      \verb{urlraw}
+      \verb https://standards.ieee.org/ieee/802.11/7028/
+      \endverb
+      \verb{url}
+      \verb https://standards.ieee.org/ieee/802.11/7028/
+      \endverb
+    \endentry
+    \entry{ism}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{Industrial, Scientific and Medical Band}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.pcmag.com/encyclopedia/term/ism-band
+      \endverb
+      \verb{url}
+      \verb https://www.pcmag.com/encyclopedia/term/ism-band
+      \endverb
+    \endentry
+    \entry{idl}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{Interface Description Language}
+      \verb{urlraw}
+      \verb https://www.techtarget.com/whatis/definition/IDL-interface-definition-language
+      \endverb
+      \verb{url}
+      \verb https://www.techtarget.com/whatis/definition/IDL-interface-definition-language
+      \endverb
+    \endentry
+    \entry{wibree}{online}{}
+      \field{sortinit}{I}
+      \field{sortinithash}{8d291c51ee89b6cd86bf5379f0b151d8}
+      \field{labeltitlesource}{title}
+      \field{title}{Is Wibree going to rival Bluetooth?}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://electronics.howstuffworks.com/wibree.htm
+      \endverb
+      \verb{url}
+      \verb https://electronics.howstuffworks.com/wibree.htm
+      \endverb
+    \endentry
+    \entry{javascript}{online}{}
+      \field{sortinit}{j}
+      \field{sortinithash}{b2f54a9081ace9966a7cb9413811edb4}
+      \field{labeltitlesource}{title}
+      \field{title}{javaScript}
+      \verb{urlraw}
+      \verb https://www.javascript.com
+      \endverb
+      \verb{url}
+      \verb https://www.javascript.com
+      \endverb
+    \endentry
+    \entry{ble-getting-started}{book}{}
+      \name{author}{2}{}{%
+        {{hash=e9df50b5aacfc4135f51a260dcc5d4f0}{%
+           family={Kevin\bibnamedelima Townsend},
+           familyi={K\bibinitperiod\bibinitdelim T\bibinitperiod},
+           given={Akiba},
+           giveni={A\bibinitperiod},
+           suffix={Carles\bibnamedelima Cufi},
+           suffixi={C\bibinitperiod\bibinitdelim C\bibinitperiod}}}%
+        {{hash=b28525bbe73efd22035c71fc2fc91f8e}{%
+           family={Davidson},
+           familyi={D\bibinitperiod},
+           given={Robert},
+           giveni={R\bibinitperiod}}}%
+      }
+      \list{publisher}{1}{%
+        {O'Reilly}%
+      }
+      \strng{namehash}{0c0f6c64357eeb637eabb42f02aa74eb}
+      \strng{fullhash}{714ea2bc5dc3b2a46245074636cb67f6}
+      \strng{bibnamehash}{714ea2bc5dc3b2a46245074636cb67f6}
+      \strng{authorbibnamehash}{714ea2bc5dc3b2a46245074636cb67f6}
+      \strng{authornamehash}{0c0f6c64357eeb637eabb42f02aa74eb}
+      \strng{authorfullhash}{714ea2bc5dc3b2a46245074636cb67f6}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labelnamesource}{author}
+      \field{labeltitlesource}{title}
+      \field{isbn}{9781491949511}
+      \field{title}{Getting Started with Bluetooth Low Energy}
+    \endentry
+    \entry{king_james_bible}{online}{}
+      \field{sortinit}{K}
+      \field{sortinithash}{c02bf6bff1c488450c352b40f5d853ab}
+      \field{labeltitlesource}{title}
+      \field{title}{King James Bible}
+      \verb{urlraw}
+      \verb https://www.kingjamesbibleonline.org
+      \endverb
+      \verb{url}
+      \verb https://www.kingjamesbibleonline.org
+      \endverb
+    \endentry
+    \entry{lambda_calculus}{online}{}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labeltitlesource}{title}
+      \field{title}{Lambda Calculus}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://plato.stanford.edu/entries/lambda-calculus/
+      \endverb
+      \verb{url}
+      \verb https://plato.stanford.edu/entries/lambda-calculus/
+      \endverb
+    \endentry
+    \entry{lecture_essence_cpp}{online}{}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labeltitlesource}{title}
+      \field{title}{Lecture: The Essence of C++}
+      \field{year}{2014}
+      \verb{urlraw}
+      \verb https://web.archive.org/web/20150428003608/https://www.youtube.com/watch?v=86xWVb4XIyE
+      \endverb
+      \verb{url}
+      \verb https://web.archive.org/web/20150428003608/https://www.youtube.com/watch?v=86xWVb4XIyE
+      \endverb
+    \endentry
+    \entry{lz77}{online}{}
+      \field{sortinit}{L}
+      \field{sortinithash}{7c47d417cecb1f4bd38d1825c427a61a}
+      \field{labeltitlesource}{title}
+      \field{title}{LZ77 Algorithm}
+      \verb{urlraw}
+      \verb https://www.gm.th-koeln.de/~hk/lehre/ala/ws0506/Praktikum/Projekt/D_rot/Ausarbeitung.pdf
+      \endverb
+      \verb{url}
+      \verb https://www.gm.th-koeln.de/~hk/lehre/ala/ws0506/Praktikum/Projekt/D_rot/Ausarbeitung.pdf
+      \endverb
+    \endentry
+    \entry{nixMkDerivation}{online}{}
+      \field{sortinit}{m}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{mkDerivation Documentation}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://blog.ielliott.io/nix-docs/mkDerivation.html
+      \endverb
+      \verb{url}
+      \verb https://blog.ielliott.io/nix-docs/mkDerivation.html
+      \endverb
+    \endentry
+    \entry{mu_mimo}{online}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{MU-MIMO}
+      \verb{urlraw}
+      \verb https://www.elektronik-kompendium.de/sites/net/2112061.htm
+      \endverb
+      \verb{url}
+      \verb https://www.elektronik-kompendium.de/sites/net/2112061.htm
+      \endverb
+    \endentry
+    \entry{mimo}{online}{}
+      \field{sortinit}{M}
+      \field{sortinithash}{4625c616857f13d17ce56f7d4f97d451}
+      \field{labeltitlesource}{title}
+      \field{title}{Multiple Input Multiple Output (MIMO)}
+      \verb{urlraw}
+      \verb https://www.sciencedirect.com/topics/engineering/multiple-input-multiple-output
+      \endverb
+      \verb{url}
+      \verb https://www.sciencedirect.com/topics/engineering/multiple-input-multiple-output
+      \endverb
+    \endentry
+    \entry{NixOps}{online}{}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labeltitlesource}{title}
+      \field{title}{NixOps Github Page}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://github.com/NixOS/nixops
+      \endverb
+      \verb{url}
+      \verb https://github.com/NixOS/nixops
+      \endverb
+    \endentry
+    \entry{repology_nixpkgs}{online}{}
+      \field{sortinit}{N}
+      \field{sortinithash}{22369a73d5f88983a108b63f07f37084}
+      \field{labeltitlesource}{title}
+      \field{title}{Nixpkgs Repology}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://repology.org/repository/nix_stable_23_05
+      \endverb
+      \verb{url}
+      \verb https://repology.org/repository/nix_stable_23_05
+      \endverb
+    \endentry
+    \entry{ofdma}{online}{}
+      \field{sortinit}{O}
+      \field{sortinithash}{2cd7140a07aea5341f9e2771efe90aae}
+      \field{labeltitlesource}{title}
+      \field{title}{OFDMA}
+      \verb{urlraw}
+      \verb https://www.computerweekly.com/de/definition/OFDMA-Orthogonal-Frequency-Division-Multiple-Access
+      \endverb
+      \verb{url}
+      \verb https://www.computerweekly.com/de/definition/OFDMA-Orthogonal-Frequency-Division-Multiple-Access
+      \endverb
+    \endentry
+    \entry{protobuf}{online}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{title}{Protocol Buffers}
+      \verb{urlraw}
+      \verb https://protobuf.dev/
+      \endverb
+      \verb{url}
+      \verb https://protobuf.dev/
+      \endverb
+    \endentry
+    \entry{python_main_site}{online}{}
+      \field{sortinit}{P}
+      \field{sortinithash}{ff3bcf24f47321b42cb156c2cc8a8422}
+      \field{labeltitlesource}{title}
+      \field{title}{Python Homepage}
+      \verb{urlraw}
+      \verb https://www.python.org
+      \endverb
+      \verb{url}
+      \verb https://www.python.org
+      \endverb
+    \endentry
+    \entry{rfc_675}{online}{}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labeltitlesource}{title}
+      \field{title}{Request For Comment 675}
+      \field{year}{1974}
+      \verb{urlraw}
+      \verb https://datatracker.ietf.org/doc/html/rfc675
+      \endverb
+      \verb{url}
+      \verb https://datatracker.ietf.org/doc/html/rfc675
+      \endverb
+    \endentry
+    \entry{rust-notify}{online}{}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labeltitlesource}{title}
+      \field{title}{Rust Tokio Notify}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://docs.rs/tokio/latest/tokio/sync/struct.Notify.html
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/tokio/latest/tokio/sync/struct.Notify.html
+      \endverb
+    \endentry
+    \entry{rust-unbounded-channel}{online}{}
+      \field{sortinit}{R}
+      \field{sortinithash}{5e1c39a9d46ffb6bebd8f801023a9486}
+      \field{labeltitlesource}{title}
+      \field{title}{Rust Tokio Unbounded Channel}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://docs.rs/tokio/latest/tokio/sync/mpsc/fn.unbounded_channel.html
+      \endverb
+      \verb{url}
+      \verb https://docs.rs/tokio/latest/tokio/sync/mpsc/fn.unbounded_channel.html
+      \endverb
+    \endentry
+    \entry{serde}{online}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeltitlesource}{title}
+      \field{title}{Serde Overview}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://serde.rs/
+      \endverb
+      \verb{url}
+      \verb https://serde.rs/
+      \endverb
+    \endentry
+    \entry{rusqlite}{online}{}
+      \field{sortinit}{S}
+      \field{sortinithash}{b164b07b29984b41daf1e85279fbc5ab}
+      \field{labeltitlesource}{title}
+      \field{title}{SQLite in Rust - rusqlite}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://www.linkedin.com/pulse/sqlite-rust-rusqlite-amit-nadiger
+      \endverb
+      \verb{url}
+      \verb https://www.linkedin.com/pulse/sqlite-rust-rusqlite-amit-nadiger
+      \endverb
+    \endentry
+    \entry{cargo}{online}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{The Cargo Book}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://doc.rust-lang.org/cargo/
+      \endverb
+      \verb{url}
+      \verb https://doc.rust-lang.org/cargo/
+      \endverb
+    \endentry
+    \entry{the-rust-programming-language}{online}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{The Rust Programming Language}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://doc.rust-lang.org/stable/book/
+      \endverb
+      \verb{url}
+      \verb https://doc.rust-lang.org/stable/book/
+      \endverb
+    \endentry
+    \entry{tokio}{online}{}
+      \field{sortinit}{T}
+      \field{sortinithash}{9af77f0292593c26bde9a56e688eaee9}
+      \field{labeltitlesource}{title}
+      \field{title}{Tokio Tutorial}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://tokio.rs/tokio/tutorial
+      \endverb
+      \verb{url}
+      \verb https://tokio.rs/tokio/tutorial
+      \endverb
+    \endentry
+    \entry{rfc768}{misc}{}
+      \list{publisher}{1}{%
+        {RFC Editor}%
+      }
+      \field{sortinit}{U}
+      \field{sortinithash}{6901a00e45705986ee5e7ca9fd39adca}
+      \field{labeltitlesource}{title}
+      \field{howpublished}{RFC 768}
+      \field{month}{8}
+      \field{number}{768}
+      \field{pagetotal}{3}
+      \field{series}{Request for Comments}
+      \field{title}{{User Datagram Protocol}}
+      \field{year}{1980}
+      \verb{doi}
+      \verb 10.17487/RFC0768
+      \endverb
+      \verb{urlraw}
+      \verb https://www.rfc-editor.org/info/rfc768
+      \endverb
+      \verb{url}
+      \verb https://www.rfc-editor.org/info/rfc768
+      \endverb
+    \endentry
+    \entry{json}{online}{}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{title}{What is JSON?}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.w3schools.com/whatis/whatis_json.asp
+      \endverb
+      \verb{url}
+      \verb https://www.w3schools.com/whatis/whatis_json.asp
+      \endverb
+    \endentry
+    \entry{what-is-kanban}{online}{}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{title}{What is Kanban}
+      \field{year}{2022}
+      \verb{urlraw}
+      \verb https://learn.microsoft.com/en-us/devops/plan/what-is-kanban
+      \endverb
+      \verb{url}
+      \verb https://learn.microsoft.com/en-us/devops/plan/what-is-kanban
+      \endverb
+    \endentry
+    \entry{what-is-scrum}{online}{}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{title}{What is Scrum}
+      \field{year}{2024}
+      \verb{urlraw}
+      \verb https://www.atlassian.com/agile/scrum
+      \endverb
+      \verb{url}
+      \verb https://www.atlassian.com/agile/scrum
+      \endverb
+    \endentry
+    \entry{wifi5}{online}{}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{title}{WiFi 5}
+      \verb{urlraw}
+      \verb https://www.elektronik-kompendium.de/sites/net/1602101.htm
+      \endverb
+      \verb{url}
+      \verb https://www.elektronik-kompendium.de/sites/net/1602101.htm
+      \endverb
+    \endentry
+    \entry{wifi6}{online}{}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{title}{WiFi 6}
+      \verb{urlraw}
+      \verb https://www.arubanetworks.com/de/faq/was-ist-wlan-6
+      \endverb
+      \verb{url}
+      \verb https://www.arubanetworks.com/de/faq/was-ist-wlan-6
+      \endverb
+    \endentry
+    \entry{wombat-controller}{online}{}
+      \field{sortinit}{W}
+      \field{sortinithash}{4315d78024d0cea9b57a0c6f0e35ed0d}
+      \field{labeltitlesource}{title}
+      \field{title}{Wombat Controller}
+      \field{year}{2023}
+      \verb{urlraw}
+      \verb https://botball-swag.myshopify.com/collections/robot-controller/products/wombat-controller-w-battery
+      \endverb
+      \verb{url}
+      \verb https://botball-swag.myshopify.com/collections/robot-controller/products/wombat-controller-w-battery
+      \endverb
+      \keyw{wombat}
+    \endentry
+    \entry{yaml}{online}{}
+      \field{sortinit}{Y}
+      \field{sortinithash}{fd67ad5a9ef0f7456bdd9aab10fe1495}
+      \field{labeltitlesource}{title}
+      \field{title}{YAML}
+      \verb{urlraw}
+      \verb https://yaml.org/
+      \endverb
+      \verb{url}
+      \verb https://yaml.org/
+      \endverb
+    \endentry
+    \entry{zstd}{online}{}
+      \field{sortinit}{Z}
+      \field{sortinithash}{96892c0b0a36bb8557c40c49813d48b3}
+      \field{labeltitlesource}{title}
+      \field{title}{Zstandard}
+      \verb{urlraw}
+      \verb http://facebook.github.io/zstd
+      \endverb
+      \verb{url}
+      \verb http://facebook.github.io/zstd
+      \endverb
+    \endentry
+  \enddatalist
+  \missing{nixpkgs_repo}
+\endrefsection
+\endinput
+

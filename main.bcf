@@ -2360,47 +2360,79 @@
     <bcf:datasource type="file" datatype="bibtex" glob="false">main.bib</bcf:datasource>
   </bcf:bibdata>
   <bcf:section number="0">
-    <bcf:citekey order="1" intorder="1">ros-site</bcf:citekey>
-    <bcf:citekey order="2" intorder="1">wombat-controller</bcf:citekey>
-    <bcf:citekey order="3" intorder="1">ipc-begriff</bcf:citekey>
-    <bcf:citekey order="4" intorder="1">A_New_History_of_Modern_Computing</bcf:citekey>
-    <bcf:citekey order="5" intorder="1">How_the_web_was_born</bcf:citekey>
-    <bcf:citekey order="6" intorder="1">rfc_675</bcf:citekey>
-    <bcf:citekey order="7" intorder="1">what-is-scrum</bcf:citekey>
-    <bcf:citekey order="8" intorder="1">what-is-kanban</bcf:citekey>
-    <bcf:citekey order="9" intorder="1">cycle-time-lead-time</bcf:citekey>
-    <bcf:citekey order="10" intorder="1">ble_book</bcf:citekey>
-    <bcf:citekey order="11" intorder="1">lecture_essence_cpp</bcf:citekey>
-    <bcf:citekey order="12" intorder="1">catch2_git</bcf:citekey>
-    <bcf:citekey order="13" intorder="1">doxygen_main_site</bcf:citekey>
-    <bcf:citekey order="14" intorder="1">cargo</bcf:citekey>
-    <bcf:citekey order="15" intorder="1">grpc_main_site</bcf:citekey>
-    <bcf:citekey order="16" intorder="1">hydra</bcf:citekey>
-    <bcf:citekey order="17" intorder="1">NixOps</bcf:citekey>
-    <bcf:citekey order="18" intorder="1">lambda_calculus</bcf:citekey>
-    <bcf:citekey order="19" intorder="1">dependency_hell</bcf:citekey>
-    <bcf:citekey order="20" intorder="1">nixMkDerivation</bcf:citekey>
-    <bcf:citekey order="21" intorder="1">nixpkgs_repo</bcf:citekey>
-    <bcf:citekey order="22" intorder="1">repology_nixpkgs</bcf:citekey>
-    <bcf:citekey order="23" intorder="1">ism</bcf:citekey>
-    <bcf:citekey order="24" intorder="1">fhss</bcf:citekey>
-    <bcf:citekey order="25" intorder="1">catch2_git</bcf:citekey>
-    <bcf:citekey order="26" intorder="1">doxygen_main_site</bcf:citekey>
-    <bcf:citekey order="27" intorder="1">doxygen_main_site</bcf:citekey>
-    <bcf:citekey order="28" intorder="1">rusqlite</bcf:citekey>
-    <bcf:citekey order="29" intorder="1">serde</bcf:citekey>
-    <bcf:citekey order="30" intorder="1">tokio</bcf:citekey>
-    <bcf:citekey order="31" intorder="1">tokiolite</bcf:citekey>
-    <bcf:citekey order="32" intorder="1">tonic</bcf:citekey>
-    <bcf:citekey order="33" intorder="1">docker</bcf:citekey>
-    <bcf:citekey order="34" intorder="1">rfc2675</bcf:citekey>
-    <bcf:citekey order="35" intorder="1">rfc9293</bcf:citekey>
-    <bcf:citekey order="36" intorder="1">once-cell-lazy</bcf:citekey>
-    <bcf:citekey order="37" intorder="1">rust-arc</bcf:citekey>
-    <bcf:citekey order="38" intorder="1">tokio-mutex</bcf:citekey>
-    <bcf:citekey order="39" intorder="1">sqlite</bcf:citekey>
-    <bcf:citekey order="40" intorder="1">postgres</bcf:citekey>
-    <bcf:citekey order="41" intorder="1">mysql</bcf:citekey>
+    <bcf:citekey order="1" intorder="1">bluetooth-low-energy</bcf:citekey>
+    <bcf:citekey order="2" intorder="1">rfc9293</bcf:citekey>
+    <bcf:citekey order="3" intorder="1">rfc768</bcf:citekey>
+    <bcf:citekey order="4" intorder="1">wombat-controller</bcf:citekey>
+    <bcf:citekey order="5" intorder="1">json</bcf:citekey>
+    <bcf:citekey order="6" intorder="1">A_New_History_of_Modern_Computing</bcf:citekey>
+    <bcf:citekey order="7" intorder="1">How_the_web_was_born</bcf:citekey>
+    <bcf:citekey order="8" intorder="1">rfc_675</bcf:citekey>
+    <bcf:citekey order="9" intorder="1">what-is-scrum</bcf:citekey>
+    <bcf:citekey order="10" intorder="1">what-is-kanban</bcf:citekey>
+    <bcf:citekey order="11" intorder="1">cycle-time-lead-time</bcf:citekey>
+    <bcf:citekey order="12" intorder="1">the-rust-programming-language</bcf:citekey>
+    <bcf:citekey order="13" intorder="1">ble-getting-started</bcf:citekey>
+    <bcf:citekey order="14" intorder="1">wibree</bcf:citekey>
+    <bcf:citekey order="15" intorder="1">wombat-controller</bcf:citekey>
+    <bcf:citekey order="16" intorder="1">ansi_c_standard</bcf:citekey>
+    <bcf:citekey order="17" intorder="1">python_main_site</bcf:citekey>
+    <bcf:citekey order="18" intorder="1">abc_programming_language</bcf:citekey>
+    <bcf:citekey order="19" intorder="1">lecture_essence_cpp</bcf:citekey>
+    <bcf:citekey order="20" intorder="1">catch2_git</bcf:citekey>
+    <bcf:citekey order="21" intorder="1">doxygen_main_site</bcf:citekey>
+    <bcf:citekey order="22" intorder="1">cargo</bcf:citekey>
+    <bcf:citekey order="23" intorder="1">grpc_main_site</bcf:citekey>
+    <bcf:citekey order="24" intorder="1">hydra</bcf:citekey>
+    <bcf:citekey order="25" intorder="1">NixOps</bcf:citekey>
+    <bcf:citekey order="26" intorder="1">lambda_calculus</bcf:citekey>
+    <bcf:citekey order="27" intorder="1">dependency_hell</bcf:citekey>
+    <bcf:citekey order="28" intorder="1">nixMkDerivation</bcf:citekey>
+    <bcf:citekey order="29" intorder="1">nixpkgs_repo</bcf:citekey>
+    <bcf:citekey order="30" intorder="1">repology_nixpkgs</bcf:citekey>
+    <bcf:citekey order="31" intorder="1">ism</bcf:citekey>
+    <bcf:citekey order="32" intorder="1">fhss</bcf:citekey>
+    <bcf:citekey order="33" intorder="1">glucose-profile</bcf:citekey>
+    <bcf:citekey order="34" intorder="1">find-me-profile</bcf:citekey>
+    <bcf:citekey order="35" intorder="1">ieee</bcf:citekey>
+    <bcf:citekey order="36" intorder="1">ieee_802_11</bcf:citekey>
+    <bcf:citekey order="37" intorder="1">csma_ca</bcf:citekey>
+    <bcf:citekey order="38" intorder="1">mimo</bcf:citekey>
+    <bcf:citekey order="39" intorder="1">wifi5</bcf:citekey>
+    <bcf:citekey order="40" intorder="1">wifi6</bcf:citekey>
+    <bcf:citekey order="41" intorder="1">ofdma</bcf:citekey>
+    <bcf:citekey order="42" intorder="1">mu_mimo</bcf:citekey>
+    <bcf:citekey order="43" intorder="1">catch2_git</bcf:citekey>
+    <bcf:citekey order="44" intorder="1">catch2_git</bcf:citekey>
+    <bcf:citekey order="45" intorder="1">doxygen_main_site</bcf:citekey>
+    <bcf:citekey order="46" intorder="1">doxygen_main_site</bcf:citekey>
+    <bcf:citekey order="47" intorder="1">doxygen_manual_comment_blocks</bcf:citekey>
+    <bcf:citekey order="48" intorder="1">doxygen_manual</bcf:citekey>
+    <bcf:citekey order="49" intorder="1">rusqlite</bcf:citekey>
+    <bcf:citekey order="50" intorder="1">serde</bcf:citekey>
+    <bcf:citekey order="51" intorder="1">tokio</bcf:citekey>
+    <bcf:citekey order="52" intorder="1">tokiolite</bcf:citekey>
+    <bcf:citekey order="53" intorder="1">tonic</bcf:citekey>
+    <bcf:citekey order="54" intorder="1">docker</bcf:citekey>
+    <bcf:citekey order="55" intorder="1">rust-notify</bcf:citekey>
+    <bcf:citekey order="56" intorder="1">rust-unbounded-channel</bcf:citekey>
+    <bcf:citekey order="57" intorder="1">grpc_git_serverbuilder</bcf:citekey>
+    <bcf:citekey order="58" intorder="1">grpc_git_documentation</bcf:citekey>
+    <bcf:citekey order="59" intorder="1">grpc_git_serverbuilder</bcf:citekey>
+    <bcf:citekey order="60" intorder="1">grpc_git_createchannel</bcf:citekey>
+    <bcf:citekey order="61" intorder="1">grpc_git_documentation</bcf:citekey>
+    <bcf:citekey order="62" intorder="1">king_james_bible</bcf:citekey>
+    <bcf:citekey order="63" intorder="1">deflate</bcf:citekey>
+    <bcf:citekey order="64" intorder="1">lz77</bcf:citekey>
+    <bcf:citekey order="65" intorder="1">huffman_coding</bcf:citekey>
+    <bcf:citekey order="66" intorder="1">zstd</bcf:citekey>
+    <bcf:citekey order="67" intorder="1">gzip</bcf:citekey>
+    <bcf:citekey order="68" intorder="1">json</bcf:citekey>
+    <bcf:citekey order="69" intorder="1">javascript</bcf:citekey>
+    <bcf:citekey order="70" intorder="1">yaml</bcf:citekey>
+    <bcf:citekey order="71" intorder="1">protobuf</bcf:citekey>
+    <bcf:citekey order="72" intorder="1">idl</bcf:citekey>
+    <bcf:citekey order="73" intorder="1">bincode</bcf:citekey>
   </bcf:section>
   <!-- SORTING TEMPLATES -->
   <bcf:sortingtemplate name="nyt">
@@ -2432,13 +2464,4 @@
     </bcf:sort>
   </bcf:sortingtemplate>
   <!-- DATALISTS -->
-  <bcf:datalist section="0"
-                name="nyt/global//global/global"
-                type="entry"
-                sortingtemplatename="nyt"
-                sortingnamekeytemplatename="global"
-                labelprefix=""
-                uniquenametemplatename="global"
-                labelalphanametemplatename="global">
-  </bcf:datalist>
 </bcf:controlfile>

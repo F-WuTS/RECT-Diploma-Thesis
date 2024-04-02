@@ -1,0 +1,138 @@
+\begin{theindex}
+
+  \item \emph  {{Transmission Control Protocol (TCP)}}, \hyperpage{1}
+  \item \emph  {{User Datagram Protocol}}, \hyperpage{1}
+
+  \indexspace
+
+  \item \emph  {A New History of Modern Computing}, \hyperpage{2}
+  \item \emph  {ABC Programming Language}, \hyperpage{9}
+  \item \emph  {ANSI C Standard}, \hyperpage{9}
+
+  \indexspace
+
+  \item \emph  {Bincode}, \hyperpage{65}
+  \item \emph  {Bluetooth Low Energy Primer}, \hyperpage{1}
+
+  \indexspace
+
+  \item \emph  {Catch2 framework Github}, \hyperpage{11}, 
+		\hyperpage{27}
+  \item \emph  {Crate tokio rusqlite}, \hyperpage{39}
+  \item \emph  {Crate tonic}, \hyperpage{40}
+  \item \emph  {CSMA/CA}, \hyperpage{26}
+  \item \emph  {Cycle time and Lead time}, \hyperpage{4}
+
+  \indexspace
+
+  \item \emph  {Deflate Algorithm}, \hyperpage{63}
+  \item \emph  {Dependency Hell Techopedia}, \hyperpage{19}
+  \item \emph  {Docker Overview}, \hyperpage{41}
+  \item \emph  {Doxygen Homepage}, \hyperpage{11}, \hyperpage{30}
+  \item \emph  {Doxygen Manual section on comment blocks}, 
+		\hyperpage{32}
+  \item \emph  {Doxygen Usage Manual}, \hyperpage{34}
+
+  \indexspace
+
+  \item \emph  {Find Me Profile}, \hyperpage{22}
+  \item \emph  {Frequency Hopping Spread Spectrum}, \hyperpage{21}
+
+  \indexspace
+
+  \item \emph  {Getting Started with Bluetooth Low Energy}, 
+		\hyperpage{7}
+  \item \emph  {Glucose Profile}, \hyperpage{22}
+  \item \emph  {GNU Zip}, \hyperpage{63}
+  \item \emph  {gRPC Documentation on Github}, \hyperpage{58, 59}
+  \item \emph  {gRPC Documentation on the CreateChannel function}, 
+		\hyperpage{59}
+  \item \emph  {gRPC Documentation on the Serverbuilder class}, 
+		\hyperpage{58}
+  \item \emph  {gRPC Homepage}, \hyperpage{13}
+
+  \indexspace
+
+  \item \emph  {How the Web was Born: The Story of the World Wide Web}, 
+		\hyperpage{2}
+  \item \emph  {Huffman Coding}, \hyperpage{63}
+  \item \emph  {Hydra Nixos Wiki Page}, \hyperpage{17}
+
+  \indexspace
+
+  \item \emph  {IEEE}, \hyperpage{25}
+  \item \emph  {IEEE 802.11}, \hyperpage{25}
+  \item \emph  {Industrial, Scientific and Medical Band}, 
+		\hyperpage{21}
+  \item \emph  {Interface Description Language}, \hyperpage{65}
+  \item \emph  {Is Wibree going to rival Bluetooth?}, \hyperpage{7}
+
+  \indexspace
+
+  \item \emph  {javaScript}, \hyperpage{64}
+
+  \indexspace
+
+  \item \emph  {King James Bible}, \hyperpage{62}
+
+  \indexspace
+
+  \item \emph  {Lambda Calculus}, \hyperpage{18}
+  \item \emph  {Lecture: The Essence of C++}, \hyperpage{11}
+  \item \emph  {LZ77 Algorithm}, \hyperpage{63}
+
+  \indexspace
+
+  \item \emph  {mkDerivation Documentation}, \hyperpage{20}
+  \item \emph  {MU-MIMO}, \hyperpage{26}
+  \item \emph  {Multiple Input Multiple Output (MIMO)}, \hyperpage{26}
+
+  \indexspace
+
+  \item \emph  {NixOps Github Page}, \hyperpage{17}
+  \item \emph  {Nixpkgs Repology}, \hyperpage{21}
+
+  \indexspace
+
+  \item \emph  {OFDMA}, \hyperpage{26}
+
+  \indexspace
+
+  \item \emph  {Protocol Buffers}, \hyperpage{65}
+  \item \emph  {Python Homepage}, \hyperpage{9}
+
+  \indexspace
+
+  \item \emph  {Request For Comment 675}, \hyperpage{2}
+  \item \emph  {Rust Tokio Notify}, \hyperpage{48}
+  \item \emph  {Rust Tokio Unbounded Channel}, \hyperpage{48}
+
+  \indexspace
+
+  \item \emph  {Serde Overview}, \hyperpage{37}
+  \item \emph  {SQLite in Rust - rusqlite}, \hyperpage{36}
+
+  \indexspace
+
+  \item \emph  {The Cargo Book}, \hyperpage{12}
+  \item \emph  {The Rust Programming Language}, \hyperpage{6}
+  \item \emph  {Tokio Tutorial}, \hyperpage{38}
+
+  \indexspace
+
+  \item \emph  {What is JSON?}, \hyperpage{1}, \hyperpage{63}
+  \item \emph  {What is Kanban}, \hyperpage{3}
+  \item \emph  {What is Scrum}, \hyperpage{3}
+  \item \emph  {WiFi 5}, \hyperpage{26}
+  \item \emph  {WiFi 6}, \hyperpage{26}
+  \item \emph  {Wombat Controller}, \hyperpage{1}, \hyperpage{9}
+
+  \indexspace
+
+  \item \emph  {YAML}, \hyperpage{64}
+
+  \indexspace
+
+  \item \emph  {Zstandard}, \hyperpage{63}
+
+\end{theindex}

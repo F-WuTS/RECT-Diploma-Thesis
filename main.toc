@@ -1,132 +1,177 @@
 \contentsline {chapter}{Eidestattliche Erklärung}{i}{chapter*.1}%
 \contentsline {chapter}{Acknowledgement}{v}{chapter*.3}%
-\contentsline {chapter}{Kurzfassung}{vi}{chapter*.4}%
-\contentsline {chapter}{Abstract}{vii}{chapter*.5}%
+\contentsline {chapter}{Diplomarbeit Dokumentation}{vi}{chapter*.4}%
+\contentsline {chapter}{Diploma Thesis Documentation}{viii}{chapter*.5}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {chapter}{Kurzfassung}{x}{chapter*.6}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {chapter}{Abstract}{xi}{chapter*.7}%
 \contentsline {chapter}{\numberline {1}Introduction}{1}{chapter.1}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
 \contentsline {section}{\numberline {1.1}Motivation}{1}{section.1.1}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
 \contentsline {section}{\numberline {1.2}Goal}{1}{section.1.2}%
+\settocdata {$\rightarrow $\textit {Maximilian Dragosits}}
 \contentsline {section}{\numberline {1.3}History}{2}{section.1.3}%
 \contentsline {subsection}{\numberline {1.3.1}Networks}{2}{subsection.1.3.1}%
 \contentsline {subsection}{\numberline {1.3.2}Protocols}{2}{subsection.1.3.2}%
 \contentsline {subsection}{\numberline {1.3.3}Bluetooth}{3}{subsection.1.3.3}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
 \contentsline {section}{\numberline {1.4}Project Management}{3}{section.1.4}%
-\contentsline {subsection}{\numberline {1.4.1}Kanban}{3}{subsection.1.4.1}%
-\contentsline {subsubsection}{\numberline {1.4.1.1}Structure of RECT's Kanban Board}{4}{subsubsection.1.4.1.1}%
-\contentsline {subsection}{\numberline {1.4.2}Meetings with the projects supervisor}{4}{subsection.1.4.2}%
-\contentsline {subsection}{\numberline {1.4.3}Hours spent outside of school hours}{4}{subsection.1.4.3}%
-\contentsline {subsection}{\numberline {1.4.4}Version Control}{4}{subsection.1.4.4}%
-\contentsline {section}{\numberline {1.5}Outline}{4}{section.1.5}%
-\contentsline {chapter}{\numberline {2}Study of Literature Sztavinovszki}{6}{chapter.2}%
-\contentsline {section}{\numberline {2.1}The Rust Book}{6}{section.2.1}%
-\contentsline {section}{\numberline {2.2}Network Programming with Rust}{6}{section.2.2}%
-\contentsline {section}{\numberline {2.3}Main Takeaways}{6}{section.2.3}%
-\contentsline {section}{\numberline {2.4}Getting Started with Bluetooth Low Energy}{6}{section.2.4}%
-\contentsline {subsection}{\numberline {2.4.1}Chapter 1. Introduction}{6}{subsection.2.4.1}%
-\contentsline {subsection}{\numberline {2.4.2}Chapter 2. Protocol Basics}{6}{subsection.2.4.2}%
-\contentsline {subsection}{\numberline {2.4.3}Chapter 3. GAP(Advertising and Connections)}{7}{subsection.2.4.3}%
-\contentsline {subsection}{\numberline {2.4.4}Chapter 4. GATT(Services and Characteristics)}{7}{subsection.2.4.4}%
-\contentsline {subsection}{\numberline {2.4.5}The Remaining Chapters}{7}{subsection.2.4.5}%
-\contentsline {subsection}{\numberline {2.4.6}Main Takeaways}{7}{subsection.2.4.6}%
-\contentsline {chapter}{\numberline {3}Technology}{8}{chapter.3}%
-\contentsline {section}{\numberline {3.1}Wombat}{8}{section.3.1}%
-\contentsline {section}{\numberline {3.2}Python}{8}{section.3.2}%
-\contentsline {section}{\numberline {3.3}C++}{9}{section.3.3}%
-\contentsline {section}{\numberline {3.4}Rust}{9}{section.3.4}%
-\contentsline {subsection}{\numberline {3.4.1}Cargo}{9}{subsection.3.4.1}%
-\contentsline {section}{\numberline {3.5}gRPC}{10}{section.3.5}%
-\contentsline {section}{\numberline {3.6}Protocol Buffers}{11}{section.3.6}%
-\contentsline {subsection}{\numberline {3.6.1}Protofile message definition}{12}{subsection.3.6.1}%
-\contentsline {subsection}{\numberline {3.6.2}Protofile enum definition}{13}{subsection.3.6.2}%
-\contentsline {subsection}{\numberline {3.6.3}Protofile service definition}{14}{subsection.3.6.3}%
-\contentsline {section}{\numberline {3.7}Nix}{14}{section.3.7}%
-\contentsline {subsection}{\numberline {3.7.1}History}{14}{subsection.3.7.1}%
-\contentsline {subsection}{\numberline {3.7.2}The Language}{15}{subsection.3.7.2}%
-\contentsline {subsection}{\numberline {3.7.3}The Package Manager}{16}{subsection.3.7.3}%
-\contentsline {subsection}{\numberline {3.7.4}The Build System}{16}{subsection.3.7.4}%
-\contentsline {subsubsection}{\numberline {3.7.4.1}Nixpkgs}{17}{subsubsection.3.7.4.1}%
-\contentsline {subsection}{\numberline {3.7.5}The Operating System}{18}{subsection.3.7.5}%
-\contentsline {section}{\numberline {3.8}Bluetooth Low Energy}{18}{section.3.8}%
-\contentsline {subsection}{\numberline {3.8.1}BLE Layers}{18}{subsection.3.8.1}%
-\contentsline {subsubsection}{\numberline {3.8.1.1}Protocol vs. Profile}{18}{subsubsection.3.8.1.1}%
-\contentsline {subsubsection}{\numberline {3.8.1.2}Physical Layer PHY}{19}{subsubsection.3.8.1.2}%
-\contentsline {subsubsection}{\numberline {3.8.1.3}Link Layer (LL)}{19}{subsubsection.3.8.1.3}%
-\contentsline {subsubsection}{\numberline {3.8.1.4}Host Controller Interface (HCI)}{19}{subsubsection.3.8.1.4}%
-\contentsline {paragraph}{\numberline {3.8.1.4.1}Host Side}{19}{paragraph.3.8.1.4.1}%
-\contentsline {paragraph}{\numberline {3.8.1.4.2}Controller Side}{19}{paragraph.3.8.1.4.2}%
-\contentsline {subsubsection}{\numberline {3.8.1.5}Logical Link Controll and Adaptation Protocol (L2CAP)}{20}{subsubsection.3.8.1.5}%
-\contentsline {subsubsection}{\numberline {3.8.1.6}Attribute Protocol and Generic Attribute Profile}{20}{subsubsection.3.8.1.6}%
-\contentsline {subsubsection}{\numberline {3.8.1.7}Security Manager (SM)}{20}{subsubsection.3.8.1.7}%
-\contentsline {subsubsection}{\numberline {3.8.1.8}General Access Profile}{20}{subsubsection.3.8.1.8}%
-\contentsline {subsection}{\numberline {3.8.2}Network Topologies}{21}{subsection.3.8.2}%
-\contentsline {subsubsection}{\numberline {3.8.2.1}Star Topology}{21}{subsubsection.3.8.2.1}%
-\contentsline {subsubsection}{\numberline {3.8.2.2}Mesh Topology}{21}{subsubsection.3.8.2.2}%
-\contentsline {subsubsection}{\numberline {3.8.2.3}Hub and Spoke Topology}{21}{subsubsection.3.8.2.3}%
-\contentsline {subsubsection}{\numberline {3.8.2.4}Cluster Tree Topology}{21}{subsubsection.3.8.2.4}%
-\contentsline {subsubsection}{\numberline {3.8.2.5}Hybrid Architectures}{22}{subsubsection.3.8.2.5}%
-\contentsline {section}{\numberline {3.9}WiFi}{22}{section.3.9}%
-\contentsline {subsection}{\numberline {3.9.1}History}{22}{subsection.3.9.1}%
-\contentsline {subsection}{\numberline {3.9.2}Usage}{23}{subsection.3.9.2}%
-\contentsline {subsection}{\numberline {3.9.3}Function}{25}{subsection.3.9.3}%
-\contentsline {subsection}{\numberline {3.9.4}Advancements}{25}{subsection.3.9.4}%
-\contentsline {section}{\numberline {3.10}Libraries}{25}{section.3.10}%
-\contentsline {subsection}{\numberline {3.10.1}Catch2}{25}{subsection.3.10.1}%
-\contentsline {subsubsection}{\numberline {3.10.1.1}Unit Tests}{25}{subsubsection.3.10.1.1}%
-\contentsline {subsubsection}{\numberline {3.10.1.2}Micro-benchmarks}{26}{subsubsection.3.10.1.2}%
-\contentsline {subsection}{\numberline {3.10.2}Doxygen}{28}{subsection.3.10.2}%
-\contentsline {subsubsection}{\numberline {3.10.2.1}Doxygen Configuration}{28}{subsubsection.3.10.2.1}%
-\contentsline {subsubsection}{\numberline {3.10.2.2}Doxygen Annotation}{30}{subsubsection.3.10.2.2}%
-\contentsline {subsubsection}{\numberline {3.10.2.3}Doxygen Parsing}{31}{subsubsection.3.10.2.3}%
-\contentsline {subsection}{\numberline {3.10.3}Pytest}{32}{subsection.3.10.3}%
-\contentsline {subsubsection}{\numberline {3.10.3.1}Test Discovery}{32}{subsubsection.3.10.3.1}%
-\contentsline {subsubsection}{\numberline {3.10.3.2}Fixtures}{33}{subsubsection.3.10.3.2}%
-\contentsline {subsubsection}{\numberline {3.10.3.3}Unit Tests}{33}{subsubsection.3.10.3.3}%
-\contentsline {subsection}{\numberline {3.10.4}Rusqlite}{33}{subsection.3.10.4}%
-\contentsline {subsection}{\numberline {3.10.5}Serde}{34}{subsection.3.10.5}%
-\contentsline {subsection}{\numberline {3.10.6}Tokio}{34}{subsection.3.10.6}%
-\contentsline {subsection}{\numberline {3.10.7}Tokio Rusqlite}{36}{subsection.3.10.7}%
-\contentsline {subsection}{\numberline {3.10.8}Tonic}{36}{subsection.3.10.8}%
-\contentsline {subsection}{\numberline {3.10.9}Docker}{38}{subsection.3.10.9}%
-\contentsline {chapter}{\numberline {4}Implementation}{40}{chapter.4}%
-\contentsline {section}{\numberline {4.1}CommLib}{40}{section.4.1}%
-\contentsline {subsection}{\numberline {4.1.1}Setting up the Library}{40}{subsection.4.1.1}%
-\contentsline {subsection}{\numberline {4.1.2}First Implementation}{41}{subsection.4.1.2}%
-\contentsline {subsubsection}{\numberline {4.1.2.1}Messages and Packets}{41}{subsubsection.4.1.2.1}%
-\contentsline {subsubsection}{\numberline {4.1.2.2}The ConnectionManager}{42}{subsubsection.4.1.2.2}%
-\contentsline {subsection}{\numberline {4.1.3}Profiling and Benchmarking}{43}{subsection.4.1.3}%
-\contentsline {subsection}{\numberline {4.1.4}Polishing}{43}{subsection.4.1.4}%
-\contentsline {subsection}{\numberline {4.1.5}Documentation}{43}{subsection.4.1.5}%
-\contentsline {section}{\numberline {4.2}RECT Database}{43}{section.4.2}%
-\contentsline {subsection}{\numberline {4.2.1}Why SQLite?}{43}{subsection.4.2.1}%
-\contentsline {subsubsection}{\numberline {4.2.1.1}SQLite}{44}{subsubsection.4.2.1.1}%
-\contentsline {subsubsection}{\numberline {4.2.1.2}PostgreSQL}{45}{subsubsection.4.2.1.2}%
-\contentsline {subsubsection}{\numberline {4.2.1.3}MySQL}{45}{subsubsection.4.2.1.3}%
-\contentsline {subsubsection}{\numberline {4.2.1.4}Comparison}{46}{subsubsection.4.2.1.4}%
-\contentsline {subsection}{\numberline {4.2.2}Database Structure}{47}{subsection.4.2.2}%
-\contentsline {subsection}{\numberline {4.2.3}Database usage}{48}{subsection.4.2.3}%
-\contentsline {section}{\numberline {4.3}Rust Interface}{48}{section.4.3}%
-\contentsline {section}{\numberline {4.4}Rust Service}{49}{section.4.4}%
-\contentsline {subsection}{\numberline {4.4.1}Documentation}{49}{subsection.4.4.1}%
-\contentsline {section}{\numberline {4.5}C++ Implementation}{49}{section.4.5}%
-\contentsline {subsection}{\numberline {4.5.1}Rectcpp class}{50}{subsection.4.5.1}%
-\contentsline {subsubsection}{\numberline {4.5.1.1}Construction}{50}{subsubsection.4.5.1.1}%
-\contentsline {subsubsection}{\numberline {4.5.1.2}Connections}{51}{subsubsection.4.5.1.2}%
-\contentsline {subsection}{\numberline {4.5.2}Definition of CMake file}{51}{subsection.4.5.2}%
-\contentsline {subsection}{\numberline {4.5.3}gRPC Serverbuilder}{52}{subsection.4.5.3}%
-\contentsline {subsection}{\numberline {4.5.4}gRPC CreateChannel}{53}{subsection.4.5.4}%
-\contentsline {subsection}{\numberline {4.5.5}Documentation}{53}{subsection.4.5.5}%
-\contentsline {section}{\numberline {4.6}Python Implementation}{54}{section.4.6}%
-\contentsline {subsection}{\numberline {4.6.1}Documentation}{54}{subsection.4.6.1}%
-\contentsline {section}{\numberline {4.7}Implementation Comparison}{54}{section.4.7}%
-\contentsline {chapter}{\numberline {5}Tests}{55}{chapter.5}%
-\contentsline {section}{\numberline {5.1}General Benchmarks}{55}{section.5.1}%
-\contentsline {subsection}{\numberline {5.1.1}Throughput}{55}{subsection.5.1.1}%
-\contentsline {subsection}{\numberline {5.1.2}Packet Loss}{55}{subsection.5.1.2}%
-\contentsline {section}{\numberline {5.2}Optimization}{55}{section.5.2}%
-\contentsline {subsection}{\numberline {5.2.1}Compression}{55}{subsection.5.2.1}%
-\contentsline {subsection}{\numberline {5.2.2}Buffering}{55}{subsection.5.2.2}%
-\contentsline {subsection}{\numberline {5.2.3}Serialization Formats}{55}{subsection.5.2.3}%
-\contentsline {subsection}{\numberline {5.2.4}Database Benchmarks}{55}{subsection.5.2.4}%
-\contentsline {chapter}{\numberline {6}Conclusion}{56}{chapter.6}%
-\contentsline {section}{\numberline {6.1}Recap}{56}{section.6.1}%
-\contentsline {section}{\numberline {6.2}Conclusion}{56}{section.6.2}%
-\contentsline {section}{\numberline {6.3}Outlook}{56}{section.6.3}%
+\contentsline {subsubsection}{\numberline {1.4.0.1}Structure of RECT's Kanban Board}{4}{subsubsection.1.4.0.1}%
+\contentsline {subsection}{\numberline {1.4.1}Meetings with the projects supervisor}{4}{subsection.1.4.1}%
+\contentsline {subsection}{\numberline {1.4.2}Hours spent outside of school hours}{4}{subsection.1.4.2}%
+\contentsline {subsection}{\numberline {1.4.3}Version Control}{4}{subsection.1.4.3}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {section}{\numberline {1.5}Outline}{5}{section.1.5}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {chapter}{\numberline {2}Study of Literature}{6}{chapter.2}%
+\contentsline {section}{\numberline {2.1}The Rust Programming Language}{6}{section.2.1}%
+\contentsline {subsection}{\numberline {2.1.1}The Basics}{6}{subsection.2.1.1}%
+\contentsline {subsection}{\numberline {2.1.2}Intermediate Concepts}{6}{subsection.2.1.2}%
+\contentsline {subsection}{\numberline {2.1.3}Advanced Concepts}{7}{subsection.2.1.3}%
+\contentsline {subsection}{\numberline {2.1.4}Takeaways}{7}{subsection.2.1.4}%
+\contentsline {section}{\numberline {2.2}Getting Started with Bluetooth Low Energy}{7}{section.2.2}%
+\contentsline {subsection}{\numberline {2.2.1}Chapter 1. Introduction}{7}{subsection.2.2.1}%
+\contentsline {subsection}{\numberline {2.2.2}Chapter 2. Protocol Basics}{7}{subsection.2.2.2}%
+\contentsline {subsection}{\numberline {2.2.3}Chapter 3. The Generic Access Profile}{8}{subsection.2.2.3}%
+\contentsline {subsection}{\numberline {2.2.4}Chapter 4. The Generic Attribute Profile}{8}{subsection.2.2.4}%
+\contentsline {subsection}{\numberline {2.2.5}The Remaining Chapters}{8}{subsection.2.2.5}%
+\contentsline {subsection}{\numberline {2.2.6}Takeaways}{8}{subsection.2.2.6}%
+\contentsline {chapter}{\numberline {3}Methodology}{9}{chapter.3}%
+\settocdata {$\rightarrow $\textit {Timon Koch}}
+\contentsline {section}{\numberline {3.1}Wombat}{9}{section.3.1}%
+\settocdata {$\rightarrow $\textit {Timon Koch}}
+\contentsline {section}{\numberline {3.2}Python}{9}{section.3.2}%
+\settocdata {$\rightarrow $\textit {Maximilian Dragosits}}
+\contentsline {section}{\numberline {3.3}C++}{10}{section.3.3}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {section}{\numberline {3.4}Rust}{11}{section.3.4}%
+\contentsline {subsection}{\numberline {3.4.1}Documentation}{11}{subsection.3.4.1}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {subsection}{\numberline {3.4.2}Cargo}{12}{subsection.3.4.2}%
+\settocdata {$\rightarrow $\textit {Maximilian Dragosits}}
+\contentsline {section}{\numberline {3.5}gRPC}{13}{section.3.5}%
+\settocdata {$\rightarrow $\textit {Maximilian Dragosits}}
+\contentsline {section}{\numberline {3.6}Protocol Buffers}{14}{section.3.6}%
+\contentsline {subsection}{\numberline {3.6.1}Protofile message definition}{15}{subsection.3.6.1}%
+\contentsline {subsection}{\numberline {3.6.2}Protofile enum definition}{15}{subsection.3.6.2}%
+\contentsline {subsection}{\numberline {3.6.3}Protofile service definition}{16}{subsection.3.6.3}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {section}{\numberline {3.7}Nix}{17}{section.3.7}%
+\contentsline {subsection}{\numberline {3.7.1}History}{17}{subsection.3.7.1}%
+\contentsline {subsection}{\numberline {3.7.2}The Language}{17}{subsection.3.7.2}%
+\contentsline {subsection}{\numberline {3.7.3}The Package Manager}{19}{subsection.3.7.3}%
+\contentsline {subsection}{\numberline {3.7.4}The Build System}{19}{subsection.3.7.4}%
+\contentsline {subsubsection}{\numberline {3.7.4.1}Nixpkgs}{20}{subsubsection.3.7.4.1}%
+\contentsline {subsection}{\numberline {3.7.5}The Operating System}{21}{subsection.3.7.5}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {section}{\numberline {3.8}Bluetooth Low Energy}{21}{section.3.8}%
+\contentsline {subsection}{\numberline {3.8.1}BLE Layers}{21}{subsection.3.8.1}%
+\contentsline {subsubsection}{\numberline {3.8.1.1}Protocol vs. Profile}{21}{subsubsection.3.8.1.1}%
+\contentsline {subsubsection}{\numberline {3.8.1.2}Physical Layer PHY}{22}{subsubsection.3.8.1.2}%
+\contentsline {subsubsection}{\numberline {3.8.1.3}Link Layer (LL)}{22}{subsubsection.3.8.1.3}%
+\contentsline {subsubsection}{\numberline {3.8.1.4}Host Controller Interface (HCI)}{22}{subsubsection.3.8.1.4}%
+\contentsline {paragraph}{\numberline {3.8.1.4.1}Host Side}{22}{paragraph.3.8.1.4.1}%
+\contentsline {paragraph}{\numberline {3.8.1.4.2}Controller Side}{23}{paragraph.3.8.1.4.2}%
+\contentsline {subsubsection}{\numberline {3.8.1.5}Logical Link Controll and Adaptation Protocol (L2CAP)}{23}{subsubsection.3.8.1.5}%
+\contentsline {subsubsection}{\numberline {3.8.1.6}Attribute Protocol and Generic Attribute Profile}{23}{subsubsection.3.8.1.6}%
+\contentsline {subsubsection}{\numberline {3.8.1.7}Security Manager (SM)}{23}{subsubsection.3.8.1.7}%
+\contentsline {subsubsection}{\numberline {3.8.1.8}General Access Profile}{23}{subsubsection.3.8.1.8}%
+\contentsline {subsection}{\numberline {3.8.2}Network Topologies}{24}{subsection.3.8.2}%
+\contentsline {subsubsection}{\numberline {3.8.2.1}Star Topology}{24}{subsubsection.3.8.2.1}%
+\contentsline {subsubsection}{\numberline {3.8.2.2}Mesh Topology}{24}{subsubsection.3.8.2.2}%
+\contentsline {subsubsection}{\numberline {3.8.2.3}Hub and Spoke Topology}{24}{subsubsection.3.8.2.3}%
+\contentsline {subsubsection}{\numberline {3.8.2.4}Cluster Tree Topology}{25}{subsubsection.3.8.2.4}%
+\contentsline {subsubsection}{\numberline {3.8.2.5}Hybrid Architectures}{25}{subsubsection.3.8.2.5}%
+\settocdata {$\rightarrow $\textit {Timon Koch}}
+\contentsline {section}{\numberline {3.9}WiFi}{25}{section.3.9}%
+\contentsline {subsection}{\numberline {3.9.1}History}{25}{subsection.3.9.1}%
+\contentsline {subsection}{\numberline {3.9.2}Usage}{25}{subsection.3.9.2}%
+\contentsline {subsection}{\numberline {3.9.3}Function}{26}{subsection.3.9.3}%
+\contentsline {subsection}{\numberline {3.9.4}Advancements}{26}{subsection.3.9.4}%
+\contentsline {section}{\numberline {3.10}Libraries}{27}{section.3.10}%
+\settocdata {$\rightarrow $\textit {Maximilian Dragosits}}
+\contentsline {subsection}{\numberline {3.10.1}Catch2}{27}{subsection.3.10.1}%
+\contentsline {subsubsection}{\numberline {3.10.1.1}Unit Tests}{27}{subsubsection.3.10.1.1}%
+\contentsline {subsubsection}{\numberline {3.10.1.2}Micro-benchmarks}{28}{subsubsection.3.10.1.2}%
+\settocdata {$\rightarrow $\textit {Maximilian Dragosits}}
+\contentsline {subsection}{\numberline {3.10.2}Doxygen}{30}{subsection.3.10.2}%
+\contentsline {subsubsection}{\numberline {3.10.2.1}Doxygen Configuration}{32}{subsubsection.3.10.2.1}%
+\contentsline {subsubsection}{\numberline {3.10.2.2}Doxygen Annotation}{32}{subsubsection.3.10.2.2}%
+\contentsline {subsubsection}{\numberline {3.10.2.3}Doxygen Parsing}{34}{subsubsection.3.10.2.3}%
+\settocdata {$\rightarrow $\textit {Timon Koch}}
+\contentsline {subsection}{\numberline {3.10.3}Pytest}{35}{subsection.3.10.3}%
+\contentsline {subsubsection}{\numberline {3.10.3.1}Test Discovery}{35}{subsubsection.3.10.3.1}%
+\contentsline {subsubsection}{\numberline {3.10.3.2}Fixtures}{36}{subsubsection.3.10.3.2}%
+\contentsline {subsubsection}{\numberline {3.10.3.3}Unit Tests}{36}{subsubsection.3.10.3.3}%
+\contentsline {subsection}{\numberline {3.10.4}Pydoc}{36}{subsection.3.10.4}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {subsection}{\numberline {3.10.5}Rusqlite}{36}{subsection.3.10.5}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {subsection}{\numberline {3.10.6}Serde}{37}{subsection.3.10.6}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {subsection}{\numberline {3.10.7}Tokio}{38}{subsection.3.10.7}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {subsection}{\numberline {3.10.8}Tokio Rusqlite}{39}{subsection.3.10.8}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {subsection}{\numberline {3.10.9}Tonic}{40}{subsection.3.10.9}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {section}{\numberline {3.11}Docker}{41}{section.3.11}%
+\contentsline {chapter}{\numberline {4}Implementation}{43}{chapter.4}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {section}{\numberline {4.1}General Architecture}{43}{section.4.1}%
+\settocdata {$\rightarrow $\textit {Jeremy Sztavinovszki}}
+\contentsline {section}{\numberline {4.2}CommLib}{44}{section.4.2}%
+\contentsline {subsection}{\numberline {4.2.1}Setting up the Library}{44}{subsection.4.2.1}%
+\contentsline {subsection}{\numberline {4.2.2}Datatypes for Handling Communication}{45}{subsection.4.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.1}SimpleMessage}{46}{subsubsection.4.2.2.1}%
+\contentsline {subsubsection}{\numberline {4.2.2.2}SimpleMessage acknowledgement}{46}{subsubsection.4.2.2.2}%
+\contentsline {subsubsection}{\numberline {4.2.2.3}Stream subscribe}{46}{subsubsection.4.2.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.2.4}Stream unsubscribe}{46}{subsubsection.4.2.2.4}%
+\contentsline {subsubsection}{\numberline {4.2.2.5}Stream data}{46}{subsubsection.4.2.2.5}%
+\contentsline {subsubsection}{\numberline {4.2.2.6}Request}{47}{subsubsection.4.2.2.6}%
+\contentsline {subsubsection}{\numberline {4.2.2.7}Request acknowledgement}{47}{subsubsection.4.2.2.7}%
+\contentsline {subsubsection}{\numberline {4.2.2.8}Response}{47}{subsubsection.4.2.2.8}%
+\contentsline {subsubsection}{\numberline {4.2.2.9}Response acknowledgement}{47}{subsubsection.4.2.2.9}%
+\contentsline {subsection}{\numberline {4.2.3}Logic for Handling Communication}{47}{subsection.4.2.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.1}The Listeners}{48}{subsubsection.4.2.3.1}%
+\contentsline {subsubsection}{\numberline {4.2.3.2}The ListenManager}{48}{subsubsection.4.2.3.2}%
+\contentsline {subsubsection}{\numberline {4.2.3.3}The LogicHandler}{48}{subsubsection.4.2.3.3}%
+\contentsline {subsubsection}{\numberline {4.2.3.4}The ConnectionManager}{48}{subsubsection.4.2.3.4}%
+\contentsline {subsection}{\numberline {4.2.4}Facing Problems with Concurrency}{49}{subsection.4.2.4}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {section}{\numberline {4.3}RECT Database}{49}{section.4.3}%
+\contentsline {subsection}{\numberline {4.3.1}Database Structure}{49}{subsection.4.3.1}%
+\contentsline {subsection}{\numberline {4.3.2}Database usage}{51}{subsection.4.3.2}%
+\settocdata {$\rightarrow $\textit {Christoph Fellner}}
+\contentsline {section}{\numberline {4.4}Rust Interface}{51}{section.4.4}%
+\settocdata {$\rightarrow $\textit {Maximilian Dragosits}}
+\contentsline {section}{\numberline {4.5}C++ Implementation}{53}{section.4.5}%
+\contentsline {subsection}{\numberline {4.5.1}Rectcpp class}{54}{subsection.4.5.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.1}Construction}{56}{subsubsection.4.5.1.1}%
+\contentsline {subsubsection}{\numberline {4.5.1.2}Connections}{56}{subsubsection.4.5.1.2}%
+\contentsline {subsection}{\numberline {4.5.2}Definition of CMake file}{57}{subsection.4.5.2}%
+\contentsline {subsection}{\numberline {4.5.3}gRPC Serverbuilder}{58}{subsection.4.5.3}%
+\contentsline {subsection}{\numberline {4.5.4}gRPC CreateChannel}{59}{subsection.4.5.4}%
+\contentsline {subsection}{\numberline {4.5.5}Documentation}{60}{subsection.4.5.5}%
+\settocdata {$\rightarrow $\textit {Timon Koch}}
+\contentsline {section}{\numberline {4.6}Python Implementation}{60}{section.4.6}%
+\contentsline {subsection}{\numberline {4.6.1}Rectpy class}{60}{subsection.4.6.1}%
+\contentsline {subsubsection}{\numberline {4.6.1.1}Construction}{61}{subsubsection.4.6.1.1}%
+\contentsline {subsubsection}{\numberline {4.6.1.2}Connection}{61}{subsubsection.4.6.1.2}%
+\contentsline {subsection}{\numberline {4.6.2}Documentation}{61}{subsection.4.6.2}%
+\contentsline {chapter}{\numberline {5}Tests}{62}{chapter.5}%
+\settocdata {$\rightarrow $\textit {Timon Koch}}
+\contentsline {section}{\numberline {5.1}Testing possible Optimization}{62}{section.5.1}%
+\contentsline {subsection}{\numberline {5.1.1}Compression}{62}{subsection.5.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.1}Deflate}{63}{subsubsection.5.1.1.1}%
+\contentsline {subsubsection}{\numberline {5.1.1.2}ZSTD}{63}{subsubsection.5.1.1.2}%
+\contentsline {subsubsection}{\numberline {5.1.1.3}GZIP}{63}{subsubsection.5.1.1.3}%
+\contentsline {subsection}{\numberline {5.1.2}Buffering}{63}{subsection.5.1.2}%
+\contentsline {subsection}{\numberline {5.1.3}Serialization Formats}{63}{subsection.5.1.3}%
+\contentsline {subsubsection}{\numberline {5.1.3.1}JSON}{63}{subsubsection.5.1.3.1}%
+\contentsline {subsubsection}{\numberline {5.1.3.2}YAML}{64}{subsubsection.5.1.3.2}%
+\contentsline {subsubsection}{\numberline {5.1.3.3}Protobuf}{65}{subsubsection.5.1.3.3}%
+\contentsline {subsubsection}{\numberline {5.1.3.4}Bincode}{65}{subsubsection.5.1.3.4}%
+\contentsfinish 
