@@ -13,7 +13,10 @@
 \end{figure}
 
 The general Architecture of RECT looks like \ref{fig:rect-architecture}. This is a high level overview of the RECT stack.
-The following sections will go into more detail about the different parts of the stack and how they were implemented.
+It shows, that multiple client programs using the libraries provided for RECT send data through gRPC to the \textit{RECT-Backend},
+which then handles sending the data to peers. The \textit{RECT-Backend} may also receive data for a Client process, which it will then
+send to the corresponding client program through gRPC.
+The following sections will go into more detail about the different parts of the stack and how they were implemented. 
 
 \begin{figure}
 	\centering
@@ -26,16 +29,20 @@ The following sections will go into more detail about the different parts of the
 \end{figure}
 
 \ref{fig:rect-dataflow} shows how data is sent through the different protocols in RECT.
-In this diagram the CommLib takes the part of sending and receiving the data which is to be transmitted to listeners on fixed ports
-on other hosts.
+In this diagram the \textit{RECT-Interface} handles the inter process communication with the client programs. 
+The \textit{RECT-Interface} then interacts with components the comm\_lib, mainly the ConnectionManager, which is responsible for
+handling the connections to the database and the LogicHandler. The LogicHandler is responsible for handling the logic for 
+sending and receiving the different types of messages. It receives the messages from the ListenManager, which listens on the different
+interfaces for incoming messages. The LogicHandler is also directly responsible for sending the messages through the different interfaces.
+The following section covers these components in more detail.
+
 
 \tocdata{toc}{$\rightarrow$\textit{Jeremy Sztavinovszki}}
 \section{CommLib}
 \textbf{Author: Jeremy Sztavinovszki} 
 The Communication Library, or CommLib for short is the part of the RECT stack, that handles all of the communication between the hosts over traditional protocols, like TCP, UDP and BLE.
-This requires it to be especially performant. In order to avoid premature optimization however, the first part of this section on the implementation of the CommLib will only cover the first versions
-of the code written to get the Library to work. After the first implementation there will be benchmarks and some profiling, in order to get a grasp on which aspects of the library need to be
-optimized. The second section will then cover how these results were incorperated into designing a more polished version of the CommLib.
+This requires it to be especially performant. For this reason a highly concurrent design was chosen, which uses the tokio library for asynchronous IO and the bluer library for Bluetooth communication. 
+All of the communication between the components of the CommLib is done through tokio's channels, which means each component can be started and then run parallel to the other components.
 
 \subsection{Setting up the Library} 
 The first steps of setting up the library are more or less the same as in any other rust project. First the project is initialized with \verb+cargo new --lib <rust-name>+. This creates a
@@ -181,9 +188,9 @@ names received through gRPC to the corresponding addresses and interfaces. It al
 calling the correct functions in the LogicHandler.
 
 \subsection{Facing Problems with Concurrency}
-Although the comm_lib's structure is designed to be highly concurrent, there are problems in the implementation, which couldn't be resolved in time for the comm_lib to be finished.
-The main problem is concurrently handling the sending and receiving of messages, while also having to wait for the acknowledgements for previous messages. So although the basics of
-sending and receiving messages through WiFi and BLE works the rest of the functionality the comm_lib is supposed to cover is sadly unfinished.
+Although the comm\_lib's structure is designed to be highly concurrent, there are problems in the implementation, which couldn't be resolved in time for the comm\_lib to be finished.
+The main problem is concurrently handling the sending and receiving of messages, while also having to wait for the acknowledgements for previous messages. This means, that while 
+the Listeners for the interfaces, the ConnectionManager and most of the LogicHandler have been implemented, complex tasks like acknowledgements and streams have not been implemented fully.
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
 \section{RECT Database}

@@ -23,14 +23,8 @@ This also means that the Rust service was not tested with the C++ library and no
 \subsection{The Rust Interface}
 The Rust Interface, which handles the gRPC communication with other processes and manages the connections in the in-memory database, was implemented as planned. The interface was tested through tokio tests and mock clients and worked as expected.
 
-\subsubsection{Memory and CPU Usage when Idle}
-The Rust service uses <insert amount>MB RAM and <insert amount>\% CPU when idle. Idle in this case means running the service without any clients connected.
-
-\subsubsection{Memory and CPU Usage when Handling Messages}
-The Rust service uses <insert amount>MB RAM and <insert amount>\% CPU when handling roughly 100 messages per second. This was tested by handling the requests from the Python library, which sent one message every 10ms for 10 seconds.
-
 \subsection{The Rust Communication Library}
-Although the basic functionality of the Rust Communication Library(comm_lib) was implemented, the library is unfinished. This is due to the complexity of the concurrency model. While the library can send and receive data over WiFi and
+Although the basic functionality of the Rust Communication Library(comm\_lib) was implemented, the library is unfinished. This is due to the complexity of the concurrency model. While the library can send and receive data over WiFi and
 BLE the libraries higher level abstractions like sending messages and receiving acknowledgements, sending and receiving streams and sending and receiving requests and responses have not been implemented. This means, that neither the
 Python Library, nor the Rust Interface could be tested for robot to robot communication.
 
@@ -38,8 +32,8 @@ Python Library, nor the Rust Interface could be tested for robot to robot commun
 While some of the parts of the RECT stack were able to be finished others encountered problems, that lead to the team unable to fully finish the implementation during the time of the thesis.
 Of course after such setbacks it is important to look at what could be done better in the future. Starting with the conception of the system, the team should have looked more into existing
 systems and libraries and how they solve the problems encountered during the thesis. Furthermore a more detailed plan of how to do the communication between the parts of the system should have been made
-before starting with the implementation and specification of the systems interface. This would have made it easier to see the problems with the gRPC++ library and the concurrency model of the comm_lib.
-Future work on the RECT stack should mainly focus on finishing the comm_lib and the C++ library, as well as implementing more optimizations for the communication like doing compression of the data, which is sent over the network.
+before starting with the implementation and specification of the systems interface. This would have made it easier to see the problems with the gRPC++ library and the concurrency model of the comm\_lib.
+Future work on the RECT stack should mainly focus on finishing the comm\_lib and the C++ library, as well as implementing more optimizations for the communication like doing compression of the data, which is sent over the network.
 Furthermore implementing more programming language interfaces would be beneficial, as it would make the system more accessible to more users. Implementing interfaces for serial communication and other communication protocols would
 also be beneficial, as it would make the system more versatile. Also while a system with fixed configurations like the one implemented in the thesis may be more efficient, a system for automatically discovering peers would be easier
 to use, especially in a setting, where IP-Addresses and Ports are not known beforehand. For this reason implementing a DDS system similar to the one used in ROS would be a good idea. Finally after the system is finished it should
