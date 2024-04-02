@@ -60,9 +60,9 @@ In Rust, strings are encoded as UTF-8 by default. This means that Rust provides 
 \textbf{Author: Christoph Fellner}
 
 RECT uses a register to store data about available connections and useable ports of other controllers. This register is stored in a in-memory database. In order to find the 
-best database solution for our use case, we compare SQLite, PostgreSQL and MySQL. Using docker as testing environment we can easily compare the different databases.\newline
+best database solution for our use case, we compare SQLite, PostgreSQL and MySQL. Using docker as the testing environment we can easily compare the different databases.\newline
 
-In order to test the databases without any influences from outside, we used docker container for each database and their corresponding client program. The client program
+In order to test the databases without any influences from outside, we used a docker container for each database and their corresponding client program. The client program
 is written in rust and uses the corresponding rust librarys for the individual databases. However since SQLite is a file based database, we just used a volume to store the
 database file, together with the rust program in one container. The rust program connects to the database and executes the queries. The program measures the time it 
 takes to execute the query and prints it to the console. Because we are using docker, we can easily track the resource usage of the database container during the query.\newline
