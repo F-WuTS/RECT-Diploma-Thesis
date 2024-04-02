@@ -1,27 +1,34 @@
 \chapter{Tests}
 
+RECT requires a number of different technologies to be used effectively. To find the best technologies for the project, several experiments are needed to evaluate and compare the different methods available. 
+
 \textbf{Author: Timon Koch}
 
-\section{Specialized Benchmarks and Tests}
-\subsection{Serialization and Compression}
+\tocdata{toc}{$\rightarrow$\textit{Timon Koch}}
+\section{Testing possible Optimization}
+\textbf{Author: Timon Koch}
 
-\section{Optimization}
+In order to find the best possible combination of serialisation and compression methods for use in RECT, different pairs are applied to the text of the King James Bible\footcite{king_james_bible}. The dataset consists of approximately 783,137 words spread over 66 books. The experiment aims to evaluate the effectiveness of the different pairs of compression and serialisation methods. First, the text is encoded using one of the serialisation methods. After serialisation, the data is compressed using one of the compression methods
+
+The setup will maintain a standardised computing environment for consistency and the experiment will be repeated several times for each pair of serialisation and compression methods.
+
+Performance metrics will include serialisation and deserialisation, compression and decompression time, and post-compression size. Statistical analysis will compare the performance of different methods.
+
 \subsection{Compression}
-\textbf{Timon Koch}
 By reducing the size of data, compression saves storage space, speeds up data transmission over networks and minimises bandwidth requirements, resulting in cost savings and improved operational efficiency. In addition, compressed data is easier to manage, share and access across platforms and devices. 
 
 \subsubsection{Deflate}
-The Deflate algorithm is a widely used method of lossless data compression. It achieves compression by eliminating redundancy in the input data through a combination of LZ77 and Huffman coding techniques, making it an efficient and versatile compression method used in various applications.
+The Deflate algorithm\footcite{deflate} is a widely used method of lossless data compression. It achieves compression by eliminating redundancy in the input data through a combination of LZ77\footcite{lz77} and Huffman coding\footcite{huffman_coding} techniques, making it an efficient and versatile compression method used in various applications.
 
 In the first step, LZ77 identifies repeated substrings in the data and replaces them with references to previous occurrences, thereby reducing redundancy. This is followed by Huffman coding, which assigns shorter codes to more frequent symbols and longer codes to less frequent symbols, further compressing the data
 
 \subsubsection{ZSTD}
-ZSTD, short for Zstandard, is a high performance data compression algorithm developed by Facebook. It is designed to provide both fast compression and decompression speeds while achieving excellent compression ratios, making it suitable for a wide range of applications.
+ZSTD\footcite{zstd}, short for Zstandard, is a high performance data compression algorithm developed by Facebook. It is designed to provide both fast compression and decompression speeds while achieving excellent compression ratios, making it suitable for a wide range of applications.
 
 ZSTD uses a combination of advanced compression techniques, including a dictionary-based approach, context modelling and entropy coding. It dynamically builds and updates dictionaries during compression to improve compression efficiency by identifying and exploiting patterns in the data.
 
 \subsubsection{GZIP}
-GZIP, short for GNU Zip, is based on the Deflate algorithm. While it's optimised for speed, GZIP also provides reasonably good compression ratios, making it a popular choice for applications where both speed and compression efficiency are important.
+GZIP\footcite{gzip}, short for GNU Zip, is based on the Deflate algorithm. While it's optimised for speed, GZIP also provides reasonably good compression ratios, making it a popular choice for applications where both speed and compression efficiency are important.
 
 GZIP typically offers several levels of compression, allowing users to trade off compression ratio and speed according to their needs. Lower compression levels prioritise faster processing times, while higher levels prioritise better compression ratios at the expense of speed.
 
@@ -30,32 +37,170 @@ GZIP typically offers several levels of compression, allowing users to trade off
 \subsection{Serialization Formats}
 \textbf{Author: Timon Koch}
 
+
+
+\begin{table}[]
+\begin{tabular}{ccc}
+\textbf{Serializer} & \textbf{Pre Compression Size (Byte)} & \textbf{Increase in Size (\%)} \\
+JSON       & 4556012 & 190 \\
+YAML       & 4630774 & 193 \\
+Protobuf   & 4606085 & 192 \\
+Bincode    & 5055849 & 211 \\
+Rust UTF-8 & 4256089 & 177
+\end{tabular}
+\end{table}
+
+
+
 \subsubsection{JSON}
-JSON (JavaScript Object Notation) is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. It is based on a subset of the JavaScript programming language.
+JSON (JavaScript Object Notation)\footcite{json} is a lightweight data-interchange format that is easy for humans to read and write and easy for machines to parse and generate. It is based on a subset of the JavaScript programming language\footcite{javascript}.
 
 JSON consists of key-value pairs, where keys are strings and values can be strings, numbers, arrays, objects, booleans, or null. It is highly versatile and widely supported across various programming languages and platforms.
 
+Using JSON as the seriation method results in the following:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccccccccc}
+\hline
+ &
+  \multicolumn{2}{c}{\textbf{Serialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Deserialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Compression Time}} &
+  \multicolumn{2}{c}{\textbf{Decompression Time}} &
+   \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\hline
+GZIP Fast           & 7.421e-2 & 1.700e-6 & 4.448e-1 & 7.124e-6 & 1.397e-1 & 1.7e-6   & 3.43e-2  & 9.002e-8 & 2054649                               \\
+GZIP Best           & 7.380e-2 & 3.516e-7 & 2.966e+0 & 1.485e-3 & 8.834e-2 & 5.563e-7 & 3.443e-2 & 1.262e-7 & 1399457                               \\
+ZSTD                & 7.401e-2 & 8.668e-7 & 1.138e-1 & 2.58e-6  & 4.175e-2 & 1.534e-5 & 3.492e-2 & 1.547e-6 & 1398840                               \\
+deflate             & 7.421e-2 & 9.84e-7  & 2.988e+0 & 2.081e-3 & 8.169e-2 & 3.379e-6 & 3.625e-2 & 8.633e-6 & 1399439   \\
+\hline
+\end{tabular}
+\end{table}
+
 \subsubsection{YAML}
-YAML (YAML Ain't Markup Language) is a data serialisation format commonly used for configuration files, data exchange, and specifying data structures in a clear, concise, and readable manner. It uses indentation and whitespace to represent data hierarchies, making it visually intuitive and easy to understand.
+YAML\footcite{yaml} (YAML Ain't Markup Language) is a data serialisation format commonly used for configuration files, data exchange, and specifying data structures in a clear, concise, and readable manner. It uses indentation and whitespace to represent data hierarchies, making it visually intuitive and easy to understand.
 
 YAML supports multiple data types, including scalars (strings, numbers, booleans), sequences (arrays or lists), and mappings (key-value pairs). It also allows for comments, making it useful for annotating configurations and documentation.
 
-\subsubsection{Protobuf}
-Protocol Buffers (protobuf) is a method of serialising structured data developed by Google. Designed to be efficient, portable and easy to use, it provides a platform-neutral way to encode data for communication between systems or for persistent storage.
+Using YAML as the seriation method results in the following:
 
-Protobuf defines a schema for data structures using a language-agnostic interface description language (IDL). This schema describes the structure of the data in a concise and platform-independent manner. From this schema, Protobuf compilers generate code in various programming languages, allowing developers to easily work with the defined data structures.
+\begin{table}[h]
+\centering
+\begin{tabular}{cccccccccc}
+\hline
+ &
+  \multicolumn{2}{c}{\textbf{Serialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Deserialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Compression Time}} &
+  \multicolumn{2}{c}{\textbf{Decompression Time}} &
+   \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\hline
+GZIP Fast           & 5.0937E-01 & 3.9388E-05 & 4.5498E-01 & 2.3392E-05 & 1.4108E-01 & 3.2461E-06 & 5.3563E-01 & 5.2394E-05 & 2085408 \\
+GZIP Best           & 5.0596E-01 & 3.3615E-06 & 3.0110E+00 & 2.1999E-04 & 8.9274E-02 & 1.5003E-06 & 5.3117E-01 & 3.8986E-06 & 1422119 \\
+ZSTD                & 5.0769E-01 & 6.4273E-06 & 1.1543E-01 & 2.7384E-06 & 4.1505E-02 & 7.0610E-07 & 5.3427E-01 & 1.4992E-05 & 1425070 \\
+deflate             & 5.0638E-01 & 4.1805E-05 & 3.0265E+00 & 1.7159E-03 & 8.3479E-02 & 7.5117E-06 & 5.3733E-01 & 1.0625E-04 & 1422101 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsubsection{Protobuf}
+Protocol Buffers (protobuf)\footcite{protobuf} is a method of serialising structured data developed by Google. Designed to be efficient, portable and easy to use, it provides a platform-neutral way to encode data for communication between systems or for persistent storage.
+
+Protobuf defines a schema for data structures using a language-agnostic interface description language (IDL)\footcite{idl}. This schema describes the structure of the data in a concise and platform-independent manner. From this schema, Protobuf compilers generate code in various programming languages, allowing developers to easily work with the defined data structures.
+
+Using Protobuf as the seriation method results in the following:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccccccccc}
+\hline
+ &
+  \multicolumn{2}{c}{\textbf{Serialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Deserialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Compression Time}} &
+  \multicolumn{2}{c}{\textbf{Decompression Time}} &
+   \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\hline
+GZIP Fast           & 2.2997E-02 & 2.0312E-07 & 4.8645E-01 & 5.4953E-06 & 1.4393E-01 & 1.0112E-06 & 3.7578E-02 & 9.5003E-07 & 2190644 \\
+GZIP Best           & 2.2861E-02 & 3.0166E-07 & 2.4989E+00 & 2.6906E-05 & 9.1720E-02 & 1.0050E-06 & 3.7164E-02 & 1.5937E-07 & 1495725 \\
+ZSTD                & 2.3221E-02 & 5.7291E-07 & 1.2207E-01 & 1.0494E-06 & 4.1794E-02 & 3.5202E-07 & 3.7455E-02 & 1.1517E-07 & 1497923 \\
+deflate             & 2.2783E-02 & 2.4169E-07 & 2.5021E+00 & 8.8949E-05 & 8.4666E-02 & 2.3459E-06 & 3.6967E-02 & 2.8002E-08 & 1495707 \\
+\hline
+\end{tabular}
+\end{table}
 
 \subsubsection{Bincode}
-Bincode is a binary serialisation format designed for use with the Rust programming language. It allows the serialisation of Rust data structures into a compact binary representation that can be efficiently stored or transmitted. Bincode is designed to be fast and efficient, making it suitable for scenarios where performance is critical, such as networking, file I/O or inter-process communication.
+Bincode\footcite{bincode} is a binary serialisation format designed for use with the Rust programming language. It allows the serialisation of Rust data structures into a compact binary representation that can be efficiently stored or transmitted. Bincode is designed to be fast and efficient, making it suitable for scenarios where performance is critical, such as networking, file I/O or inter-process communication.
+
+Using Bincode as the seriation method results in the following:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccccccccc}
+\hline
+ &
+  \multicolumn{2}{c}{\textbf{Serialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Deserialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Compression Time}} &
+  \multicolumn{2}{c}{\textbf{Decompression Time}} &
+   \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\hline
+GZIP Fast           & 1.8045E-02 & 8.4238E-07 & 4.8633E-01 & 1.3426E-04 & 1.4902E-01 & 7.2413E-07 & 1.7908E-02 & 3.0062E-08 & 2214753 \\
+GZIP Best           & 1.8991E-02 & 3.1245E-06 & 3.6885E+00 & 4.9743E-03 & 9.6516E-02 & 2.1090E-06 & 1.9253E-02 & 1.0521E-06 & 1518794 \\
+ZSTD                & 1.8366E-02 & 4.6941E-07 & 1.3126E-01 & 2.0827E-04 & 4.4627E-02 & 1.4616E-06 & 1.8875E-02 & 1.0487E-07 & 1521854 \\
+deflate             & 1.8419E-02 & 1.3100E-06 & 3.6830E+00 & 2.1365E-03 & 9.1972E-02 & 4.6310E-05 & 1.9735E-02 & 3.1420E-06 & 1518776 \\
+\hline
+\end{tabular}
+\end{table}
+
+\end{document}
 
 \subsubsection{Rust UTF-8}
-Rust UTF-8 is a variable-width encoding that can represent any Unicode code point using one to four bytes.
+Rust UTF-8\footcite{rust_utf8} is a variable-width encoding that can represent any Unicode code point using one to four bytes.
 
-In Rust, strings are encoded as UTF-8 by default. This means that Rust provides native support for manipulating, validating, and converting UTF-8 encoded strings efficiently and securely. Rust's type system ensures that operations on strings are performed in a way that preserves the integrity of the UTF-8 encoding, preventing common problems such as invalid byte sequences or buffer overflows.
+In Rust, strings are encoded as UTF-8\footcite{utf8} by default. This means that Rust provides native support for manipulating, validating, and converting UTF-8 encoded strings efficiently and securely. Rust's type system ensures that operations on strings are performed in a way that preserves the integrity of the UTF-8 encoding, preventing common problems such as invalid byte sequences or buffer overflows.
+
+Using Rust UTF-8 as the seriation method results in the following:
+
+\begin{table}[h]
+\centering
+\begin{tabular}{cccccccccc}
+\hline
+ &
+  \multicolumn{2}{c}{\textbf{Serialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Deserialization Time (ms)}} &
+  \multicolumn{2}{c}{\textbf{Compression Time}} &
+  \multicolumn{2}{c}{\textbf{Decompression Time}} &
+   \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\hline
+GZIP Fast           & 1.0618E-02 & 3.3167E-08 & 4.3587E-01 & 3.9907E-05 & 1.3220E-01 & 2.4851E-06 & 2.3391E-03 & 1.2275E-07 & 1968059 \\
+GZIP Best           & 1.0592E-02 & 2.6769E-08 & 2.4536E+00 & 2.4660E-04 & 8.3638E-02 & 3.6148E-06 & 2.3381E-03 & 1.2752E-07 & 1342696 \\
+ZSTD                & 1.0751E-02 & 1.4967E-07 & 1.1142E-01 & 5.4275E-06 & 3.8847E-02 & 1.9422E-06 & 2.3963E-03 & 1.7944E-07 & 1347795 \\
+deflate             & 1.0563E-02 & 3.6614E-08 & 2.4572E+00 & 2.8351E-04 & 7.6387E-02 & 1.4628E-06 & 2.3804E-03 & 1.3514E-07 & 1342678 \\
+\hline
+\end{tabular}
+\end{table}
+
+\subsection{Comparison}
+By comparing different aspects of the result, the following conclusions can be drawn: 
+
+\begin{itemize}
+\item Serialisation time: In general, all compression algorithms show relatively low serialisation times, with values ranging from approximately 1.06×10-21.06×10-2 ms to 2.32×10-22.32×10-2 ms. GZIP Fast and GZIP Best have slightly lower serialisation times than ZSTD and deflate.
+\item Deserialisation Time: Similar to the serialisation time, the deserialisation times for all algorithms are relatively low, ranging from about 1.11×10-11.11×10-1 ms to 2.452.45 s. GZIP Fast and GZIP Best have faster deserialisation times compared to ZSTD and deflate.
+\item Compression time: Compression time varies between the algorithms, with values ranging from approximately 3.88×10-23.88×10-2 ms to 1.49×10-11.49×10-1 ms. GZIP Fast has the shortest compression time, followed by ZSTD, GZIP Best and deflate.
+\item Decompression time: Decompression times are relatively low for all algorithms, ranging from about 2.34×10-32.34×10-3 ms to 5.36×10-15.36×10-1 ms. GZIP Fast and ZSTD have faster decompression times than GZIP Best and deflate.
+\item Post-compression size: The post-compression size varies significantly between the algorithms, with values ranging from 1,342,6781,342,678 bytes to 2,214,7532,214,753 bytes. GZIP Fast and GZIP Best have larger compressed sizes than ZSTD and Deflate.
+\end{itemize}
 
 
 \tocdata{toc}{$\rightarrow$\textit{Christoph Fellner}}
-\subsection{Database Benchmarks}
+\subsection{Chosing the optimal Database}
 \textbf{Author: Christoph Fellner}
 
 RECT uses a register to store data about available connections and useable ports of other controllers. This register is stored in a in-memory database. In order to find the 
