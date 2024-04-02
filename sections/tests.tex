@@ -46,6 +46,7 @@ JSON consists of key-value pairs, where keys are strings and values can be strin
 Using JSON as the seriation method results in the following:
 
 \begin{table}[H]
+\scriptsize
 \centering
 \begin{tabular}{cccccccccc}
 \hline
@@ -55,15 +56,30 @@ Using JSON as the seriation method results in the following:
   \multicolumn{2}{c}{\textbf{Compression Time}} &
   \multicolumn{2}{c}{\textbf{Decompression Time}} &
    \\
-\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} \\
 \hline
-GZIP Fast           & 7.42e-2 & 1.70e-6 & 4.44e-1 & 7.12e-6 & 1.39e-1 & 1.7e-6   & 3.43e-2  & 9.02e-8 & 2054649                               \\
-GZIP Best           & 7.38e-2 & 3.51e-7 & 2.96e+0 & 1.48e-3 & 8.83e-2 & 5.56e-7 & 3.44e-2 & 1.26e-7 & 1399457                               \\
-ZSTD                & 7.40e-2 & 8.66e-7 & 1.13e-1 & 2.58e-6  & 4.17e-2 & 1.53e-5 & 3.49e-2 & 1.54e-6 & 1398840                               \\
-deflate             & 7.42e-2 & 9.84e-7  & 2.98e+0 & 2.08e-3 & 8.16e-2 & 3.37e-6 & 3.62e-2 & 8.63e-6 & 1399439   \\
+GZIP Fast           & 7.4e-2 & 1.7e-6 & 4.4e-1 & 7.1e-6 & 1.3e-1 & 1.7e-6 & 3.4e-2 & 9.0e-8 \\
+GZIP Best           & 7.3e-2 & 3.5e-7 & 2.9e+0 & 1.4e-3 & 8.8e-2 & 5.5e-7 & 3.4e-2 & 1.2e-7 \\
+ZSTD                & 7.4e-2 & 8.6e-7 & 1.1e-1 & 2.5e-6 & 4.1e-2 & 1.5e-5 & 3.4e-2 & 1.5e-6 \\
+deflate             & 7.4e-2 & 9.8e-7 & 2.9e+0 & 2.0e-3 & 8.1e-2 & 3.3e-6 & 3.6e-2 & 8.6e-6 \\
 \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[H]
+  \scriptsize
+  \centering
+  \begin{tabular}{cc}
+  \hline
+  \textbf{Post Compression Size (Byte)} \\
+  \hline
+  GZIP Fast           & 2054649 \\
+  GZIP Best           & 1399457 \\
+  ZSTD                & 1398840 \\
+  deflate             & 1399439 \\
+  \hline
+  \end{tabular}
+  \end{table}
 
 \subsubsection{YAML}
 YAML\footcite{yaml} (YAML Ain't Markup Language) is a data serialisation format commonly used for configuration files, data exchange, and specifying data structures in a clear, concise, and readable manner. It uses indentation and whitespace to represent data hierarchies, making it visually intuitive and easy to understand.
@@ -73,6 +89,7 @@ YAML supports multiple data types, including scalars (strings, numbers, booleans
 Using YAML as the seriation method results in the following:
 
 \begin{table}[H]
+\scriptsize
 \centering
 \begin{tabular}{cccccccccc}
 \hline
@@ -82,7 +99,7 @@ Using YAML as the seriation method results in the following:
   \multicolumn{2}{c}{\textbf{Compression Time}} &
   \multicolumn{2}{c}{\textbf{Decompression Time}} &
    \\
-\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} \\
 \hline
 GZIP Fast           & 5.093E-01 & 3.938E-05 & 4.549E-01 & 2.339E-05 & 1.410E-01 & 3.246E-06 & 5.356E-01 & 5.239E-05 & 2085408 \\
 GZIP Best           & 5.059E-01 & 3.361E-06 & 3.011E+00 & 2.199E-04 & 8.927E-02 & 1.500E-06 & 5.311E-01 & 3.898E-06 & 1422119 \\
@@ -92,6 +109,21 @@ deflate             & 5.063E-01 & 4.180E-05 & 3.026E+00 & 1.715E-03 & 8.347E-02 
 \end{tabular}
 \end{table}
 
+\begin{table}[H]
+  \scriptsize
+  \centering
+  \begin{tabular}{cc}
+  \hline
+  \textbf{Post Compression Size (Byte)} \\
+  \hline
+  GZIP Fast           & 2085408 \\
+  GZIP Best           & 1422119 \\
+  ZSTD                & 1425070 \\
+  deflate             & 1422101 \\
+  \hline
+  \end{tabular}
+  \end{table}
+
 \subsubsection{Protobuf}
 Protocol Buffers (protobuf)\footcite{protobuf} is a method of serialising structured data developed by Google. Designed to be efficient, portable and easy to use, it provides a platform-neutral way to encode data for communication between systems or for persistent storage.
 
@@ -100,6 +132,7 @@ Protobuf defines a schema for data structures using a language-agnostic interfac
 Using Protobuf as the seriation method results in the following:
 
 \begin{table}[H]
+\scriptsize
 \centering
 \begin{tabular}{cccccccccc}
 \hline
@@ -109,22 +142,38 @@ Using Protobuf as the seriation method results in the following:
   \multicolumn{2}{c}{\textbf{Compression Time}} &
   \multicolumn{2}{c}{\textbf{Decompression Time}} &
    \\
-\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} \\
 \hline
-GZIP Fast           & 2.299E-02 & 2.031E-07 & 4.864E-01 & 5.495E-06 & 1.439E-01 & 1.011E-06 & 3.757E-02 & 9.500E-07 & 2190644 \\
-GZIP Best           & 2.286E-02 & 3.016E-07 & 2.498E+00 & 2.690E-05 & 9.172E-02 & 1.005E-06 & 3.716E-02 & 1.593E-07 & 1495725 \\
-ZSTD                & 2.322E-02 & 5.729E-07 & 1.220E-01 & 1.049E-06 & 4.179E-02 & 3.520E-07 & 3.745E-02 & 1.151E-07 & 1497923 \\
-deflate             & 2.278E-02 & 2.416E-07 & 2.502E+00 & 8.894E-05 & 8.466E-02 & 2.345E-06 & 3.696E-02 & 2.800E-08 & 1495707 \\
+GZIP Fast           & 2.299E-02 & 2.031E-07 & 4.864E-01 & 5.495E-06 & 1.439E-01 & 1.011E-06 & 3.757E-02 & 9.500E-07  \\
+GZIP Best           & 2.286E-02 & 3.016E-07 & 2.498E+00 & 2.690E-05 & 9.172E-02 & 1.005E-06 & 3.716E-02 & 1.593E-07  \\
+ZSTD                & 2.322E-02 & 5.729E-07 & 1.220E-01 & 1.049E-06 & 4.179E-02 & 3.520E-07 & 3.745E-02 & 1.151E-07  \\
+deflate             & 2.278E-02 & 2.416E-07 & 2.502E+00 & 8.894E-05 & 8.466E-02 & 2.345E-06 & 3.696E-02 & 2.800E-08  \\
 \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[H]
+  \scriptsize
+  \centering
+  \begin{tabular}{cc}
+  \hline
+  \textbf{Post Compression Size (Byte)} \\
+  \hline
+  GZIP Fast           & 2190644 \\
+  GZIP Best           & 1495725 \\
+  ZSTD                & 1497923 \\
+  deflate             & 1495707 \\
+  \hline
+  \end{tabular}
+  \end{table}
 
 \subsubsection{Bincode}
 Bincode\footcite{bincode} is a binary serialisation format designed for use with the Rust programming language. It allows the serialisation of Rust data structures into a compact binary representation that can be efficiently stored or transmitted. Bincode is designed to be fast and efficient, making it suitable for scenarios where performance is critical, such as networking, file I/O or inter-process communication.
 
 Using Bincode as the seriation method results in the following:
 
-\begin{table}[H}
+\begin{table}[H]
+\scriptsize
 \centering
 \begin{tabular}{cccccccccc}
 \hline
@@ -134,15 +183,30 @@ Using Bincode as the seriation method results in the following:
   \multicolumn{2}{c}{\textbf{Compression Time}} &
   \multicolumn{2}{c}{\textbf{Decompression Time}} &
    \\
-\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} \\
 \hline
-GZIP Fast           & 1.804E-02 & 8.423E-07 & 4.863E-01 & 1.342E-04 & 1.490E-01 & 7.241E-07 & 1.790E-02 & 3.006E-08 & 2214753 \\
-GZIP Best           & 1.899E-02 & 3.124E-06 & 3.688E+00 & 4.974E-03 & 9.651E-02 & 2.109E-06 & 1.925E-02 & 1.052E-06 & 1518794 \\
-ZSTD                & 1.836E-02 & 4.694E-07 & 1.312E-01 & 2.082E-04 & 4.462E-02 & 1.461E-06 & 1.887E-02 & 1.048E-07 & 1521854 \\
-deflate             & 1.841E-02 & 1.310E-06 & 3.683E+00 & 2.136E-03 & 9.197E-02 & 4.631E-05 & 1.973E-02 & 3.142E-06 & 1518776 \\
+GZIP Fast           & 1.80E-02 & 8.42E-07 & 4.86E-01 & 1.34E-04 & 1.49E-01 & 7.24E-07 & 1.79E-02 & 3.00E-08  \\
+GZIP Best           & 1.89E-02 & 3.12E-06 & 3.68E+00 & 4.97E-03 & 9.65E-02 & 2.10E-06 & 1.92E-02 & 1.05E-06  \\
+ZSTD                & 1.83E-02 & 4.69E-07 & 1.31E-01 & 2.08E-04 & 4.46E-02 & 1.46E-06 & 1.88E-02 & 1.04E-07  \\
+deflate             & 1.84E-02 & 1.31E-06 & 3.68E+00 & 2.13E-03 & 9.19E-02 & 4.63E-05 & 1.97E-02 & 3.14E-06  \\
 \hline
 \end{tabular}
 \end{table}
+
+\begin{table}[H]
+  \scriptsize
+  \centering
+  \begin{tabular}{cc}
+  \hline
+  \textbf{Post Compression Size (Byte)} \\
+  \hline
+  GZIP Fast           & 2214753 \\
+  GZIP Best           & 1518794 \\
+  ZSTD                & 1521854 \\
+  deflate             & 1518776 \\
+  \hline
+  \end{tabular}
+  \end{table}
 
 \subsubsection{Rust UTF-8}
 Rust UTF-8\footcite{rust_utf8} is a variable-width encoding that can represent any Unicode code point using one to four bytes.
@@ -152,6 +216,7 @@ In Rust, strings are encoded as UTF-8\footcite{utf8} by default. This means that
 Using Rust UTF-8 as the seriation method results in the following:
 
 \begin{table}[H]
+\scriptsize
 \centering
 \begin{tabular}{cccccccccc}
 \hline
@@ -161,15 +226,33 @@ Using Rust UTF-8 as the seriation method results in the following:
   \multicolumn{2}{c}{\textbf{Compression Time}} &
   \multicolumn{2}{c}{\textbf{Decompression Time}} &
    \\
-\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Post Compression Size (Byte)} \\
+\textbf{Compression} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} & \textbf{Mean}     & \textbf{Variance} \\
 \hline
-GZIP Fast           & 1.061E-02 & 3.316E-08 & 4.358E-01 & 3.990E-05 & 1.322E-01 & 2.485E-06 & 2.339E-03 & 1.227E-07 & 1968059 \\
-GZIP Best           & 1.059E-02 & 2.676E-08 & 2.453E+00 & 2.466E-04 & 8.363E-02 & 3.614E-06 & 2.338E-03 & 1.275E-07 & 1342696 \\
-ZSTD                & 1.075E-02 & 1.496E-07 & 1.114E-01 & 5.427E-06 & 3.884E-02 & 1.942E-06 & 2.396E-03 & 1.794E-07 & 1347795 \\
-deflate             & 1.056E-02 & 3.661E-08 & 2.457E+00 & 2.835E-04 & 7.638E-02 & 1.462E-06 & 2.380E-03 & 1.351E-07 & 1342678 \\
+GZIP Fast           & 1.061E-02 & 3.316E-08 & 4.358E-01 & 3.990E-05 & 1.322E-01 & 2.485E-06 & 2.339E-03 & 1.227E-07  \\
+GZIP Best           & 1.059E-02 & 2.676E-08 & 2.453E+00 & 2.466E-04 & 8.363E-02 & 3.614E-06 & 2.338E-03 & 1.275E-07  \\
+ZSTD                & 1.075E-02 & 1.496E-07 & 1.114E-01 & 5.427E-06 & 3.884E-02 & 1.942E-06 & 2.396E-03 & 1.794E-07  \\
+deflate             & 1.056E-02 & 3.661E-08 & 2.457E+00 & 2.835E-04 & 7.638E-02 & 1.462E-06 & 2.380E-03 & 1.351E-07  \\
 \hline
 \end{tabular}
 \end{table}
+
+
+\begin{table}[H]
+\scriptsize
+\centering
+\begin{tabular}{cc}
+\hline
+\textbf{Post Compression Size (Byte)} \\
+\hline
+GZIP Fast           & 1968059 \\
+GZIP Best           & 1342696 \\
+ZSTD                & 1347795 \\
+deflate             & 1342678 \\
+\hline
+\end{tabular}
+\end{table}
+
+
 
 \subsection{Comparison}
 By comparing different aspects of the result, the following conclusions can be drawn: 
